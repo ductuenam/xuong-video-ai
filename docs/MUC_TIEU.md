@@ -201,7 +201,38 @@ Mục tiêu Founder đặt: **linh động tối đa.** Skill là đường mòn
 5. **Nhắc có bản mới** (mục 5.5) và chuyển kho tài nguyên ra ngoài bộ não (mục 8).
 6. Sửa dần các skill còn lại (cắt ghép, ảnh bìa, KOL AI) theo kho mới, ưu tiên skill học viên dùng nhiều.
 
-## 12. Cách dùng tệp này
+## 12. Lộ trình nâng kho tài nguyên cho mọi ngành (Founder duyệt 25/11/2026)
+
+Ký hiệu: ✅ xong · 🔄 đang làm · 📝 chờ làm · ⏸️ để sau. Làm việc nhanh trước (nhạc, tiếng, ảnh), quay video sau. Xong mục nào thì đánh dấu và ghi ngày.
+
+### 12.1 Hiện trạng (đếm chỉ mục ngày 25/11)
+
+| Loại | Có | Vấn đề |
+|---|---|---|
+| Cảnh video | 226 | 163 cảnh (72%) là công nghệ: màn hình ảo, biểu đồ, robot, máy chủ, lập trình |
+| Cảnh ngành nghề | 12 | Mỗi ngành 1 cảnh; 9/12 chỉ có ở gói đủ |
+| Cảnh có người | khoảng 15 | Thiếu khách hàng, chủ shop, tư vấn, đội nhóm |
+| Nhạc nền | 3 | Quá ít, dễ trùng; nguồn Pixabay không cho phát lại nguyên tệp |
+| Tiếng hiệu ứng | 7 | Cả 7 chưa rõ nguồn và quyền dùng |
+
+Hệ quả: máy 8 GB (đa số học viên) chỉ nhận gói nhẹ 64 cảnh, 43 cảnh công nghệ. Chủ spa làm video thì máy không có cảnh ngành mình, rơi về 4 cảnh nền dịu dùng chung, làm vài video là lặp.
+
+### 12.2 Các việc
+
+| # | Việc | Vì sao | Trạng thái |
+|---|---|---|---|
+| 1 | **Máy 8 GB nhận đủ kho cảnh:** chọn gói đủ theo ổ trống (≥ 6 GB), không theo RAM | Cảnh chiếm ổ, không ăn RAM; đa số học viên có gấp 3,5 lần cảnh | 🔄 25/11: đã sửa bộ cài, phát hành cùng đợt nhạc + tiếng (máy đang gói nhẹ tự lên gói đủ một lần, tải khoảng 880 MB) |
+| 2 | **Nhạc nền sạch quyền:** 20–30 bài chia theo tâm trạng (ấm áp, tin cậy, sang trọng, vui, cảm xúc, dồn dập) và nhịp; chỉ nhận CC0/miền công cộng (được phát lại trong gói) | Ít nhạc thì video trùng nhau; nhạc Pixabay không được đóng gói phát lại | 🔄 25/11: đã tải 30 bài CC0 từ Free Music Archive (trang từng bài ghi CC0, không phải nhạc AI) vào `_kho-nang\nguon-moi\nhac\`; chờ đo, gắn nhãn, Founder nghe thử 5 bài nghi có lời |
+| 3 | **Tiếng hiệu ứng sạch quyền:** khoảng 30–40 tiếng CC0 (tiền về "ting ting", vỗ tay, tiếng cười, thông báo, vút, bụp, mở cửa hàng…); thay 7 tiếng chưa rõ nguồn | Tiếng chưa rõ quyền không được dùng trong video đăng công khai | 🔄 25/11: đã tải 40 tiếng CC0 (BigSoundBank 26, Kenney 8, OpenGameArt 4…) vào `_kho-nang\nguon-moi\am\`; còn thiếu tiếng cười, "wow" đám đông, glitch, ka-ching; chờ đo, gắn nhãn, Founder nghe thử |
+| 4 | **Ảnh minh họa + biểu tượng:** ảnh AI theo nhịp bài bán hàng và theo ngành (nhẹ, rẻ, nhanh hơn video); bộ biểu tượng nền trong (tích, mũi tên, khung giá, sao, quà); bộ dựng cho ảnh phóng to/lia nhẹ | Lấp nhanh chỗ thiếu ngành và thiếu người trong khi chờ quay video | 📝 |
+| 5 | **Lớp cảnh "kinh doanh chung"** 100–150 cảnh theo nhịp bài bán hàng: nỗi đau, giải pháp/dịch vụ, bằng chứng, đời sống Việt, cảm xúc; người Việt do AI tạo, không chữ, không logo | Dùng được cho mọi ngành; đây là chỗ thiếu nhất | ⏸️ sau việc 4 (Claude soạn sẵn bộ câu lệnh tạo cảnh) |
+| 6 | **Lớp cảnh theo ngành** 20–30 cảnh/ngành. Ưu tiên: spa-làm đẹp, ăn uống-cà phê, giáo dục-coaching, bất động sản, bảo hiểm-tài chính, bán online-thời trang; sau: nha khoa-phòng khám, nội thất-xây dựng, du lịch-khách sạn, thực phẩm sạch, dịch vụ gia đình | Chọn theo danh sách ngành học viên thật, không đoán | ⏸️ chờ Founder gửi danh sách ngành |
+| 7 | **Skill `xuong-mo-rong`:** học viên nói "thêm 10 ảnh cửa hàng của tôi vào kho", máy tự gắn nhãn, dùng về sau | Không kho nào phủ hết ngành ngách; đồ thật của học viên hợp nhất | 📝 |
+| 8 | **Phát hành thử v2** (lớp chung khoảng 60 cảnh + 3 ngành đông nhất + nhạc + tiếng), cho 3 học viên giả 3 ngành làm video, chấm | Thước đo 8: ≥ 9/10 cảnh hợp lời | ⏸️ |
+| 9 | **Cài, cập nhật, dọn bản cũ an toàn tuyệt đối:** xem `KE_HOACH_CAI_CAP_NHAT_AN_TOAN.md` (19 tình huống, dọn bộ cài cũ 24/11, luôn hỏi học viên trước) | Không bao giờ mất dữ liệu học viên; không để rác 3 GB của bản cũ | ✅ mã 25/11 (Founder duyệt kế hoạch 25/11 tối), bộ thử 38/38 ĐẠT; phát hành bản 0.2.7 |
+| ✅ | Cập nhật chỉ tải phần bổ sung (bản 0.2.6) | Thêm tài nguyên không bắt cả lớp tải lại 900 MB | ✅ 25/11 |
+
+## 13. Cách dùng tệp này
 
 - Đọc ở đầu mỗi đợt làm xưởng video, và mỗi khi Founder hỏi về cài đặt, cập nhật, tùy biến.
 - Đề xuất nào không phục vụ mục 1 thì để sau.

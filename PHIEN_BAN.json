@@ -1,11 +1,16 @@
 {
   "ten": "xuong-video-ai",
-  "phien_ban": "0.2.6",
+  "phien_ban": "0.2.7",
   "co_gi_moi": {
     "_ghi_chu": "Mỗi bản mới thêm một dòng, tiếng Việt dễ hiểu cho học viên; bộ cài in các dòng mới hơn bản học viên đang có.",
     "0.2.3": "Video giới thiệu bản thân BNI bản mới: lời viết riêng cho từng người, làm được bài 30 hoặc 60 giây, dùng ảnh riêng từng bài, tự thu giọng mình được.",
     "0.2.5": "Cài được trên máy chưa có Visual C++ và máy ít RAM, không cần bấm quyền quản trị.",
-    "0.2.6": "Cập nhật nhanh: gõ /cap-nhat-xuong là xong; không có gì mới thì báo ngay, có cảnh nhạc mới thì chỉ tải phần bổ sung."
+    "0.2.6": "Cập nhật nhanh: gõ /cap-nhat-xuong là xong; không có gì mới thì báo ngay, có cảnh nhạc mới thì chỉ tải phần bổ sung.",
+    "0.2.7": [
+      "Máy 8 GB nhận đủ 226 cảnh (trước chỉ 64): tải thêm một lần khoảng 880 MB nếu ổ còn chỗ.",
+      "Cập nhật luôn cho xem trước và hỏi anh/chị OK; tệp gốc anh/chị từng sửa được cất sao lưu trước khi thay.",
+      "Dọn bộ cài cũ ngày 24/11 nếu anh/chị đồng ý: video, ảnh, cấu hình KOL được chuyển sang xưởng mới, phần còn lại vào Thùng rác."
+    ]
   },
   "phien_ban_tai_nguyen": "v1",
   "ghi_chu": "Bản nháp. sha256 và mb đã khớp gói đóng ngày 25/11 (cảnh, nhạc, tiếng đã gắn nhãn và đặt tên lại). Gói v1 đã lên R2 (bucket xuong-video-ai, tên miền taivido.zenotera.com) ngày 25/11; tải về qua tên miền khớp sha256.",

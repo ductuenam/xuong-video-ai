@@ -23,6 +23,8 @@ import urllib.request
 import zipfile
 from pathlib import Path
 
+import an_toan  # cùng thư mục cai/: sao lưu tệp học viên đã sửa, Thùng rác, dò và dọn bộ cài cũ
+
 WIN = sys.platform == 'win32'
 MAC = sys.platform == 'darwin'
 NODE_BAN = 'v22.12.0'
@@ -274,11 +276,17 @@ def whisper(ram, gpu):
 
 # ---------------------------------------------------------------- bộ não
 
+def xuong_da_cai(bo_nao: Path):
+    """Ngăn xưởng đã cài: thư mục con có xuong.json của bộ cài (kể cả khi học viên đã đổi tên ngăn), ưu tiên *_XUONG_VIDEO."""
+    ung = sorted(d for d in bo_nao.iterdir() if d.is_dir() and (d / 'xuong.json').is_file() and (d / 'tai-nguyen').is_dir())
+    ung.sort(key=lambda d: not d.name.endswith('_XUONG_VIDEO'))
+    return ung[0] if ung else None
+
+
 def tim_xuong(bo_nao: Path):
-    """Ngăn xưởng: dùng lại ngăn đã cài (có xuong.json); không thì 08_XUONG_VIDEO, trùng số thì lấy số trống kế tiếp."""
-    for d in sorted(bo_nao.glob('*_XUONG_VIDEO')):
-        if (d / 'xuong.json').exists():
-            return d
+    """Ngăn xưởng: dùng lại ngăn đã cài; không thì 08_XUONG_VIDEO, trùng số thì lấy số trống kế tiếp."""
+    if (d := xuong_da_cai(bo_nao)):
+        return d
     so = {int(m.group(1)) for d in bo_nao.iterdir() if d.is_dir() and (m := re.match(r'^(\d{2})_', d.name))}
     n = 8
     while n in so:
@@ -293,19 +301,6 @@ def chep_khong_de(src: Path, dich: Path):
         if f.is_dir():
             d.mkdir(parents=True, exist_ok=True)
         elif not d.exists():
-            d.parent.mkdir(parents=True, exist_ok=True)
-            shutil.copy2(f, d)
-
-
-def chep_de(src: Path, dich: Path):
-    """Chép skill: tệp của kho chép đè, tệp học viên tự thêm (không có trong kho) giữ nguyên."""
-    for f in src.rglob('*'):
-        if '__pycache__' in f.parts:
-            continue
-        d = dich / f.relative_to(src)
-        if f.is_dir():
-            d.mkdir(parents=True, exist_ok=True)
-        else:
             d.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(f, d)
 
@@ -348,14 +343,47 @@ def tep_cua_goi(nguon: Path, goi_canh: str):
     return hop
 
 
-def tai_nguyen(nguon: Path, may: Path, xuong: Path, goi_canh: str):
+def ke_hoach_tai(pb, da, goi_canh):
+    """Cần tải gì: ('khong', [], 0) | ('bo-sung', [gói...], MB) | ('du', [tên gói...], MB). da = xuong.json đang có."""
+    ptn, cu = pb['phien_ban_tai_nguyen'], da.get('phien_ban_tai_nguyen')
+    cung_goi = da.get('may', {}).get('goi_tai_nguyen') == goi_canh
+    if cu == ptn and cung_goi:
+        return 'khong', [], 0
+    chuoi = chuoi_bo_sung(pb, cu, ptn) if cu and cung_goi else None
+    if chuoi:
+        return 'bo-sung', chuoi, sum(g['mb'] for g in chuoi)
+    can = [f'kho-canh-{goi_canh}', 'nhac-am']
+    return 'du', can, sum(pb['goi_tai_nguyen'][t]['mb'] for t in can)
+
+
+def o_trong_gb(p: Path):
+    """Dung lượng trống (GB) của ổ chứa p. XUONG_THU_O_TRONG chỉ để thử."""
+    return float(os.environ.get('XUONG_THU_O_TRONG') or shutil.disk_usage(p).free / 2 ** 30)
+
+
+def kiem_o(may: Path, xuong: Path, mb_tai: int):
+    """Trước khi tải: gói zip nằm ở thư mục phần mềm, giải nén vào xưởng. Cùng ổ thì cần gấp đôi. Dư thêm 1 GB."""
+    if not mb_tai:
+        return
+    may.mkdir(parents=True, exist_ok=True)
+    cung_o = os.path.splitdrive(str(may.resolve()))[0].lower() == os.path.splitdrive(str(xuong.resolve()))[0].lower() if WIN \
+        else os.stat(may).st_dev == os.stat(xuong).st_dev
+    for noi, can in ([(xuong, mb_tai * 2)] if cung_o else [(may, mb_tai), (xuong, mb_tai)]):
+        con = o_trong_gb(noi)
+        if con < can / 1024 + 1:
+            dung(f'Ổ chứa {noi} còn {con:.1f} GB, cần khoảng {can / 1024 + 1:.1f} GB để tải và giải nén {mb_tai} MB tài nguyên. '
+                 'Dọn bớt ổ (đổ Thùng rác, xóa video cũ không cần) rồi gõ lại lệnh cập nhật. Chưa có gì bị thay đổi.')
+
+
+def tai_nguyen(nguon: Path, may: Path, xuong: Path, goi_canh: str, sl=None):
     pb = json.loads((nguon / 'PHIEN_BAN.json').read_text(encoding='utf-8'))
     da = json.loads((xuong / 'xuong.json').read_text(encoding='utf-8')) if (xuong / 'xuong.json').exists() else {}
-    can = [f'kho-canh-{goi_canh}', 'nhac-am']
     ptn = pb['phien_ban_tai_nguyen']
-    cu = da.get('phien_ban_tai_nguyen')
-    chuoi = chuoi_bo_sung(pb, cu, ptn) if cu and da.get('may', {}).get('goi_tai_nguyen') == goi_canh else None
-    if cu == ptn and da.get('may', {}).get('goi_tai_nguyen') == goi_canh:
+    kieu, ds, mb_tai = ke_hoach_tai(pb, da, goi_canh)
+    kiem_o(may, xuong, mb_tai)
+    chuoi = ds if kieu == 'bo-sung' else None
+    can = ds if kieu == 'du' else []
+    if kieu == 'khong':
         print(f'✔ tài nguyên {ptn} đã có, bỏ qua tải')
     elif chuoi:
         # Đang ở bản cũ: chỉ tải gói bổ sung (tệp mới/đổi), lọc theo gói nhẹ/đủ bằng chỉ mục mới của kho
@@ -404,8 +432,12 @@ def tai_nguyen(nguon: Path, may: Path, xuong: Path, goi_canh: str):
             cot, kho = r.fieldnames, [x for x in r if goi_canh in x.get('goi', '').split(';')]
         hv = []
         if (dich / 'chi-muc.csv').exists():
+            # Giữ MỌI dòng không phải của kho (kể cả dòng học viên ghi thiếu nhãn chu=hoc-vien); cất bản cũ trước khi ghi lại
             with open(dich / 'chi-muc.csv', encoding='utf-8-sig') as f:
-                hv = [x for x in csv.DictReader(f) if x.get('chu') == 'hoc-vien']
+                ma_kho = {x['ma'] for x in kho}
+                hv = [x for x in csv.DictReader(f) if (x.get('chu') or '').strip() != 'kho' and x.get('ma') not in ma_kho]
+            if hv and sl:
+                sl.cat_truoc_khi_ghi(dich / 'chi-muc.csv')
         with open(dich / 'chi-muc.csv', 'w', encoding='utf-8-sig', newline='') as f:
             w = csv.DictWriter(f, fieldnames=cot, extrasaction='ignore')
             w.writeheader()
@@ -417,7 +449,9 @@ def tai_nguyen(nguon: Path, may: Path, xuong: Path, goi_canh: str):
     # Sinh CHI_MUC.md từ chỉ mục vừa ghi, bằng đúng hàm của người làm kho
     os.environ['XUONG_REPO'] = str(xuong)
     sys.path.insert(0, str(nguon / 'cong-cu'))
+    import importlib
     import chung as kho_chung
+    kho_chung = importlib.reload(kho_chung)  # đường dẫn đọc lúc nạp: nạp lại cho đúng xưởng này
     for loai in ('canh', 'nhac', 'am'):
         kho_chung.sinh_md(loai)
     return ptn
@@ -503,11 +537,11 @@ def main():
 
     # Cập nhật thường xuyên (/cap-nhat-xuong): đã đúng bản mới nhất và còn nguyên thì báo một dòng, không đụng gì.
     # XUONG_CAI_LAI=1 (người dùng nói "cài lại xưởng") thì chạy đủ các bước để sửa máy.
-    cu = {}
-    for d in sorted(bo_nao.glob('*_XUONG_VIDEO')):
-        if (d / 'xuong.json').exists():
-            cu = json.loads((d / 'xuong.json').read_text(encoding='utf-8'))
-            break
+    # XUONG_XEM=1: chỉ xem trước sẽ làm gì, không thay đổi gì (Claude cho học viên xem rồi hỏi OK).
+    # XUONG_DON_BAN_CU=1: học viên đã OK dọn bộ cài cũ ngày 24/11 (cứu đồ học viên trước, rồi Thùng rác).
+    xem, don = bool(os.environ.get('XUONG_XEM')), bool(os.environ.get('XUONG_DON_BAN_CU'))
+    x0 = xuong_da_cai(bo_nao)
+    cu = json.loads((x0 / 'xuong.json').read_text(encoding='utf-8')) if x0 else {}
     ban_cu = cu.get('ngay_cai') and cu.get('phien_ban')
     cfg0 = bo_nao / '.claude' / 'xuong-video.json'
     try:
@@ -515,19 +549,29 @@ def main():
             (bo_nao / '.claude' / 'skills' / 'video-ngan-nguoi-noi' / 'SKILL.md').exists()
     except Exception:
         con_nguyen = False
-    if (not os.environ.get('XUONG_CAI_LAI') and con_nguyen and ban_cu == pb['phien_ban']
-            and cu.get('phien_ban_tai_nguyen') == pb['phien_ban_tai_nguyen']):
+    vet = an_toan.do_ban_cu(bo_nao, nguon)
+    moi_nhat = (not os.environ.get('XUONG_CAI_LAI') and con_nguyen and ban_cu == pb['phien_ban']
+                and cu.get('phien_ban_tai_nguyen') == pb['phien_ban_tai_nguyen'])
+    if xem:
+        return xem_truoc(pb, cu, ban_cu, moi_nhat, bo_nao, x0, nguon, vet, a.goi)
+    if moi_nhat:
         print(f'\n✔ ĐÃ LÀ BẢN MỚI NHẤT (mã {pb["phien_ban"]}, tài nguyên {pb["phien_ban_tai_nguyen"]}). Không có gì mới, không cần làm gì.')
-        return 0
+        return bao_ban_cu(vet, don, x0, nguon)
 
     buoc('1/7 Kiểm máy')
     ram, gpu = ram_gb(), co_gpu()
     trong = shutil.disk_usage(bo_nao).free / 2 ** 30
-    goi_canh = a.goi or ('du' if ram >= 16 and trong >= 6 else 'nhe')
+    # Chọn gói cảnh theo ổ trống, không theo RAM: cảnh chỉ chiếm ổ, mỗi video dùng vài cảnh (đổi 25/11/2026; trước đây
+    # máy dưới 16 GB RAM, tức đa số học viên, chỉ nhận 64 cảnh). Đang dùng gói nhẹ mà nay đủ ổ thì lên gói đủ một lần.
+    goi_canh = a.goi or ('du' if trong >= 6 else 'nhe')
     print(f'Hệ điều hành {platform.system()} {platform.release()} · RAM {ram} GB · ổ bộ não còn {trong:.0f} GB · '
           f'{"có" if gpu else "không có"} GPU NVIDIA → kho cảnh gói "{goi_canh}"')
     if trong < 2:
         dung(f'Ổ chứa bộ não chỉ còn {trong:.1f} GB. Cần ít nhất 2 GB trống.')
+    if any(k in str(bo_nao).lower() for k in DONG_BO):
+        cb('Bộ não đang nằm trong thư mục đồng bộ mây (OneDrive, Google Drive, iCloud, Dropbox). Xưởng sẽ thêm 1–2 GB tài nguyên '
+           'và video: đồng bộ chậm, tốn dung lượng mây, có lúc tệp "chỉ trên mây" làm dựng lỗi. Nên chuyển bộ não ra thư mục '
+           'thường (ví dụ D:\\Bo-Nao-AI) rồi cập nhật lại. Claude: chỉ giải thích, không tự chuyển.')
     if ram < 8:
         cb(f'Máy có {ram} GB RAM (nên từ 8 GB). Vẫn làm được video BNI, edit video ngắn nhưng chậm: khi dựng hãy đóng bớt '
            f'Chrome và ứng dụng khác. Dùng mô hình nghe giọng nhỏ "small" cho vừa máy.')
@@ -543,8 +587,9 @@ def main():
     xuong = tim_xuong(bo_nao)
     mau = nguon / 'xuong-mau' / '08_XUONG_VIDEO'
     chep_khong_de(mau, xuong)
+    sl = an_toan.SaoLuu(bo_nao, xuong)
     chi_muc_xuong(mau / 'CHI_MUC_XUONG.md', xuong / 'CHI_MUC_XUONG.md')
-    shutil.copy2(mau / 'CHUAN_BI_THEM.md', xuong / 'CHUAN_BI_THEM.md')
+    sl.chep(mau / 'CHUAN_BI_THEM.md', xuong / 'CHUAN_BI_THEM.md')
     ban_do_bo_nao(bo_nao, xuong)
     for d in ('du-an', 'thanh-pham', 'anh-video-cua-toi'):
         (xuong / d).mkdir(exist_ok=True)
@@ -554,7 +599,7 @@ def main():
     print('✔ ngăn xưởng:', xuong)
 
     buoc('5/7 Kho tài nguyên (cảnh, nhạc, tiếng)')
-    ptn = tai_nguyen(nguon, may, xuong, goi_canh)
+    ptn = tai_nguyen(nguon, may, xuong, goi_canh, sl)
 
     buoc('6/7 Skill, agent, mô hình nghe lời')
     claude = bo_nao / '.claude'
@@ -563,23 +608,22 @@ def main():
     for gj in sorted((nguon / 'goi').glob('*/goi.json')):
         g = json.loads(gj.read_text(encoding='utf-8'))
         for s in g.get('skills', []):
-            chep_de(gj.parent / 'skills' / s, claude / 'skills' / s)
+            sl.chep_thu_muc(gj.parent / 'skills' / s, claude / 'skills' / s)
             da_chep.append(s)
             dk = g.get('dieu_kien_theo_skill', {})
             if dk.get(s) or dk.get('*'):
                 dk_skill[s] = dk.get(s) or dk.get('*')
         for f in sorted((gj.parent / 'agents').glob('*.md')):
-            (claude / 'agents').mkdir(parents=True, exist_ok=True)
-            shutil.copy2(f, claude / 'agents' / f.name)
+            sl.chep(f, claude / 'agents' / f.name)
         goi_da.append(g['ma'])
         print(f'✔ gói {g["ma"]}: {len(g.get("skills", []))} skill, {len(list((gj.parent / "agents").glob("*.md")))} agent')
-    # Skill trùng tên cài chung cho cả máy (~/.claude/skills) được Claude dùng TRƯỚC bản trong bộ não (thử 25/11/2026:
-    # bản cũ chung máy làm video BNI tạo thư mục ảnh ngoài bộ não). Không tự xóa thư mục ngoài bộ não, chỉ báo.
-    chung_may = Path.home() / '.claude' / 'skills'
-    trung = [s for s in da_chep if (chung_may / s / 'SKILL.md').exists()]
-    if trung:
-        cb(f'Máy có bản CŨ cài chung của skill {", ".join(trung)} ở {chung_may}. Claude sẽ dùng bản cũ đó thay vì bản mới '
-           f'trong bộ não. Claude: hỏi người dùng rồi chuyển các thư mục đó vào Thùng rác (không xóa hẳn), sau đó mở lại Claude.')
+    sl.ghi()
+    if sl.hv_sua:
+        cb(f'Anh/chị đã sửa {len(sl.hv_sua)} tệp gốc của xưởng ({", ".join(sl.hv_sua[:3])}{"..." if len(sl.hv_sua) > 3 else ""}). '
+           f'Bản mới đã thay; bản anh/chị sửa được cất ở {sl.thu_muc}. Muốn giữ cách làm riêng lâu dài thì nói '
+           f'"Lưu kiểu video này của tôi" (cất vào mau-cua-toi, cập nhật không đụng tới).')
+    elif sl.chua_ro:
+        print(f'✔ cất {len(sl.chua_ro)} tệp bản trước vào {sl.thu_muc} (phòng khi cần lấy lại)')
     wm = whisper(ram, gpu)
     cfg = {'_ghi_chu': 'Bộ cài Xưởng Video AI ghi tệp này; skill đọc để biết xưởng, phần mềm ở đâu. Chạy lại câu lệnh cài sẽ ghi lại.',
            'phien_ban': pb['phien_ban'], 'phien_ban_tai_nguyen': ptn, 'xuong': str(xuong), 'may': str(may),
@@ -617,17 +661,81 @@ def main():
     for s in canh_bao:
         print('⚠', s)
     if ban_cu and ban_cu != pb['phien_ban']:
-        so = lambda s: tuple(int(x) for x in re.findall(r'\d+', s))  # noqa: E731
-        moi = [(b, d) for b, d in sorted((pb.get('co_gi_moi') or {}).items(), key=lambda x: so(x[0])) if so(ban_cu) < so(b)]
         print(f'\nĐÃ CẬP NHẬT {ban_cu} → {pb["phien_ban"]}. Có gì mới:')
-        for b, ds in moi:
-            for d in (ds if isinstance(ds, list) else [ds]):
-                print(f'  - {d}')
-        if not moi:
-            print('  - Sửa lỗi nhỏ, chạy ổn định hơn.')
+        for d in co_gi_moi(pb, ban_cu):
+            print(f'  - {d}')
+    rc = bao_ban_cu(vet, don, xuong, nguon)
     print('\nĐÓNG HẲN Claude rồi mở lại đúng thư mục bộ não để Claude nhận skill và agent mới.')
     print('Thử ngay: "Dựng video giới thiệu bản thân cho tôi theo cấu trúc BNI".')
-    return 0 if ok else 2
+    return 2 if not ok else rc
+
+
+DONG_BO = ('onedrive', 'google drive', 'googledrive', 'my drive', 'icloud', 'mobile documents', 'dropbox')
+
+
+def co_gi_moi(pb, ban_cu):
+    so = lambda s: tuple(int(x) for x in re.findall(r'\d+', s))  # noqa: E731
+    moi = [d for b, d in sorted((pb.get('co_gi_moi') or {}).items(), key=lambda x: so(x[0])) if so(b) and so(ban_cu) < so(b)]
+    return [x for d in moi for x in (d if isinstance(d, list) else [d])] or ['Sửa lỗi nhỏ, chạy ổn định hơn.']
+
+
+def bao_ban_cu(vet, don, xuong, nguon):
+    """Có dấu vết bộ cài cũ 24/11: chưa được OK thì liệt kê để Claude hỏi học viên; đã OK (XUONG_DON_BAN_CU=1) thì dọn."""
+    if not an_toan.co_ban_cu(vet):
+        if don:
+            print('✔ Không còn dấu vết bộ cài cũ, không cần dọn.')
+        return 0
+    if don and xuong:
+        print('\n== Dọn bộ cài cũ (anh/chị đã đồng ý)')
+        bao, loi = an_toan.don_ban_cu(vet, xuong, nguon)
+        for d in bao:
+            print(('⚠ ' if loi else '✔ ') + d)
+        if not loi:
+            print('ĐÃ DỌN BẢN CŨ. Đóng hẳn Claude rồi mở lại để chỉ còn skill mới.')
+        return 1 if loi else 0
+    print('\n⚠ PHÁT HIỆN BẢN CŨ (bộ cài làm video ngày 24/11) trên máy:')
+    for d in an_toan.mo_ta_ban_cu(vet):
+        print('   -', d)
+    print('   Đề xuất: chép giữ video, ảnh, hồ sơ, cấu hình riêng của anh/chị vào xưởng mới, kiểm đủ, rồi chuyển phần còn lại '
+          'của bản cũ vào Thùng rác (lấy lại được). Phần mềm đã cài (FFmpeg, Node, Python, mô hình nghe giọng) giữ nguyên để dùng lại.')
+    print('   Claude: giải thích danh sách trên cho học viên, hỏi OK. Đồng ý thì chạy lại đúng lệnh cài với biến XUONG_DON_BAN_CU=1.')
+    return 0
+
+
+def xem_truoc(pb, cu, ban_cu, moi_nhat, bo_nao, x0, nguon, vet, goi=None):
+    """XUONG_XEM=1: in việc sẽ làm, không thay đổi gì."""
+    print('\n== XEM TRƯỚC (chưa thay đổi gì trên máy)')
+    if moi_nhat:
+        print(f'✔ ĐÃ LÀ BẢN MỚI NHẤT (mã {pb["phien_ban"]}, tài nguyên {pb["phien_ban_tai_nguyen"]}). Không có gì mới.')
+    else:
+        dang = f'mã {ban_cu}, tài nguyên {cu.get("phien_ban_tai_nguyen")}' if ban_cu else 'chưa cài'
+        print(f'Bản đang có: {dang} → bản mới: mã {pb["phien_ban"]}, tài nguyên {pb["phien_ban_tai_nguyen"]}')
+        if ban_cu and ban_cu != pb['phien_ban']:
+            print('Có gì mới:')
+            for d in co_gi_moi(pb, ban_cu):
+                print(f'  - {d}')
+        goi_canh = goi or ('du' if o_trong_gb(bo_nao) >= 6 else 'nhe')
+        kieu, _, mb_tai = ke_hoach_tai(pb, cu, goi_canh)
+        print({'khong': 'Tài nguyên: đã đủ, không tải.',
+               'bo-sung': f'Tài nguyên: chỉ tải phần bổ sung khoảng {mb_tai} MB.',
+               'du': f'Tài nguyên: tải gói {"đủ" if goi_canh == "du" else "nhẹ"} khoảng {mb_tai} MB (một lần).'}[kieu])
+        if x0:
+            sl = an_toan.SaoLuu(bo_nao, x0, xem=True)
+            for gj in sorted((nguon / 'goi').glob('*/goi.json')):
+                g = json.loads(gj.read_text(encoding='utf-8'))
+                for s in g.get('skills', []):
+                    sl.chep_thu_muc(gj.parent / 'skills' / s, bo_nao / '.claude' / 'skills' / s)
+                for f in sorted((gj.parent / 'agents').glob('*.md')):
+                    sl.chep(f, bo_nao / '.claude' / 'agents' / f.name)
+            if sl.hv_sua:
+                print(f'Tệp gốc anh/chị đã sửa, sẽ được CẤT vào {x0.name}/.sao-luu/ trước khi thay: {", ".join(sl.hv_sua)}')
+        print('Giữ nguyên: video đã làm, ảnh riêng, mẫu riêng, cảnh/nhạc/tiếng anh/chị tự thêm, hồ sơ kênh, các ngăn khác của bộ não.')
+    if an_toan.co_ban_cu(vet):
+        print('\nBản cũ (bộ cài 24/11) còn trên máy, có thể dọn nếu anh/chị đồng ý:')
+        for d in an_toan.mo_ta_ban_cu(vet):
+            print('   -', d)
+    print('\nClaude: tóm tắt các dòng trên cho học viên và hỏi OK. Đồng ý thì chạy lại đúng lệnh, bỏ biến XUONG_XEM.')
+    return 0
 
 
 if __name__ == '__main__':

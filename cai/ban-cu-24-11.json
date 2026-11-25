@@ -1,0 +1,1647 @@
+{
+"_ghi_chu": "Dấu vết bộ cài cũ ngày 24/11/2026 (11 commit, kho KHO-HOC-VIEN). Khóa của tep = sha1(đường dẫn)[:16]. Sinh 1 lần, không sửa tay.",
+"commit": [
+"a9e972c",
+"b2ef5d3",
+"db27122",
+"840614f",
+"0bf36f9",
+"6886306",
+"5f0ee67",
+"0659525",
+"c7f57bf",
+"a9e42d8",
+"0c9b199"
+],
+"skills": [
+"ab-edit",
+"anh-bia-video",
+"kol-ban-quan-ao",
+"kol-lookbook",
+"kol-mac-thu-mot-khung",
+"kol-review-nghi-duong",
+"video-cay-canh",
+"video-ngan-hyperframes",
+"video-ngan-nguoi-noi"
+],
+"agents": [
+"cham-so-mau-kol.md",
+"giam-sat-kol-mot-khung.md",
+"kiem-duyet-doc-lap.md",
+"kol-livestream-soat.md",
+"nd-cham-so-mau.md",
+"nd-giam-sat-cuoi.md",
+"nd-soi-loi-giong.md",
+"nd-soi-mat-kol.md",
+"nguoi-dung-video.md",
+"nguoi-soat-video.md",
+"sku-cc-cham-so-mau.md",
+"sku-cc-dang-bai.md",
+"sku-cc-kiem-dung.md",
+"sku-cc-muse.md",
+"sku-cc-thiet-ke.md",
+"sku-lb-cham-dung.md",
+"sku-lb-dung.md",
+"sku-lb-lenh.md",
+"sku-lb-soi-da-mat.md",
+"sku-lb-soi-trang-phuc.md",
+"soi-ao-xoay-lung-kol.md",
+"soi-loi-giong-kol.md",
+"soi-mat-trang-diem-kol.md",
+"video-cham-diem.md",
+"video-dung.md"
+],
+"tep": {
+"2f5ef1ba7d1c834a": [
+"1a9916c68f78d7dbb4fc1278a1d32c75dfa9a44d"
+],
+"b9804dce98850d64": [
+"f10050f22d23b38621aa4943bf0823e23c218404"
+],
+"cc67cb0b96cfa1c5": [
+"a9574006b0758e2f7a73427b1b8e17b29f4d66c2"
+],
+"3cb3967f0af31ce8": [
+"a74b2963d7a0d0cc679ba7d31d3e18ba819fcf27"
+],
+"4b0253f624606d51": [
+"4aa7232a8f5505323113a0bb5560d70d87efa6ce"
+],
+"b3894faa26152ff7": [
+"377438234c0fa27ba586c004752c90a076831104"
+],
+"f1c88bda65731679": [
+"80c0b9cb4a7298d14d864fa5e89216cbc15dd455"
+],
+"4c5088510e0c3773": [
+"b5c734036397b4037c3792f97ee0e6d8aa568386"
+],
+"436dc4dea06d6f0b": [
+"9409ca8c2d9d1d2143ed483d8d6b4bb467ee614d"
+],
+"d87b903ff52a6fc4": [
+"62c8148aa558fcd9b73b9e2f1b48191024fa9314"
+],
+"8726ddab9dc7c431": [
+"6ad393808944b6deffbeeb80e610b075106b88d8"
+],
+"f04385a00ed86abb": [
+"63636ff691d2c0de57b74a40265bda615f0fe81e"
+],
+"67815b932f657961": [
+"66689823cf5e844162c6cc23f484928ec4029a0a"
+],
+"6636b53757bcbaaa": [
+"80639c1c5c9ecb0d832efc2cfab6e7f827885045"
+],
+"280aafb414a83a4f": [
+"7d2688baf7094fb549ebe97cc6d6056cd7998721"
+],
+"6d692cc4c0519a03": [
+"62ede72c59257f4c41c16700d223f210da723553"
+],
+"f76facb91e355b68": [
+"7493cfca879423b1194420166c5eae949ef3b26d"
+],
+"08a10f89db101f79": [
+"9d056a224f3f8f2793bbb77e056df6322771269a"
+],
+"16af52a8495ee4c4": [
+"568f24dfdfe1ead27a088eb34a85029ba5128ebb"
+],
+"5e785a1166a847b3": [
+"c712054b71e5601aaac64e5ceff57714e77d3652"
+],
+"9070af87c1a81381": [
+"7f338a903fc97f39fbac39d4b00daebeeddf8091"
+],
+"03f25e78a2ecfaee": [
+"2e27c72a8272af7b20341156af7cc8bb01a0fa57"
+],
+"1a32e6308dffe0a6": [
+"cdd48bbb864a8d68190d5d9f7e6c0b37c9a5ceb3"
+],
+"55c6b038b95f91ee": [
+"04fe731a0d70143aa0a444d863f88ee9d7747b54"
+],
+"fa699162ff9d966a": [
+"8421aaed81851767034a7fa19c9f80869bdfee98",
+"b149535ff70600fdac19ffcd2e3d14bd6d0c4cbf",
+"e79488e7f4596d213f4e878500cb79e89498bce8"
+],
+"d4b8cee22c76f1ce": [
+"44331b117e74d475c3bf1fb8fcf504a9e189bc5b",
+"a298aa9a0788d84eadfb72472ac332003031fe36"
+],
+"c576640d2ced1dbd": [
+"edad4ec23e98aa12573b1e3f6c6277f9eaded19a"
+],
+"13a478d016382b3a": [
+"c712926b49a853a5fdac2dc4dfa957a993d3ca79"
+],
+"b4f2e1ef8d23d13d": [
+"9fd8f286835c59b3ed393498e97704e9a26d803a"
+],
+"32306d8f837a2563": [
+"e16d2fe07a513c3b8a0065e8dd44840a83afcc65"
+],
+"1c16871961645665": [
+"1b2b5220b8035704fc1eb97461b9c34a73cbd1e2"
+],
+"e91688ae019754a9": [
+"c50c845d113e02ac6e3627b8121db7fb9a35bb4b"
+],
+"3ffc2cae0792efb5": [
+"e20470120d5ccb9f7c47b1027d300c3bcf09ada5"
+],
+"c07ff6c9b399a839": [
+"a4f41ba5238f744e6031cb4c0d83fc83b124755d"
+],
+"ace70358f6174832": [
+"e889641f16d6cb4378a493d93d99f210b7e91802"
+],
+"bb8a726c52a817b9": [
+"9909b0eb722e5b2fcd73866358d2c0d892c8a4ee"
+],
+"f75540086d92e48b": [
+"1b65b8edd0f3536f3751b570b298012bc9a8d27b"
+],
+"624365156ef0e029": [
+"22490cac9c1335e4bfb0c9c1114f41a620041f27"
+],
+"86c51b57d225b34c": [
+"02efb70ee2eb42b6b742b7117152428706a5740b"
+],
+"3c0093d751265120": [
+"9cc702debd381e0e06814dc5d55f3d1f371bfd9a"
+],
+"3c7aabe4bca9bb66": [
+"ed69ca36f14f8515b509154e4ed05c1d6470be8a"
+],
+"c3f68b9bcb98676f": [
+"8d1c50b4ab1e442b68a0f92f81e3cd61f2ff5a21"
+],
+"9462ad5726584da0": [
+"a66f57f35894add2c4cece7633a14f204e7cd0c9"
+],
+"27c2125a1e292a99": [
+"efd21812f6bbf3a0248410aa6dbf46e442db6ad4"
+],
+"14cb21e71bd8b747": [
+"3b06d92664b8ca7371b7e7ea2ba1d852c480bea8"
+],
+"5468229443989b96": [
+"6d647d59ec6fb08b133f97ca4a2d3bc2da96a474"
+],
+"e09d718f9c83c308": [
+"7acdd18edd2bd15c645b37a2f9be4b2421bd30dd"
+],
+"40f3e5bcdaa6d00d": [
+"7f93a86ae0b89ea29268272df6d6a3c105a783a4"
+],
+"631cbe0c3397856c": [
+"20e9fbd63f77f329ee3f7da12303236ab4e6ad96"
+],
+"8d98e25c1bf83ebd": [
+"f855b367df2e2390586e79d851e983caaa7a209e"
+],
+"0c8ef67553ecf331": [
+"88cf9880a10d0c965b4b5e2b58577cd1d2e7945f"
+],
+"de5b0c20c3f875b1": [
+"73ee691dca2ffb9f87ccd7ac3a4519ae0c8738aa"
+],
+"9643b6aabab79931": [
+"ddfa32f3e537993e9115b37d610166b39b8f4509"
+],
+"3d7b6a6f87eea3c2": [
+"2d17f06f6aa7e446360d68d743e8b1a1d42a174a"
+],
+"d038efc197e68e07": [
+"53712246e72a32f5df91c35f27377a5462c9ac2b"
+],
+"806188b8591f56c1": [
+"67e2006f16ce19b9a622dcf94deb8144ef2d35cc"
+],
+"edf258d60e7f7e4b": [
+"19f16600aad406d126b96cf05e682735fe4cb9ef"
+],
+"ecf4fc951ddf5d31": [
+"9461051e2d6b18d5f04a3130c5298c275ad8d674"
+],
+"91bc9226bdca24f7": [
+"420d98160b66eb8794e53c0a64217c0ba93de6e5"
+],
+"493748b777acb3f3": [
+"10f7c06229eca4739fd54dbf3725691e7dd3dcad"
+],
+"11719f1105c36c87": [
+"8e0cdad8da496d38ec7ae5b12613450f4ac86dd1"
+],
+"7c80048917130011": [
+"7aab6101eb5ef506ef43a06b80eaef8deea983a3"
+],
+"6f396603cf228ef3": [
+"342a26026d2d8c079c307b9fdee39201386250dd"
+],
+"0f8001d14b35a242": [
+"ba3107278c27f2fc16df7e11b5869ed475a8dc75"
+],
+"758ba07a1a15ffb2": [
+"b6804650060f591ec0391f707c4bdd9f4c5db345"
+],
+"227f5946b74ed4d4": [
+"479694cf8929c51b8269b331c3db4c4fff78ee04"
+],
+"ca6200e8e2d6f142": [
+"e4fca0b14963edefa508791fedce1ae983a522e9"
+],
+"ecb9685278a54048": [
+"855996c43035ae873b941107158c901fe0d1fad1"
+],
+"b1c3ca4b04e3f175": [
+"3561a18c1412bb1c89236082263ee87c7b57f412"
+],
+"f150c798f47a5721": [
+"669a72d80daa573a4e26e45a9967440eddbca4e4"
+],
+"f4a2378673d23d9b": [
+"65333997d12b5be277a7315b6612e00c61d2fa21"
+],
+"1f47c3b2ca82ad81": [
+"321a060292e13d2d10fea712ded96ec761231268"
+],
+"2aaf7bcf68f83b3c": [
+"aa80a824e15327eb1ea6eab0a763000bae46de08"
+],
+"98705f8f52e16d22": [
+"660666375dd1f2e030fbd33be5f5672e106fb049"
+],
+"50ed3baacba69f06": [
+"f8f0a5c121f97c017758f2b481c117c99d81fecf"
+],
+"9590207833642ec4": [
+"20b1e0ac14d5ef7e88fbd6d1d24719bc9354cdc0"
+],
+"1eac238430f9eab6": [
+"28711c2fe690be660a288f2c036bc8b8c1ac8fb0"
+],
+"fcb55c0489ef9ad4": [
+"4a3c3bc23f201ea4c53d5009835acf57a4d4b256"
+],
+"5ccb09efd3ffeee1": [
+"4af158ecaada4f31110728d55edd3a51ba296712"
+],
+"8210bf4532bfd9cb": [
+"b427a48ea64ddaacc8a3f0ddc0d3c2751da9af7d"
+],
+"9f1ad2cfd3a0ddd7": [
+"fccb448e03f4b639194111b93413ef94cce7df1d"
+],
+"d60aa8b52ce11560": [
+"cd9397485ec7a66e2ec223e063eacbb2f1b76c3c"
+],
+"f3f47417f73cc0c0": [
+"e6ff8eef420dec2b4250bccd9da4384f2d66a854"
+],
+"1b3e382b8b537b57": [
+"068c5e4e253db832fddf662fac36e16336f55376"
+],
+"c2423b83ca416be0": [
+"e32e007bb24978755726a7264e963242902e999a"
+],
+"99d98667cd20983e": [
+"c5f9009a1cdd3707202c6cc1048aee16b9122f24"
+],
+"61d64e9f60eab907": [
+"81f8d3e853ba9999dfcab7b4cf6ea8bed63d8eb6"
+],
+"fd313e995943d8eb": [
+"7f0c28559e38dc4b884023e7271339cdd4205f97"
+],
+"5f5032fd6d86edb1": [
+"9d63038bd2d764da8e914f97dbe6f5182ab96602"
+],
+"34ac3aecb0418ce1": [
+"d7b8866309d8169ac12509fbd76f7401001eb99b"
+],
+"d952f0460f57e17f": [
+"5cc5de32723403163be73232cdc5ebbc5c999ecd"
+],
+"14047815658f73f0": [
+"2e9517d4ad7ddaee217b4cc5981cd834a65e20ae"
+],
+"f12b30821ffb75bc": [
+"37161c4f9c36852d79f6729be4274519f809ec1b"
+],
+"b193f206d3db92c5": [
+"99a9aac7fa0aa2a1a339e06e41e39d85a648573f"
+],
+"91f7555bfda6e591": [
+"1c1a86d6d083c1b321c46421925f2a126f2dfcf9"
+],
+"f01f4a8d10182684": [
+"07e914784bdf55ace5447a73eebdd3c2b31a3471"
+],
+"04c27e69662d67fc": [
+"6bc512b9256fd61b635cdbbe33134c7002891c4e"
+],
+"db2cd08e751684a1": [
+"7afaea59816ad394ab5f373f65e3f6fbb1b2a802"
+],
+"dc863a6aae5a6537": [
+"13d43a8147275707924e4e147bc745497ecdf8e6"
+],
+"cab1997f4c8aea08": [
+"f9beb3044f3791affe1c2f0932af31927e2e4705"
+],
+"0cef51f438cfb89f": [
+"17dc3e579f1e32eacbc4e1a2459b55d83319e714"
+],
+"58846119a128cb5b": [
+"eb9ecfd289bd2fe822ec052a3b20059bb03841b6"
+],
+"f358000861d3213b": [
+"669083884004aafe54242cc4d0bb20e149dc69a3"
+],
+"f0194636ff701e9c": [
+"ee5fbfde0ff55919c8c64815a1ff9178f5c3049d"
+],
+"ed0a4493bc564198": [
+"e05f69242ca541d881be8678699dad4730f94f39"
+],
+"be9b8c718b2f60de": [
+"7ca98fb8c93042dc7e139d756605329acc0064bd"
+],
+"a6f0bc010e1806c4": [
+"bb80dfe887a3e6a5db39028edb9697f09f959502"
+],
+"c525a172cac45418": [
+"1f676dbb6d04438bdad4e667061782e2473e14dc"
+],
+"b9c76902e510bc5a": [
+"31aaf00944d8e45c82d6c8e5acd2ec0a0219d98d"
+],
+"75042c8a0d913046": [
+"4c39d81c8b1b6f4db5d2a75fedac410a9a266cec"
+],
+"1a6d8c64e68a70dc": [
+"46669a24edca4c88a203e0db94d4fddf6c0a0c40"
+],
+"1d1c98d482430cb6": [
+"b427a48ea64ddaacc8a3f0ddc0d3c2751da9af7d"
+],
+"764b748e9c45ecc9": [
+"7c7a30be707ed79f7b5b97af4388218211a9a76f"
+],
+"65a530fb9896a772": [
+"6a46069f3bcc2bcf4490becc44ac9e48251f87e5"
+],
+"4948f7b7e4f29b4b": [
+"5f709da03d663b5e482b9b35e5e6800e2dd5d983"
+],
+"486265038aede000": [
+"9c3610f053e7ae5882e69d065cb65c3dfcb3bb99"
+],
+"f5f2396ecf7ef637": [
+"10f7c06229eca4739fd54dbf3725691e7dd3dcad"
+],
+"6c57f658fb3f4f2d": [
+"33cc95c574e4095928166a1bf415b49f6eb0d3cc"
+],
+"c170d2c36b0e557b": [
+"e8d303b4b43cf6a91d87de55f56f3e09c199fb48"
+],
+"da69240961054301": [
+"06d2b7148cfc630b939e34d6101f09a855c2c39d"
+],
+"c3f59dc4a687c9d1": [
+"c46b21e7f57f2321676191a63d5ab05b2e877a7e"
+],
+"2f962740993c58a7": [
+"7aab6101eb5ef506ef43a06b80eaef8deea983a3"
+],
+"f55b6dedfd9496a5": [
+"eac0358be67ab5db0289e20b4c05c3c4eaacb801"
+],
+"3d0a64c03aab69d3": [
+"f689c63348e677eb1971da7d93282e433411943c"
+],
+"f5d57895bbe2e1ad": [
+"9e3eea819ce7672e3ba6f89c9b2744e8efd6e357"
+],
+"6a10a1b0e67309bc": [
+"fe06bf8a61b14256f969e444cba3b9d005631da7"
+],
+"9a06f0cd0aa6be1e": [
+"599245edb4a25839708d81f730c015b3ac0ee0d7"
+],
+"cf627216a1c9ace6": [
+"b6638a6fdef7655a1587fa4e0ce6f8968870d9a8"
+],
+"23baaad8de0a5d7c": [
+"b6804650060f591ec0391f707c4bdd9f4c5db345"
+],
+"a3182a371c1a04ac": [
+"3bc3ba2a5a70ed6d1b77f8830ccbb6051ad34fe2"
+],
+"9e66b4932d682e33": [
+"c196342a98ff8937f5aee897df36eb672b345e88"
+],
+"08ec6ada959933a7": [
+"3561a18c1412bb1c89236082263ee87c7b57f412"
+],
+"3de73cd0b646afc7": [
+"65333997d12b5be277a7315b6612e00c61d2fa21"
+],
+"0a2c3aef6ea17a2a": [
+"321a060292e13d2d10fea712ded96ec761231268"
+],
+"e6209cd498b06404": [
+"660666375dd1f2e030fbd33be5f5672e106fb049"
+],
+"b136f55753049b8d": [
+"8f741ac451f6ebbeca236bf517dc8c2d11f9593d"
+],
+"15be63ac66fb55be": [
+"20b1e0ac14d5ef7e88fbd6d1d24719bc9354cdc0"
+],
+"d34996b72727f56b": [
+"28711c2fe690be660a288f2c036bc8b8c1ac8fb0"
+],
+"00935130e9f1f1d1": [
+"4a3c3bc23f201ea4c53d5009835acf57a4d4b256"
+],
+"4b5aec831e121dbb": [
+"424df071629ff25adbe69e3c2b4b9c28d0ff2454"
+],
+"47dd8450e940e010": [
+"7985f0d7c0838a36514ca12d9c5d3c0cb39fc1ba"
+],
+"2e16678e3605d11a": [
+"b427a48ea64ddaacc8a3f0ddc0d3c2751da9af7d"
+],
+"8e75d8b0382c1fee": [
+"273f1e41ae303917e8bc232a2a720fd419287046"
+],
+"812c15592adb2750": [
+"a9e75d85e105a0eb21c7556f1e0e5fe85357d826"
+],
+"b020caec7eb3c527": [
+"d265d51dda7358a4267fd6176a22f769ebe00b30"
+],
+"451855a120cc2abf": [
+"27121ed4d8a2a62312be5eb865a325aa6ca151d5"
+],
+"edd593fc20eb6c6c": [
+"375700ac7790f85d559ebd9efded82e235f3b394"
+],
+"936453cd55f88e36": [
+"4ac51c5d6eba0a2a48b944d686adedc1c2c58716"
+],
+"70ca84c5b993c6af": [
+"2470eaaa91fef23d5235a96220fd06db6c375ee4"
+],
+"82966e0fb6d8ba0c": [
+"7dc9e7a8d6482a239d57f8ffb1a79b9b349d1e08"
+],
+"53648ad54bdf2ecc": [
+"d7f3f42c1725a455e54c3eb6ea100ee8a99a3c24"
+],
+"837f94e741664b1c": [
+"d4260b6163caac613fb7c1ae99ac38912b396337"
+],
+"5f94652e40b08c3e": [
+"5d72dc975f5d34c82b58025b1c0b02ed19bd0c87"
+],
+"5df8e735defb50e3": [
+"6e7c24f382d274edf60f22b0d56b03a203bb02e5"
+],
+"c386cf0ff47447a6": [
+"04b1583a491900ead478457e1e5c0aa148846c58"
+],
+"1621d48a37bc48c4": [
+"93484ee9b1d022bccbf0355877e0a714027ed7c6"
+],
+"65036b18aae60022": [
+"4f05add24e3644ee9d940cc08ba8e3abc033f135"
+],
+"fcf82b9d07d01241": [
+"2eed8f445eff482e6549d82a709ca59bda7bd182"
+],
+"26e95749beb070e5": [
+"13d43a8147275707924e4e147bc745497ecdf8e6"
+],
+"ec563d07127ed042": [
+"f9beb3044f3791affe1c2f0932af31927e2e4705"
+],
+"a96cb23974fb38e8": [
+"8d4c50f83e635c2df53980ccfd3fb72b3415f9ea"
+],
+"4c97bccd7d2c3a6f": [
+"3c77205eb5da4d2134e44ea403d39d64813da50c"
+],
+"03de60ddb847a89f": [
+"aae7c02233eb8399f7469d783d803d63df3492f5"
+],
+"12ee46830da218e6": [
+"358e935a671095601a2df50dc12fba674b1b2fc5"
+],
+"b5c77170ea2c0d59": [
+"fd3e156331cb2b673d294a155fc6ce3181cd6543"
+],
+"4bc020f3158a7691": [
+"b427a48ea64ddaacc8a3f0ddc0d3c2751da9af7d"
+],
+"8c17dfa8f54b2d36": [
+"0a5281f376dbaf048eca1d479c36fb1e4b2538a6"
+],
+"03a79af35d1252f3": [
+"9b1fe16ef23cd6f34579bfbbc71a12e68a865aa6"
+],
+"aed38097e2523707": [
+"626ed593d0c807ca164da731a9d76ddf16330b07"
+],
+"b3f59beab2d802db": [
+"ab8e8d133bbedd8f187f6080f80b224ded10f25e"
+],
+"c21b5a0ef1c7b8f9": [
+"8ae671e95c925fd15051bb8b726de3ee37f71d16"
+],
+"442158a93706256a": [
+"6fc26fda7f6357b9061e61c4f10c7e026309f8c6"
+],
+"0e7422c9228a4daa": [
+"7f3ca08a9be336db0e81929eaead13988c3d03f2"
+],
+"4bf38bf810f41ff8": [
+"93b293cf5d9e9650c5c97805444c31c08a9fc3dd"
+],
+"7cd2acdacf556e42": [
+"dfbe7841b2d864d1945edb2ff86ce47ad3a6eba7"
+],
+"e8c95718da05ae59": [
+"ff24b30aaf203a37809c5556a4f28f0f1ca7024f"
+],
+"92b5c4929762fa4a": [
+"372e0bb5ef2da821df5e1c54bdaf731aff89af9f"
+],
+"7df42ade0ef9fba1": [
+"ce1fbeb716af04b7dd31aeff6c2d837e3972a62d"
+],
+"69c2d2c2a1517bdb": [
+"95fb93b2ad7ee8483c1c14969d898a8adb8116ac"
+],
+"a0afb919b1c6f719": [
+"2de67ae8ccbaa8689f36e71e5ef8aef971004ac9"
+],
+"992fd14071bddcaf": [
+"711ad59aa13e8c3d5a2915c1315ef1ce82ce8bb2"
+],
+"9503d437b0200cd6": [
+"e1716212ca763efd30f4d56ffe448947d9c93062"
+],
+"48892e2088efc1ec": [
+"02af7c10b0c472894d6c7f46b99e28f6e13d40ca"
+],
+"ce631ebf6ff0d6ab": [
+"83d959c8a087bcbb152e7c1ec3af79dfefc947d3"
+],
+"b016b48bc1c42578": [
+"d500854416c8651adc89b454bcab80d918f40101"
+],
+"c106c8bee05c2855": [
+"3e3824739f4235b593a4e15a20724eb5a1e396f9"
+],
+"36d787348891368d": [
+"4cca793998119672fbf1c3fd407dedc472d24ee4"
+],
+"464db05e83318b5d": [
+"13fa0d7ef36a96d23c64dfb1f675fb5a6b8446c9"
+],
+"dfb0866ec1879d67": [
+"6bb4e2750ac3d7557f949d5f600625f92d25cc41"
+],
+"5611301e418e551e": [
+"9f161acad9345ad485c69c3900c8cbe263a3a9bd"
+],
+"c4ba016d958fb625": [
+"c14f45c42bb550df8ad06d68be5d0498efb400a8"
+],
+"77d7e798cfc187a6": [
+"b427a48ea64ddaacc8a3f0ddc0d3c2751da9af7d"
+],
+"7d233b77810dc342": [
+"32b84318986225b5feba3741eefe3823939b979a"
+],
+"aeda03bad040bd66": [
+"3eaf1583406a7ba8f9cb9562d098a3119cbd74d1"
+],
+"df3a6af1e1270320": [
+"0f13e82297d96c4f24260aaafd23d7a5c31850ac"
+],
+"944359459ce33345": [
+"c0c1cf20db344ce6a49b3980da27b3c5b4f332fe"
+],
+"29eae6e61a61b5ef": [
+"b9f5103c476e01bba35a22864c33b9d54b2f0d7c"
+],
+"046af45557ff3313": [
+"45282bad3bb808cc83cdaada2ea08e3f9ae05a59"
+],
+"b2e0e7952ff50fd2": [
+"492b3ea9846ab2fb8181d9a97891939ffd763c72"
+],
+"88f286f9373722bf": [
+"42e9e0e7cf77b8358489e77582365baa74b6b589"
+],
+"008aa1a988ae3ab8": [
+"5f4644cf2b8eabca87c047fce918da12b7953d6d"
+],
+"557fbf0f6c31b103": [
+"35d0d5e3f88e70805918273a1e922ec6d8aab119"
+],
+"dd558b8fa5d3a5d3": [
+"0b35539d0f9b63f3626900348f54441acb05a0db",
+"19c297173c0c3a8128bc0ccba87d2d2373e09ec8",
+"222a1e7a0bd80a5fe28f0e3de7133ac3f3c9fc53",
+"3d783cc04a7288368415619d592544e7141be8a8",
+"7f4ef58d41d31cd0ac3d6f9157f30816f5c6bd19",
+"7fec473d65bb91ddf9a67084dc0bbd4b9269d01d",
+"ef26643dff08861b035676bc4d192a63ea73698f"
+],
+"08b481bf7b0b5914": [
+"04fe731a0d70143aa0a444d863f88ee9d7747b54"
+],
+"988cf4b1e3f14ced": [
+"8421aaed81851767034a7fa19c9f80869bdfee98"
+],
+"6ce354a6e15299a0": [
+"2b082b86d71066bb7c6bb1b6106916da8c784583"
+],
+"66f7ca88fd168f23": [
+"66f6006e01b01397f65d5c4acdd07774e729f2a5"
+],
+"e6cdaf0d216e3a98": [
+"b7712cedcd6ab12673088c73a7cd5cf679017617"
+],
+"e1593e4dc50a3616": [
+"268529d78303900583952ff5fe82a066c8abad9a",
+"318dfe464c49e14b005d87ac211d1fb3db3b9c93"
+],
+"1ad6a7139700c173": [
+"348e3fc06d9bf7a543334aff8e9e0caa4f380dc1"
+],
+"f9dc071197297844": [
+"d831f7b0f12b8445b8a2d547eb2bd0c3559a5d36"
+],
+"1610f75d04ec9f04": [
+"b3051cd39102e44a185f2702c5f4e366699879bc"
+],
+"a758570b5fc1ebd7": [
+"f316e31653ccffd2750603055f214d027669e4d9"
+],
+"64f2681151ab46d8": [
+"aaeb2b58d409939d167efba6ed32d423ca3254cc"
+],
+"c3247806bc5aea57": [
+"5c09ea99e37b86cbe75586b2aaac70aa8f678271"
+],
+"095db1f4d52e88dc": [
+"7b069ee017fb2508a706ecafba1984fa328f9315"
+],
+"38a8bb8e599eb9d1": [
+"fb0590cb0f54aa2fe33a6e272179489262802c2f"
+],
+"dd7bbbc389ec7e09": [
+"79de453ebd9298b31d9126b580c8728b3fc73bcf",
+"7b7972325eccf45110354ea037f875c73e0ec481",
+"a63a0be441c6259599c977440a1002be0568d0f5"
+],
+"cdc96f16947bc6a3": [
+"8360f05f1ac3fbfe6e4aa53789db9cfd5c36acb4"
+],
+"7bb7679dc21d034a": [
+"33c63ed875acc7b38cc7fd6aa66a9771c368eb69",
+"64ba1ed5cfd68f112049ce1f48c7aaae3ea1c72f",
+"9e2ddc98f0411d4509a40d3c52501802a366ef80"
+],
+"c48018c0a1fb02f0": [
+"078324048e87236afe0d587d73bb3ae3fa7c2ee4"
+],
+"92a651f23b50e805": [
+"1d1639983097a5afdc347cc3466316e71c44eeeb"
+],
+"74977e0e7950681e": [
+"1de2a377cc1e606ec2875c8bbfbcc47254fcc62d"
+],
+"06f5d572fc738171": [
+"4157735b46d3ff968c7a72b3606a3607cef0b21f"
+],
+"46bf1be387d1d8d1": [
+"65367e3c264749d2b9ef569ded7cea21515e3bd5"
+],
+"a2382278ded1b419": [
+"3bea0802cfe8273148874e07ccd28838b65bd554",
+"4513a5e48d95fd42966be9ee5456984751ba2536",
+"5ed8b4c39554fe9a00d87ec4b41e82b8c39ee817",
+"887b8b013bc474dff749f193e5e57f643fd0717e",
+"8f4f56a59fcfbf217713c6691f412b60f82a1cd2"
+],
+"19c395d85680f085": [
+"c1786f89178d98545ef63779e2f769207987f127"
+],
+"fc177e80ec95646d": [
+"0227e8afe24ece36928c941e88458e20d88d0eb9",
+"074d7528901c578ab277caf28b172eb4cc2b907f",
+"1a14e68f4d8d573757b0d5460fa32616e203efee",
+"2f774301a3b41947d47b47d732d9915a8ea121da",
+"739cf4d39ead557a1ad1a06fca57ecaeda31b001",
+"bd4871a9a58777f2f577989219ef3ebc1e017f86"
+],
+"986fc71794896ca9": [
+"4911a81d623744765425f023ee871c955e0d0882"
+],
+"68264baab50419de": [
+"da8d25c7e3d8ae1b5cae47e2e6519fb5b282e2ab"
+],
+"93d4af65d38851a2": [
+"9b6c57289b3bc967734c33cb36bbf287988569e2"
+],
+"5cf8d6fbf3d955b6": [
+"75b82d3a44b8e841f7f6a1af32a5d8d450140a9b"
+],
+"2319f99e3e6e0f98": [
+"274d9a0cac472828601297a2f15fccf85c8aa915",
+"46b925299a9feaf37490c0b06b0d0418dd5f525e",
+"49f9618f8b984599e33a0d48ab2bacfd90bf9e44",
+"cf892b0559b1ff95a0e6235c382ad71df512d024"
+],
+"f6886d993a2171d5": [
+"25a9a404105ac8c5780692c26b710c7c0cb06478",
+"6efe4f91f19acdaaa6b1400e4ce31bd0c18059c9",
+"ca92f90f1f418d9362d88f559a0abd9bb69067d0",
+"f0eb63b92ca590a0a41e73f35aebc4f618c012b2"
+],
+"2a17fbba96202934": [
+"39ed7e528ca469d37d5397137a6c34d2183bece7",
+"d98fe27e9d3632f90b1ab9eaae0ca8442e832c29"
+],
+"3edac642a87c6e0e": [
+"7f3a744764a1653129c8fa29e368f842129ea346"
+],
+"a297f0ab3c8da5f5": [
+"002f4fbf3f3defc7c69dc492257fdfac2a111dff",
+"3e3df5d307e4f7e3ab5fb0ff85c7f8ebaa41dd30",
+"6329741abcd9ef380201f622d369cb0abba0d763"
+],
+"bd902184aef8529b": [
+"0ff4948ea0cc90c8ffd6a1c232f41c517bc5630d"
+],
+"b03a4850c657a557": [
+"6481fffb1947eea305e8d34d328635a36ce593eb"
+],
+"cb4e60961c993c46": [
+"6fb6162404f3af2d98aac29e167ac85b541b7b7a"
+],
+"fc5edf9436799280": [
+"09899c5675b8687a6f127b5ddec8b03a391bb152"
+],
+"c4c7c06c535614e5": [
+"7f29048d0e569fc1a22d0694ca3a90434f20a9ea"
+],
+"e225e0c8d6a5c67b": [
+"352a14b25149782db0ee38122c9e3feebf878a69"
+],
+"fb47e1a817520205": [
+"c23f66a9e837fe9fc29ae01c935991870ef36152"
+],
+"5c0f2503f200d1c0": [
+"7f29048d0e569fc1a22d0694ca3a90434f20a9ea"
+],
+"3f564d2c41b76141": [
+"821d34842a4a6ab78289959718ed74e1a02864ac"
+],
+"eec32b838e0c3594": [
+"f91b6b22694e6ea467ead3ad13c2dbce6c8bdbfb"
+],
+"c7cca231102989d1": [
+"7a07b46b63014de7382378ebdf16807b8d1b3336"
+],
+"be4564461c950b7b": [
+"ea5f564b8ae86038e4630118b23d33461d9b5adb"
+],
+"f46c8a2090daa177": [
+"6fd3e063c994076bc2512061fea39c3ad51eb5f1"
+],
+"e5758777e0635465": [
+"6d0d8ddbf2e4820769fc821926071600545bc9af"
+],
+"af0aeaadc8c60e7e": [
+"e968798df7837cf6c5560dec4e46c38e260142d6"
+],
+"9c891c87d64b37aa": [
+"9483e8d55aade64c2857dacbcccce6efbc18ccf6"
+],
+"21898aa841fae3bd": [
+"0db635461dd87ba6733e7e1e1a6d6df3dc7397bd"
+],
+"b2f8c9681e7a198d": [
+"82010e092af869f3ede887a84e53efb14d6da9ef"
+],
+"510b5ac48fa42a4a": [
+"dbeeab6104dfd32cef26f0ea467f7140b764f411"
+],
+"f9e9f28928428035": [
+"ce75704e390d412b5358b567c1b9e8a2d58c3fe7"
+],
+"0b70e7aeafbfebb1": [
+"419246c21adfcd80dc75a9cd1c92766805bfa1db"
+],
+"e4b76db6cdc10965": [
+"3c3b6a8864debf128ebebf146d80fc07be9b1cf8"
+],
+"9384bf17209e7039": [
+"bbf49a6a72c9636faf41d0807a50225b50420fd3",
+"e5261bd343e7ff414211a14a861a519661db74e6"
+],
+"e3ab9b7854845ff9": [
+"fe106d2e64159033f1ce0b2ff43a400e1394d331"
+],
+"cdd8fedf2602501a": [
+"abfc3c92b89dfaa73c755c129b9b611bbc4bf1cc"
+],
+"387814b7233b3d34": [
+"ac5977423aa8893b11cedb9bc11f3363b25d66e7"
+],
+"5ccb6fbd8a3342e2": [
+"5c9c2e919afd6017a5939cf9abdd466117a8ba02"
+],
+"f0843ed47f48c778": [
+"4d3a1c2714072f8946806f206e4eeec7a767fb68"
+],
+"854465d439d0ad69": [
+"7f472a215d23423ccb9976be26d702df03890c06"
+],
+"cb55d58e3fd8c17c": [
+"55abf1441190427bf9736ee5227eb25adc1e6350",
+"5e10e2054758e1f87414d0e4303c4db380266112",
+"642e4547f0c7e45b7aa3681673b52fce81cba288"
+],
+"f4e65baa922d5983": [
+"55a8e4f831edc4ec342c6812b8046456f2f39f36"
+],
+"d15ac8534f5e81cf": [
+"600eaabc1c69f257e92878f235d2d3bad2232b25",
+"98c5e46cd3a5842f5edc3460bd4d84e034dcee08"
+],
+"41b302c59df7536a": [
+"e574942feac47df927965b5d4d16c76241812253"
+],
+"5419f963cb29004e": [
+"e5488bcfb27d0ffa5a8f8df21bd774095903c3ec"
+],
+"9a2742f04f74f657": [
+"0a94444266eb7fd66e09a7ba1b9f3d75d4fce60c"
+],
+"fc0ef559b14f9e84": [
+"78953ee503499317f29b6c9be8c78bb5fcc9828d",
+"a287fa8907053b57b29c8110be04113ac889b8aa",
+"ab9afc2b74856dc85e88322b7b5ded50ce8afdfc"
+],
+"04f0748f7cd51f95": [
+"0be1982af1ea29556b8db3db46f5e03cec266cfe"
+],
+"3a5322f0c8413797": [
+"0f2657bdcd22b36a5af836aacf17ee4a7dd78a97",
+"2f963830b0242a9b41df2565e53367b86065d5a0",
+"bac1ab6ef55a37473579d6c385f64f600ede8312"
+],
+"4ee1bba8a61f6777": [
+"6c63e357c7944a536f539dfe2b19a485682da654",
+"84cc87f3fd8901d5bff6265f13e10285a7e5f062"
+],
+"1d2eebb4b6c216d8": [
+"79c72565142a5983a02ce6781a79ff6be1fd2dcc"
+],
+"3917d8c54d92c7cf": [
+"804dd88f42c93828c28e7f409637f99ddee03c3c"
+]
+},
+"kho": {
+"kho-canh/FLOW T01-T20/AI_core_pulsing_energy_c88fd6e9.mp4": [
+5988676
+],
+"kho-canh/FLOW T01-T20/Bar_chart_columns_rising_1e7255c2.mp4": [
+2921088
+],
+"kho-canh/FLOW T01-T20/Camera_flying_over_futuristic_city_68223a8f.mp4": [
+5306096
+],
+"kho-canh/FLOW T01-T20/Camera_rushing_through_futuristi…_00ccca13.mp4": [
+6982342
+],
+"kho-canh/FLOW T01-T20/Computer_chip_with_glowing_traces_63ce7bb4.mp4": [
+4044116
+],
+"kho-canh/FLOW T01-T20/Curved_monitor_displaying_abstra…_9ad5f010.mp4": [
+3596710
+],
+"kho-canh/FLOW T01-T20/Earth_globe_rotating_in_space_27e57632.mp4": [
+5219183
+],
+"kho-canh/FLOW T01-T20/Fiber_optic_strands_glowing_d054cad0.mp4": [
+6011736
+],
+"kho-canh/FLOW T01-T20/Frosted_glass_panels_in_space_10803cbf.mp4": [
+4006591
+],
+"kho-canh/FLOW T01-T20/Futuristic_data_center_above_clouds_770de318.mp4": [
+4157859
+],
+"kho-canh/FLOW T01-T20/Holographic_data_cubes_reassembling_f9bcecb4.mp4": [
+5264252
+],
+"kho-canh/FLOW T01-T20/Holographic_film_strips_circling…_8f7fb9dc.mp4": [
+6230423
+],
+"kho-canh/FLOW T01-T20/Holographic_film_strips_circling…_c135baa8.mp4": [
+4271929
+],
+"kho-canh/FLOW T01-T20/Holographic_shield_with_padlock_…_75f79182.mp4": [
+6222212
+],
+"kho-canh/FLOW T01-T20/Keyboard_glowing_with_orange_bac…_415f4dee.mp4": [
+2840722
+],
+"kho-canh/FLOW T01-T20/Neural_network_floating_in_darkness_96d0597c.mp4": [
+6461905
+],
+"kho-canh/FLOW T01-T20/Red_warning_lights_flashing_in_700b7f77.mp4": [
+5388240
+],
+"kho-canh/FLOW T01-T20/Robotic_arms_placing_glowing_cubes_b1b313ba.mp4": [
+3906569
+],
+"kho-canh/FLOW T01-T20/Robotic_hand_touching_holographi…_b0b64e90.mp4": [
+3677920
+],
+"kho-canh/FLOW T01-T20/White_paper_dissolving_into_part…_6ece6bee.mp4": [
+4988313
+],
+"kho-canh/MUSE K001-K090/K001.mp4": [
+7524413
+],
+"kho-canh/MUSE K001-K090/K002.mp4": [
+7892690
+],
+"kho-canh/MUSE K001-K090/K004.mp4": [
+9000273
+],
+"kho-canh/MUSE K001-K090/K008.mp4": [
+4539874
+],
+"kho-canh/MUSE K001-K090/K009.mp4": [
+7365460
+],
+"kho-canh/MUSE K001-K090/K011.mp4": [
+5547046
+],
+"kho-canh/MUSE K001-K090/K013.mp4": [
+6797066
+],
+"kho-canh/MUSE K001-K090/K015.mp4": [
+11548092
+],
+"kho-canh/MUSE K001-K090/K016.mp4": [
+8440828
+],
+"kho-canh/MUSE K001-K090/K017.mp4": [
+5653758
+],
+"kho-canh/MUSE K001-K090/K018.mp4": [
+5369586
+],
+"kho-canh/MUSE K001-K090/K020.mp4": [
+7600494
+],
+"kho-canh/MUSE K001-K090/K021.mp4": [
+5159437
+],
+"kho-canh/MUSE K001-K090/K022.mp4": [
+8165619
+],
+"kho-canh/MUSE K001-K090/K024.mp4": [
+5131274
+],
+"kho-canh/MUSE K001-K090/K025.mp4": [
+2968216
+],
+"kho-canh/MUSE K001-K090/K026.mp4": [
+7429739
+],
+"kho-canh/MUSE K001-K090/K027.mp4": [
+3306456
+],
+"kho-canh/MUSE K001-K090/K028.mp4": [
+8612894
+],
+"kho-canh/MUSE K001-K090/K029.mp4": [
+10022761
+],
+"kho-canh/MUSE K001-K090/K031.mp4": [
+6376982
+],
+"kho-canh/MUSE K001-K090/K032.mp4": [
+10035749
+],
+"kho-canh/MUSE K001-K090/K033.mp4": [
+5690422
+],
+"kho-canh/MUSE K001-K090/K034.mp4": [
+2090789
+],
+"kho-canh/MUSE K001-K090/K035.mp4": [
+7907442
+],
+"kho-canh/MUSE K001-K090/K037.mp4": [
+6476062
+],
+"kho-canh/MUSE K001-K090/K038.mp4": [
+5786734
+],
+"kho-canh/MUSE K001-K090/K040.mp4": [
+11607214
+],
+"kho-canh/MUSE K001-K090/K041.mp4": [
+2000984
+],
+"kho-canh/MUSE K001-K090/K042.mp4": [
+2930472
+],
+"kho-canh/MUSE K001-K090/K043.mp4": [
+7094911
+],
+"kho-canh/MUSE K001-K090/K044.mp4": [
+12596076
+],
+"kho-canh/MUSE K001-K090/K046.mp4": [
+5294859
+],
+"kho-canh/MUSE K001-K090/K047.mp4": [
+6607893
+],
+"kho-canh/MUSE K001-K090/K048.mp4": [
+6905568
+],
+"kho-canh/MUSE K001-K090/K049.mp4": [
+2893562
+],
+"kho-canh/MUSE K001-K090/K050.mp4": [
+6878233
+],
+"kho-canh/MUSE K001-K090/K051.mp4": [
+14625055
+],
+"kho-canh/MUSE K001-K090/K052.mp4": [
+2254328
+],
+"kho-canh/MUSE K001-K090/K053.mp4": [
+2223250
+],
+"kho-canh/MUSE K001-K090/K054.mp4": [
+4575430
+],
+"kho-canh/MUSE K001-K090/K055.mp4": [
+2525343
+],
+"kho-canh/MUSE K001-K090/K056.mp4": [
+9970286
+],
+"kho-canh/MUSE K001-K090/K057.mp4": [
+5143533
+],
+"kho-canh/MUSE K001-K090/K058.mp4": [
+2438829
+],
+"kho-canh/MUSE K001-K090/K059.mp4": [
+4648416
+],
+"kho-canh/MUSE K001-K090/K060.mp4": [
+2130675
+],
+"kho-canh/MUSE K001-K090/K062.mp4": [
+5520695
+],
+"kho-canh/MUSE K001-K090/K063.mp4": [
+3593508
+],
+"kho-canh/MUSE K001-K090/K064.mp4": [
+2385310
+],
+"kho-canh/MUSE K001-K090/K065.mp4": [
+4231441
+],
+"kho-canh/MUSE K001-K090/K067.mp4": [
+8017245
+],
+"kho-canh/MUSE K001-K090/K068.mp4": [
+3131801
+],
+"kho-canh/MUSE K001-K090/K069.mp4": [
+10620160
+],
+"kho-canh/MUSE K001-K090/K070.mp4": [
+2234995
+],
+"kho-canh/MUSE K001-K090/K072.mp4": [
+9843448
+],
+"kho-canh/MUSE K001-K090/K073.mp4": [
+12082296
+],
+"kho-canh/MUSE K001-K090/K074.mp4": [
+13517353
+],
+"kho-canh/MUSE K001-K090/K075.mp4": [
+4417052
+],
+"kho-canh/MUSE K001-K090/K076.mp4": [
+4500150
+],
+"kho-canh/MUSE K001-K090/K077.mp4": [
+6894205
+],
+"kho-canh/MUSE K001-K090/K078.mp4": [
+7215141
+],
+"kho-canh/MUSE K001-K090/K079.mp4": [
+7602784
+],
+"kho-canh/MUSE K001-K090/K080.mp4": [
+2194547
+],
+"kho-canh/MUSE K001-K090/K082.mp4": [
+4815745
+],
+"kho-canh/MUSE K001-K090/K084.mp4": [
+6620053
+],
+"kho-canh/MUSE K001-K090/K085.mp4": [
+2749132
+],
+"kho-canh/MUSE K001-K090/K086.mp4": [
+7878662
+],
+"kho-canh/MUSE K001-K090/K088.mp4": [
+1826551
+],
+"kho-canh/MUSE K001-K090/K090.mp4": [
+7536253
+],
+"kho-canh/MUSE K001-K090/ban-phu/loai-co-chu/K003.mp4": [
+2079537
+],
+"kho-canh/MUSE K001-K090/ban-phu/loai-co-chu/K007.mp4": [
+10141750
+],
+"kho-canh/MUSE K001-K090/ban-phu/loai-co-chu/K012.mp4": [
+1887645
+],
+"kho-canh/MUSE K001-K090/ban-phu/loai-co-chu/K081.mp4": [
+10082960
+],
+"kho-canh/MUSE K001-K090/ban-phu/loai-co-chu/K083.mp4": [
+2929424
+],
+"kho-canh/MUSE K001-K090/ban-phu/loai-co-chu/K089.mp4": [
+5449661
+],
+"kho-canh/MUSE M01-M30/M01.mp4": [
+7728948
+],
+"kho-canh/MUSE M01-M30/M02.mp4": [
+3426224
+],
+"kho-canh/MUSE M01-M30/M03.mp4": [
+3543592
+],
+"kho-canh/MUSE M01-M30/M04.mp4": [
+3926283
+],
+"kho-canh/MUSE M01-M30/M05.mp4": [
+8467171
+],
+"kho-canh/MUSE M01-M30/M06.mp4": [
+5817323
+],
+"kho-canh/MUSE M01-M30/M07.mp4": [
+5805485
+],
+"kho-canh/MUSE M01-M30/M08.mp4": [
+4373210
+],
+"kho-canh/MUSE M01-M30/M09.mp4": [
+2163496
+],
+"kho-canh/MUSE M01-M30/M10.mp4": [
+4454469
+],
+"kho-canh/MUSE M01-M30/M11.mp4": [
+4078610
+],
+"kho-canh/MUSE M01-M30/M12.mp4": [
+9267969
+],
+"kho-canh/MUSE M01-M30/M13.mp4": [
+2744049
+],
+"kho-canh/MUSE M01-M30/M14.mp4": [
+4542145
+],
+"kho-canh/MUSE M01-M30/M15.mp4": [
+10868657
+],
+"kho-canh/MUSE M01-M30/M16.mp4": [
+2990765
+],
+"kho-canh/MUSE M01-M30/M17.mp4": [
+6274983
+],
+"kho-canh/MUSE M01-M30/M18.mp4": [
+2869239
+],
+"kho-canh/MUSE M01-M30/M19.mp4": [
+3565372
+],
+"kho-canh/MUSE M01-M30/M20.mp4": [
+5836247
+],
+"kho-canh/MUSE M01-M30/M21.mp4": [
+4124198
+],
+"kho-canh/MUSE M01-M30/M22.mp4": [
+8212055
+],
+"kho-canh/MUSE M01-M30/M23.mp4": [
+4728307
+],
+"kho-canh/MUSE M01-M30/M24.mp4": [
+6408531
+],
+"kho-canh/MUSE M01-M30/M25.mp4": [
+6492516
+],
+"kho-canh/MUSE M01-M30/M26.mp4": [
+6093770
+],
+"kho-canh/MUSE M01-M30/M27.mp4": [
+6248867
+],
+"kho-canh/MUSE M01-M30/M28.mp4": [
+8561532
+],
+"kho-canh/MUSE M01-M30/M29.mp4": [
+8293692
+],
+"kho-canh/MUSE M01-M30/M30.mp4": [
+5410929
+],
+"kho-canh/MUSE N001-N100/N001.mp4": [
+11656554
+],
+"kho-canh/MUSE N001-N100/N002.mp4": [
+6689128
+],
+"kho-canh/MUSE N001-N100/N003.mp4": [
+5075869
+],
+"kho-canh/MUSE N001-N100/N004.mp4": [
+19516067
+],
+"kho-canh/MUSE N001-N100/N005.mp4": [
+10631334
+],
+"kho-canh/MUSE N001-N100/N006.mp4": [
+7717433
+],
+"kho-canh/MUSE N001-N100/N007.mp4": [
+9779448
+],
+"kho-canh/MUSE N001-N100/N008.mp4": [
+4197006
+],
+"kho-canh/MUSE N001-N100/N009.mp4": [
+6902554
+],
+"kho-canh/MUSE N001-N100/N010.mp4": [
+5969351
+],
+"kho-canh/MUSE N001-N100/N011.mp4": [
+5134219
+],
+"kho-canh/MUSE N001-N100/N012.mp4": [
+6730952
+],
+"kho-canh/MUSE N001-N100/N013.mp4": [
+7137300
+],
+"kho-canh/MUSE N001-N100/N014.mp4": [
+7394232
+],
+"kho-canh/MUSE N001-N100/N015.mp4": [
+7559399
+],
+"kho-canh/MUSE N001-N100/N016.mp4": [
+4683488
+],
+"kho-canh/MUSE N001-N100/N017.mp4": [
+10330137
+],
+"kho-canh/MUSE N001-N100/N018.mp4": [
+5554354
+],
+"kho-canh/MUSE N001-N100/N019.mp4": [
+10972027
+],
+"kho-canh/MUSE N001-N100/N020.mp4": [
+5360866
+],
+"kho-canh/MUSE N001-N100/N021.mp4": [
+4702188
+],
+"kho-canh/MUSE N001-N100/N022.mp4": [
+7054901
+],
+"kho-canh/MUSE N001-N100/N023.mp4": [
+5144973
+],
+"kho-canh/MUSE N001-N100/N024.mp4": [
+6902303
+],
+"kho-canh/MUSE N001-N100/N025.mp4": [
+13297206
+],
+"kho-canh/MUSE N001-N100/N026.mp4": [
+6320710
+],
+"kho-canh/MUSE N001-N100/N027.mp4": [
+8076806
+],
+"kho-canh/MUSE N001-N100/N028.mp4": [
+11411045
+],
+"kho-canh/MUSE N001-N100/N029.mp4": [
+6737496
+],
+"kho-canh/MUSE N001-N100/N030.mp4": [
+3499785
+],
+"kho-canh/MUSE N001-N100/N031.mp4": [
+6399403
+],
+"kho-canh/MUSE N001-N100/N032.mp4": [
+5493582
+],
+"kho-canh/MUSE N001-N100/N033.mp4": [
+6616483
+],
+"kho-canh/MUSE N001-N100/N034.mp4": [
+3811121
+],
+"kho-canh/MUSE N001-N100/N035.mp4": [
+7335341
+],
+"kho-canh/MUSE N001-N100/N036.mp4": [
+5589589
+],
+"kho-canh/MUSE N001-N100/N037.mp4": [
+4649387
+],
+"kho-canh/MUSE N001-N100/N038.mp4": [
+6597896
+],
+"kho-canh/MUSE N001-N100/N039.mp4": [
+8667808
+],
+"kho-canh/MUSE N001-N100/N040.mp4": [
+5469670
+],
+"kho-canh/MUSE N001-N100/N041.mp4": [
+4263929
+],
+"kho-canh/MUSE N001-N100/N042.mp4": [
+6208510
+],
+"kho-canh/MUSE N001-N100/N043.mp4": [
+7016665
+],
+"kho-canh/MUSE N001-N100/N044.mp4": [
+12199563
+],
+"kho-canh/MUSE N001-N100/N045.mp4": [
+5338248
+],
+"kho-canh/MUSE N001-N100/N046.mp4": [
+4476663
+],
+"kho-canh/MUSE N001-N100/N047.mp4": [
+5071211
+],
+"kho-canh/MUSE N001-N100/N048.mp4": [
+5517732
+],
+"kho-canh/MUSE N001-N100/N049.mp4": [
+4730940
+],
+"kho-canh/MUSE N001-N100/N050.mp4": [
+5210453
+],
+"kho-canh/MUSE N001-N100/N051.mp4": [
+3073352
+],
+"kho-canh/MUSE N001-N100/N052.mp4": [
+3329559
+],
+"kho-canh/MUSE N001-N100/N053.mp4": [
+8882663
+],
+"kho-canh/MUSE N001-N100/N054.mp4": [
+5979286
+],
+"kho-canh/MUSE N001-N100/N055.mp4": [
+5543824
+],
+"kho-canh/MUSE N001-N100/N056.mp4": [
+5228976
+],
+"kho-canh/MUSE N001-N100/N057.mp4": [
+3595428
+],
+"kho-canh/MUSE N001-N100/N058.mp4": [
+5223644
+],
+"kho-canh/MUSE N001-N100/N059.mp4": [
+5748187
+],
+"kho-canh/MUSE N001-N100/N060.mp4": [
+5222576
+],
+"kho-canh/MUSE N001-N100/N061.mp4": [
+6477753
+],
+"kho-canh/MUSE N001-N100/N062.mp4": [
+4433981
+],
+"kho-canh/MUSE N001-N100/N063.mp4": [
+3625261
+],
+"kho-canh/MUSE N001-N100/N064.mp4": [
+4357198
+],
+"kho-canh/MUSE N001-N100/N065.mp4": [
+2341986
+],
+"kho-canh/MUSE N001-N100/N066.mp4": [
+9693183
+],
+"kho-canh/MUSE N001-N100/N067.mp4": [
+17894498
+],
+"kho-canh/MUSE N001-N100/N068.mp4": [
+6057811
+],
+"kho-canh/MUSE N001-N100/N069.mp4": [
+8623977
+],
+"kho-canh/MUSE N001-N100/N070.mp4": [
+7309881
+],
+"kho-canh/MUSE N001-N100/N071.mp4": [
+16227180
+],
+"kho-canh/MUSE N001-N100/N072.mp4": [
+9216726
+],
+"kho-canh/MUSE N001-N100/N073.mp4": [
+13015248
+],
+"kho-canh/MUSE N001-N100/N074.mp4": [
+9769499
+],
+"kho-canh/MUSE N001-N100/N075.mp4": [
+12544442
+],
+"kho-canh/MUSE N001-N100/N076.mp4": [
+8552934
+],
+"kho-canh/MUSE N001-N100/N077.mp4": [
+13145734
+],
+"kho-canh/MUSE N001-N100/N078.mp4": [
+10068729
+],
+"kho-canh/MUSE N001-N100/N079.mp4": [
+13954188
+],
+"kho-canh/MUSE N001-N100/N080.mp4": [
+7579899
+],
+"kho-canh/MUSE N001-N100/N081.mp4": [
+5621882
+],
+"kho-canh/MUSE N001-N100/N082.mp4": [
+8243307
+],
+"kho-canh/MUSE N001-N100/N083.mp4": [
+4681848
+],
+"kho-canh/MUSE N001-N100/N084.mp4": [
+6769374
+],
+"kho-canh/MUSE N001-N100/N085.mp4": [
+5458476
+],
+"kho-canh/MUSE N001-N100/N086.mp4": [
+10315543
+],
+"kho-canh/MUSE N001-N100/N087.mp4": [
+8663574
+],
+"kho-canh/MUSE N001-N100/N088.mp4": [
+3556226
+],
+"kho-canh/MUSE N001-N100/N089.mp4": [
+3831738
+],
+"kho-canh/MUSE N001-N100/N090.mp4": [
+7627818
+],
+"kho-canh/MUSE N001-N100/N091.mp4": [
+6112297
+],
+"kho-canh/MUSE N001-N100/N092.mp4": [
+3033160
+],
+"kho-canh/MUSE N001-N100/N093.mp4": [
+4949154
+],
+"kho-canh/MUSE N001-N100/N094.mp4": [
+7822864
+],
+"kho-canh/MUSE N001-N100/N095.mp4": [
+4057886
+],
+"kho-canh/MUSE N001-N100/N096.mp4": [
+6167160
+],
+"kho-canh/MUSE N001-N100/N097.mp4": [
+5548568
+],
+"kho-canh/MUSE N001-N100/N098.mp4": [
+4640846
+],
+"kho-canh/MUSE N001-N100/N099.mp4": [
+5371039
+],
+"kho-canh/MUSE N001-N100/N100.mp4": [
+6305697
+],
+"kho-canh/danh-muc-canh.csv": [
+21844
+],
+"tai-nguyen/am/chup.wav": [
+62562
+],
+"tai-nguyen/am/hien-the.wav": [
+173318
+],
+"tai-nguyen/am/luot-manh.wav": [
+235384
+],
+"tai-nguyen/am/luot.wav": [
+138746
+],
+"tai-nguyen/am/nhieu.wav": [
+218378
+],
+"tai-nguyen/am/thanh-cong.wav": [
+529930
+],
+"tai-nguyen/am/thong-bao.wav": [
+208686
+],
+"tai-nguyen/nhac/NGUON.md": [
+1015
+],
+"tai-nguyen/nhac/beat-vlog.mp3": [
+3634573
+],
+"tai-nguyen/nhac/future-bass.mp3": [
+7081900
+],
+"tai-nguyen/nhac/phonk.mp3": [
+5041152
+]
+}
+}
