@@ -107,9 +107,16 @@ def so_luong_dung():
     return 2 if ram <= 8 else (min(n, 3) if ram < 16 else n)
 
 
+def bo_dem_video():
+    """Trần bộ đệm khung video của Remotion. Mặc định Remotion lấy nửa RAM còn trống lúc bắt đầu dựng, cộng với các tab Chrome
+    thì máy 8 GB có thể hết bộ nhớ (thử 25/11/2026: video BNI có 5 ảnh thật, máy giả lập 8 GB vượt trần 5 GB, dừng ở bước render)."""
+    ram = CFG.get("ram_gb") or 16
+    return [] if ram >= 16 else [f"--offthreadvideo-cache-size-in-bytes={(512 if ram <= 8 else 1536) * 2 ** 20}"]
+
+
 def b_render(da):
     chay([NPX, "remotion", "render", da / "render" / "bundle", "MoHinh", da / "render" / "hinh-cam.mp4", f"--props={da / 'props.json'}", "--muted", "--crf=14", f"--concurrency={so_luong_dung()}",
-          "--image-format=jpeg", "--jpeg-quality=100", "--color-space=bt709", "--pixel-format=yuv420p", "--log=error"], cwd=ENGINE)
+          *bo_dem_video(), "--image-format=jpeg", "--jpeg-quality=100", "--color-space=bt709", "--pixel-format=yuv420p", "--log=error"], cwd=ENGINE)
 
 
 def b_soat(da):

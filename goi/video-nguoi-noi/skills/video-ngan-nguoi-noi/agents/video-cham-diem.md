@@ -16,7 +16,8 @@ Bạn chấm video độc lập, không tin lời người dựng. Trả lời b
 ## Thang 10 điểm
 - Nội dung đúng nguồn, không bịa (BNI: hồ sơ người dùng; edit: lời trong file gốc): 3 điểm. Có số hay ý không nguồn là lỗi CHẶN.
 - Đủ cấu trúc: 2 điểm.
-  - BNI đủ 5 nhịp đúng thứ tự (chào: tên, thương hiệu, nghề trong 5 giây đầu; MỘT chủ đề tuần, không kể hết dịch vụ; một câu chuyện hoặc bằng chứng cụ thể; lời xin giới thiệu nêu rõ ai và dấu hiệu nhận ra họ, không xin chung chung kiểu "ai cần", "bất kỳ ai"; câu dễ nhớ + nhắc lại tên).
+  - BNI đủ 5 nhịp đúng thứ tự (tôi là ai: tên, thương hiệu, vai trò trong 5 giây đầu; làm gì, cho ai: nhóm khách cụ thể và họ nhận được gì, bài tuần thì thêm MỘT mảng nhỏ; một bằng chứng cụ thể; lời nhờ giới thiệu nêu rõ ai và dấu hiệu nhận ra họ, không xin chung chung kiểu "ai cần", "bất kỳ ai"; câu dễ nhớ + nhắc lại tên).
+  - BNI nghe một lần là hiểu (lỗi CHẶN nếu hỏng): nghe bản Whisper như người lạ rồi tự trả lời ba câu "tên gì, làm gì, giúp ai"; thiếu câu nào là SỬA LẠI. Câu nối nhau như lời nói, không vụn 2–4 chữ, không câu kiểu tiêu đề, không mở bằng mảnh câu chưa hiểu được (Founder chấm 25/11/2026).
   - BNI riêng, không dập khuôn (trừ tối đa 1 điểm trong mục này): lời có chữ, chuyện riêng của người này, đúng giọng ghi trong `bni.json` › `soBni.giong`. Đọc `<Xưởng>/mau-cua-toi/bni/so-bni.json`: không lặp chủ đề hay câu chuyện của tuần trước, câu dễ nhớ giữ đúng như sổ. Không có câu sáo ("uy tín hàng đầu", "giải pháp toàn diện"). Không chép câu từ `references/bni-cong-thuc.md`.
   - Edit: mở đầu vào thẳng ý, không còn đoạn lặng hay nói lại, kết trọn câu.
 - Hình: không chữ tràn, không che mặt, không khung đen, cảnh hợp nghề (không hoạt hình, đồ chơi tí hon cho video giới thiệu), mặt người đúng người dùng khi có: 2 điểm.

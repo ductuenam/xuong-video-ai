@@ -195,3 +195,9 @@ Câu lệnh "Dựng một video giới thiệu bản thân cho tôi theo cấu t
   - Khuôn "Tuần này", mở bằng câu hỏi, lời xin "nói giúp:" → ghi ở mục 8 `bni-cong-thuc.md`.
   - Laptop ở cả 3 bài (cảnh dự phòng CA0176, CA0180, CA0182) → cảnh dự phòng chỉ còn nền dịu và cà phê vỉa hè.
   - Còn lại do kho, chưa sửa trong mã: kho chưa có cảnh spa, bánh, tiệc; chỉ 3 bài nhạc; giọng miễn phí chỉ có 1 nam, 1 nữ, giọng Bắc. Học viên thả ảnh thật hoặc dùng giọng tự quay thì khác hẳn.
+
+## Lời BNI nghe khó, không ra mạch (25/11/2026, Founder chấm 3 bài thử bản 2)
+- Triệu chứng: nghe xong chưa biết rõ người nói là ai, làm gì, phục vụ ai. Bài mở bằng mảnh câu khó hiểu ("Cỡ bốn tỷ mà vẫn nộp khoán."), câu chặt vụn 3–5 chữ, câu kiểu tiêu đề có dấu hai chấm ("Tuần này: …"), tự gọi tên lạ ("Hà là Phạm Thu Hà").
+- Gốc: khung bản 2 lấy "chủ đề tuần" (LCD) làm nhịp 2, hợp với người trong phòng họp đã quen mình, không hợp video giới thiệu cho người chưa quen. Không có luật nào về độ liền mạch của câu.
+- Sửa: khung đổi thành tôi là ai → làm gì, cho ai → vì sao tin → nhờ giới thiệu ai → câu dễ nhớ + tên; bài tuần BNI vẫn nói đủ "ai, làm gì, cho ai" rồi mới tới mảng tuần. Thêm mục 1b "Viết cho nghe mượt" trong `bni-cong-thuc.md`. `bni.py` chặn khi nhịp 1 chưa có tên, nhắc khi có từ 2 câu dưới 5 chữ hoặc có dấu hai chấm. Agent chấm thêm lỗi CHẶN "nghe một lần không trả lời được tên, làm gì, giúp ai".
+- Cùng lần: ảnh ngang (sân khấu, lớp học) bị thu nhỏ sát đáy, nằm dưới phụ đề. `clip_toi` nay đặt ảnh ngang cao 1000 ở giữa khung; nhận tối đa 5 ảnh, thứ tự theo tên tệp `1-…5-`.

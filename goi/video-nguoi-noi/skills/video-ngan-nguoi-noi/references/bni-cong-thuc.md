@@ -1,18 +1,36 @@
 # Công thức bài giới thiệu 30 giây BNI
 
-Đọc tệp này trước khi viết lời BNI. Giữ đúng **khung**. **Lời** phải là của từng người: hỏi ra chuyện thật của họ, nói bằng giọng của họ, mỗi tuần một chủ đề khác. Không có câu mẫu nào để chép.
+Đọc tệp này trước khi viết lời BNI. Giữ đúng **khung**. **Lời** phải là của từng người: hỏi ra chuyện thật của họ, nói bằng giọng của họ. Không có câu mẫu nào để chép.
+
+**Mục đích của video:** người CHƯA từng gặp nghe MỘT lần là nhắc lại được ba điều: **người này tên gì, làm gì, giúp ai**. Sau đó mới tới vì sao tin được và nên giới thiệu ai cho họ. Bài nào nghe xong chưa trả lời được ba câu đó là bài hỏng, dù câu chữ hay tới đâu (Founder chấm 3 bài thử 25/11/2026: lời đi thẳng vào chuyện và chủ đề tuần, chưa nói rõ mình là ai, phục vụ ai, nên nghe khó và không ra mạch).
 
 ## 1. Khung 5 nhịp (giữ cố định)
 
-| Nhịp | Nói gì | Khoảng chữ đọc |
+| Nhịp | Trả lời câu hỏi | Khoảng chữ đọc |
 |---|---|---|
-| 1. Chào | Tên, công ty hoặc thương hiệu, nghề (câu mở bằng con số, câu hỏi đứng trước tên cũng tính vào nhịp này) | 10–18 |
-| 2. Chủ đề tuần này | MỘT mảng nhỏ của việc kinh doanh (không kể hết dịch vụ) | 10–18 |
-| 3. Câu chuyện, bằng chứng | Một khách thật: tình huống → khó khăn → kết quả (có số nếu có) | 25–35 |
-| 4. Lời xin giới thiệu | Muốn được giới thiệu tới ai, dấu hiệu nhận ra người đó, người giới thiệu mở lời thế nào | 20–30 |
-| 5. Câu dễ nhớ + tên | Câu dễ nhớ (giữ nguyên qua các tuần) rồi nhắc lại tên | 7–12 |
+| 1. Tôi là ai | Tên, thương hiệu, vai trò, gói trong MỘT câu, nói xong trong 5 giây đầu | 12–20 |
+| 2. Tôi làm gì, cho ai | Lĩnh vực, nhóm khách cụ thể, và họ nhận được gì khi làm với mình | 20–30 |
+| 3. Vì sao tin tôi | MỘT bằng chứng thật: chuyện một khách (tình huống → kết quả), hoặc con số, nơi đã làm | 20–30 |
+| 4. Nhờ giới thiệu ai | Người cụ thể, dấu hiệu nhận ra họ, và mời họ điều gì hay mở lời thế nào | 20–28 |
+| 5. Câu dễ nhớ + tên | Câu dễ nhớ (giữ nguyên qua các tuần) rồi nhắc lại tên | 8–14 |
 
-Khoảng chữ từng nhịp chỉ là gợi ý; luật là **tổng 95–110 chữ đọc** (máy chặn ngoài 85–118) và giọng đọc ra **22–30 giây** (máy đo sau khi tạo giọng; ngoài khoảng đó thì báo thêm hay bớt bao nhiêu chữ). Đo 25/11/2026: giọng miễn phí đọc khoảng 3,5–4 chữ mỗi giây kể cả chỗ nghỉ, nên 123 chữ ra 37 giây. Viết nhiều dấu phẩy thì mỗi dấu phẩy thêm một chỗ nghỉ ngắn, bài dài ra: câu nói liền mạch thì vừa tự nhiên vừa gọn. Chuyện và lời xin là hai nhịp quan trọng nhất, nên dành nhiều chữ cho hai nhịp này.
+Hai kiểu bài, cùng một khung:
+- **Giới thiệu lần đầu (mặc định):** video đăng trang cá nhân, gửi vào nhóm, chiếu buổi đầu gặp. Nhịp 2 nói nghề chính và nhóm khách chính.
+- **Bài tuần BNI:** người trong phòng đã quen mình. Nhịp 1–2 vẫn nói đủ "ai, làm gì, cho ai" (gọn một câu), rồi nói MỘT mảng nhỏ tuần này; chuyện và lời xin đi theo mảng đó. Mỗi tuần đổi mảng (xem sổ BNI).
+
+Khoảng chữ từng nhịp chỉ là gợi ý; luật là **tổng 95–110 chữ đọc** (máy chặn ngoài 85–118) và giọng đọc ra **22–30 giây** (máy đo sau khi tạo giọng; ngoài khoảng đó thì báo thêm hay bớt bao nhiêu chữ). Đo 25/11/2026: giọng miễn phí đọc khoảng 3,5–4 chữ mỗi giây kể cả chỗ nghỉ, nên 123 chữ ra 37 giây. Mỗi dấu phẩy thêm một chỗ nghỉ ngắn, bài dài ra.
+
+## 1b. Viết cho nghe mượt
+
+Video này để NGHE, không phải để đọc. Viết như người đó đang nói với một người mới quen.
+
+- **Câu đầu có tên.** Muốn mở bằng một câu gợi chuyện thì câu đó phải tự hiểu được; không mở bằng mảnh câu cụt (bài thử "Cỡ bốn tỷ mà vẫn nộp khoán." làm người nghe chưa biết ai đang nói, nói về gì). Máy chặn khi tên không nằm trong nhịp 1.
+- **Câu đủ ý, 10–22 chữ.** Không chặt thành mảnh 2–4 chữ ("Mười ngày rà sổ, chuyển xong kê khai."), không viết kiểu tiêu đề có dấu hai chấm ("Tuần này: hộ doanh thu lớn…"). Máy nhắc khi có từ 2 câu dưới 5 chữ hoặc có dấu hai chấm.
+- **Nối nhịp bằng lời nói thường:** "Tôi làm việc với…", "Gần đây có một chị…", "Vì vậy…", "Nếu anh chị quen ai…". Không nhảy cóc giữa các nhịp.
+- **Xưng hô một kiểu suốt bài,** không tự gọi tên mình theo kiểu "Hà là Phạm Thu Hà".
+- **Một ý chính mỗi nhịp.** Nhiều thành tích thì chọn MỘT cái người nghe dễ hình dung nhất.
+- **Đọc to cả bài một lượt** trước khi gửi. Chỗ nào vấp, hay phải đọc lại mới hiểu, thì viết lại.
+- **Tự kiểm ba câu:** người lạ nghe xong trả lời được (1) tên, (2) làm gì, (3) giúp ai không? Thiếu câu nào thì viết lại nhịp 1–2.
 
 Chữ trên thẻ (`mo`, `bangChung`, `tren`, `duoi` của `chuDe`, `xin`): mỗi dòng ≤ 14 ký tự. Ý trong `viec`, `dong`: ngắn, có một chữ trùng với dòng phụ đề lúc nói tới ý đó để thẻ sáng đúng lúc (máy dò theo chữ). Máy đo bằng phông thật và chặn chữ tràn trước khi dựng.
 
@@ -26,20 +44,20 @@ Nguồn (truy cập 25/11/2026):
 
 ## 2. Cái gì cố định, cái gì thay đổi
 
-**Cố định (mọi tuần, mọi người):** đủ 5 nhịp đúng thứ tự; mở và kết bằng tên; một lời xin cụ thể; câu dễ nhớ giữ nguyên qua các tuần; đúng giờ.
+**Cố định (mọi tuần, mọi người):** đủ 5 nhịp đúng thứ tự; tên ở câu đầu và câu cuối; nói rõ làm gì, cho ai; một lời xin cụ thể; câu dễ nhớ giữ nguyên qua các tuần; đúng giờ.
 
 **Thay đổi theo người:** cách chào; cách xưng hô (tôi, mình, em, chị…); giọng (ấm áp, hài hước, chắc chắn, mộc mạc, năng động); chữ nghề của họ; câu chuyện; người muốn được giới thiệu.
 
-**Thay đổi mỗi tuần:** chủ đề (mảng nhỏ), câu chuyện, lời xin. Không lặp chủ đề đã nói trong 4 tuần gần nhất (xem sổ BNI).
+**Thay đổi mỗi tuần (bài tuần BNI):** mảng nhỏ, câu chuyện, lời xin. Không lặp mảng đã nói trong 4 tuần gần nhất (xem sổ BNI).
 
 ## 3. Phỏng vấn đào sâu (hỏi MỘT lượt, chỉ hỏi cái còn thiếu)
 
 Mục đích là lấy được chất liệu riêng. Thiếu chuyện thật thì lời chắc chắn sẽ chung chung.
 
-1. Tuần này anh/chị muốn nói về mảng nào? (một dịch vụ, một sản phẩm, một loại khách). Chưa nghĩ ra thì em gợi ý 3 mảng từ hồ sơ.
-2. Kể giúp em một khách gần đây ở mảng đó: lúc đến họ gặp chuyện gì, anh/chị làm gì, kết quả ra sao (có số càng tốt).
-3. Tuần này anh/chị muốn được giới thiệu tới ai? Càng cụ thể càng tốt: ngành, chức danh, độ tuổi, khu vực, hoặc tên một công ty.
-4. Người trong phòng nhận ra người đó bằng dấu hiệu gì? (họ hay than điều gì, đang gặp chuyện gì). Và nên mở lời với họ thế nào?
+1. Anh/chị giới thiệu mình một câu thế nào: tên, thương hiệu, vai trò? Khách chính là ai, và họ nhận được gì khi làm với anh/chị?
+2. Video này để giới thiệu lần đầu (đăng mạng, gửi nhóm) hay bài tuần BNI? Bài tuần thì tuần này nói mảng nào (chưa nghĩ ra thì em gợi ý 3 mảng từ hồ sơ).
+3. Một bằng chứng dễ hình dung nhất: một khách gần đây (lúc đến gặp chuyện gì, anh/chị làm gì, kết quả ra sao), hoặc một con số, một nơi đã làm.
+4. Muốn được giới thiệu tới ai? Càng cụ thể càng tốt: ngành, chức danh, quy mô, khu vực. Nhận ra họ bằng dấu hiệu gì (họ hay than điều gì)? Mời họ điều gì hay mở lời thế nào?
 5. Anh/chị thường nói chuyện với khách theo kiểu nào: nhẹ nhàng ấm áp, vui vẻ hài hước, chắc chắn chuyên gia, hay mộc mạc gần gũi? Xưng "tôi", "mình" hay "em"?
 6. (Chỉ lần đầu) Anh/chị đã có câu dễ nhớ chưa? Chưa có thì em đề xuất 3 câu để chọn.
 
@@ -92,7 +110,10 @@ Tệp `<Xưởng>/mau-cua-toi/bni/so-bni.json` (vùng của học viên, bộ c�
 
 Trước khi viết: đọc sổ, chọn mảng chưa nói trong 4 tuần gần nhất, giữ câu dễ nhớ. `bni.py` chặn lời giống một tuần cũ từ 60% trở lên (không tính câu dễ nhớ và tên).
 
-## 8. Lỗi hay gặp (khiến mọi bài giống nhau)
+## 8. Lỗi hay gặp
+
+- Chưa nói rõ mình là ai, làm gì, cho ai mà đã kể chuyện hay nêu chủ đề tuần (Founder chấm 25/11/2026: nghe khó, không ra mạch).
+- Câu vụn, câu kiểu tiêu đề, mở bằng mảnh câu người lạ không hiểu (xem mục 1b).
 
 - Kể hết danh sách dịch vụ thay vì một mảng.
 - Xin chung chung: "ai cần thì giới thiệu giúp tôi", "bất kỳ ai".

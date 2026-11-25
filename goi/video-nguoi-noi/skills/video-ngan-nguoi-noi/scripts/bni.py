@@ -1,11 +1,12 @@
-"""Video giới thiệu bản thân 30 giây theo khung BNI, chạy một lệnh. Bản 2 (25/11/2026): giữ khung 5 nhịp, lời theo từng người.
+"""Video giới thiệu bản thân 30 giây theo khung BNI, chạy một lệnh. Bản 2.1 (25/11/2026): khung "tôi là ai → làm gì, cho ai →
+vì sao tin → nhờ giới thiệu ai → câu dễ nhớ + tên", lời theo từng người.
 
   python bni.py "<dự án>"
 
 Đọc references/bni-cong-thuc.md trước khi viết lời. Trong thư mục dự án (<Xưởng>/du-an/<yyyy-mm-dd>_bni-<tên>/) cần có:
   doc-tts.txt  lời đọc một đoạn, 95–110 chữ, theo giọng người đó (không ép dấu chấm than)
   loi.txt      phụ đề cắt từ đúng chữ của doc-tts.txt, mỗi dòng ≤ 28 ký tự
-  bni.json     {"phan": [số dòng loi.txt của 5 nhịp: chào, chủ đề tuần, chuyện/bằng chứng, lời xin, câu dễ nhớ + tên],
+  bni.json     {"phan": [số dòng loi.txt của 5 nhịp: tôi là ai, làm gì cho ai, vì sao tin, nhờ giới thiệu ai, câu dễ nhớ + tên],
                 "mo": ["TÊN", "THƯƠNG HIỆU"],
                 "chuDe": {"tren": "<dòng trên>", "duoi": "<dòng dưới>", "viec": [["ý", "phụ"], ...] 0–3},
                 "bangChung": ["DÒNG 1", "DÒNG 2"],
@@ -20,7 +21,8 @@
 
 Script tự làm:
   0. Kiểm trước (✘ là dừng): dòng phụ đề dài, ghiNho dài, số chữ, lời lệch phụ đề, lời trùng tuần cũ (sổ BNI), chép nguyên văn ví dụ.
-  1. Ảnh, video của người dẫn trong <Xưởng>/anh-video-cua-toi/ làm cảnh. Không có thì chế độ không mặt:
+  1. Ảnh, video của người dẫn trong <Xưởng>/anh-video-cua-toi/ làm cảnh (tối đa 5, theo thứ tự tên tệp: mở, làm gì,
+     bằng chứng, nhờ giới thiệu, kết; đặt tên 1-…, 2-… để định thứ tự). Không có thì chế độ không mặt:
      cảnh kho khớp "nganh", rồi cảnh hợp mọi nghề, cuối cùng nền màu tự tạo.
   2. loai.txt, nhạc theo tamTrang (đổi bài so với tuần trước), kenh-rieng.json (tên kênh, giọng riêng cho video này).
   3. Giọng (giongTuQuay hoặc tao_giong.py), cắt nghỉ, chèn nghỉ dấu phẩy; giọng phải dài 22–30 giây.
@@ -97,17 +99,31 @@ def clip_toi(f, ra):
     """Ảnh hoặc video của người dẫn thành clip dọc 1080x1920, 8 giây, không tiếng."""
     vf = "scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920"
     if f.suffix.lower() in ANH:
-        # Giữ trọn ảnh, thu vào khung 1080x1600 đặt sát đáy (chừa 320 px phía trên cho ô tên, ô liên hệ); nền là chính ảnh đó làm mờ.
-        # Rồi phóng chậm 1,00 -> 1,06 trong 8 giây.
+        # Nền là chính ảnh đó làm mờ. Ảnh dọc: giữ trọn, thu vào khung 1080x1600 sát đáy (chừa 320 px phía trên cho ô tên).
+        # Ảnh ngang (sân khấu, lớp học): cao 1000, cắt giữa rộng 1080, đặt ở y 330 (giữa ô tên và phụ đề ~1420); trước đây ảnh ngang
+        # thu nhỏ sát đáy, nằm đè dưới phụ đề (thử ảnh Founder 25/11/2026). Rồi phóng chậm 1,00 -> 1,06 trong 8 giây.
+        import cv2
+        import numpy as np
+        a = cv2.imdecode(np.fromfile(str(f), "u1"), cv2.IMREAD_UNCHANGED)
+        if a is not None and a.ndim == 3 and a.shape[2] == 4:
+            # Ảnh chân dung tách nền (PNG trong suốt): đặt lên nền kem sáng, không thì nền mờ thành màu đen
+            al = a[:, :, 3:4].astype("f4") / 255
+            phang = (a[:, :, :3] * al + np.array([236, 242, 246], "f4") * (1 - al)).astype("u1")
+            f = ra.with_suffix(".phang.jpg")
+            cv2.imencode(".jpg", phang, [cv2.IMWRITE_JPEG_QUALITY, 95])[1].tofile(str(f))
+        ngang = a is not None and a.shape[1] > a.shape[0] * 1.1
+        fg, y, neo = (("scale=-2:1000,crop='min(iw,1080)':1000", "330", "ih/2-(ih/zoom/2)") if ngang else
+                      ("scale=1080:1600:force_original_aspect_ratio=decrease", "H-h", "ih-(ih/zoom)"))
         nen = ra.with_suffix(".nen.png")
         ff("-i", f, "-filter_complex",
            "[0]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,boxblur=40:2[bg];"
-           "[0]scale=1080:1600:force_original_aspect_ratio=decrease[fg];[bg][fg]overlay=(W-w)/2:H-h",
+           f"[0]{fg}[fg];[bg][fg]overlay=(W-w)/2:{y}",
            "-frames:v", 1, nen)
         ff("-loop", "1", "-i", nen, "-t", 8, "-vf",
-           "scale=2160:3840,zoompan=z='1+0.06*on/200':x='iw/2-(iw/zoom/2)':y='ih-(ih/zoom)':d=200:s=1080x1920:fps=25,format=yuv420p",
+           f"scale=2160:3840,zoompan=z='1+0.06*on/200':x='iw/2-(iw/zoom/2)':y='{neo}':d=200:s=1080x1920:fps=25,format=yuv420p",
            "-an", "-c:v", "libx264", "-preset", "fast", "-crf", 18, ra)
         nen.unlink(missing_ok=True)
+        ra.with_suffix(".phang.jpg").unlink(missing_ok=True)
     else:
         ff("-i", f, "-t", 8, "-vf", vf + ",fps=25,format=yuv420p", "-an", "-c:v", "libx264", "-preset", "fast", "-crf", 18, ra)
 
@@ -140,10 +156,21 @@ def kiem_truoc(da, b, dong, loi_doc, so):
     giong_nhau = difflib.SequenceMatcher(None, chu(" ".join(dong)), chu(loi_doc)).ratio()
     if giong_nhau < 0.85:
         loi.append(f"doc-tts.txt lệch chữ với loi.txt (giống {giong_nhau:.0%}, cần ≥ 85%): viết doc-tts.txt trước rồi cắt loi.txt từ đúng những chữ đó")
+    # Nghe một lần phải hiểu: câu vụn, câu kiểu tiêu đề làm bài khó nghe (Founder chấm 3 bài thử 25/11/2026). Chỉ nhắc, không chặn.
+    cau = [c for c in re.split(r"[.!?]+", loi_doc) if chu(c)]
+    vun = [c.strip() for c in cau[:-2] if len(chu(c)) < 5]
+    if len(vun) >= 2:
+        nhac.append("câu vụn khó nghe: " + " | ".join(vun) + ". Gộp thành câu đủ ý 10–22 chữ (bni-cong-thuc.md mục 1b)")
+    if ":" in loi_doc:
+        nhac.append("lời có dấu hai chấm, nghe như đọc tiêu đề: viết thành câu nói thường (mục 1b)")
     phan = b.get("phan", [])
     if len(phan) != 5 or sum(phan) != len(dong):
         loi.append(f"bni.json phan {phan} (tổng {sum(phan)}) phải đủ 5 nhịp và bằng số dòng loi.txt ({len(dong)})")
     else:
+        # Tên phải được nói ngay nhịp 1: người lạ cần biết ai đang nói trước khi nghe gì khác
+        ten = [x for x in chu((b.get("mo") or [""])[0]) if len(x) > 1]
+        if ten and not set(ten) & set(chu(" ".join(dong[:phan[0]]))):
+            loi.append(f"nhịp 1 ({phan[0]} dòng đầu loi.txt) chưa nói tên '{b['mo'][0]}': câu đầu phải cho biết ai đang nói")
         # Ý trên thẻ phải có chữ được NÓI trong đúng nhịp đó, không thì thẻ sáng sớm theo mốc chia đều
         # (chấm 25/11/2026: thẻ "NGƯNG KEM, THẢO MỘC" của chuyện bị đặt vào nhịp chủ đề, sáng sớm 5 giây)
         dau = [sum(phan[:i]) for i in range(6)]
@@ -233,9 +260,11 @@ def main():
 
     # Hồ sơ riêng của video này: tên kênh khi hồ sơ còn chữ mẫu, giọng AI theo người. Không sửa ho-so-kenh.json của học viên.
     rieng = {}
-    nhan_kenh = h.get("ten", "")
-    if not nhan_kenh or nhan_kenh.strip().upper() == "TÊN KÊNH":
-        nhan_kenh = rieng["ten"] = b["mo"][1]
+    # Video giới thiệu bản thân luôn mang thương hiệu của chính người nói (mo[1]), không lấy tên kênh trong hồ sơ: hồ sơ có thể
+    # là kênh khác hay còn sót từ lần thử trước (thử 25/11/2026: video của Founder hiện nhãn "BẢO HIỂM TẬN TÂM").
+    nhan_kenh = b["mo"][1]
+    if nhan_kenh != h.get("ten", ""):
+        rieng["ten"] = nhan_kenh
     g = dict(b.get("giongAI") or h.get("giongAI") or {"provider": "edge", "voice_id": "vi-VN-HoaiMyNeural"})
     if g.get("provider") == "edge" and "toc" not in g:
         # Giọng miễn phí đọc chậm (đo 25/11/2026: 123 chữ ra 37 giây): nhanh hơn 8% cho nhịp giới thiệu, vẫn tự nhiên
@@ -253,13 +282,13 @@ def main():
     canh_dir = da / "public" / "canh"
     canh_dir.mkdir(parents=True, exist_ok=True)
     ma_toi = []
-    for i, f in enumerate(toi[:4], 1):
+    for i, f in enumerate(toi[:5], 1):
         ma = f"TOI{i}"
         clip_toi(f, canh_dir / f"{ma}.mp4")
         ma_toi.append(ma)
     co_mat = bool(ma_toi)
     print(f"{'✔ có' if co_mat else '• không có'} ảnh/video của người dẫn trong {thu_muc_toi}"
-          + (f": {', '.join(f.name for f in toi[:4])}" if co_mat else " → chế độ không mặt, dùng cảnh thật không người"))
+          + (f": {', '.join(f.name for f in toi[:5])}" if co_mat else " → chế độ không mặt, dùng cảnh thật không người"))
     (da / "loai.txt").write_text("gioi-thieu" + ("" if co_mat else " khong-mat"), encoding="utf-8")
     if not (da / "nhac.txt").exists() or b.get("nhac"):
         (da / "nhac.txt").write_text(chon_nhac(b, so), encoding="utf-8")
