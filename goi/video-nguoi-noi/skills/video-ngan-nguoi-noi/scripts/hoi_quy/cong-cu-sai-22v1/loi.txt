@@ -1,0 +1,20 @@
+Claude Code giỏi thật nhưng làm một mình
+thì hay quên với hay ẩu, đúng không?
+Cài thêm sáu thứ này là có ngay một team dev luôn đó!
+Một là Superpowers giúp hỏi kỹ ý tưởng
+và lập kế hoạch rồi viết test trước khi code.
+Hai là Frontend Design của Anthropic
+giúp giao diện bớt na ná kiểu AI.
+Ba là Code Review cho bốn agent soát song song,
+một con còn đọc lịch sử git để tìm lỗi.
+Bốn là Claude Security cho cả đội agent đi săn lỗ hổng
+và kiểm lại từng lỗi trước khi báo.
+Năm là Claude Mem ghi lại việc đã làm
+để phiên sau mở ra là nhớ ngay.
+Sáu là gstack của Garry Tan
+với hai mươi ba công cụ đóng vai giám đốc, thiết kế và kiểm thử.
+Mà nhớ nha, cài đủ sáu thứ
+thì anh chị vẫn là người duyệt cuối.
+Anh chị muốn thêm vị trí nào cho team AI của mình?
+Comment TEAM
+để mình gửi hướng dẫn cài từng cái nhé!

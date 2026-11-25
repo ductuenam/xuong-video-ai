@@ -1,0 +1,41 @@
+{
+  "ma": "cat-ghep-quang-cao",
+  "ten": "Cắt ghép, quảng cáo, ảnh bìa",
+  "mo_ta": "Cắt livestream thành nhiều clip, biến thể quảng cáo, ảnh bìa, đồ họa HyperFrames",
+  "_ghi_chu": "Mọi gói đều cài ngay một lần. dieu_kien_theo_skill: thứ người dùng tự chuẩn bị, Claude kiểm lúc làm video (xem xuong-mau/08_XUONG_VIDEO/CHUAN_BI_THEM.md). \"*\" = mọi skill của gói. Rỗng = không cần gì thêm.",
+  "skills": [
+    "ab-edit",
+    "anh-bia-video",
+    "video-ngan-hyperframes"
+  ],
+  "agents": [
+    "kiem-duyet-doc-lap"
+  ],
+  "can_goi": [
+    "video-nguoi-noi"
+  ],
+  "can_tai_nguyen": [
+    "canh",
+    "nhac",
+    "am"
+  ],
+  "can_phan_mem": [
+    "python",
+    "ffmpeg",
+    "whisper",
+    "node",
+    "remotion"
+  ],
+  "dieu_kien_theo_skill": {
+    "anh-bia-video": [
+      "khoa-google-vertex"
+    ],
+    "ab-edit": [
+      "ram-16gb-nen-co"
+    ]
+  },
+  "cau_lenh_mau": [
+    "Cắt livestream <tên file> thành các clip ngắn",
+    "Làm ảnh bìa cho video vừa dựng"
+  ]
+}

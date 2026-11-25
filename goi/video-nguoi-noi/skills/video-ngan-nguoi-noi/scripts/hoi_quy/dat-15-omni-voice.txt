@@ -1,0 +1,4 @@
+Có một con Ây‑Ai lồng tiếng mã nguồn mở mà hơn mười sáu nghìn người đã bấm sao trên GitHub, tên là OmniVoice. Làm video ngắn khổ nhất là gì? Giọng Ây‑Ai thuê bao tính tiền theo ký tự, đọc sai một từ là phải tạo lại, mà tạo lại là lại mất tiền.
+OmniVoice thì kéo về chạy ngay trên máy mình, tạo lại bao nhiêu lần cũng không tốn đồng nào. Nó đọc được hơn sáu trăm ngôn ngữ, có cả tiếng Việt luôn. Mà đỉnh nhất là nhân bản giọng, chỉ cần ba đến mười giây ghi âm mẫu là xong. Gõ thêm thẻ tiếng cười hay thở dài vào lời, nó chèn luôn vào giọng. Không có giọng mẫu thì cứ tả giọng mình muốn, nam nữ già trẻ hay trầm cao đều chiều được hết.
+Có điều máy có card đồ họa thì chạy mới nhanh, và chỉ nhân bản giọng của mình hoặc người đã đồng ý thôi nha. Lười cài thì vào Hugging Face thử ngay trên trình duyệt.
+Mỗi tháng anh chị đang tốn bao nhiêu tiền cho giọng Ây‑Ai? Hướng dẫn cài từng bước mình để sẵn ở bình luận ghim nhé!

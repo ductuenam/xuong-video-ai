@@ -1,0 +1,153 @@
+{
+ "loai": "chao-dich-vu",
+ "nguoi_xem": "chủ khu nghỉ, người làm du lịch",
+ "nhan_ai_tren_hinh": true,
+ "ghi_chu": "Video thử: bối cảnh minh họa do AI tạo, không nêu tên khu, giá, địa chỉ.",
+ "canh": [
+  {
+   "id": "c1",
+   "phan": "móc câu",
+   "loi": "Anh chị làm khu nghỉ ơi, đố anh chị biết em đến đây mấy lần rồi? Chưa lần nào luôn đấy.",
+   "tu_khoa": [
+    "khu",
+    "nghỉ",
+    "lần",
+    "chưa"
+   ],
+   "the": {
+    "chu": "Chưa đến lần nào!",
+    "mau": "do",
+    "khi_noi": "chưa lần nào"
+   }
+  },
+  {
+   "id": "c2",
+   "phan": "chứng minh",
+   "loi": "Em chỉ được gửi mấy tấm ảnh chụp bằng điện thoại thôi. Agent xem một lượt là biết ngay đây là đồi thông, nhìn ra cả vịnh biển.",
+   "tu_khoa": [
+    "ảnh",
+    "agent",
+    "thông",
+    "biển"
+   ],
+   "the": {
+    "chu": "Chỉ vài tấm ảnh",
+    "mau": "vang",
+    "khi_noi": "mấy tấm ảnh"
+   },
+   "the2": {
+    "chu": "Agent tự nhận ra",
+    "mau": "xanh",
+    "khi_noi": "biết ngay"
+   }
+  },
+  {
+   "id": "c3",
+   "phan": "chứng minh",
+   "loi": "Nó còn chỉ ra cả cái đèn mây trước cửa, cái ghế mây ngoài hiên. Rồi tự viết luôn lời giới thiệu cho khu đấy.",
+   "tu_khoa": [
+    "đèn",
+    "ghế",
+    "hiên",
+    "viết"
+   ],
+   "the": {
+    "chu": "Agent tự viết lời",
+    "mau": "xanh",
+    "khi_noi": "tự viết luôn"
+   }
+  },
+  {
+   "id": "c4",
+   "phan": "nỗi đau",
+   "loi": "Khách xem có em ngồi đây là dễ hình dung lắm nhá. Chứ thuê người nổi tiếng thật thì nào tiền xe, tiền phòng, lại còn phải đợi người ta rảnh nữa.",
+   "tu_khoa": [
+    "khách",
+    "nổi",
+    "tiền",
+    "rảnh"
+   ],
+   "the": {
+    "chu": "Tiền xe, tiền phòng, đợi lịch",
+    "mau": "do",
+    "khi_noi": "tiền xe"
+   }
+  },
+  {
+   "id": "c5",
+   "phan": "nỗi đau",
+   "loi": "Anh chị thì bận đón khách, dọn phòng cả ngày, làm gì còn sức mà tự quay video đều đều, đúng không nào?",
+   "tu_khoa": [
+    "khách",
+    "phòng",
+    "sức",
+    "quay"
+   ],
+   "the": {
+    "chu": "Không còn sức quay",
+    "mau": "vang",
+    "khi_noi": "còn sức mà"
+   },
+   "loi_cu": "Mà ngày nào anh chị cũng tất bật đón khách, dọn phòng, tối đến còn sức đâu mà tự quay, tự dựng video cơ chứ?"
+  },
+  {
+   "id": "c6",
+   "phan": "giải pháp",
+   "loi": "Giờ thì khác rồi, anh chị chụp vài tấm ảnh là xong phần mình. Kịch bản agent viết, còn đi lại, trò chuyện thì để người mẫu ảo như em lo nhá.",
+   "tu_khoa": [
+    "ảnh",
+    "agent",
+    "mẫu",
+    "ảo"
+   ],
+   "the": {
+    "chu": "Chỉ cần chụp ảnh",
+    "mau": "vang",
+    "khi_noi": "chụp vài tấm"
+   },
+   "the2": {
+    "chu": "Người mẫu ảo",
+    "mau": "xanh",
+    "khi_noi": "người mẫu ảo"
+   }
+  },
+  {
+   "id": "c7",
+   "phan": "lợi ích",
+   "loi": "Thích góc nào anh chị cứ chụp rồi gửi agent nhá. Hôm thì hoàng hôn, hôm thì phòng ngủ, đều tay mỗi tuần có video mới để đăng.",
+   "tu_khoa": [
+    "thích",
+    "hoàng",
+    "hôn",
+    "tuần",
+    "mới"
+   ],
+   "the": {
+    "chu": "Mỗi tuần một video mới",
+    "mau": "vang",
+    "khi_noi": "mỗi tuần có"
+   }
+  },
+  {
+   "id": "c8",
+   "phan": "kêu gọi",
+   "loi": "Anh chị muốn khu mình có video thế này thì bình luận chữ nghỉ dưỡng, em gửi cách làm cho nhá.",
+   "tu_khoa": [
+    "video",
+    "nghỉ",
+    "dưỡng",
+    "cách"
+   ],
+   "the": {
+    "chu": "Bình luận NGHỈ DƯỠNG",
+    "mau": "vang",
+    "khi_noi": "bình luận chữ",
+    "dai": 1.6
+   }
+  }
+ ],
+ "the_ket": {
+  "dong1": "LÀM VIDEO KHU NGHỈ BẰNG AI AGENT",
+  "dong2": "Bình luận \"NGHỈ DƯỠNG\" để nhận cách làm"
+ }
+}

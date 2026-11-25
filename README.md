@@ -1,0 +1,32 @@
+# Xưởng Video AI
+
+Kho chuẩn của bộ làm video cài vào **Bộ Não AI** của học viên bằng **một câu lệnh**. Trạng thái: mã **bản nháp 0.1.0** (chưa có bộ cài, chưa phát hành); tài nguyên **v1 đã xong** (226 cảnh, 3 nhạc, 7 tiếng, đã nén, gắn nhãn, đóng gói).
+
+## Đọc theo thứ tự
+
+0. **[docs/BAN_DO_KHO.md](docs/BAN_DO_KHO.md) — đọc trước tiên**: mọi thứ nằm ở đâu, Founder nói gì thì làm gì, quy trình bổ sung, luật phiên bản, cách làm việc.
+0b. **[docs/MUC_TIEU.md](docs/MUC_TIEU.md)**: mục tiêu, hành trình học viên, thước đo, thứ tự ưu tiên.
+1. [docs/KIEN_TRUC.md](docs/KIEN_TRUC.md) — mục tiêu, bộ skill cài đủ một lần + cổng sẵn sàng, bộ não sau khi cài, cách học viên tự mở rộng, việc phải sửa.
+2. [docs/QUY_CHUAN_MO_RONG.md](docs/QUY_CHUAN_MO_RONG.md) — sổ đăng ký, bốn tầng đọc của AI, bản đồ bộ não, khuôn tài nguyên chung, gói năng lực, luật cập nhật.
+3. [docs/LUU_TRU_VA_PHAT_HANH.md](docs/LUU_TRU_VA_PHAT_HANH.md) — để mã ở GitHub, tài nguyên ở Cloudflare R2, quy trình phát hành.
+4. [tai-nguyen/canh/CHI_MUC.md](tai-nguyen/canh/CHI_MUC.md) — 226 cảnh theo 23 nhóm, 64 cảnh trong gói nhẹ.
+5. [cong-cu/README.md](cong-cu/README.md) — công cụ làm kho (nén, nhập, đóng gói, kiểm).
+
+## Bản đồ thư mục
+
+| Thư mục | Nội dung |
+|---|---|
+| `goi/video-nguoi-noi/` | Edit video, video BNI, video người nói: 1 skill, 2 agent. Không cần chuẩn bị gì |
+| `goi/cat-ghep-quang-cao/` | Cắt livestream, quảng cáo, ảnh bìa, HyperFrames: 3 skill, 1 agent (ảnh bìa vẽ AI cần khóa Google) |
+| `goi/kol-ai/` | KOL AI, lookbook, nghỉ dưỡng, cây cảnh: 5 skill, 20 agent (cần Muse + Claude in Chrome) |
+| `xuong-mau/08_XUONG_VIDEO/` | Khung ngăn mới sẽ chép vào bộ não học viên |
+| `tai-nguyen/<loai>/` | Chỉ mục từng loại (cảnh, nhạc, tiếng) theo một khuôn chung. **Không chứa video, nhạc** (để ở R2) |
+| `cong-cu/` | Công cụ làm kho cho người làm kho (không phát cho học viên) |
+| `_kho-nang/` | Lối tắt sang `E:\xuong-video-ai-kho\` (video, zip, báo cáo). Không lên GitHub |
+| `cai/` | Bộ cài một câu lệnh (giai đoạn 2, đang trống) |
+| `phieu/` | Phiếu giao việc nội bộ, không đưa lên GitHub công khai |
+| `third_party/` | Giấy phép MIT của mã kế thừa |
+
+Cả 3 gói trong `goi/` **cài đủ một lần**, không chia cấp. Việc nào cần chuẩn bị thêm thì Claude kiểm lúc làm theo `xuong-mau/08_XUONG_VIDEO/CHUAN_BI_THEM.md`.
+
+Các skill trong `goi/` đang là **bản chép nguyên trạng** của mã kế thừa (nguồn và giấy phép: `third_party/`), chưa sửa theo kiến trúc mới.

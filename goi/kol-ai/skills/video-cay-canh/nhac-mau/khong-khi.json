@@ -1,0 +1,11 @@
+{
+  "_ghi_chu": "Từ khóa trong mô tả cảnh (anh + may) để dung.py chọn bài hợp không khí. Bài nào trúng nhiều từ nhất thì chọn; hòa thì lấy bài chưa dùng gần đây.",
+  "nhac-01": ["nắng sáng", "buổi sáng", "sân vườn", "sân nhà", "cỏ", "vui", "hoa giấy", "cổng"],
+  "nhac-02": ["ban công", "mùa xuân", "hoa", "tươi", "sáng sớm", "rau", "cây ăn quả"],
+  "nhac-03": ["đêm", "tối", "chập tối", "đèn", "giếng trời", "sang trọng", "spa", "lễ tân", "biệt thự"],
+  "nhac-04": ["hoàng hôn", "chiều", "ấm", "phòng khách", "phòng ngủ", "trong nhà", "gỗ"],
+  "nhac-05": ["nhật", "thiền", "zen", "bonsai", "sương", "trúc", "đá cào", "đèn đá", "nhà cổ", "trà"],
+  "nhac-06": ["cà phê", "quán", "phòng khách", "kệ", "sau mưa", "thong thả"],
+  "nhac-07": ["sân thượng", "hồ bơi", "trưa", "bali", "nhiệt đới", "nắng vàng"],
+  "nhac-08": ["koi", "thác", "hồ cá", "bể thủy sinh", "suối", "nước trong", "ao"]
+}

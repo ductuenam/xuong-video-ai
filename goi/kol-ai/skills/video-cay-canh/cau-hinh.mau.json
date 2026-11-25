@@ -1,0 +1,28 @@
+{
+  "_ghi_chu": "Chép file này thành cau-hinh.json (cùng thư mục) rồi điền. Đường dẫn dùng dấu /.",
+  "shop": {
+    "ten": "Tên shop cây cảnh",
+    "so_dien_thoai": "09xx xxx xxx",
+    "khu_vuc": "Hà Nội",
+    "phong_cach": "nhiều cây, xếp tầng có ý đồ, chậu cùng một bộ, sạch sẽ, sang trọng, có hồ cá khi hợp",
+    "cay_chu_luc": [
+      "tùng la hán",
+      "bonsai",
+      "cau tiểu trâm",
+      "bàng Singapore",
+      "dương xỉ"
+    ],
+    "hashtag": [
+      "#caycanh",
+      "#sanvuon",
+      "#thietkesanvuon"
+    ]
+  },
+  "thu_muc_lam_viec": "<thư mục làm việc, ví dụ Documents/VIDEO-CAY-CANH>",
+  "thu_muc_tai_ve": "<thư mục tải về của trình duyệt, ví dụ Downloads>",
+  "thu_muc_nhac": "",
+  "_ghi_chu_nhac": "Để trống = tự lót 8 bài nhạc mẫu CC0 đi kèm (thư mục nhac-mau, cắt sẵn đoạn hay, tự chọn theo không khí cảnh, đăng nền tảng nào cũng được). Điền \"khong\" = không lót nhạc. Điền đường dẫn thư mục = dùng nhạc riêng (chỉ nhạc shop có quyền). Bản -khong-nhac.mp4 luôn có để chọn nhạc trend lúc đăng. File nhạc tên bắt đầu CHI-FACEBOOK- chỉ được đăng Facebook.",
+  "toc_do": 0.85,
+  "lufs": -14,
+  "so_canh_moi_luot": 4
+}

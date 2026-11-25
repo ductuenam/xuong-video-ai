@@ -1,0 +1,31 @@
+<!doctype html>
+<!-- MẪU DÙNG CHUNG — Thẻ phản hồi khách hàng (1440x1800): ảnh thật + lời nhắn nguyên văn, chữ to để đọc kịp; tin thứ 2 hiện chậm sau tin 1. -->
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=League+Gothic&family=Be+Vietnam+Pro:wght@400;600&display=block&subset=vietnamese" rel="stylesheet">
+<style>
+:root{ /* ĐỔI MÀU THƯƠNG HIỆU Ở ĐÂY (lấy từ brand.json: do_hoa + chu) */
+  --nen:#6A0B10; --nen-dam:#3A0508; --vien:#FFD94A; --accent:#FFD400; --box:#C8102E; --text:#FFFFFF;
+  --font:'UTM Bebas','League Gothic',sans-serif; --body:'Be Vietnam Pro',sans-serif }
+html,body{margin:0;width:1440px;height:1800px;overflow:hidden;background:radial-gradient(ellipse at 50% 30%,var(--nen),var(--nen-dam) 70%)}
+.hd{position:absolute;left:0;right:0;top:60px;text-align:center;font-family:var(--font);font-weight:700;font-size:96px;color:var(--accent);-webkit-text-stroke:4px #000;paint-order:stroke fill;text-shadow:0 4px 8px rgba(0,0,0,.5)}
+.card{position:absolute;left:60px;width:1320px;background:#fff;border-radius:36px;box-shadow:0 18px 40px rgba(0,0,0,.5);padding:36px 40px;box-sizing:border-box;display:flex;gap:34px;align-items:flex-start}
+.card img{width:330px;height:330px;border-radius:24px;object-fit:cover;flex:none}
+.who{font-family:var(--body);font-weight:600;font-size:40px;color:#1c1e21;margin-bottom:14px}
+.msg{font-family:var(--body);font-weight:400;font-size:46px;line-height:1.32;color:#1c1e21;background:#f0f2f5;border-radius:30px;padding:20px 28px}
+</style></head><body>
+<div class="hd" id="hd">PHẢN HỒI TỪ KHÁCH HÀNG</div>
+<div class="card" id="c1" style="top:230px"><img src="anh-khach-1.jpg"><div><div class="who">Tên khách (được phép hiển thị)</div>
+ <div class="msg">Dán NGUYÊN VĂN lời nhắn của khách vào đây (không sửa nội dung, không thêm sao/đánh giá)</div></div></div>
+<div class="card" id="c2" style="top:1000px"><img src="anh-khach-2.jpg"><div><div class="who">Tên khách (được phép hiển thị)</div>
+ <div class="msg">Dán NGUYÊN VĂN lời nhắn của khách vào đây (không sửa nội dung, không thêm sao/đánh giá)</div></div></div>
+<script>
+const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x)),eo=x=>1-Math.pow(1-cl(x),3);
+window.ve=function(t){
+  document.getElementById('hd').style.opacity=eo(t/0.5);
+  const a=eo((t-0.15)/0.7),b=eo((t-1.9)/0.8);
+  const c1=document.getElementById('c1'),c2=document.getElementById('c2');
+  c1.style.opacity=a;c1.style.transform=`translateY(${(1-a)*60}px) scale(${1+0.015*t/4.4})`;
+  c2.style.opacity=b;c2.style.transform=`translateY(${(1-b)*60}px) scale(${1+0.015*t/4.4})`;
+};
+Promise.all([...document.images].map(i=>i.decode())).then(()=>document.fonts.ready).then(()=>Promise.all([document.fonts.load("100px 'League Gothic'"),document.fonts.load("400 40px 'Be Vietnam Pro'"),document.fonts.load("600 40px 'Be Vietnam Pro'")])).then(()=>{window.ve(0);window.SAN_SANG=true});
+</script></body></html>

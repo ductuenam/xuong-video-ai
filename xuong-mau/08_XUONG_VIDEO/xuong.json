@@ -1,0 +1,39 @@
+{
+  "_ghi_chu": "Sổ đăng ký xưởng trên máy học viên. Bộ cài tạo và cập nhật; skill xuong-mo-rong ghi thêm. CHI_MUC_XUONG.md sinh từ tệp này. Mọi gói cài một lần; dieu_kien là kết quả kiểm lúc cài, Claude vẫn kiểm lại thật trước khi làm (CHUAN_BI_THEM.md).",
+  "phien_ban": "",
+  "phien_ban_tai_nguyen": "",
+  "thu_muc_xuong": "<đường dẫn thật, ví dụ 08_XUONG_VIDEO>",
+  "may_video": "<đường dẫn .may-video>",
+  "may": {"he_dieu_hanh": "", "ram_gb": 0, "goi_tai_nguyen": "du"},
+  "whisper": "small",
+  "goi_da_cai": [
+    "video-nguoi-noi",
+    "cat-ghep-quang-cao",
+    "kol-ai"
+  ],
+  "dieu_kien_theo_skill": {
+    "anh-bia-video": ["khoa-google-vertex"],
+    "ab-edit": ["ram-16gb-nen-co"],
+    "kol-ban-quan-ao": ["tai-khoan-muse", "claude-in-chrome"],
+    "kol-lookbook": ["tai-khoan-muse", "claude-in-chrome"],
+    "kol-mac-thu-mot-khung": ["tai-khoan-muse", "claude-in-chrome"],
+    "kol-review-nghi-duong": ["tai-khoan-muse", "claude-in-chrome"],
+    "video-cay-canh": ["tai-khoan-muse", "claude-in-chrome"]
+  },
+  "dieu_kien": {
+    "khoa-google-vertex": "chua-kiem",
+    "tai-khoan-muse": "chua-kiem",
+    "claude-in-chrome": "chua-kiem",
+    "ram-16gb-nen-co": "chua-kiem"
+  },
+  "loai_tai_nguyen": [
+    "canh",
+    "nhac",
+    "am"
+  ],
+  "kieu_video_cua_toi": [],
+  "ban_do_bo_nao": {
+    "ngay_do": "",
+    "tep": "BAN_DO_BO_NAO.md"
+  }
+}

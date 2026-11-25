@@ -1,0 +1,9 @@
+NHẠC MẪU ĐI KÈM GÓI — giấy phép CC0 (công cộng: được dùng, sửa, đăng mọi nền tảng, kể cả thương mại, không bắt ghi tên)
+
+nhac-01-discoed-124bpm.mp3   "Electronic L Discoed" của Frank Nora (nhãn tệp: album "Public Domain", Midnight Casette System) — kho FreePD.com (đã đóng cửa), bản lưu nguyên vẹn trên Internet Archive: https://archive.org/details/freepd
+  Nhịp đo bằng scripts/do_phach.py: chu kỳ 0,4838 giây (124 nhịp/phút), phách mạnh đầu tiên ở 0,403 giây, nhưng 4 giây đầu chỉ là đoạn dạo nhỏ tiếng → trong kế hoạch: "phach": 0.4839, "nhac_tu": 4.274 (= 0,403 + 8 phách, vào đúng chỗ nhạc chính). Bài còn khoảng 40 giây sau mốc này, đủ cho video 3–5 bộ.
+  Đã cắt còn 45 giây đầu cho gói nhẹ.
+
+Lưu ý:
+- Bài này để chạy thử và dùng ngay. Muốn nhạc đang trend: dựng bản không nhạc hoặc chọn nhạc trong thư viện của nền tảng lúc đăng; nhạc lấy ngoài thì phải có quyền dùng và đo lại nhịp.
+- Nhạc công cộng đôi khi bị hệ thống nhận nhầm bản quyền. Nếu gặp, bấm kháng nghị và ghi "nhạc CC0 từ FreePD" kèm link nguồn ở trên.

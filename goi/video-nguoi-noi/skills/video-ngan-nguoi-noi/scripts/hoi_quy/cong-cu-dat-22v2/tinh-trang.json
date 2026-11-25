@@ -1,0 +1,9 @@
+{"ngayKiem": "12/11/2026",
+ "mon": [
+  {"ten": "Superpowers", "trangThai": "plugin-chinh-thuc", "cachLay": "/plugin install superpowers@claude-plugins-official", "nguon": "github.com/anthropics/claude-plugins-official (marketplace.json); github.com/obra/superpowers 316.441 sao"},
+  {"ten": "Frontend Design", "trangThai": "plugin-chinh-thuc", "cachLay": "/plugin install frontend-design@claude-plugins-official", "nguon": "github.com/anthropics/claude-plugins-official/plugins/frontend-design"},
+  {"ten": "Claude Mem", "trangThai": "cai-them", "cachLay": "npx claude-mem install", "nguon": "github.com/thedotmack/claude-mem 116.338 sao, không có trong chợ chính thức"},
+  {"ten": "gstack", "trangThai": "cai-them", "cachLay": "git clone garrytan/gstack vào ~/.claude/skills/gstack rồi ./setup", "nguon": "github.com/garrytan/gstack 141.297 sao, không có trong chợ chính thức"},
+  {"ten": "code review", "trangThai": "co-san", "cachLay": "gõ /code-review (gọi tắt /review)", "nguon": "code.claude.com/docs/en/commands"},
+  {"ten": "security review", "trangThai": "co-san", "cachLay": "gõ /security-review", "nguon": "code.claude.com/docs/en/commands"}
+ ]}

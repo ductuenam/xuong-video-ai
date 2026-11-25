@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>Cài Cline chạy với Ollama trên máy</title>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 0; }
+  :root { --cam: #E8540F; --cam2: #FF8A3D; --dam: #1D1B1A; --dao: #FFF3EA; --vien: #F4E4D8; --xam: #6F6964; --xanh: #14915A; --do: #D1341F; --vang: #E39A12; --lam: #3F6FB0; }
+  * { box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { margin: 0; font-family: 'Be Vietnam Pro', sans-serif; color: var(--dam); font-size: 13.5px; line-height: 1.5; background: #fff; }
+  a { color: var(--cam); font-weight: 600; text-decoration: none; }
+  .trang { width: 210mm; height: 296mm; overflow: hidden; padding: 0 0 12mm; page-break-after: always; position: relative; }
+  .trang:last-child { page-break-after: auto; }
+  .noi { padding: 0 14mm; }
+  .dau { background: linear-gradient(120deg, #1D1B1A 0%, #3A1E10 60%, #E8540F 130%); color: #fff; padding: 11mm 14mm 10mm; }
+  .kenh { display: inline-block; font-weight: 800; font-size: 11px; letter-spacing: 1.5px; background: var(--cam); padding: 4px 12px; border-radius: 99px; }
+  h1 { font-size: 31px; line-height: 1.18; font-weight: 900; margin: 12px 0 6px; }
+  h1 span { color: var(--cam2); }
+  .phu { color: #F4DCCB; font-size: 13.5px; margin: 0; }
+  h2 { font-size: 18px; font-weight: 800; margin: 20px 0 10px; display: flex; align-items: center; gap: 9px; }
+  h2::before { content: ""; width: 6px; height: 20px; border-radius: 9px; background: var(--cam); }
+  .chu-y { background: var(--dao); border-left: 5px solid var(--cam); padding: 9px 13px; border-radius: 0 10px 10px 0; margin-top: 14px; font-size: 12.5px; }
+  .so-do { background: var(--dao); border: 2px dashed var(--cam2); border-radius: 16px; padding: 28px 12px 14px; position: relative; display: flex; align-items: stretch; justify-content: space-between; gap: 4px; }
+  .so-do .ten-khung { position: absolute; top: -11px; left: 18px; background: var(--cam); color: #fff; font-weight: 700; font-size: 11.5px; padding: 2px 12px; border-radius: 99px; }
+  .o { background: #fff; border-radius: 12px; padding: 11px 6px; text-align: center; flex: 1; box-shadow: 0 3px 10px rgba(150,80,30,.13); display: flex; flex-direction: column; justify-content: center; }
+  .o b { display: block; font-size: 13.5px; font-weight: 800; line-height: 1.25; }
+  .o small { color: var(--xam); font-size: 10.5px; line-height: 1.3; display: block; margin-top: 3px; }
+  .bieu { width: 34px; height: 34px; border-radius: 10px; margin: 0 auto 6px; color: #fff; font-weight: 800; font-size: 12px; display: flex; align-items: center; justify-content: center; }
+  .noi-ten { align-self: center; color: var(--cam); font-weight: 800; font-size: 17px; width: 19px; text-align: center; flex: none; }
+  .buoc { display: flex; gap: 13px; margin-bottom: 11px; }
+  .so { flex: none; width: 34px; height: 34px; border-radius: 50%; background: var(--cam); color: #fff; font-weight: 900; font-size: 16px; display: flex; align-items: center; justify-content: center; position: relative; }
+  .buoc { position: relative; }
+  .buoc:not(:last-child)::before { content: ""; position: absolute; top: 34px; bottom: -11px; left: 15.5px; width: 3px; background: var(--vien); }
+  .nd { flex: 1; min-width: 0; padding-top: 3px; }
+  .nd b.t { font-size: 14.5px; font-weight: 800; }
+  .nd p { margin: 2px 0 5px; color: #45403C; }
+  code.l { display: block; background: #16181F; color: #E5E9F0; font-family: Consolas, monospace; font-size: 12.5px; padding: 8px 12px; border-radius: 8px; margin: 4px 0; }
+  code.l::before { content: "$ "; color: var(--cam2); }
+  code.i { background: #F4EFEB; padding: 1px 6px; border-radius: 5px; font-family: Consolas, monospace; font-size: 12px; }
+  .may { display: flex; gap: 8px; }
+  .the { flex: 1; border-radius: 12px; padding: 10px 12px; border: 2px solid var(--vien); background: #fff; }
+  .the b { display: block; font-size: 16px; font-weight: 900; }
+  .the span { font-size: 12px; color: var(--xam); }
+  .hai { display: flex; gap: 10px; }
+  .nen, .dung { flex: 1; border-radius: 12px; padding: 11px 13px; font-size: 12.5px; }
+  .nen { background: #E9F7F0; border-top: 5px solid var(--xanh); }
+  .dung { background: #FDECE8; border-top: 5px solid var(--do); }
+  .nen b, .dung b { display: block; font-weight: 800; font-size: 14px; margin-bottom: 3px; }
+  .lien-he { margin-top: 14px; background: var(--dam); color: #fff; border-radius: 12px; padding: 11px 15px; display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 13px; }
+  .lien-he b { color: var(--cam2); font-weight: 800; font-size: 14.5px; }
+  .chan { position: absolute; bottom: 5mm; left: 14mm; right: 14mm; display: flex; justify-content: space-between; color: var(--xam); font-size: 10.5px; }
+</style>
+</head>
+<body>
+<section class="trang">
+  <div class="dau">
+    <span class="kenh">TÊN KÊNH · TỜ HƯỚNG DẪN</span>
+    <h1>Cài <span>Cline</span> chạy với <span>Ollama</span><br>ngay trên máy của anh chị</h1>
+    <p class="phu">AI viết code không tốn tiền thuê bao. 5 bước, kèm những chỗ dễ vấp.</p>
+  </div>
+  <div class="noi">
+    <div class="chu-y"><b>Đọc trước:</b> tờ này tổng hợp từ tài liệu chính thức, đọc ngày 05/11/2026. Kênh chưa chạy thử các bước này. Phần mềm cập nhật liên tục, chỗ nào khác thì theo tài liệu gốc ở từng bước.</div>
+
+    <h2>Nó hoạt động thế nào</h2>
+    <div class="so-do">
+      <span class="ten-khung">Tất cả nằm trong máy của anh chị</span>
+      <div class="o"><div class="bieu" style="background:var(--dam)">Bạn</div><b>Anh chị</b><small>giao việc, duyệt từng bước</small></div>
+      <div class="noi-ten">→</div>
+      <div class="o"><div class="bieu" style="background:var(--cam)">Cl</div><b>Cline</b><small>tay chân, chạy trong VS Code</small></div>
+      <div class="noi-ten">⇄</div>
+      <div class="o"><div class="bieu" style="background:var(--lam)">⇆</div><b>Cổng 11434</b><small>đường nối nội bộ</small></div>
+      <div class="noi-ten">⇄</div>
+      <div class="o"><div class="bieu" style="background:var(--xanh)">Ol</div><b>Ollama</b><small>chạy mô hình trên máy</small></div>
+      <div class="noi-ten">→</div>
+      <div class="o"><div class="bieu" style="background:var(--vang)">AI</div><b>Qwen 2.5 Coder</b><small>bộ não</small></div>
+    </div>
+
+    <h2>Cài trong 5 bước</h2>
+    <div class="buoc"><div class="so">1</div><div class="nd"><b class="t">Cài Ollama</b><p>Tải từ <a href="https://ollama.com/download">ollama.com/download</a>, cài như phần mềm thường.</p></div></div>
+    <div class="buoc"><div class="so">2</div><div class="nd"><b class="t">Tải mô hình</b><p>Mở terminal, chạy lệnh:</p><code class="l">ollama pull qwen2.5-coder:7b</code></div></div>
+    <div class="buoc"><div class="so">3</div><div class="nd"><b class="t">Mở rộng ngữ cảnh <span style="color:var(--do);font-size:12px">· chỗ dễ vấp nhất</span></b><p>Máy dưới 24 GB VRAM mặc định chỉ khoảng 4.000 token, đọc vài file là quên. Tài liệu Ollama khuyên công cụ code để ít nhất 64.000. Chỉnh thanh trượt trong cài đặt ứng dụng Ollama. Trên Linux, macOS có thể chạy:</p><code class="l">OLLAMA_CONTEXT_LENGTH=64000 ollama serve</code><p>Ngữ cảnh càng rộng càng tốn bộ nhớ, máy yếu có thể chậm đi nhiều. <a href="https://docs.ollama.com/context-length">Xem tài liệu</a></p></div></div>
+    <div class="buoc"><div class="so">4</div><div class="nd"><b class="t">Cài Cline</b><p>Trong VS Code, mở mục Extensions, tìm "Cline". <a href="https://github.com/cline/cline">Trang dự án</a></p></div></div>
+    <div class="buoc"><div class="so">5</div><div class="nd"><b class="t">Trỏ Cline vào Ollama</b><p>Trong cài đặt Cline, chọn nhà cung cấp Ollama, địa chỉ <code class="i">http://localhost:11434</code>, chọn mô hình vừa tải. Bật <b>Use Compact Prompt</b> ở Settings → Features. <a href="https://docs.cline.bot/running-models-locally/overview">Xem tài liệu</a></p></div></div>
+  </div>
+  <div class="chan"><span>TÊN KÊNH · Zalo SO_ZALO</span><span>Trang 1/2</span></div>
+</section>
+
+<section class="trang">
+  <div class="noi" style="padding-top:12mm">
+    <h2 style="margin-top:0">Máy của anh chị hợp với mô hình nào</h2>
+    <div class="may">
+      <div class="the"><b>16–32 GB</b><span>Mô hình nhỏ</span></div>
+      <div class="the"><b>32–64 GB</b><span>Mô hình cỡ vừa</span></div>
+      <div class="the"><b>Từ 64 GB</b><span>Mô hình lớn, ngữ cảnh rộng</span></div>
+    </div>
+    <p style="font-size:11.5px;color:var(--xam);margin:6px 0 0">RAM, theo <a href="https://docs.cline.bot/running-models-locally/overview">tài liệu Cline</a>. Dung lượng ổ đĩa: Qwen 2.5 Coder bản 7B nặng 4,7 GB, bản 14B nặng 9 GB, theo <a href="https://ollama.com/library/qwen2.5-coder">trang Ollama</a>.</p>
+
+    <h2>Dùng sao cho an toàn</h2>
+    <div class="hai">
+      <div class="nen"><b>Nên làm</b>Giữ chế độ xin phép. Tài liệu khuyên chỉ tự duyệt việc đọc file, để tắt phần sửa file, chạy lệnh, trình duyệt và MCP cho tới khi có lý do rõ ràng. <a href="https://docs.cline.bot/features/auto-approve.md">Xem tài liệu</a></div>
+      <div class="dung"><b>Đừng bật YOLO</b>Chế độ này tự duyệt mọi thứ. Chính tài liệu Cline gọi là nguy hiểm, vì nó tắt mọi lớp kiểm tra an toàn.</div>
+    </div>
+    <div class="the" style="margin-top:10px"><b style="font-size:14px">Tắt gửi dữ liệu sử dụng nếu muốn</b><span style="color:#45403C">Cline bật mặc định, tài liệu ghi không gồm code. Tắt ở Settings → General → bỏ chọn "Allow error and usage reporting". <a href="https://docs.cline.bot/enterprise-solutions/monitoring/telemetry.md">Xem tài liệu</a></span></div>
+
+    <h2>Có nên dùng không</h2>
+    <div class="hai">
+      <div class="nen"><b>Nên thử khi</b>Code nhạy cảm, dự án cá nhân, máy đủ mạnh.</div>
+      <div class="dung" style="background:var(--dao);border-color:var(--cam)"><b>Cứ trả phí khi</b>Cần làm nhanh mà máy yếu, cho đỡ mệt.</div>
+    </div>
+    <div class="chu-y">Qwen 2.5 Coder ra từ 11/2024, đừng kỳ vọng ngang các mô hình trả phí mới nhất. Giao việc nhỏ từng phần, ngữ cảnh đầy thì mở task mới.</div>
+  <h2>Nguồn</h2>
+    <p style="font-size:12px;margin:0;line-height:1.8"><a href="https://github.com/cline/cline">github.com/cline/cline</a> · <a href="https://docs.cline.bot/running-models-locally/overview">Cline: chạy mô hình trên máy</a> · <a href="https://docs.cline.bot/features/auto-approve.md">Cline: tự duyệt</a> · <a href="https://ollama.com/download">Tải Ollama</a> · <a href="https://docs.ollama.com/context-length">Ollama: ngữ cảnh</a> · <a href="https://ollama.com/library/qwen2.5-coder">Qwen 2.5 Coder trên Ollama</a></p>
+  </div>
+    <div class="noi"><div class="lien-he"><span><b>Vướng chỗ nào?</b> Nhắn TÊN KÊNH để được hỗ trợ.</span><span>Zalo: SO_ZALO · WEBSITE</span></div></div>
+  <div class="chan"><span>TÊN KÊNH · Zalo SO_ZALO</span><span>Trang 2/2</span></div>
+</section>
+</body>
+</html>

@@ -1,0 +1,4 @@
+Có một bộ mười một skill miễn phí giúp Claude chạy tài khoản LinkedIn thay anh chị, nhưng nó cố tình không tự đăng bài nào. Bộ này tên là LinkedIn Agent Skill, hơn ba nghìn người đã bấm sao trên GitHub. Mỗi skill lo một việc riêng. Có skill viết bài theo hai mươi mốt công thức mở đầu, có skill đi bình luận bài người khác và trả lời bình luận dưới bài của mình, có skill chấm hồ sơ trên thang một trăm điểm rồi viết lại chỗ bị trừ.
+Mình thấy đáng giá nhất là skill làm bài viết đọc như người thật. Nó xóa sạch dấu gạch dài và ký tự ẩn mà AI hay để lại, thay một trăm mười ba từ ngữ máy móc bằng chữ thường ngày, rồi chấm bài qua năm bài kiểm tra trước khi đưa anh chị xem.
+Còn chuyện đăng thì anh chị tự dán lên, vì LinkedIn cấm công cụ tự đăng và có thể khóa tài khoản. Cài cũng dễ thôi vì chỉ cần dán đường link vào Claude và bảo nó cài là xong.
+Anh chị đang dùng LinkedIn để tìm việc hay tìm khách? Comment CÀI, mình gửi hướng dẫn cài từng bước nhé!

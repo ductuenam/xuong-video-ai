@@ -1,0 +1,33 @@
+<!doctype html>
+<!-- MẪU DÙNG CHUNG — Thẻ "Tự kiểm tra" (sửa 2 câu hỏi + dòng kết cho từng video) (1440x1800): 2 câu hỏi, dấu ✓ vàng hiện lần lượt, dòng kết "Có 1 dấu ✓? Xem cách hoá giải".
+     Chữ UTM Bebas (dự phòng League Gothic), màu đơn giản trắng/vàng/đỏ, không blur, không phát sáng. -->
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=League+Gothic&display=block&subset=vietnamese" rel="stylesheet">
+<style>
+:root{ /* ĐỔI MÀU THƯƠNG HIỆU Ở ĐÂY (lấy từ brand.json: do_hoa + chu) */
+  --nen:#6A0B10; --nen-dam:#3A0508; --vien:#FFD94A; --accent:#FFD400; --box:#C8102E; --text:#FFFFFF;
+  --font:'UTM Bebas','League Gothic',sans-serif; --body:'Be Vietnam Pro',sans-serif }
+html,body{margin:0;width:1440px;height:1800px;overflow:hidden;background:radial-gradient(ellipse at 50% 35%,var(--nen) 0%,var(--nen-dam) 100%)}
+.bb{font-family:var(--font);text-transform:uppercase;white-space:nowrap;letter-spacing:1.5px;-webkit-text-stroke:5px #000;paint-order:stroke fill;text-shadow:0 5px 10px rgba(0,0,0,.5)}
+.hd{position:absolute;left:0;right:0;top:170px;text-align:center}
+.row{position:absolute;left:110px;right:110px;height:300px;background:#FFF8EC;border-radius:28px;display:flex;align-items:center;gap:46px;padding:0 50px;box-sizing:border-box;box-shadow:0 12px 28px rgba(0,0,0,.4)}
+.box{flex:none;width:170px;height:170px;border:10px solid var(--nen-dam);border-radius:22px;position:relative;background:#fff}
+.tick{position:absolute;left:18px;top:-40px;font-family:'League Gothic';font-size:230px;line-height:1;color:var(--accent);-webkit-text-stroke:4px var(--nen-dam);paint-order:stroke fill}
+.q{font-family:var(--font);text-transform:uppercase;color:var(--nen-dam);font-size:92px;line-height:1.05;letter-spacing:1px}
+.end{position:absolute;left:0;right:0;top:1390px;display:flex;flex-direction:column;align-items:center;gap:18px}
+.red{background:var(--box);color:#fff;-webkit-text-stroke:0;text-shadow:none;padding:6px 40px 12px;border-radius:14px}
+</style></head><body>
+<div class="hd"><div class="bb" style="font-size:130px;color:#fff">TỰ KIỂM TRA NGAY</div></div>
+<div class="row" id="r1" style="top:420px"><div class="box"><div class="tick" id="t1">✓</div></div><div class="q">Câu hỏi 1<br>(dấu hiệu khách tự thấy)?</div></div>
+<div class="row" id="r2" style="top:790px"><div class="box"><div class="tick" id="t2">✓</div></div><div class="q">Câu hỏi 2<br>(dấu hiệu thứ hai)?</div></div>
+<div class="end" id="end"><div class="bb" style="font-size:120px;color:var(--accent)">Có 1 dấu ✓ ?</div><div class="bb red" style="font-size:100px">Xem giải pháp ↓</div></div>
+<script>
+const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x)),eo=x=>1-Math.pow(1-cl(x),3);
+const up=(el,t)=>{const a=eo(t/0.45);el.style.opacity=a;el.style.transform=`translateY(${(1-a)*26}px)`};
+window.ve=function(t){
+  up(document.querySelector('.hd'),t); up(document.getElementById('r1'),t-0.15); up(document.getElementById('r2'),t-0.35);
+  [['t1',0.9],['t2',1.5]].forEach(([id,at])=>{document.getElementById(id).style.opacity=cl((t-at)/0.15)});
+  up(document.getElementById('end'),t-2.1);
+};
+document.fonts.ready.then(()=>Promise.all([document.fonts.load("100px 'UTM Bebas'"),document.fonts.load("100px 'League Gothic'")])).then(()=>{window.ve(0);window.SAN_SANG=true});
+</script></body></html>

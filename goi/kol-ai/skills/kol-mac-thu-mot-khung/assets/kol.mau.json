@@ -1,0 +1,13 @@
+{
+  "_ghi_chu": "Chép file này thành kol.json, đặt vào thư mục thu_muc_kol (cau-hinh.json) cùng ảnh kol-chuan.png của KOL riêng. Mô tả đúng KOL của bạn.",
+  "ten": "Tên KOL của bạn",
+  "goi_khach": "cả nhà",
+  "giong": "giọng nữ miền Bắc trẻ",
+  "mo_ta_nguoi": "Mô tả gương mặt, tóc, dáng người KOL (vd: cô gái Việt Nam trẻ, mặt trái xoan, tóc dài uốn sóng, da sáng mịn)",
+  "mo_ta_phong": "Mô tả căn phòng cố định (vd: tường be trơn, giá treo quần áo gỗ, chậu cây nhỏ, sàn gỗ sáng, ánh sáng ban ngày mềm)",
+  "mo_ta_chan": "đôi chân thon thẳng, da chân sáng mịn đều màu như da mặt, đầu gối sạch không thâm không đỏ",
+  "trang_phuc_nen": "",
+  "anh_khach": "",
+  "anh_chuan": "kol-chuan.png",
+  "kx_chuan": 0.15
+}

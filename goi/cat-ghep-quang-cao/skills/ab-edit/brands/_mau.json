@@ -1,0 +1,30 @@
+{
+  "_huong_dan": "Chép file này thành brands/<ten-thuong-hieu>.json rồi điền. Khoá bắt đầu bằng _ là ghi chú, skill bỏ qua.",
+  "ten": "Tên thương hiệu",
+  "linh_vuc": "Ngành hàng / sản phẩm chính (vd: phong thủy, mỹ phẩm, giáo dục, bất động sản)",
+  "nguoi_noi": "Người nói chính trong video (vd: Thầy, chuyên gia, founder, KOL) — luôn dùng giọng thật, không voice AI",
+  "khung": { "ti_le": "4:5", "w": 1440, "h": 1800, "fps": 50 },
+  "chu": {
+    "_ghi_chu": "font = danh sách CSS, font đầu là font chính; googleFonts = font tải dự phòng có tiếng Việt",
+    "font": "'UTM Bebas','League Gothic',sans-serif",
+    "body": "'Be Vietnam Pro',sans-serif",
+    "googleFonts": ["League Gothic", "Be Vietnam Pro"],
+    "accent": "#FFD400",
+    "text": "#FFFFFF",
+    "box": "#C8102E",
+    "boxText": "#FFFFFF",
+    "stroke": "#000000"
+  },
+  "do_hoa": { "_ghi_chu": "màu nền cho sơ đồ / thẻ feedback / khung sản phẩm", "nen": "#6A0B10", "nen_dam": "#3A0508", "vien": "#FFD94A" },
+  "logo": { "intro": null, "outro": "logo/outro.mp4", "outro_giay": 3, "gan_logo_don_vi_dung": false },
+  "nhac": { "tu_khoa_thu_vien_capcut": "piano calm", "am_luong_db": -18, "vao_giay": 0.5, "ra_giay": 2 },
+  "am_thanh": { "giong_lufs": -16 },
+  "canh_tram": { "toc_do": 0.75, "vao": "Rõ dần 0.8s", "ra": "Mờ dần 0.7s", "noi_2_canh": "Mix 0.7s" },
+  "vpcs": {
+    "che_chu": { "_vd": "từ cần che bằng dấu chấm trên hình", "TÀI": "T.ÀI" },
+    "tu_cam": ["chắc chắn", "100%", "cam kết khỏi", "chữa khỏi", "giàu nhanh", "lãi suất", "đầu tư sinh lời"],
+    "hinh_cam": ["tiền mặt, vàng thỏi, đồng xu", "cảnh bạo lực", "trước/sau cơ thể", "bói bài, phù thuỷ"]
+  },
+  "cta": { "dong_nho": "Quý khách quan tâm", "dong_lon": "HÃY ĐỂ LẠI SĐT NGAY" },
+  "kho_tu_lieu": { "_ghi_chu": "nơi lấy order/source/media (Lark, Google Drive, thư mục máy…)", "order": "", "media": "" }
+}

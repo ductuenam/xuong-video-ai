@@ -1,0 +1,15 @@
+{
+  "_ghi_chu": "Chép vào thu_muc_kol thành kol.json rồi điền. Mọi video sau dùng lại đúng KOL này.",
+  "ten": "Linh",
+  "goi_khach": "cả nhà",
+  "giong": "giọng nữ miền Bắc trẻ",
+  "mo_ta_nguoi": "một cô gái Việt Nam khoảng 25 tuổi, gương mặt trái xoan hiền, mắt một mí to, sống mũi thẳng nhỏ, môi hồng tự nhiên, tóc đen dài ngang lưng uốn sóng nhẹ, mái thưa, da trắng sáng mịn đều màu, không nốt ruồi, không chấm nâu, không tàn nhang, vóc người cân đối cao khoảng 1m62",
+  "mo_ta_phong": "một phòng thử đồ nhỏ, tường màu kem trơn, giá treo quần áo gỗ sáng ở mép trái treo vài chiếc áo màu trung tính, một chậu cây xanh nhỏ trên kệ gỗ thấp ở mép phải, sàn gỗ sáng, ánh sáng ban ngày mềm",
+  "mo_ta_chan": "đôi chân thon thẳng, da chân trắng sáng mịn đều màu như da mặt, đầu gối sáng sạch không thâm không đỏ, không vết, không sần, không gân xanh, không nốt ruồi, không chấm nâu",
+  "trang_phuc_nen": "áo thun trắng trơn, quần âu màu be dài, giày thể thao trắng",
+  "anh_khach": "",
+  "_ghi_chu_anh_khach": "Để trống = Muse tạo gương mặt mới. Điền tên tệp ảnh chân dung (đặt trong thu_muc_kol) nếu dùng mặt người thật: BẮT BUỘC có sự đồng ý bằng văn bản của người đó.",
+  "anh_chuan": "kol-chuan.png",
+  "kx_chuan": 0.15,
+  "_ghi_chu_khoa_mat": "kx_chuan = tâm người trong kol-chuan.png theo chiều ngang − 0,35 (đứng giữa thì 0,15). Dùng cho khoa_mat.py chuan để cắt mat-chuan.png, chan-chuan.png."
+}

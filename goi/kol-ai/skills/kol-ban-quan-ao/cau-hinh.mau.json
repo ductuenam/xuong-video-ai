@@ -1,0 +1,14 @@
+{
+  "_ghi_chu": "Chép file này thành cau-hinh.json (cùng thư mục) rồi điền. Đường dẫn dùng dấu /. Claude sẽ hỏi từng mục.",
+  "shop": {
+    "ten": "Tên shop của anh chị",
+    "lien_he": "Số điện thoại hoặc Zalo",
+    "nganh_hang": "quần áo nữ"
+  },
+  "thu_muc_lam_viec": "D:/KOL-LIVESTREAM/video",
+  "thu_muc_kol": "D:/KOL-LIVESTREAM/kol",
+  "thu_muc_kho": "D:/KOL-LIVESTREAM/kho",
+  "thu_muc_tai_ve": "~/Downloads",
+  "whisper_model": "large-v3",
+  "_ghi_chu_whisper": "Máy không có card NVIDIA thì đổi thành medium cho nhanh."
+}

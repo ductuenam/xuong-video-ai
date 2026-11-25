@@ -1,0 +1,95 @@
+{
+ "nhac": "<thu_muc_nhac>/bai-nhac-co-quyen.mp3",
+ "nhac_tu": 0.636,
+ "ra": "video-lookbook-v1.mp4",
+ "fps": 24,
+ "khop_nhip": false,
+ "lech_toi_da": 0.2,
+ "tat_dan": 2.5,
+ "chu": "",
+ "goc_cao": 0.38,
+ "hat": 5,
+ "mat_neo": "../kol/mat-chuan.png",
+ "anh_goc": {
+  "1": "bo1/goc-tach.png",
+  "2": "bo2/goc-tach.png",
+  "3": "bo3/goc-tach.png"
+ },
+ "doan": [
+  {
+   "clip": "clip/b1-tien.mp4",
+   "tu": 0.62,
+   "den": 2.726,
+   "bo": 1,
+   "goc_cao": 0.38,
+   "goc_vi_tri": "duoi"
+  },
+  {
+   "clip": "clip/b1-chan.mp4",
+   "tu": 0.1,
+   "den": 2.206,
+   "bo": 1,
+   "goc_cao": 0.27,
+   "goc_vi_tri": "duoi"
+  },
+  {
+   "clip": "clip/b1-tien.mp4",
+   "tu": 7.05,
+   "den": 9.156,
+   "bo": 1,
+   "goc_cao": 0.24,
+   "goc_vi_tri": "tren"
+  },
+  {
+   "clip": "clip/b2-tien.mp4",
+   "tu": 0.7,
+   "den": 2.806,
+   "bo": 2,
+   "goc_cao": 0.38,
+   "goc_vi_tri": "duoi"
+  },
+  {
+   "clip": "clip/b2-chan.mp4",
+   "tu": 0.05,
+   "den": 2.156,
+   "bo": 2,
+   "goc_cao": 0.24,
+   "goc_vi_tri": "duoi"
+  },
+  {
+   "clip": "clip/b2-tien.mp4",
+   "tu": 5.15,
+   "den": 7.256,
+   "bo": 2,
+   "goc_cao": 0.24,
+   "goc_vi_tri": "tren"
+  },
+  {
+   "clip": "clip/b3-tien.mp4",
+   "tu": 1.75,
+   "den": 3.856,
+   "bo": 3,
+   "goc_cao": 0.38,
+   "goc_vi_tri": "duoi"
+  },
+  {
+   "clip": "clip/b3-chan.mp4",
+   "tu": 0.04,
+   "den": 2.146,
+   "bo": 3,
+   "goc_cao": 0.27,
+   "goc_vi_tri": "tren"
+  },
+  {
+   "clip": "clip/b3-tien.mp4",
+   "tu": 7.36,
+   "den": 8.9395,
+   "bo": 3,
+   "goc_cao": 0.24,
+   "goc_vi_tri": "tren"
+  }
+ ],
+ "phach": 0.5265,
+ "nen": "phong",
+ "_ghi_chu": "Mẫu kế hoạch của một video ĐẠT 9,02/10 (nền phòng khách, 3 bộ). phach/nhac_tu ở đây là của bài nhạc dùng lúc đó, KHÔNG phải bài trong nhac-mau/ (bài đó: phach 0.4839, nhac_tu 4.274). Đổi bài thì đo lại bằng scripts/do_phach.py. Ảnh góc cảnh toàn 0,38 là cho nền phòng; phông trơn dùng 0,30. Mỗi đoạn: clip, tu, den (giây trong clip), bo, goc_cao, goc_vi_tri."
+}

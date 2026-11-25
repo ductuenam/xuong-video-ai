@@ -1,0 +1,58 @@
+{
+  "ten": "TÊN KÊNH",
+  "chuLinhVat": "",
+  "nhanCanhAI": "Cảnh AI minh họa",
+  "nhanAnhAI": "Ảnh AI minh họa",
+  "mauChinh": "#E8540F",
+  "mauPhu": "#FF8A3D",
+  "mauBia": "#FF7A1A",
+  "xungHo": {
+    "nguoiNoi": "mình",
+    "nguoiXem": "anh chị"
+  },
+  "doiTuong": "Mô tả người xem của kênh trong một câu",
+  "khoCanh": {
+    "thuMuc": "kho-canh",
+    "danhMuc": "danh-muc-canh.csv"
+  },
+  "nhac": "tai-nguyen/nhac-mac-dinh.mp3",
+  "tiengChuyenCanh": "tai-nguyen/tieng-chuyen-canh.wav",
+  "thanhPham": "thanh-pham",
+  "chanDung": "Tên skill tạo ảnh chân dung của người dẫn",
+  "anhAI": {
+    "kieu": "vertex",
+    "khoa": "Đường dẫn file khóa service account Google Cloud",
+    "project": "Mã project",
+    "model": "gemini-nano-banana-2.1"
+  },
+  "giongAI": {
+    "provider": "edge",
+    "voice_id": "vi-VN-HoaiMyNeural",
+    "toc": 1.0,
+    "_ghi": "Giọng AI miễn phí (nữ HoaiMy, nam NamMinh). Có giọng nhân bản Vibi thì đổi thành: khoa (file API key), provider minimax, voice_id, model speech-2.8-hd, ngon_ngu Vietnamese"
+  },
+  "anhThamChieu": [
+    "anh-mat/1.jpg",
+    "anh-mat/2.jpg"
+  ],
+  "flow": {
+    "avatar": "Me",
+    "ghiChu": "Tài khoản Flow của kênh"
+  },
+  "tuCam": [
+    "100%",
+    "chắc chắn",
+    "cam kết"
+  ],
+  "cta": "Câu kêu gọi mặc định cuối video",
+  "lienHe": {"zalo": "Số Zalo in trên mọi tờ hướng dẫn", "web": "Trang web, để trống nếu không có"},
+  "boNhac": {},
+  "boTieng": {},
+  "nhanDien": {
+    "watermark": "nhan-dien/watermark-video.png",
+    "intro": "nhan-dien/intro.mp4",
+    "outro": "nhan-dien/outro.mp4",
+    "introKhiDaiHon": 60
+  },
+  "khoBieuTuong": ""
+}

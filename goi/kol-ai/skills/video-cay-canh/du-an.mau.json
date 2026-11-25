@@ -1,0 +1,21 @@
+{
+  "_ghi_chu": "Mỗi lô video là một thư mục chứa file này. 'anh' mô tả ảnh thiết kế, 'may' mô tả chuyển động máy. Xem references/kho-canh.md để chọn cảnh.",
+  "ten_lo": "lo-mau",
+  "canh": [
+    {
+      "ma": "c01",
+      "ten": "san-vuon-koi",
+      "anh": "Sân vườn nhỏ phía trước nhà phố Việt Nam hiện đại, buổi sáng nắng nhẹ. Bên trái là hồ cá koi nhỏ nước trong, viền đá tự nhiên, 5-6 con koi đỏ trắng, vài lá súng. Cạnh hồ là tùng la hán dáng bonsai trong chậu gốm men xanh rêu. Lối đá phiến xám xuyên qua thảm cỏ nhật. Bên phải là cụm cây xếp tầng: trúc quân tử, cau tiểu trâm, dương xỉ, lan ý, cỏ lan chi, sen đá trong chậu đá mài cùng bộ.",
+      "may": "máy đi tới chậm dọc lối đá phiến, cá koi bơi chậm, lá trúc khẽ đung đưa, nắng lấp lánh trên mặt nước"
+    },
+    {
+      "ma": "c02",
+      "ten": "ban-cong",
+      "anh": "Ban công chung cư cao tầng rộng khoảng 2 mét, buổi chiều. Cây nhiệt đới lá lớn (trầu bà lá xẻ, thiên điểu, bàng Singapore nhỏ), giỏ cây treo, ghế mây và bàn tròn nhỏ, thảm cỏ nhân tạo, lan can kính, phía sau là thành phố mờ.",
+      "may": "máy đi tới chậm về phía ghế mây, giỏ cây treo khẽ đung đưa, lá lớn rung nhẹ trong gió"
+    }
+  ],
+  "cat": {
+    "_ghi_chu": "Tự điền sau bước kiểm clip nếu cần cắt bỏ đoạn lỗi. Ví dụ: \"c01-san-vuon-koi\": [2.4, 10]"
+  }
+}

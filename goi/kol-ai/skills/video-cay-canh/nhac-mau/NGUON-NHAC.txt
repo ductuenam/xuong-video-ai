@@ -1,0 +1,34 @@
+NHẠC MẪU ĐI KÈM GÓI — 8 bài nhạc công cộng (CC0 / Public Domain): được dùng, sửa, đăng mọi nền tảng, kể cả thương mại, không bắt ghi tên.
+
+Nguồn: kho FreePD.com (mọi bài trên FreePD là công cộng CC0), bản lưu trên Internet Archive: https://archive.org/details/freepd
+
+Mỗi bài đã được CẮT SẴN ĐÚNG ĐOẠN HAY (40 giây, không có đoạn dạo đầu), vì video chỉ dài khoảng 12 giây: nhạc phải vào ngay.
+Đã đo: độ sáng tiếng 790–2.700 Hz, 2,5–3,5 nhịp gõ mỗi giây — cùng khoảng với nhạc của các video cây cảnh triệu view.
+
+| Tệp trong gói                       | Bài gốc (tác giả)                     | Cắt từ giây | Thẻ giấy phép trong tệp gốc                                  | Hợp với cảnh |
+| nhac-01-nang-som-vui-tuoi.mp3       | Funshine (Kevin MacLeod)              | 88,7        | "Available from freepd.com. CC0 license."                    | sân vườn nắng sáng, vui |
+| nhac-02-mua-xuan-tuoi-mat.mp3       | Spring - Remastered (Thundermine)     | 14,8        | "Dedicated to the Public Domain April 2017"                  | ban công, vườn hoa, buổi sáng |
+| nhac-03-anh-sang-cam-xuc.mp3        | Finally See The Light (Bryan Teoh)    | 135,5       | "composed and dedicated to the Public Domain in 2020"        | đêm đèn, giếng trời, cảnh sang trọng |
+| nhac-04-chieu-am-ap.mp3             | Slice of Life (Bryan Teoh)            | 72,6        | "composed and dedicated to the Public Domain in 2020"        | hoàng hôn, chiều, trong nhà ấm |
+| nhac-05-vuon-thien-a-dong.mp3       | Hashi and Kiku (Alpha Hydrae)         | 28,6        | "CC0 1.0 Universal"                                          | vườn Nhật, thiền, bonsai, sương sớm |
+| nhac-06-thong-tha-nhe-nhang.mp3     | Feel Good Feel (Jason Shaw)           | 39,6        | "originally found on givelifebacktomusic.com" (kho nhạc CC0) | phòng khách, quán cà phê vườn |
+| nhac-07-nang-vang-ruc-ro.mp3        | Brighter Sun (Manny the Martyr)       | 121,6       | "originally found on givelifebacktomusic.com" (kho nhạc CC0) | sân thượng, hồ bơi, nắng trưa |
+| nhac-08-sang-trong-trong-treo.mp3   | Adding the Sun (Kevin MacLeod)        | 98,6        | tải từ freepd.com (kho CC0)                                  | hồ koi, thác nước, nước trong |
+
+Link tải bản đầy đủ từng bài (đã kiểm mở được ngày 23/11/2026; dùng khi kháng nghị bản quyền):
+- nhac-01: https://archive.org/download/freepd/upbeat/Funshine.mp3
+- nhac-02: https://archive.org/download/freepd/Page2/Spring%20-%20Remastered.mp3
+- nhac-03: https://archive.org/download/freepd/misc/Finally%20See%20The%20Light.mp3
+- nhac-04: https://archive.org/download/freepd/scoring/Slice%20of%20Life.mp3
+- nhac-05: https://archive.org/download/freepd/Page2/Hashi%20and%20Kiku.mp3
+- nhac-06: https://archive.org/download/freepd/Page2/Feel%20Good%20Feel.mp3
+- nhac-07: https://archive.org/download/freepd/Page2/Brighter%20Sun.mp3
+- nhac-08: https://archive.org/download/freepd/misc/Adding%20the%20Sun.mp3
+
+Cách gói chọn bài: dung.py đọc mô tả cảnh, so với từ khóa trong khong-khi.json để chọn bài hợp không khí, không lặp bài liền nhau trong một lô.
+Muốn chỉ định bài cho một cảnh: thêm "nhac": "nhac-05" vào cảnh đó trong du-an.json.
+
+Lưu ý:
+- Đăng Facebook/TikTok: cách hay nhất vẫn là đăng bản -khong-nhac.mp4 rồi chọn nhạc đang thịnh hành trong thư viện nhạc của nền tảng lúc đăng (xem HUONG-DAN.pdf). Nhạc mẫu ở đây để video không bị im khi đăng nơi khác hoặc gửi khách xem.
+- Nhạc công cộng đôi khi bị hệ thống nhận nhầm bản quyền. Nếu gặp, bấm kháng nghị và ghi "nhạc CC0 từ FreePD" kèm link nguồn ở trên.
+- Muốn dùng nhạc riêng: điền "thu_muc_nhac" trong cau-hinh.json (chỉ nhạc shop có quyền). Muốn tắt nhạc: điền "khong".

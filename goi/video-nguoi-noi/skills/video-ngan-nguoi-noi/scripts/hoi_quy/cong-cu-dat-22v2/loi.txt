@@ -1,0 +1,18 @@
+Claude Code giỏi thật nhưng làm một mình
+thì hay quên với hay ẩu, đúng không?
+Thêm bốn thứ này với hai lệnh có sẵn là có ngay một team dev luôn đó!
+Một là Superpowers trong chợ plugin chính thức của Anthropic
+giúp hỏi kỹ ý tưởng và lập kế hoạch rồi viết test trước khi code.
+Hai là Frontend Design cũng trong chợ chính thức
+giúp giao diện bớt na ná kiểu AI.
+Ba là Claude Mem cài bằng một dòng lệnh
+ghi lại việc đã làm để phiên sau mở ra là nhớ ngay.
+Bốn là bộ gstack của Garry Tan
+với hai mươi ba công cụ đóng vai giám đốc, thiết kế và kiểm thử.
+Còn soát code với soát bảo mật thì Claude Code tích hợp sẵn rồi,
+gõ code review hay security review là dùng luôn, không cần cài.
+Mà nhớ nha, có đủ cả team
+thì anh chị vẫn là người duyệt cuối.
+Anh chị muốn thêm vị trí nào cho team AI của mình?
+Comment TEAM
+để mình gửi hướng dẫn từng cái nhé!

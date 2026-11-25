@@ -1,0 +1,55 @@
+# Video kết quả, bản dựng tạm
+*.mp4
+*.mov
+*.mkv
+*.avi
+*.webm
+render/
+_tam/
+_tam-video/
+_soat/
+_backup/
+video-studio/
+du-an/
+07-du-an/
+
+# Cấu hình thật (chỉ đưa tệp .mau lên)
+cau-hinh.json
+ho-so-kenh.json
+kol.json
+video.json
+du-an.json
+!**/*.mau.json
+!.claude/skills/**/references/**/video.json
+
+# Khóa, mật khẩu
+.env
+.env.*
+*.key
+*.pem
+*-key.json
+*credentials*.json
+*service-account*.json
+secrets/
+
+# Python, Node
+__pycache__/
+*.pyc
+node_modules/
+.venv/
+.avs/
+
+# Hệ điều hành
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Phiếu giao việc nội bộ ZENOTERA, không đưa lên kho công khai
+phieu/
+
+# Lối tắt sang kho nặng ở ổ E (video, zip, báo cáo): không bao giờ lên GitHub
+_kho-nang
+_kho-nang/
+*.zip
+*.mp3
+*.wav

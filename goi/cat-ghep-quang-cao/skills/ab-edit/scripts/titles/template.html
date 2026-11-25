@@ -1,0 +1,80 @@
+<!doctype html>
+<!-- Khối chữ video Ads (chuẩn AB Edit v2): font & màu theo THƯƠNG HIỆU (CFG.brand từ brands/<tên>.json — mặc định UTM Bebas,
+     trắng / vàng #FFD400 / ô đỏ #C8102E), viền đen + bóng nhẹ, KHÔNG blur, KHÔNG phát sáng/ánh kim/lóe sáng, KHÔNG phóng to–thu nhỏ.
+     Màu trong titles.json: mã hex, hoặc từ khoá "accent" (màu nhấn) / "text" (màu chữ chính) để đổi thương hiệu không phải sửa từng khối.
+     Hiệu ứng duy nhất: hiện dần + trượt lên nhẹ (0,45s), ra mờ dần (0,35s).
+     CFG do make-titles.py chèn: {kind, dur, W, H, y, small, big, color, lines[], labels[], badge, text, left, right, mid, under, box}
+     Bản cũ (vàng phát sáng, blur) giữ ở template-v1-glow.html. -->
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=League+Gothic&family=Be+Vietnam+Pro:ital,wght@0,500;1,400&display=block&subset=vietnamese" rel="stylesheet">
+<style>
+html,body{margin:0;background:transparent;overflow:hidden}
+#stage{position:relative;width:var(--W);height:var(--H)}
+.blk{position:absolute;left:0;right:0;display:flex;flex-direction:column;align-items:center}
+.bb{font-family:var(--font);text-transform:uppercase;white-space:nowrap;line-height:1.08;letter-spacing:1.5px;
+  -webkit-text-stroke:5px var(--stroke);paint-order:stroke fill;text-shadow:0 5px 10px rgba(0,0,0,.55)}
+.box{background:var(--box);color:var(--boxText)!important;padding:4px 30px 8px;border-radius:12px;-webkit-text-stroke:0;text-shadow:none;box-shadow:0 6px 14px rgba(0,0,0,.45)}
+.shade{position:absolute;left:50%;top:50%;width:1500px;height:520px;margin:-260px 0 0 -750px;pointer-events:none;
+  background:radial-gradient(ellipse at center,rgba(0,0,0,.42) 0%,rgba(0,0,0,.22) 45%,transparent 70%)}
+.row{display:flex;align-items:center;gap:26px}
+.band{position:absolute;left:0;right:0;background:rgba(0,0,0,.6)}
+.note{font-family:var(--body);font-style:italic;font-weight:400;color:#fff;white-space:nowrap;text-shadow:0 2px 4px #000,0 0 8px rgba(0,0,0,.8)}
+.label{position:absolute}
+</style></head><body><div id="stage"></div>
+<script>
+const CFG = /*CFG*/{}/*CFG*/;
+const B=Object.assign({font:"'UTM Bebas','League Gothic',sans-serif",body:"'Be Vietnam Pro',sans-serif",accent:'#FFD400',text:'#FFFFFF',
+  box:'#C8102E',boxText:'#FFFFFF',stroke:'#000000',googleFonts:[]},CFG.brand||{});
+for(const k of ['font','body','box','boxText','stroke'])document.documentElement.style.setProperty('--'+k,B[k]);
+for(const g of B.googleFonts){const l=document.createElement('link');l.rel='stylesheet';l.href='https://fonts.googleapis.com/css2?family='+encodeURIComponent(g).replace(/%20/g,'+')+'&display=block&subset=vietnamese';document.head.append(l)}
+const W=CFG.W||1440,H=CFG.H||1920,D=CFG.dur||3, Y=B.accent, WH=B.text;
+const C=c=>c==='accent'?Y:c==='text'?WH:c;   // màu theo thương hiệu
+const st=document.getElementById('stage');st.style.setProperty('--W',W+'px');st.style.setProperty('--H',H+'px');
+const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x)), eo=x=>1-Math.pow(1-cl(x),3);
+function fit(el,maxW){let fs=parseFloat(el.style.fontSize);while(el.scrollWidth>maxW&&fs>20){fs-=2;el.style.fontSize=fs+'px'}return fs}
+const T=(txt,size,color,box)=>{const d=document.createElement('div');d.className='bb'+(box?' box':'');d.style.fontSize=size+'px';d.style.color=C(color);d.textContent=txt;return d};
+let items=[];   // [{el, at}] — mỗi phần tử hiện dần lúc `at`
+function block(y){const b=document.createElement('div');b.className='blk';b.style.top=y*H+'px';b.style.transform='translateY(-50%)';
+  if(CFG.shade!==false&&CFG.kind!=='note'){const fx=document.createElement('div');fx.style.cssText='position:absolute;left:50%;top:50%;width:0;height:0';const sd=document.createElement('div');sd.className='shade';fx.append(sd);b.append(fx);items.push({el:sd,at:0,still:1})}
+  st.append(b);return b}
+function build(){
+  const k=CFG.kind||'title';
+  if(k==='title'||k==='serif'||k==='wipe'){   // dòng nhỏ trắng + dòng lớn vàng (serif → dòng lớn trắng)
+    const b=block(CFG.y||0.62);
+    if(CFG.small){const s=T(CFG.small,CFG.smallSize||82,WH);b.append(s);fit(s,W-120);items.push({el:s,at:0})}
+    const g=T(CFG.big,CFG.bigSize||CFG.size||(k==='serif'?150:170),CFG.color||(k==='serif'?WH:Y));b.append(g);fit(g,W-90);items.push({el:g,at:CFG.small?0.12:0});
+  } else if(k==='hook'){
+    const b=block(CFG.y||0.5);
+    CFG.lines.forEach((L,i)=>{const d=T(L.text,(L.size||120)*1.15,L.color||WH,L.box);if(L.box)d.style.marginTop='10px';b.append(d);fit(d,W-70);items.push({el:d,at:0.15*i})});
+  } else if(k==='badge'||k==='stamp'){
+    const b=block(CFG.y||0.62);
+    if(k==='stamp'&&CFG.small){const s=T(CFG.small,72,WH);s.style.marginBottom='14px';b.append(s);fit(s,W-120);items.push({el:s,at:0})}
+    const r=document.createElement('div');r.className='row';
+    const bd=T(k==='badge'?CFG.badge:CFG.big,(k==='badge'?(CFG.badgeSize||100):(CFG.size||130)),WH,true);r.append(bd);items.push({el:bd,at:0});
+    if(k==='badge'){const tx=T(CFG.text,CFG.size||118,WH);r.append(tx);items.push({el:tx,at:0.12});
+      let fs=parseFloat(tx.style.fontSize);b.append(r);while(r.scrollWidth>W-90&&fs>30){fs-=2;tx.style.fontSize=fs+'px';bd.style.fontSize=fs*0.86+'px'}}
+    else{b.append(r);fit(bd,W-140)}
+  } else if(k==='duo'){
+    const b=block(CFG.y||0.62);const r=document.createElement('div');r.className='row';
+    const l=T(CFG.left.text,CFG.left.size||170,CFG.left.color||WH),m=T(CFG.mid&&CFG.mid!=='⚡'?CFG.mid:'–',140,WH),rr=T(CFG.right.text,CFG.right.size||170,CFG.right.color||Y);
+    r.append(l,m,rr);b.append(r);items.push({el:r,at:0});
+    if(CFG.under){const u=T(CFG.under,CFG.underSize||110,Y,CFG.underBox);b.append(u);items.push({el:u,at:0.15})}
+  } else if(k==='cta'){
+    const y=CFG.y||0.76;const band=document.createElement('div');band.className='band';band.style.top=y*H-170+'px';band.style.height='340px';st.append(band);items.push({el:band,at:0,still:1});
+    const b=document.createElement('div');b.className='blk';b.style.top=y*H+'px';b.style.transform='translateY(-50%)';st.append(b);
+    const s=T(CFG.small,78,WH);b.append(s);items.push({el:s,at:0.1});const g=T(CFG.big,CFG.bigSize||170,Y);b.append(g);fit(g,W-90);items.push({el:g,at:0.25});
+  } else if(k==='labels'){
+    CFG.labels.forEach(L=>{const d=T(L.text,(L.size||96)*1.12,L.color||Y);d.classList.add('label');d.style.left=L.x*W+'px';d.style.top=L.y*H+'px';
+      d.dataset.tx=L.align==='right'?'-100%':L.align==='center'?'-50%':'0';st.append(d);items.push({el:d,at:L.at||0,lab:1})});
+  } else if(k==='note'){
+    const b=block(CFG.y||0.95);const g=document.createElement('div');g.className='note';g.style.fontSize=(CFG.size||40)+'px';g.textContent=CFG.text;b.append(g);fit(g,W-80);items.push({el:g,at:0,still:1});
+  }
+}
+window.ve=function(t){
+  const out=cl((D-t)/0.35);
+  items.forEach(({el,at,still,lab})=>{const a=eo((t-at)/0.45);el.style.opacity=Math.min(a,out);
+    const dy=still?0:(1-a)*26;el.style.transform=lab?`translate(${el.dataset.tx},calc(-50% + ${dy}px))`:`translateY(${dy}px)`});
+};
+new Promise(r=>setTimeout(r,50)).then(()=>document.fonts.ready).then(()=>Promise.all([...B.font.split(','),...B.body.split(',')].map(f=>f.trim()).filter(f=>!/^(sans-serif|serif)$/.test(f)).map(f=>document.fonts.load('100px '+f).catch(()=>0))))
+  .then(()=>{build();window.ve(0);window.SAN_SANG=true});
+</script></body></html>

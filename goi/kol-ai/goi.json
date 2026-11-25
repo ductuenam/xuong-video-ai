@@ -1,0 +1,59 @@
+{
+  "ma": "kol-ai",
+  "ten": "KOL AI và bán hàng",
+  "mo_ta": "Video KOL AI bán quần áo, lookbook, mặc thử, review nghỉ dưỡng, cây cảnh",
+  "_ghi_chu": "Mọi gói đều cài ngay một lần. dieu_kien_theo_skill: thứ người dùng tự chuẩn bị, Claude kiểm lúc làm video (xem xuong-mau/08_XUONG_VIDEO/CHUAN_BI_THEM.md). \"*\" = mọi skill của gói. Rỗng = không cần gì thêm.",
+  "skills": [
+    "kol-ban-quan-ao",
+    "kol-lookbook",
+    "kol-mac-thu-mot-khung",
+    "kol-review-nghi-duong",
+    "video-cay-canh"
+  ],
+  "agents": [
+    "cham-so-mau-kol",
+    "giam-sat-kol-mot-khung",
+    "kol-livestream-soat",
+    "nd-cham-so-mau",
+    "nd-giam-sat-cuoi",
+    "nd-soi-loi-giong",
+    "nd-soi-mat-kol",
+    "sku-cc-cham-so-mau",
+    "sku-cc-dang-bai",
+    "sku-cc-kiem-dung",
+    "sku-cc-muse",
+    "sku-cc-thiet-ke",
+    "sku-lb-cham-dung",
+    "sku-lb-dung",
+    "sku-lb-lenh",
+    "sku-lb-soi-da-mat",
+    "sku-lb-soi-trang-phuc",
+    "soi-ao-xoay-lung-kol",
+    "soi-loi-giong-kol",
+    "soi-mat-trang-diem-kol"
+  ],
+  "can_goi": [
+    "video-nguoi-noi"
+  ],
+  "can_tai_nguyen": [
+    "canh",
+    "nhac",
+    "am",
+    "nhan-vat"
+  ],
+  "can_phan_mem": [
+    "python",
+    "ffmpeg",
+    "whisper"
+  ],
+  "dieu_kien_theo_skill": {
+    "*": [
+      "tai-khoan-muse",
+      "claude-in-chrome"
+    ]
+  },
+  "cau_lenh_mau": [
+    "Làm video KOL bán mẫu áo này cho tôi <link Shopee>",
+    "Làm lô 10 video cây cảnh"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "_ghi_chu": "Chép vào thư mục video thành video.json rồi sửa theo sản phẩm. v1, v2: động tác theo giây 0–8,5 (phần 8,5–10 tự thêm). l1–l3: lời 35–44 chữ, viết số và size theo cách đọc. d1, d2: động tác cảnh cận trên và cận dưới. Ví dụ dưới là video mẫu váy len đã đạt. chi_tiet_khoa: 2–5 chi tiết dễ bị vẽ sai, ghi cả cái KHÔNG được thành (vd cổ lá sen chứ không phải cổ đứng). kx: số đã dùng cho cat_anh.py.",
+  "ten": "chiếc váy len nâu",
+  "mo_ta": "váy len lông thỏ màu nâu mocha, ôm dáng, cổ cao ba phân, tay dài, dài tới mắt cá, giày cao gót đen",
+  "chi_tiet_khoa": [
+    "cổ cao ba phân ôm cổ, không lật, không cổ bẻ",
+    "tay dài tới cổ tay, không bo",
+    "dài tới mắt cá, có xẻ tà sau"
+  ],
+  "kx": 0.15,
+  "v1": "giây 0-1,5 hơi nghiêng người về phía máy, tay phải vẫy nhẹ chào; giây 1,5-3,5 tay phải ngửa mở ra ngang eo như giới thiệu; giây 3,5-5,5 hai tay vuốt nhẹ hai bên hông váy từ eo xuống; giây 5,5-8,5 tay phải chỉ nhẹ về phía máy khi hỏi;",
+  "l1": "Cả nhà ơi, trời lạnh thế này mà muốn mặc váy vẫn ấm thì xem ngay chiếc váy len này. Len lông thỏ, cổ ba phân kín gió, ôm dáng dài tới mắt cá, mặc lên tôn dáng hẳn đúng không cả nhà?",
+  "v2": "giây 0-2 hai tay đặt nhẹ hai bên eo; giây 2-3,5 tay phải chạm nhẹ mép cổ cao ba phân; giây 3,5-5,5 tay phải vuốt nhẹ dọc ống tay áo bên trái; giây 5,5-8,5 tay phải ngửa mở ra khi nói, gật đầu nhẹ;",
+  "l2": "Các chị nhìn này, vải cầm nặng tay, mềm mịn, co giãn tốt, có bản xẻ tà sau đi lại thoải mái. Hơn trăm nghìn đơn rồi đấy cả nhà, khách khen chất dày dặn, mặc lên tôn dáng cực.",
+  "l3": "Váy có màu nâu với màu đen, nhiều size, đi làm, đi chơi hay đi tiệc đều hợp. Chị em nào ưng thì nhắn ngay chiều cao cân nặng, em chọn size chuẩn cho từng người luôn nha cả nhà!",
+  "d1": "mặt len mịn rõ sợi; tay phải vuốt chậm dọc thân váy từ eo xuống hông.",
+  "d2": "cô ấy dồn trọng lượng nhẹ từ chân này sang chân kia, gấu váy len khẽ lay, giày cao gót đen giữ nguyên, không bước đi."
+}

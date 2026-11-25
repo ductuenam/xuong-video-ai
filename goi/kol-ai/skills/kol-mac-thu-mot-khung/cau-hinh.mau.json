@@ -1,0 +1,10 @@
+{
+ "_ghi_chu": "Chép file này thành cau-hinh.json (cùng thư mục) rồi điền. Đường dẫn dùng dấu /. Đường dẫn tương đối tính từ thư mục làm việc (nơi mở Claude Code). Thư mục thu_muc_kol chứa kol.json + kol-chuan.png của KOL riêng (xem assets/README.md).",
+ "shop": {"ten": "Tên shop của bạn", "lien_he": "", "nganh_hang": "quần áo"},
+ "thu_muc_lam_viec": "kol-mac-thu/video",
+ "thu_muc_kol": "kol-mac-thu/kol",
+ "thu_muc_kho": "kol-mac-thu/kho",
+ "thu_muc_tai_ve": "~/Downloads",
+ "whisper_model": "large-v3",
+ "_ghi_chu_whisper": "Máy không có card NVIDIA thì đổi thành medium cho nhanh."
+}

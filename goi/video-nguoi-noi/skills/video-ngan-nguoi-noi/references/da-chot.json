@@ -1,0 +1,71 @@
+{
+  "_ghi": "Luật đã chốt, máy kiểm bằng scripts/kiem_chot.py. Chỉ sửa khi người dẫn duyệt một bản nâng cấp; ghi ngày và lý do vào da-chot.md.",
+  "docDung": {
+    "_ghi": "Viết lại trong bản đọc (doc-tts), phụ đề loi.txt vẫn giữ chữ gốc. tao_giong.py tự thay trước khi gửi. Dấu gạch là U+2011 (không ngắt), đừng đổi sang gạch thường.",
+    "AI": "Ây‑Ai",
+    "MCP": "Em‑Xi‑Pi",
+    "API": "Ây‑Pi‑Ai",
+    "USB-C": "Diu‑Ét‑Bi Xê",
+    "USB‑C": "Diu‑Ét‑Bi Xê",
+    "gstack": "G Stack"
+  },
+  "cam": {
+    "_ghi": "Kiểu viết lời: ngoài đoạn cuối phải có ít nhất 1 câu cảm thán (!) hoặc câu hỏi tu từ (?), có tiểu từ nói như người thật; đoạn cuối có câu hỏi và kết bằng dấu chấm than.",
+    "nhanToiThieu": 1,
+    "troTuToiThieu": 1,
+    "troTu": [
+      "nha",
+      "nhé",
+      "luôn",
+      "đó",
+      "này",
+      "nè",
+      "thôi",
+      "hẵng",
+      "đấy",
+      "ha",
+      "chưa",
+      "đúng không"
+    ]
+  },
+  "camViet": [
+    {
+      "mau": "\\d+[.,]\\d+",
+      "ly_do": "số thập phân bị đọc sai (2.5 thành hai năm): viết bằng chữ, ví dụ hai chấm năm"
+    },
+    {
+      "mau": "\\d",
+      "ly_do": "bản đọc viết số bằng chữ để máy đọc đúng, phụ đề loi.txt mới dùng chữ số"
+    },
+    {
+      "mau": "A\\.I\\.",
+      "ly_do": "A.I. bị đọc thành ai: dùng Ây‑Ai"
+    },
+    {
+      "mau": "Ây-Ai|Ây Ai",
+      "ly_do": "Ây Ai bị tách hai nhịp: dùng gạch không ngắt Ây‑Ai (U+2011)"
+    },
+    {
+      "mau": "<#[^#]*#>",
+      "ly_do": "thẻ ngắt <#..#> làm giọng rời rạc, đã bỏ từ 08/11/2026"
+    }
+  ],
+  "nhip": {
+    "hoiTu": 1.6,
+    "hoiDen": 2.0,
+    "phay": 0.15,
+    "cham": 0.25
+  },
+  "giong": {
+    "toc": 1.09,
+    "model": "speech-2.8-hd"
+  },
+  "nhacDuocDung": {
+    "_ghi": "Chỉ bài đã kiểm quyền dùng ngoài YouTube (Pixabay, ghi công trong tai-nguyen/nhac/NGUON.md). Bài từ YouTube Audio Library chưa kiểm thì không dùng. Đổi bài giữa các video.",
+    "ten": [
+      "beat-vlog",
+      "phonk",
+      "future-bass"
+    ]
+  }
+}

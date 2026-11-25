@@ -1,0 +1,11 @@
+{
+ "ten": "chiếc <tên ngắn sản phẩm, màu>",
+ "mo_ta": "<loại áo, chất, màu, dáng, cổ, khóa/cúc, túi, bo tay, bo gấu, chữ/logo>",
+ "phoi": "<quần hoặc chân váy, giày, tất>",
+ "chi_tiet_khoa": ["<chi tiết dễ sai, ghi cả cái KHÔNG được thành>", "lưng áo trơn hoàn toàn, không chữ, không logo, không khóa, không túi"],
+ "anh_nha_ban": ["shopee/NN.jpg"],
+ "v1": "giây 0-1,6 ...; giây 1,6-2,6 ...; giây 2,6-5 xoay người chậm tại chỗ quay lưng hẳn về phía máy ..., giữ 1 giây rồi xoay lại nhìn máy; ...",
+ "l1": "<38–46 chữ: mở so sánh + lợi ích theo tình huống>",
+ "v2": "giây 0-1,6 ...; ...",
+ "l2": "<38–46 chữ: thông tin mua + chi tiết cầm nắm + kêu gọi + chốt>"
+}

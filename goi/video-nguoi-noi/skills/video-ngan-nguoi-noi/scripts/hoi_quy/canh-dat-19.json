@@ -1,0 +1,358 @@
+{
+ "canh": [
+  {
+   "loai": "flow-chu",
+   "nen": true,
+   "ten": "P28",
+   "tren": "4 SKILL MIỄN PHÍ",
+   "duoi": "LÀM ĐỠ CẢ BUỔI",
+   "tu": 0,
+   "den": 3,
+   "viTriPhuDe": 1420,
+   "y": 150
+  },
+  {
+   "loai": "bieu-do",
+   "kieuNen": "luoi",
+   "tren": "Cái nào cũng",
+   "duoi": "hàng nghìn sao",
+   "cot": [
+    {
+     "ten": "Prompt Master",
+     "so": 15811
+    },
+    {
+     "ten": "Stop Slop",
+     "so": 18831
+    },
+    {
+     "ten": "Workspace MCP",
+     "so": 3501
+    },
+    {
+     "ten": "Last 30 Days",
+     "so": 67251,
+     "noiBat": true
+    }
+   ],
+   "nguon": "Số sao trên GitHub, 11/11/2026",
+   "moc": [
+    0.1,
+    0.4,
+    0.7,
+    1.0
+   ],
+   "tu": 3,
+   "den": 4,
+   "viTriPhuDe": 1420
+  },
+  {
+   "loai": "man-web",
+   "anh": "web/pm.png",
+   "x": 360,
+   "y": 150,
+   "zoom": 1.5,
+   "cao": 560,
+   "tren": "1. Prompt Master",
+   "duoi": "hơn 15 nghìn sao",
+   "khoanh": [
+    {
+     "x": 995,
+     "y": 186,
+     "w": 46,
+     "h": 30
+    }
+   ],
+   "moc": [
+    [
+     4,
+     0.8
+    ]
+   ],
+   "nguon": "Ảnh chụp từ GitHub, 11/11/2026",
+   "tu": 4,
+   "den": 5,
+   "viTriPhuDe": 1300,
+   "am": "chup"
+  },
+  {
+   "loai": "man-web",
+   "anh": "web/pm-cach.png",
+   "x": 60,
+   "y": 670,
+   "zoom": 1.5,
+   "cao": 560,
+   "tren": "Gõ một ý ngắn",
+   "duoi": "ra câu lệnh chuẩn",
+   "khoanh": [
+    {
+     "x": 92,
+     "y": 803,
+     "w": 616,
+     "h": 30
+    },
+    {
+     "x": 92,
+     "y": 699,
+     "w": 616,
+     "h": 30
+    },
+    {
+     "x": 92,
+     "y": 1039,
+     "w": 616,
+     "h": 30
+    }
+   ],
+   "moc": [
+    [
+     5,
+     0.4
+    ],
+    6,
+    7
+   ],
+   "nguon": "Ảnh chụp từ GitHub, 11/11/2026",
+   "tu": 5,
+   "den": 8,
+   "viTriPhuDe": 1300
+  },
+  {
+   "loai": "man-web",
+   "anh": "web/ss.png",
+   "x": 360,
+   "y": 150,
+   "zoom": 1.5,
+   "cao": 560,
+   "tren": "2. Stop Slop",
+   "duoi": "gần 19 nghìn sao",
+   "khoanh": [
+    {
+     "x": 995,
+     "y": 186,
+     "w": 46,
+     "h": 30
+    }
+   ],
+   "moc": [
+    [
+     8,
+     0.8
+    ]
+   ],
+   "nguon": "Ảnh chụp từ GitHub, 11/11/2026",
+   "tu": 8,
+   "den": 9,
+   "viTriPhuDe": 1300,
+   "am": "chup"
+  },
+  {
+   "loai": "man-web",
+   "anh": "web/ss-bat.png",
+   "x": 40,
+   "y": 640,
+   "zoom": 1.5,
+   "cao": 560,
+   "tren": "Xóa dấu vết AI",
+   "duoi": "câu sáo, gạch dài",
+   "khoanh": [
+    {
+     "x": 60,
+     "y": 706,
+     "w": 650,
+     "h": 56
+    },
+    {
+     "x": 60,
+     "y": 857,
+     "w": 650,
+     "h": 56
+    }
+   ],
+   "moc": [
+    [
+     9,
+     0.3
+    ],
+    10
+   ],
+   "nguon": "Ảnh chụp từ GitHub, 11/11/2026",
+   "tu": 9,
+   "den": 11,
+   "viTriPhuDe": 1300
+  },
+  {
+   "loai": "man-web",
+   "anh": "web/gw.png",
+   "x": 360,
+   "y": 150,
+   "zoom": 1.5,
+   "cao": 560,
+   "tren": "3. Workspace MCP",
+   "duoi": "Gmail, Lịch, Drive",
+   "khoanh": [
+    {
+     "x": 1000,
+     "y": 186,
+     "w": 40,
+     "h": 30
+    }
+   ],
+   "moc": [
+    [
+     11,
+     0.8
+    ]
+   ],
+   "nguon": "Ảnh chụp từ GitHub, 11/11/2026",
+   "tu": 11,
+   "den": 12,
+   "viTriPhuDe": 1300,
+   "am": "chup"
+  },
+  {
+   "loai": "day-chuyen",
+   "kieuNen": "luoi",
+   "tren": "Làm khi",
+   "duoi": "anh chị nhờ",
+   "buoc": [
+    [
+     "doc",
+     "Đọc mail"
+    ],
+    [
+     "viet",
+     "Soạn thư nháp"
+    ],
+    [
+     "duyet",
+     "Xếp lịch"
+    ]
+   ],
+   "moc": [
+    12,
+    [
+     12,
+     1.2
+    ],
+    13
+   ],
+   "tu": 12,
+   "den": 14,
+   "viTriPhuDe": 1420,
+   "amMoc": "hien-the"
+  },
+  {
+   "loai": "canh-bao",
+   "kieuNen": "toi",
+   "tren": "Nhớ nha",
+   "duoi": "trước khi cài",
+   "dong": [
+    [
+     "vang",
+     "Không tự chạy mỗi sáng",
+     "Anh chị nhờ thì nó mới làm"
+    ],
+    [
+     "do",
+     "Cần khóa đăng nhập",
+     "Tạo trên Google Cloud trước"
+    ]
+   ],
+   "moc": [
+    0.2,
+    15
+   ],
+   "tu": 14,
+   "den": 16,
+   "viTriPhuDe": 1500
+  },
+  {
+   "loai": "man-web",
+   "anh": "web/l30.png",
+   "x": 360,
+   "y": 150,
+   "zoom": 1.5,
+   "cao": 560,
+   "tren": "4. Last 30 Days",
+   "duoi": "hơn 67 nghìn sao",
+   "khoanh": [
+    {
+     "x": 994,
+     "y": 186,
+     "w": 48,
+     "h": 30
+    }
+   ],
+   "moc": [
+    17
+   ],
+   "nguon": "Ảnh chụp từ GitHub, 11/11/2026",
+   "tu": 16,
+   "den": 18,
+   "viTriPhuDe": 1300,
+   "am": "chup"
+  },
+  {
+   "loai": "man-web",
+   "anh": "web/l30-nguon.png",
+   "x": 40,
+   "y": 560,
+   "zoom": 1.5,
+   "cao": 560,
+   "tren": "Lục Reddit, HN...",
+   "duoi": "trong 30 ngày",
+   "khoanh": [
+    {
+     "x": 60,
+     "y": 646,
+     "w": 650,
+     "h": 56
+    }
+   ],
+   "moc": [
+    [
+     18,
+     0.5
+    ]
+   ],
+   "nguon": "Ảnh chụp từ GitHub, 11/11/2026",
+   "tu": 18,
+   "den": 21,
+   "viTriPhuDe": 1300
+  },
+  {
+   "loai": "flow-chu",
+   "nen": true,
+   "ten": "P12",
+   "tren": "KHỎI LO CLAUDE",
+   "duoi": "TRẢ LỜI TIN CŨ",
+   "tu": 21,
+   "den": 22,
+   "viTriPhuDe": 1420,
+   "y": 150
+  },
+  {
+   "loai": "flow-chu",
+   "nen": true,
+   "ten": "P10",
+   "tren": "CÀI SKILL NÀO",
+   "duoi": "TRƯỚC?",
+   "tu": 22,
+   "den": 23,
+   "viTriPhuDe": 1420,
+   "y": 150
+  },
+  {
+   "loai": "ket-comment",
+   "clip": "P04",
+   "nhan": "CÂU HỎI CHO ANH CHỊ",
+   "tieuDe": "Cài skill nào trước?",
+   "tuKhoa": "CÀI",
+   "tu": 23,
+   "den": "het",
+   "viTriPhuDe": 1480,
+   "am": "thong-bao"
+  }
+ ]
+}

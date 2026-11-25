@@ -1,0 +1,202 @@
+{
+ "canh": [
+  {
+   "loai": "flow-chu",
+   "nen": true,
+   "ten": "P15",
+   "tren": "LÀM MỘT MÌNH",
+   "duoi": "HAY QUÊN, HAY ẨU?",
+   "tu": 0,
+   "den": 3,
+   "viTriPhuDe": 1420,
+   "y": 150
+  },
+  {
+   "loai": "luoi-the",
+   "kieuNen": "luoi",
+   "tren": "4 thứ cài thêm",
+   "duoi": "2 lệnh có sẵn",
+   "nhom": [
+    {
+     "ten": "Cài thêm",
+     "o": [
+      "Lập kế hoạch",
+      "Giao diện",
+      "Trí nhớ",
+      "Nhiều vai"
+     ]
+    },
+    {
+     "ten": "Có sẵn",
+     "o": [
+      "Soát code",
+      "Bảo mật"
+     ]
+    }
+   ],
+   "sang": [
+    [
+     "Lập kế hoạch",
+     "Giao diện",
+     "Trí nhớ",
+     "Nhiều vai",
+     "Soát code",
+     "Bảo mật"
+    ]
+   ],
+   "moc": [
+    0.2
+   ],
+   "tu": 3,
+   "den": 4,
+   "viTriPhuDe": 1420,
+   "amMoc": "hien-the"
+  },
+  {
+   "loai": "man-web",
+   "anh": "web/g1-superpowers.png",
+   "x": 330,
+   "y": 110,
+   "zoom": 1.45,
+   "cao": 430,
+   "tren": "1 · Superpowers",
+   "duoi": "plugin chính thức",
+   "khoanh": [],
+   "moc": [
+    0.3
+   ],
+   "nguon": "Ảnh chụp từ github.com, 12/11/2026",
+   "tu": 4,
+   "den": 6,
+   "viTriPhuDe": 1300,
+   "am": "chup"
+  },
+  {
+   "loai": "man-web",
+   "anh": "web/g2-frontend.png",
+   "x": 360,
+   "y": 300,
+   "zoom": 1.45,
+   "cao": 520,
+   "tren": "2 · Frontend Design",
+   "duoi": "plugin chính thức",
+   "khoanh": [],
+   "moc": [
+    0.3
+   ],
+   "nguon": "Ảnh chụp từ github.com, 12/11/2026",
+   "tu": 6,
+   "den": 8,
+   "viTriPhuDe": 1300
+  },
+  {
+   "loai": "man-web",
+   "anh": "web/g5-mem.png",
+   "x": 330,
+   "y": 110,
+   "zoom": 1.45,
+   "cao": 430,
+   "tren": "3 · Claude Mem",
+   "duoi": "phiên sau vẫn nhớ",
+   "khoanh": [],
+   "moc": [
+    0.3
+   ],
+   "nguon": "Ảnh chụp từ github.com, 12/11/2026",
+   "tu": 8,
+   "den": 10,
+   "viTriPhuDe": 1300
+  },
+  {
+   "loai": "man-web",
+   "anh": "web/g6-gstack.png",
+   "x": 330,
+   "y": 110,
+   "zoom": 1.45,
+   "cao": 430,
+   "tren": "4 · gstack",
+   "duoi": "23 công cụ, nhiều vai",
+   "khoanh": [
+    {
+     "x": 770,
+     "y": 290,
+     "w": 285,
+     "h": 130
+    }
+   ],
+   "moc": [
+    0.3
+   ],
+   "nguon": "Ảnh chụp từ github.com, 12/11/2026",
+   "tu": 10,
+   "den": 12,
+   "viTriPhuDe": 1300
+  },
+  {
+   "loai": "man-web",
+   "anh": "web/g7-lenh-co-san.png",
+   "x": 350,
+   "y": 175,
+   "zoom": 1.45,
+   "cao": 180,
+   "tren": "Có sẵn, không cài",
+   "duoi": "gõ lệnh là dùng",
+   "khoanh": [
+    {
+     "x": 712,
+     "y": 198,
+     "w": 126,
+     "h": 30
+    },
+    {
+     "x": 768,
+     "y": 283,
+     "w": 158,
+     "h": 30
+    }
+   ],
+   "moc": [
+    0.3,
+    13
+   ],
+   "nguon": "Ảnh chụp từ code.claude.com, 12/11/2026",
+   "tu": 12,
+   "den": 14,
+   "viTriPhuDe": 1300
+  },
+  {
+   "loai": "flow-chu",
+   "nen": true,
+   "ten": "P13",
+   "tren": "NGƯỜI DUYỆT CUỐI",
+   "duoi": "VẪN LÀ ANH CHỊ!",
+   "tu": 14,
+   "den": 16,
+   "viTriPhuDe": 1420,
+   "y": 150,
+   "am": "luot-manh"
+  },
+  {
+   "loai": "flow-chu",
+   "nen": true,
+   "ten": "P08",
+   "tren": "THÊM VỊ TRÍ",
+   "duoi": "NÀO NỮA?",
+   "tu": 16,
+   "den": 17,
+   "viTriPhuDe": 1420,
+   "y": 150
+  },
+  {
+   "loai": "ket-comment",
+   "clip": "P02",
+   "nhan": "CÂU HỎI CHO ANH CHỊ",
+   "tieuDe": "Team AI thiếu ai?",
+   "tuKhoa": "TEAM",
+   "tu": 17,
+   "den": "het",
+   "viTriPhuDe": 1480,
+   "am": "thong-bao"
+  }
+ ]
+}

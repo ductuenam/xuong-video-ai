@@ -1,0 +1,235 @@
+{
+ "mo_dau": {
+  "anh": "boi-canh/bc1.png",
+  "nhan": "Bối cảnh minh họa",
+  "dai": 0.9
+ },
+ "doan": [
+  {
+   "tep": "c1-noi-c.mp4",
+   "tu": 0.51,
+   "den": 4.33,
+   "zoom": 1.0,
+   "tam": [
+    0.5,
+    0.33
+   ],
+   "o_anh": "boi-canh/bc1.png"
+  },
+  {
+   "tep": "c1-noi-c.mp4",
+   "tu": 5.19,
+   "den": 6.7,
+   "zoom": 1.12,
+   "tam": [
+    0.5,
+    0.33
+   ]
+  },
+  {
+   "tep": "c2-noi-d.mp4",
+   "tu": 0,
+   "den": 2.6,
+   "zoom": 1.0,
+   "tam": [
+    0.5,
+    0.33
+   ],
+   "anh_phu": "boi-canh/bc2.png"
+  },
+  {
+   "tep": "c2-noi-d.mp4",
+   "tu": 2.95,
+   "den": 5.82,
+   "zoom": 1.0,
+   "tam": [
+    0.5,
+    0.33
+   ]
+  },
+  {
+   "tep": "c2-noi-d.mp4",
+   "tu": 5.82,
+   "den": 7.2,
+   "zoom": 1.0,
+   "tam": [
+    0.5,
+    0.33
+   ],
+   "anh_phu": "boi-canh/bc6.png"
+  },
+  {
+   "tep": "c3-noi.mp4",
+   "tu": 0.0,
+   "den": 2.41,
+   "zoom": 1.0,
+   "tam": [
+    0.5,
+    0.33
+   ],
+   "o_anh": "boi-canh/bc3.png"
+  },
+  {
+   "tep": "c3-noi.mp4",
+   "tu": 2.69,
+   "den": 4.82,
+   "zoom": 1.12,
+   "tam": [
+    0.5,
+    0.33
+   ]
+  },
+  {
+   "tep": "c3-noi.mp4",
+   "tu": 4.82,
+   "den": 7.32,
+   "zoom": 1.2,
+   "tam": [
+    0.5,
+    0.33
+   ]
+  },
+  {
+   "tep": "c4-noi-b.mp4",
+   "tu": 0.0,
+   "den": 2.94,
+   "zoom": 1.0,
+   "tam": [
+    0.5,
+    0.33
+   ],
+   "o_anh": "boi-canh/bc4.png"
+  },
+  {
+   "tep": "c4-noi-b.mp4",
+   "tu": 3.28,
+   "den": 5.48,
+   "zoom": 1.12,
+   "tam": [
+    0.5,
+    0.33
+   ]
+  },
+  {
+   "tep": "c4-noi-b.mp4",
+   "tu": 5.48,
+   "den": 8.26,
+   "zoom": 1.2,
+   "tam": [
+    0.5,
+    0.33
+   ]
+  },
+  {
+   "tep": "c5-noi-f.mp4",
+   "tu": 0,
+   "den": 7.25,
+   "zoom": 1.0,
+   "tam": [
+    0.5,
+    0.33
+   ],
+   "o_anh": "boi-canh/bc5.png",
+   "zoom_cuoi": 1.12
+  },
+  {
+   "tep": "c6-noi.mp4",
+   "tu": 0.37,
+   "den": 3.3,
+   "zoom": 1.0,
+   "tam": [
+    0.5,
+    0.33
+   ],
+   "o_anh": "boi-canh/bc6.png"
+  },
+  {
+   "tep": "c6-noi.mp4",
+   "tu": 3.59,
+   "den": 5.48,
+   "zoom": 1.12,
+   "tam": [
+    0.5,
+    0.33
+   ]
+  },
+  {
+   "tep": "c6-noi.mp4",
+   "tu": 5.48,
+   "den": 8.06,
+   "zoom": 1.2,
+   "tam": [
+    0.5,
+    0.33
+   ]
+  },
+  {
+   "tep": "c7-noi-c.mp4",
+   "tu": 0.0,
+   "den": 2.64,
+   "zoom": 1.0,
+   "tam": [
+    0.5,
+    0.33
+   ],
+   "o_anh": "boi-canh/bc7.png"
+  },
+  {
+   "tep": "c7-noi-c.mp4",
+   "tu": 2.83,
+   "den": 8.1,
+   "zoom": 1.12,
+   "tam": [
+    0.5,
+    0.33
+   ]
+  },
+  {
+   "tep": "c8-noi-d.mp4",
+   "tu": 0.4,
+   "den": 1.5,
+   "zoom": 1.0,
+   "tam": [
+    0.5,
+    0.33
+   ],
+   "anh_phu": "boi-canh/bc1.png"
+  },
+  {
+   "tep": "c8-noi-d.mp4",
+   "tu": 1.5,
+   "den": 4.2,
+   "zoom": 1.0,
+   "tam": [
+    0.5,
+    0.33
+   ]
+  },
+  {
+   "tep": "c8-noi-d.mp4",
+   "tu": 4.2,
+   "den": 7.0,
+   "zoom": 1.12,
+   "tam": [
+    0.5,
+    0.33
+   ],
+   "giu": 0.9
+  }
+ ],
+ "nhan_o_anh": "Bối cảnh minh họa",
+ "goc_o_anh": "trai",
+ "nhan_ai": "Video do AI tạo ra",
+ "nhan_kol": "Người mẫu ảo do AI tạo ra",
+ "the_ket": {
+  "dong1": "LÀM VIDEO KHU NGHỈ BẰNG AI AGENT",
+  "dong2": "Bình luận \"NGHỈ DƯỠNG\" để nhận cách làm",
+  "dai": 2.2
+ },
+ "nhac": {
+  "tep": "tai-nguyen/nhac/beat-vlog.mp3",
+  "db": -10
+ },
+ "ra": "thanh-pham-v9.mp4",
+ "toc_do": 1.059
+}

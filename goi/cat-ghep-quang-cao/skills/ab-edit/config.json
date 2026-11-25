@@ -1,0 +1,11 @@
+{
+  "_huong_dan": "Cấu hình máy cho skill ab-edit. Đường dẫn tương đối tính từ thư mục làm việc của học viên (nơi mở Claude Code). Máy mới: chạy scripts/kiem_tra_may.py.",
+  "studio": "video-studio",
+  "python": "python",
+  "chrome": "C:/Program Files/Google/Chrome/Application/chrome.exe",
+  "brand_mac_dinh": "_mau",
+  "whisper_model": "large-v3",
+  "kho_tai_nguyen": "kho-tai-nguyen",
+  "obsidian_vault": "",
+  "obsidian_thu_muc": "00-Inbox/AI/Claude/Kho tai nguyen video"
+}

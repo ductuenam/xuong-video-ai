@@ -1,0 +1,5 @@
+Hỏi AI giá sản phẩm của chính công ty mình mà nó vẫn trả lời rất tự tin, thì nhiều khả năng là nó đang bịa. Vì mô hình chưa từng đọc bảng giá, kho hàng hay quy trình nội bộ của anh chị.
+RAG là cách bắt AI tra tài liệu của mình trước rồi mới trả lời. Tài liệu được chia thành từng đoạn nhỏ, có câu hỏi thì máy tìm vài đoạn liên quan nhất rồi đưa AI đọc, và câu trả lời luôn kèm nguồn.
+Muốn thử thì có RAGFlow, kho mã nguồn mở hơn chín mươi ba nghìn sao trên GitHub. Nó đọc được cả Word, Excel, PDF lẫn bản scan, rồi cho anh chị xem tài liệu bị chia đoạn thế nào và câu trả lời trích từ đoạn nào.
+Có điều RAG không làm AI giỏi hơn mà chỉ bắt nó nói có căn cứ. Tài liệu cũ thì câu trả lời cũng cũ, còn tìm sai đoạn thì trả lời lạc đề. Tự cài thì cần máy khá khỏe chạy Docker, chưa có thì thử bản trên web của họ trước.
+Anh chị muốn AI tra tài liệu nào của mình đầu tiên? Comment CÀI, mình gửi hướng dẫn cài từng bước nhé!
