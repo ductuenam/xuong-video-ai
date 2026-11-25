@@ -10,6 +10,7 @@ Quy trình đầy đủ và thứ tự dùng: [../docs/BAN_DO_KHO.md](../docs/BA
 | `nhap_kho.py` | Nhập tệp đã gắn nhãn: cấp mã, đổi tên, chuyển vào bản chuẩn, ảnh xem trước, ghi chỉ mục + bảng đổi tên. Chạy thử nếu không có `--ghi` | `_kho-nang/ban-chuan/`, `tai-nguyen/` |
 | `dong_goi.py` | Đóng 3 zip của phiên bản mới (store, ngày cố định → đóng lại ra đúng sha256), `--ghi-phien-ban` cập nhật `PHIEN_BAN.json` | `_kho-nang/goi/vN/` |
 | `kiem_kho.py` | Kiểm chỉ mục ↔ tệp ↔ gói ↔ `PHIEN_BAN.json`; `--sau` giải nén thử | Không ghi gì |
+| `tai_len_r2.py` | Tải `goi/vN` lên R2 bucket `xuong-video-ai` (`--ghi`, hỏi khóa gõ ẩn, không ghi đè bản đã phát hành); `--kiem-cong-khai` tải về qua `taivido.zenotera.com` so sha256. Cần boto3, chạy **không** có `-I` | R2 |
 | `huong-dan/GAN_NHAN_CANH.md` | Giao nguyên văn cho tác tử con gắn nhãn cảnh (ảnh 5 khung) | |
 | `huong-dan/GAN_NHAN_AM.md` | Gắn nhãn nhạc, tiếng từ số đo + ảnh phổ | |
 

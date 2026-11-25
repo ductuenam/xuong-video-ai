@@ -2,22 +2,22 @@
   "ten": "xuong-video-ai",
   "phien_ban": "0.1.0-nhap",
   "phien_ban_tai_nguyen": "v1",
-  "ghi_chu": "Bản nháp. sha256 và mb đã khớp gói đóng ngày 25/11 (cảnh, nhạc, tiếng đã gắn nhãn và đặt tên lại). Đường dẫn R2 điền sau khi Founder tải gói lên.",
+  "ghi_chu": "Bản nháp. sha256 và mb đã khớp gói đóng ngày 25/11 (cảnh, nhạc, tiếng đã gắn nhãn và đặt tên lại). Gói v1 đã lên R2 (bucket xuong-video-ai, tên miền taivido.zenotera.com) ngày 25/11; tải về qua tên miền khớp sha256.",
   "goi_tai_nguyen": {
     "kho-canh-du": {
-      "url": "https://<ten-mien-r2>/xuong-video/v1/kho-canh-du-v1.zip",
+      "url": "https://taivido.zenotera.com/xuong-video/v1/kho-canh-du-v1.zip",
       "sha256": "b65de7d1833ab69b26edab7fbe899ae872f601bb801cb350652d77709db46261",
       "mb": 882,
       "giai_nen_vao": "08_XUONG_VIDEO/"
     },
     "kho-canh-nhe": {
-      "url": "https://<ten-mien-r2>/xuong-video/v1/kho-canh-nhe-v1.zip",
+      "url": "https://taivido.zenotera.com/xuong-video/v1/kho-canh-nhe-v1.zip",
       "sha256": "9cfde7239839e0a2bb276bd01e1c2245cbcf650929144980188621b4b484c611",
       "mb": 217,
       "giai_nen_vao": "08_XUONG_VIDEO/"
     },
     "nhac-am": {
-      "url": "https://<ten-mien-r2>/xuong-video/v1/nhac-am-v1.zip",
+      "url": "https://taivido.zenotera.com/xuong-video/v1/nhac-am-v1.zip",
       "sha256": "4d06add2fe2f8dd5814771566ecb742c69aef03481a6f0b78672eb6a005a2496",
       "mb": 18,
       "giai_nen_vao": "08_XUONG_VIDEO/"

@@ -66,7 +66,7 @@ Vì sao tách ổ: ổ E còn hơn 300 GB, thêm hoạt cảnh nhiều năm khô
 ## 3. Hiện trạng (25/11/2026)
 
 - **Tài nguyên bản v1** xong: 226 cảnh (23 nhóm, 64 cảnh gói nhẹ), 3 nhạc, 7 tiếng — đã nén, đặt tên, gắn nhãn hai vòng, Founder duyệt tờ mẫu. Gói: `kho-canh-du-v1.zip` 882 MB, `kho-canh-nhe-v1.zip` 217 MB, `nhac-am-v1.zip` 18 MB; sha256 đã ghi trong `PHIEN_BAN.json`.
-- **Chưa có**: bộ cài `cai/`, sửa skill kế thừa (KIEN_TRUC mục 7), skill `xuong-mo-rong`. Founder chưa tạo R2, chưa tạo kho GitHub, chưa tải gói lên; thư mục này chưa `git init`.
+- **Chưa có**: bộ cài `cai/`, sửa skill kế thừa (KIEN_TRUC mục 7), skill `xuong-mo-rong`. Kho GitHub `ductuenam/xuong-video-ai` đã có (riêng tư, chờ bộ cài và bỏ tên thương hiệu cũ mới mở công khai). Gói v1 đã lên R2 bucket `xuong-video-ai`, tên miền `taivido.zenotera.com`, kiểm tải về khớp sha256 (25/11).
 - 7 tiếng hiệu ứng **chưa rõ giấy phép** (`giay_phep=chua-ro`); Founder quyết giữ ngày 25/11.
 - Kỹ năng làm video cũ trên máy Founder (`~/.claude/skills/video-ngan-nguoi-noi`) trỏ kho cũ `E:\Video-AI` đã xóa ngày 25/11 → chưa có cảnh chèn cho tới khi bộ cài mới xong.
 - Tiến độ chính thức ghi ở ZAIOS Core (dự án ZENOTERA AI Academy), không ghi checklist trong kho này.
@@ -98,7 +98,7 @@ Tất cả lệnh chạy từ thư mục kho mã. Mọi công cụ đều có ch
    Công cụ cấp mã tiếp theo, đổi tên `<MA>_<slug>`, chuyển vào `ban-chuan`, tạo ảnh xem trước, ghi `chi-muc.csv`, `bang-doi-ten.csv`, sinh lại `CHI_MUC.md`. Sau đó chép `nhan.csv` + `bao-cao-nen.csv` vào `_kho-nang\bao-cao\v<N+1>\` và dọn `nguon-moi\_da-nen\`.
 5. **Đóng gói**: `python -I -X utf8 cong-cu/dong_goi.py --phien-ban v<N+1> --ghi-phien-ban` → `goi\v<N+1>\` + cập nhật `PHIEN_BAN.json`.
 6. **Kiểm**: `python -I -X utf8 cong-cu/kiem_kho.py --sau` → phải `KHO SẠCH`.
-7. **Báo Founder** (tiếng Việt dễ hiểu): thêm gì, gói nặng bao nhiêu, cần Founder tải 3 zip trong `goi\v<N+1>\` lên R2 thư mục `xuong-video/v<N+1>/`, rồi đẩy kho mã lên GitHub. AI **không tự tải lên**.
+7. **Báo Founder** (tiếng Việt dễ hiểu): thêm gì, gói nặng bao nhiêu, xin Founder cho tải `goi\v<N+1>\` lên R2 bằng `cong-cu/tai_len_r2.py --ghi` qua `secrets run xuong-video-ai` (Founder nhập mật khẩu két), chạy `--kiem-cong-khai`, điền url vào `PHIEN_BAN.json`, rồi đẩy kho mã lên GitHub. AI **không tự tải lên khi chưa được duyệt**.
 
 ## 6. Luật phiên bản
 

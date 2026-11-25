@@ -38,5 +38,23 @@ updated: 2026-11-25
 ## 4. Việc Founder phải tự làm (Claude không làm thay)
 
 - Tạo bucket R2, gắn tên miền, bật đọc công khai cho bucket đó.
-- Tạo kho GitHub `ductuenam/xuong-video-ai` và cho phép đẩy mã.
+- Tạo khóa R2 (API token) và tự gõ vào `cong-cu/tai_len_r2.py`. Claude không nhập khóa thay.
 - Quyết định có giữ 3 bài nhạc Pixabay hay thay bằng nhạc CC0.
+- Kho GitHub `ductuenam/xuong-video-ai` đã tạo ngày 25/11/2026, để **riêng tư**. Chỉ chuyển sang công khai khi đã có bộ cài và đã bỏ tên thương hiệu cũ trong skill.
+
+## 5. Tải gói lên R2 (giữ miễn phí)
+
+Gói miễn phí của R2: 10 GB lưu trữ mỗi tháng, 1 triệu lượt ghi (Class A), 10 triệu lượt đọc (Class B), tải ra không tính tiền. Mỗi bản `vN` chiếm khoảng 1,1 GB. Ngày 25/11 tài khoản đang dùng 2,04 GB, cộng v1 thành khoảng 3,2 GB.
+
+1. Đã làm 25/11: bucket `xuong-video-ai` (APAC), tên miền `taivido.zenotera.com`.
+2. Trang web R2 chỉ nhận tệp dưới 300 MB, và máy Founder có Smart App Control chặn rclone, nên tải bằng Python (`cong-cu/tai_len_r2.py`, cần `python -m pip install --user boto3`):
+   - Khóa R2 (chỉ quyền bucket `xuong-video-ai`) nằm trong két KeePassXC, nhóm `xuong-video-ai`, đã khai báo tên ở dự án secrets `xuong-video-ai` (25/11).
+   - Xem trước: `python -X utf8 cong-cu/tai_len_r2.py`
+   - Tải lên (Founder nhập mật khẩu két ở cửa sổ Windows, 8 giờ một lần):
+     `cd D:\ductuenam\app; python -B -m zaios_core --root D:\ductuenam secrets run xuong-video-ai -- python -X utf8 cong-cu/tai_len_r2.py --ghi`
+     Gói đã có và khớp thì bỏ qua; đã có mà khác thì dừng, không ghi đè.
+   - v1 đã tải lên và kiểm công khai ĐẠT ngày 25/11/2026.
+   - Kiểm qua tên miền công khai: `python -X utf8 cong-cu/tai_len_r2.py --kiem-cong-khai`
+   - Không chạy với cờ `-I`: cờ này bỏ qua boto3 cài `--user`.
+3. Claude điền `url` vào `PHIEN_BAN.json` sau khi kiểm công khai ĐẠT.
+5. Giữ dưới 10 GB: bản mới chỉ tải gói đã đổi (sha giống thì dùng lại url cũ); xóa bản cũ khi lớp đã cập nhật xong. Đặt cảnh báo chi phí ở Billing › Notifications.
