@@ -96,7 +96,7 @@ Tất cả lệnh chạy từ thư mục kho mã. Mọi công cụ đều có ch
 4. **Founder duyệt** tờ mẫu (~20 cảnh, ảnh 5 khung + nhãn, dạng HTML) — chỉ khi lô lớn hoặc có nhóm mới. Rồi nhập:
    `python -I -X utf8 cong-cu/nhap_kho.py --loai canh --nhan <nhan.csv>` (chạy thử) → thêm `--ghi`.
    Công cụ cấp mã tiếp theo, đổi tên `<MA>_<slug>`, chuyển vào `ban-chuan`, tạo ảnh xem trước, ghi `chi-muc.csv`, `bang-doi-ten.csv`, sinh lại `CHI_MUC.md`. Sau đó chép `nhan.csv` + `bao-cao-nen.csv` vào `_kho-nang\bao-cao\v<N+1>\` và dọn `nguon-moi\_da-nen\`.
-5. **Đóng gói**: `python -I -X utf8 cong-cu/dong_goi.py --phien-ban v<N+1> --ghi-phien-ban` → `goi\v<N+1>\` + cập nhật `PHIEN_BAN.json`.
+5. **Đóng gói**: `python -I -X utf8 cong-cu/dong_goi.py --phien-ban v<N+1> --ghi-phien-ban` → `goi\v<N+1>\` (3 gói đủ + `bo-sung-v<N>-v<N+1>.zip` chỉ tệp mới/đổi) + cập nhật `PHIEN_BAN.json` (`goi_tai_nguyen`, `goi_bo_sung`). Rồi **tăng `phien_ban`** và thêm một dòng `co_gi_moi` (tiếng Việt dễ hiểu, ví dụ "Thêm 12 cảnh ngành spa"). Học viên đang ở v<N> gõ `/cap-nhat-xuong` chỉ tải gói bổ sung.
 6. **Kiểm**: `python -I -X utf8 cong-cu/kiem_kho.py --sau` → phải `KHO SẠCH`.
 7. **Báo Founder** (tiếng Việt dễ hiểu): thêm gì, gói nặng bao nhiêu, xin Founder cho tải `goi\v<N+1>\` lên R2 bằng `cong-cu/tai_len_r2.py --ghi` qua `secrets run xuong-video-ai` (Founder nhập mật khẩu két), chạy `--kiem-cong-khai`, điền url vào `PHIEN_BAN.json`, rồi đẩy kho mã lên GitHub. AI **không tự tải lên khi chưa được duyệt**.
 
@@ -104,7 +104,8 @@ Tất cả lệnh chạy từ thư mục kho mã. Mọi công cụ đều có ch
 
 - Mã tài nguyên (`CA0001`…) **không bao giờ đổi, không dùng lại**. Bỏ cảnh = `trang_thai=an`.
 - Tên tệp khóa từ khi phát hành. Mô tả trong tên lệch thì sửa `mo_ta`, không đổi tên tệp.
-- `goi\vN` đã đóng là khóa; bổ sung = `v<N+1>` đủ cả 3 gói (học viên mới tải một lần). Bộ cài so sha256 từng gói: gói nào không đổi thì không tải lại.
+- `goi\vN` đã đóng là khóa; bổ sung = `v<N+1>` đủ cả 3 gói (học viên mới tải một lần) + gói bổ sung từ `vN` (học viên cũ chỉ tải gói này, nối chuỗi v1→v2→v3 nếu bỏ lỡ nhiều bản). Không xóa gói bổ sung cũ trên R2 khi còn học viên ở bản đó.
+- Mỗi lần đẩy GitHub mà muốn học viên nhận: tăng `phien_ban` + thêm `co_gi_moi`. Cùng số thì bộ cài báo "đã là bản mới nhất" và không làm gì.
 - Mọi đường dẫn có `cua-toi` hoặc dòng `chu=hoc-vien` là của học viên: không công cụ nào được ghi đè.
 - Đổi nhãn không cần gói mới; đổi/thêm tệp thì cần gói mới.
 

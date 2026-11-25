@@ -4,7 +4,8 @@
   "mo_ta": "Edit video quay thô, video giới thiệu bản thân BNI, video người nói",
   "_ghi_chu": "Mọi gói đều cài ngay một lần. dieu_kien_theo_skill: thứ người dùng tự chuẩn bị, Claude kiểm lúc làm video (xem xuong-mau/08_XUONG_VIDEO/CHUAN_BI_THEM.md). \"*\" = mọi skill của gói. Rỗng = không cần gì thêm.",
   "skills": [
-    "video-ngan-nguoi-noi"
+    "video-ngan-nguoi-noi",
+    "cap-nhat-xuong"
   ],
   "agents": [
     "video-cham-diem",

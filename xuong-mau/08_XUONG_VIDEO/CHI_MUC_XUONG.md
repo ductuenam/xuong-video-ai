@@ -27,7 +27,7 @@
 - Thành phẩm chép ra `thanh-pham/<YYYY-MM-DD>_<ten-video>.mp4`.
 - Không đọc lướt thư mục phần mềm của xưởng (ghi ở `.claude/xuong-video.json`, mục `may`).
 
-**Cập nhật xưởng** (giữ nguyên mọi thứ của Anh/Chị): nhắn Claude "Cập nhật Xưởng Video AI", Claude chạy lại câu lệnh cài:
+**Cập nhật xưởng** (giữ nguyên mọi thứ của Anh/Chị): gõ `/cap-nhat-xuong` (hoặc nhắn "Cập nhật Xưởng Video AI"). Không có gì mới thì Claude báo ngay; có thì chỉ tải phần mới và báo "có gì mới". Claude chạy lệnh:
 - Windows: `powershell -NoProfile -ExecutionPolicy Bypass -Command "irm https://raw.githubusercontent.com/ductuenam/xuong-video-ai/main/cai/cai.ps1 | iex"`
 - Mac: `curl -fsSL https://raw.githubusercontent.com/ductuenam/xuong-video-ai/main/cai/cai.sh | bash`
 

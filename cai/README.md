@@ -11,7 +11,9 @@ Cài Xưởng Video AI vào bộ não này. Chạy đúng một lệnh theo máy
 Lệnh chạy lâu (10–30 phút): chạy nền và chờ, đừng chạy lại giữa chừng. Nếu lệnh DỪNG thì đọc dòng DỪNG và làm đúng hướng dẫn trong đó. Có dòng ⚠ thì giải thích cho tôi và làm theo dòng đó (hỏi tôi trước khi xóa hay chuyển thứ gì).
 ```
 
-Dán lại đúng câu này = cập nhật bản mới, không mất video, mẫu, cảnh riêng.
+## Cập nhật (từ bản 0.2.6)
+
+Học viên mở Claude đúng thư mục bộ não, gõ **`/cap-nhat-xuong`** (hoặc dán lại câu trên). Không có gì mới: một dòng `✔ ĐÃ LÀ BẢN MỚI NHẤT`, không đụng gì. Có mới: thay mã, tài nguyên chỉ tải gói bổ sung (`PHIEN_BAN.json › goi_bo_sung`), báo "có gì mới" (`co_gi_moi`). Không mất video, mẫu, cảnh riêng. `XUONG_CAI_LAI=1` = cài lại đủ bước.
 
 ## Bộ cài làm gì
 

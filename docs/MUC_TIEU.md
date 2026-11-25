@@ -1,6 +1,6 @@
 ---
 status: draft
-version: 0.2.0
+version: 0.2.1
 updated: 2026-11-25
 owner: Founder Đức Tuệ Nam
 ---
@@ -30,7 +30,7 @@ Lệnh chạy lâu (10–30 phút): chạy nền và chờ, đừng chạy lại
 
 Dặn thêm học viên:
 - Cài xong **đóng hẳn Claude rồi mở lại** đúng thư mục bộ não.
-- Muốn cập nhật: **dán lại đúng câu này**, hoặc nhắn Claude "Cập nhật Xưởng Video AI".
+- Muốn cập nhật (từ bản 0.2.6): mở Claude đúng thư mục bộ não, gõ **`/cap-nhat-xuong`** (hoặc nhắn "Cập nhật Xưởng Video AI"). Không có gì mới thì Claude báo ngay một dòng; có thì tự tải phần mới, đặt đúng chỗ, báo "có gì mới". Dán lại câu cài ở trên cũng được, kết quả như nhau.
 - Không dùng câu cài cũ từ kho `an-binh-video-ai`. Câu cũ chép skill vào thư mục chung của máy (`C:\Users\<tên>\.claude\skills`), và Claude sẽ dùng bản cũ đó thay bản mới. Bộ cài mới tự phát hiện và nhắc chuyển bản cũ vào Thùng rác.
 - Thử lần đầu: *"Dựng video giới thiệu bản thân cho tôi theo cấu trúc BNI"*.
 
@@ -42,7 +42,7 @@ Dặn thêm học viên:
 | **2. Cài xưởng video** | Mở Claude đúng thư mục bộ não, dán **câu lệnh ở mục 2** | Kiểm máy; chọn gói cảnh đủ/nhẹ theo RAM và ổ; tải phần mềm (không cần quyền quản trị, không cần Git); tự lo Visual C++; tải kho cảnh/nhạc/tiếng từ R2 (kiểm mã sha256, đứt mạng tải tiếp); thêm ngăn `08_XUONG_VIDEO`; chép đủ skill, agent; dựng thử; báo `XƯỞNG SẴN SÀNG` | **Xong, bản 0.2.5.** Đã thử thật từ GitHub trên bộ não mới tinh (mục 7) |
 | **3. Thực hành** | Nói một câu: "tôi muốn làm video giới thiệu bản thân", "edit video <tệp>"… | Đọc bộ não, nhắc lại thông tin đã có, **hỏi một lượt** cái còn thiếu (kèm gợi ý, cho trả lời "làm luôn"), dựng, tự soát, cho người chấm độc lập chấm, trả thành phẩm; **xin OK trước khi ghi vào bộ não** | **Video BNI xong (skill bản 2.2)**; edit video chạy được |
 | **4. Làm video nâng cao** | Nói việc muốn làm (ảnh bìa vẽ AI, KOL AI…) | Kiểm điều kiện lúc làm (`CHUAN_BI_THEM.md`): đủ thì làm luôn; thiếu tài khoản/khóa thì báo thiếu gì, cách chuẩn bị, có tốn phí không, và đề xuất cách làm được ngay | Đã thử: xin video KOL thì báo đúng thiếu Claude in Chrome, Muse (có phí), mặt KOL |
-| **5. Nhận cập nhật, tự mở rộng** | Dán lại câu lệnh. Muốn lưu kiểu video riêng, thêm cảnh/nhạc của mình thì nói một câu | Tải mã mới; tài nguyên chỉ tải khi có bản mới (mục 5); đồ `cua-toi`, `mau-cua-toi`, video đã làm không bao giờ bị ghi đè | Cập nhật mã: **xong, đã thử**. Cập nhật tài nguyên: chạy được nhưng **tải lại cả gói** (mục 5.3). Skill `xuong-mo-rong`: **chưa viết** |
+| **5. Nhận cập nhật, tự mở rộng** | Gõ `/cap-nhat-xuong` khi rảnh (hoặc khi Founder báo có bản mới). Muốn lưu kiểu video riêng, thêm cảnh/nhạc của mình thì nói một câu | Không có gì mới: báo một dòng, không đụng gì. Có mới: thay mã, chỉ tải **gói bổ sung** cảnh/nhạc mới, đặt đúng chỗ, báo "có gì mới"; đồ `cua-toi`, `mau-cua-toi`, video đã làm không bao giờ bị ghi đè | **Xong bản 0.2.6, đã thử** trên bộ não giả (mục 5.3). Skill `xuong-mo-rong`: **chưa viết** |
 
 ## 4. Học viên là ai (thiết kế cho họ)
 
@@ -59,7 +59,8 @@ Có **ba loại thứ** Founder có thể thêm. Mỗi loại đi một đườn
 
 - **Ở đâu:** kho GitHub công khai `ductuenam/xuong-video-ai` (thư mục `goi/`, `cai/`, `xuong-mau/`, chỉ mục tài nguyên `tai-nguyen/*/chi-muc.csv`).
 - **Founder làm:** nói với Claude cần sửa hay thêm gì. Claude sửa, thử trên bộ não giả, rồi đẩy lên GitHub (`git push`), kèm tăng số phiên bản trong `PHIEN_BAN.json`.
-- **Có tự đồng bộ xuống máy học viên không:** **không tự động.** Đẩy lên GitHub là bản mới sẵn sàng ngay, nhưng máy học viên chỉ nhận khi **học viên dán lại câu lệnh cài** (hoặc nhắn "Cập nhật Xưởng Video AI").
+- **Có tự đồng bộ xuống máy học viên không:** **không tự động.** Đẩy lên GitHub là bản mới sẵn sàng ngay, nhưng máy học viên chỉ nhận khi **học viên gõ `/cap-nhat-xuong`** (hoặc dán lại câu lệnh cài).
+- **Luật cho người làm kho:** mỗi lần đẩy thứ muốn học viên nhận, **tăng `phien_ban`** trong `PHIEN_BAN.json` và thêm một dòng `co_gi_moi` bằng tiếng Việt dễ hiểu. Không tăng số thì máy học viên báo "đã là bản mới nhất" và không nhận.
 - **Học viên tải gì khi cập nhật:** cả bộ mã, chỉ vài MB, chưa tới một phút. Skill và agent của kho được chép đè bằng bản mới; mọi thứ của học viên được giữ (mục 5.4). Phần mềm đã có (Python, FFmpeg, Node, Remotion, Whisper) không tải lại.
 
 ### 5.2 Tài nguyên: cảnh video, nhạc, tiếng hiệu ứng (tệp nặng)
@@ -69,15 +70,17 @@ Có **ba loại thứ** Founder có thể thêm. Mỗi loại đi một đườn
 - **Có tự đồng bộ không:** cũng **không tự động**; học viên nhận khi dán lại câu lệnh.
 - **Đã giữ được:** cùng phiên bản thì không tải lại; khi giải nén, tệp đã có và đúng cỡ thì bỏ qua; dòng chỉ mục của học viên (`chu=hoc-vien`) và thư mục `cua-toi` không bị đụng.
 
-### 5.3 Điểm yếu hiện tại của cập nhật tài nguyên (cần sửa trước khi bổ sung kho lần đầu)
+### 5.3 Cập nhật chỉ tải phần bổ sung (làm xong bản 0.2.6, 25/11 tối)
 
-Ngày 25/11, khi lên phiên bản tài nguyên mới, bộ cài **tải lại nguyên gói** (gói đủ 882 MB, gói nhẹ 217 MB, gói nhạc và tiếng 18 MB), dù Founder chỉ thêm 10 cảnh. Tệp cũ không bị chép lại, nhưng vẫn phải tải về. Với cả lớp và mạng chậm thì mất 10–30 phút mỗi lần cập nhật.
+Trước bản 0.2.6, mỗi lần lên phiên bản tài nguyên mới bộ cài **tải lại nguyên gói** (882 MB / 217 MB / 18 MB) dù chỉ thêm vài cảnh. Nay:
 
-**Đề xuất (chờ Founder duyệt):**
-- Mỗi phiên bản mới đóng thêm **gói bổ sung** chỉ chứa tệp mới hoặc đã đổi so với bản trước, ví dụ `bo-sung-v1-v2.zip` chỉ vài chục MB.
-- Bộ cài nhớ học viên đang ở bản nào. Đang ở v1 mà kho đã lên v3 thì tải `bo-sung-v1-v2` rồi `bo-sung-v2-v3`. Máy mới cài từ đầu thì vẫn tải gói đủ của bản mới nhất.
-- Gói nào không đổi (thường là gói nhạc và tiếng) thì bộ cài so mã kiểm và bỏ qua, không tải lại.
-- Kết quả: cập nhật vài cảnh chỉ tốn vài chục MB, vài giây.
+- **Đóng gói:** `dong_goi.py --phien-ban v<N+1>` ngoài 3 gói đủ còn đóng **`bo-sung-v<N>-v<N+1>.zip`**, chỉ chứa tệp mới hoặc đã đổi (so mã CRC từng tệp với gói bản trước), và ghi vào mục `goi_bo_sung` của `PHIEN_BAN.json`. `tai_len_r2.py` tự tải gói này lên cùng.
+- **Máy học viên:** bộ cài nhớ bản đang có (`xuong.json`). Đang ở v1 mà kho đã lên v3 thì tải `bo-sung-v1-v2` rồi `bo-sung-v2-v3`, chỉ giải nén tệp đúng gói nhẹ/đủ của máy đó vào `tai-nguyen/`. Thiếu một mắt xích, hoặc máy mới cài, thì tải gói đủ như cũ.
+- **Không có gì mới** (mã và tài nguyên đều cùng số): bộ cài in `✔ ĐÃ LÀ BẢN MỚI NHẤT` và dừng ngay, không chạy bước nào, chỉ tốn vài giây tải gói mã vài MB.
+- **Có bản mới:** cuối cùng in `ĐÃ CẬP NHẬT 0.2.5 → 0.2.6. Có gì mới:` kèm các dòng `co_gi_moi` của những bản học viên chưa có.
+- **Học viên làm:** gõ `/cap-nhat-xuong` (skill mới, cài cùng xưởng). Claude chạy lệnh, đọc kết quả, báo lại bằng lời dễ hiểu. Nói "cài lại xưởng" thì Claude thêm `XUONG_CAI_LAI=1` để chạy đủ các bước sửa máy (vẫn không tải lại tài nguyên đã có).
+
+**Đã thử 25/11** (thế giới tí hon trong `%TEMP%\zaios_cap_nhat_2511`, không đụng kho thật và R2; 16/16 mục ĐẠT): cài mới v1 tải gói đủ; chạy lại báo "đã là bản mới nhất"; ra v2 thêm 1 cảnh, sửa 1 tiếng → gói bổ sung đúng 3 tệp; cập nhật **xóa gói đủ v2 khỏi nơi tải mà vẫn lên được** (chứng minh chỉ tải bổ sung), cảnh mới vào đúng chỗ, tiếng sửa được thay; cảnh riêng, thành phẩm, dòng `chu=hoc-vien` còn nguyên; in đúng dòng "có gì mới" của 0.2.6; skill `cap-nhat-xuong` có trong bộ não; `XUONG_CAI_LAI=1` chạy đủ bước. Các bước nặng (thư viện, Remotion, Whisper, dựng thử) được thay bằng bản giả trong lần thử này; phần đó đã thử thật ở mục 7.
 
 ### 5.4 Thứ của học viên không bao giờ bị đụng khi cập nhật
 
@@ -90,8 +93,8 @@ Ngày 25/11, khi lên phiên bản tài nguyên mới, bộ cài **tải lại n
 
 ### 5.5 Đề xuất thêm (chờ Founder duyệt)
 
-- **Nhắc có bản mới:** khi học viên làm video, Claude so số phiên bản trên máy với `PHIEN_BAN.json` trên GitHub. Có bản mới thì nhắc một dòng "Xưởng có bản mới (thêm X cảnh ngành spa…), nhắn 'Cập nhật Xưởng Video AI' để nhận". Học viên không phải theo dõi nhóm Zalo.
-- **Ghi thay đổi cho học viên:** mỗi bản kèm vài dòng "có gì mới" bằng tiếng Việt dễ hiểu, để Claude báo lại sau khi cập nhật.
+- **Nhắc có bản mới:** khi học viên làm video, Claude so số phiên bản trên máy với `PHIEN_BAN.json` trên GitHub. Có bản mới thì nhắc một dòng "Xưởng có bản mới (thêm X cảnh ngành spa…), gõ /cap-nhat-xuong để nhận". Học viên không phải theo dõi nhóm Zalo. *(Chưa làm.)*
+- ~~Ghi thay đổi cho học viên~~: **đã làm 0.2.6** (mục `co_gi_moi` trong `PHIEN_BAN.json`).
 
 ## 6. Mức linh động: làm video theo ý mình được tới đâu
 
@@ -172,7 +175,8 @@ Mục tiêu Founder đặt: **linh động tối đa.** Skill là đường mòn
 8. *(Đề xuất)* **≥ 9/10 cảnh** AI chọn hợp với câu nói đi kèm.
 9. *(Đề xuất)* Học viên lần đầu tự làm đúng hết các bước, không phải hỏi nhóm hỗ trợ, ở **≥ 8/10 lần thử**.
 10. *(Đề xuất)* Mọi tài nguyên phát cho học viên đều rõ nguồn và quyền dùng.
-11. *(Đề xuất)* Cập nhật khi chỉ thêm vài cảnh tốn **dưới 100 MB** tải về (cần gói bổ sung, mục 5.3).
+11. *(Đề xuất)* Cập nhật khi chỉ thêm vài cảnh tốn **dưới 100 MB** tải về. **Đạt trên bộ thử (25/11, mục 5.3); chờ lần bổ sung kho thật v2 để đo trên R2.**
+12. *(Đề xuất)* Không có gì mới thì `/cap-nhat-xuong` trả lời trong **dưới 1 phút** và không đụng tệp nào.
 
 ## 10. Nguyên tắc thiết kế (không đánh đổi)
 
@@ -184,13 +188,13 @@ Mục tiêu Founder đặt: **linh động tối đa.** Skill là đường mòn
 6. **Cài đủ một lần, thiếu gì nhắc nấy.** Mọi skill cài sẵn. Việc cần tài khoản, khóa, máy mạnh thì kiểm đúng lúc làm và hướng dẫn chuẩn bị.
 7. **Không cần quyền quản trị, không bảng hỏi khó hiểu.** Phần mềm đặt trong thư mục của xưởng, ngoài bộ não.
 8. **Của học viên là bất khả xâm phạm.** `cua-toi`, `chu=hoc-vien`, `mau-cua-toi` không bao giờ bị ghi đè. Tùy biến nằm ngoài skill gốc. Ghi vào ngăn 00–07 phải xin OK.
-9. **Cải tiến liên tục theo phiên bản.** Mã ở GitHub, tài nguyên ở R2, gói đã phát hành thì khóa, mỗi lần bổ sung là bản mới. Học viên nhận bằng cách dán lại câu lệnh.
+9. **Cải tiến liên tục theo phiên bản.** Mã ở GitHub, tài nguyên ở R2, gói đã phát hành thì khóa, mỗi lần bổ sung là bản mới. Học viên nhận bằng `/cap-nhat-xuong`, chỉ tải phần mới.
 10. **Sạch tên và sạch quyền.** Không mang tên đơn vị cũ của mã kế thừa, không phát lại nguyên tệp nhạc; tài nguyên chưa rõ quyền phải ghi rõ và có kế hoạch thay.
 11. **Tự kiểm trước khi giao.** Skill tự soát và có người chấm độc lập; bộ cài kiểm thư viện và dựng thử trước khi báo sẵn sàng; kho chạy `kiem_kho.py` trước mỗi lần phát hành; mỗi bản bộ cài thử trên bộ não giả trong `%TEMP%`.
 
 ## 11. Thứ tự việc tiếp theo (em khuyên, chờ Founder chốt)
 
-1. **Gói bổ sung cho tài nguyên** (mục 5.3): phải có trước lần bổ sung kho đầu tiên, nếu không mỗi lần thêm cảnh cả lớp tải lại 900 MB.
+1. ~~Gói bổ sung cho tài nguyên~~: **xong 0.2.6** (mục 5.3).
 2. **Thử trên máy thật của học viên:** một máy 4–8 GB, một máy chưa từng cài Visual C++, một máy Mac. Đo thời gian theo thước đo 6–7.
 3. **Skill `xuong-mo-rong`** (mục 6.3 việc 1).
 4. **Bổ sung cảnh theo ngành** của học viên thật (spa, ăn uống, bất động sản, giáo dục, bảo hiểm…).

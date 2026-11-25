@@ -321,13 +321,60 @@ def thay_khoi(tep: Path, khoi: str, tao_moi_dau=''):
     tep.write_text(cu, encoding='utf-8', newline='\n')
 
 
+def chuoi_bo_sung(pb, tu, den):
+    """Các gói bổ sung nối từ bản học viên đang có tới bản mới nhất (v1→v2→v3). Thiếu một mắt xích thì None (tải gói đủ)."""
+    bs = pb.get('goi_bo_sung') or {}
+    chuoi, cur = [], tu
+    while cur != den:
+        g = next((x for x in bs.values() if isinstance(x, dict) and x.get('tu') == cur), None)
+        if not g or len(chuoi) > 50:
+            return None
+        chuoi.append(g)
+        cur = g['den']
+    return chuoi or None
+
+
+def tep_cua_goi(nguon: Path, goi_canh: str):
+    """Đường dẫn trong zip (tai-nguyen/<loai>/<tep>) mà máy này cần theo chỉ mục mới: cảnh đúng gói nhẹ/đủ, mọi nhạc, tiếng."""
+    hop = set()
+    for loai in ('canh', 'nhac', 'am'):
+        with open(nguon / 'tai-nguyen' / loai / 'chi-muc.csv', encoding='utf-8-sig') as f:
+            for x in csv.DictReader(f):
+                if x.get('chu', 'kho') != 'kho' or (loai == 'canh' and goi_canh not in x.get('goi', '').split(';')):
+                    continue
+                for cot in ('tep', 'xem_truoc'):
+                    if x.get(cot):
+                        hop.add(f'tai-nguyen/{loai}/{x[cot]}')
+    return hop
+
+
 def tai_nguyen(nguon: Path, may: Path, xuong: Path, goi_canh: str):
     pb = json.loads((nguon / 'PHIEN_BAN.json').read_text(encoding='utf-8'))
     da = json.loads((xuong / 'xuong.json').read_text(encoding='utf-8')) if (xuong / 'xuong.json').exists() else {}
     can = [f'kho-canh-{goi_canh}', 'nhac-am']
     ptn = pb['phien_ban_tai_nguyen']
-    if da.get('phien_ban_tai_nguyen') == ptn and da.get('may', {}).get('goi_tai_nguyen') == goi_canh:
+    cu = da.get('phien_ban_tai_nguyen')
+    chuoi = chuoi_bo_sung(pb, cu, ptn) if cu and da.get('may', {}).get('goi_tai_nguyen') == goi_canh else None
+    if cu == ptn and da.get('may', {}).get('goi_tai_nguyen') == goi_canh:
         print(f'✔ tài nguyên {ptn} đã có, bỏ qua tải')
+    elif chuoi:
+        # Đang ở bản cũ: chỉ tải gói bổ sung (tệp mới/đổi), lọc theo gói nhẹ/đủ bằng chỉ mục mới của kho
+        hop = tep_cua_goi(nguon, goi_canh)
+        for g in chuoi:
+            print(f'Tải gói bổ sung {g["tu"]} → {g["den"]} ({g["mb"]} MB)...', flush=True)
+            z = tai(g['url'], may / 'tai-ve' / Path(g['url']).name, sha=g['sha256'], ten=f'bổ sung {g["den"]}')
+            moi = 0
+            with zipfile.ZipFile(z) as zf:
+                for m in zf.infolist():
+                    if m.is_dir() or 'cua-toi' in m.filename or m.filename not in hop:
+                        continue
+                    d = xuong / m.filename
+                    d.parent.mkdir(parents=True, exist_ok=True)
+                    with zf.open(m) as s, open(d, 'wb') as o:
+                        shutil.copyfileobj(s, o, 1 << 20)
+                    moi += 1
+            print(f'✔ bổ sung {g["den"]}: {moi} tệp mới hoặc đã đổi')
+            z.unlink()
     else:
         for ten in can:
             g = pb['goi_tai_nguyen'][ten]
@@ -454,6 +501,25 @@ def main():
     bo_nao, may, nguon = Path(a.bo_nao).resolve(), Path(a.may).resolve(), Path(a.nguon).resolve()
     pb = json.loads((nguon / 'PHIEN_BAN.json').read_text(encoding='utf-8'))
 
+    # Cập nhật thường xuyên (/cap-nhat-xuong): đã đúng bản mới nhất và còn nguyên thì báo một dòng, không đụng gì.
+    # XUONG_CAI_LAI=1 (người dùng nói "cài lại xưởng") thì chạy đủ các bước để sửa máy.
+    cu = {}
+    for d in sorted(bo_nao.glob('*_XUONG_VIDEO')):
+        if (d / 'xuong.json').exists():
+            cu = json.loads((d / 'xuong.json').read_text(encoding='utf-8'))
+            break
+    ban_cu = cu.get('ngay_cai') and cu.get('phien_ban')
+    cfg0 = bo_nao / '.claude' / 'xuong-video.json'
+    try:
+        con_nguyen = Path(json.loads(cfg0.read_text(encoding='utf-8'))['python']).exists() and \
+            (bo_nao / '.claude' / 'skills' / 'video-ngan-nguoi-noi' / 'SKILL.md').exists()
+    except Exception:
+        con_nguyen = False
+    if (not os.environ.get('XUONG_CAI_LAI') and con_nguyen and ban_cu == pb['phien_ban']
+            and cu.get('phien_ban_tai_nguyen') == pb['phien_ban_tai_nguyen']):
+        print(f'\n✔ ĐÃ LÀ BẢN MỚI NHẤT (mã {pb["phien_ban"]}, tài nguyên {pb["phien_ban_tai_nguyen"]}). Không có gì mới, không cần làm gì.')
+        return 0
+
     buoc('1/7 Kiểm máy')
     ram, gpu = ram_gb(), co_gpu()
     trong = shutil.disk_usage(bo_nao).free / 2 ** 30
@@ -550,6 +616,15 @@ def main():
     print('Muốn làm thêm thì cần chuẩn bị:\n  - ' + '\n  - '.join(can))
     for s in canh_bao:
         print('⚠', s)
+    if ban_cu and ban_cu != pb['phien_ban']:
+        so = lambda s: tuple(int(x) for x in re.findall(r'\d+', s))  # noqa: E731
+        moi = [(b, d) for b, d in sorted((pb.get('co_gi_moi') or {}).items(), key=lambda x: so(x[0])) if so(ban_cu) < so(b)]
+        print(f'\nĐÃ CẬP NHẬT {ban_cu} → {pb["phien_ban"]}. Có gì mới:')
+        for b, ds in moi:
+            for d in (ds if isinstance(ds, list) else [ds]):
+                print(f'  - {d}')
+        if not moi:
+            print('  - Sửa lỗi nhỏ, chạy ổn định hơn.')
     print('\nĐÓNG HẲN Claude rồi mở lại đúng thư mục bộ não để Claude nhận skill và agent mới.')
     print('Thử ngay: "Dựng video giới thiệu bản thân cho tôi theo cấu trúc BNI".')
     return 0 if ok else 2

@@ -33,7 +33,7 @@ updated: 2026-11-25
 2. Nếu kho tài nguyên đổi: làm theo `BAN_DO_KHO.md` mục 5 (`cong-cu/dong_goi.py --phien-ban vN --ghi-phien-ban` dựng gói và ghi sha256), Founder tải lên R2 ở thư mục phiên bản mới.
 3. Cập nhật `PHIEN_BAN.json`, đẩy lên GitHub, gắn nhãn phiên bản.
 4. Chạy lại câu lệnh cài trên một bộ não đã có video và mẫu riêng: kiểm không mất tệp nào của học viên.
-5. Báo lớp: "dán lại câu lệnh cài để cập nhật".
+5. Trước khi đẩy: tăng `phien_ban`, thêm dòng `co_gi_moi`. Báo lớp: "gõ /cap-nhat-xuong để nhận bản mới".
 
 ## 4. Việc Founder phải tự làm (Claude không làm thay)
 
