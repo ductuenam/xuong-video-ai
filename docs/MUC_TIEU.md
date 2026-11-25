@@ -1,6 +1,6 @@
 ---
 status: draft
-version: 0.2.1
+version: 0.2.2
 updated: 2026-11-25
 owner: Founder Đức Tuệ Nam
 ---
@@ -17,9 +17,35 @@ owner: Founder Đức Tuệ Nam
 
 ## 2. Câu lệnh gửi học viên (bản chuẩn, copy nguyên khối)
 
+Hai bước, gửi theo thứ tự. Học viên đã có Bộ Não AI thì bỏ qua bước 1.
+
+### Bước 1: tạo Bộ Não AI (chỉ làm một lần)
+
+Nguồn: kho công khai `ductuenam/bo-nao-ai-khoi-dong` (đã kiểm còn mở 25/11/2026).
+
+Học viên tạo **một thư mục trống mới** (ví dụ `D:\Bo-Nao-AI`), mở Claude (thẻ Code, **This computer**), chọn đúng thư mục đó, rồi dán:
+
+```
+Hãy tải Bộ Não AI Khởi Động từ kho GitHub công khai https://github.com/ductuenam/bo-nao-ai-khoi-dong về thư mục hiện tại tôi đang mở.
+
+Cách tải (chọn cách chạy được ngay trên máy tôi):
+1. Nếu máy có git: chạy `git clone https://github.com/ductuenam/bo-nao-ai-khoi-dong.git .`
+2. Nếu chưa có git: tải file zip từ `https://github.com/ductuenam/bo-nao-ai-khoi-dong/archive/refs/heads/main.zip`, giải nén toàn bộ nội dung ra thư mục hiện tại (đảm bảo cả thư mục ẩn `.claude` được giữ lại), rồi xóa file zip tạm.
+
+Tải xong:
+- Nếu có thư mục `.git` vừa tải về, hãy xóa nó đi để dữ liệu cá nhân của tôi không bị liên kết ngược lên mạng.
+- Đọc toàn bộ `CLAUDE.md`, `INDEX.md` và `.claude/skills/phan-loai-bo-nao/SKILL.md`.
+- Chào tôi bằng tiếng Việt thân thiện, giải thích ngắn gọn Bộ Não này giúp ích gì trong 2 câu, rồi hướng dẫn tôi 3 cách nạp thông tin: (1) thả file/ảnh/video vào thư mục `00_HOP_THU_NHAP`, (2) dán link website vào ô chat, (3) gõ hoặc dán thông tin trực tiếp vào ô chat.
+- Từ đó, mỗi khi tôi nạp thông tin, hãy chạy đúng theo Skill `phan-loai-bo-nao`: xử lý từng lượt nhỏ, lập bảng đề xuất phân loại (thông tin nào vào ngăn nào, đổi tên file ảnh/video thế nào, gắn từ khóa gì) và CHỜ tôi gõ OK rồi mới ghi. Tuyệt đối không ghi khi chưa được tôi duyệt.
+```
+
+Dặn thêm: tạo xong **đóng hẳn Claude rồi mở lại** đúng thư mục đó, nạp thông tin của mình vào bộ não (càng đủ thì video càng đúng người), rồi sang bước 2.
+
+### Bước 2: cài Xưởng Video AI (dán lại câu này = cập nhật)
+
 Nguồn gốc duy nhất: `cai/README.md`. Sửa câu lệnh thì sửa ở đó rồi chép lại vào đây.
 
-Học viên mở Claude (thẻ Code, **This computer**), chọn **đúng thư mục Bộ Não AI** đã cài ở buổi trước, rồi dán:
+Học viên mở Claude (thẻ Code, **This computer**), chọn **đúng thư mục Bộ Não AI** ở bước 1, rồi dán:
 
 ```
 Cài Xưởng Video AI vào bộ não này. Chạy đúng một lệnh theo máy của tôi, ngay trong thư mục đang mở, chờ chạy xong rồi báo kết quả bằng tiếng Việt dễ hiểu:

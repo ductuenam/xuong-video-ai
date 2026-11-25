@@ -2,6 +2,8 @@
 
 ## Câu học viên dán vào Claude
 
+Học viên chưa có Bộ Não AI thì tạo trước bằng câu ở `docs/MUC_TIEU.md` mục 2, bước 1 (kho `ductuenam/bo-nao-ai-khoi-dong`).
+
 Mở Claude (thẻ Code, **This computer**) **đúng thư mục Bộ Não AI** đã cài ở buổi trước, dán nguyên đoạn sau:
 
 ```
