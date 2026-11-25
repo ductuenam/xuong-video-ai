@@ -184,6 +184,17 @@ def thu_vien(uv, gpu):
         dung('Không cài được thư viện Python. Kiểm mạng rồi dán lại câu lệnh.')
     print('✔ thư viện Python:', ', '.join(goi))
     va_faster_whisper()
+    vc_runtime(uv)
+    # Kiểm thật: thư viện nạp được DLL không (thiếu Visual C++, bị Smart App Control chặn). Trước đây chỉ ⚠ ở bước Whisper
+    # rồi hỏng lúc làm video đầu tiên.
+    r = chay([sys.executable, '-c', 'import ctranslate2, onnxruntime, cv2, av, faster_whisper'], capture_output=True, text=True)
+    if r.returncode:
+        loi = (r.stderr.strip().splitlines() or ['?'])[-1]
+        dung(f'Thư viện của xưởng chưa chạy được trên máy này ({loi}). '
+             + ('Nếu có chữ "Application Control" là Windows đang chặn (Smart App Control hoặc diệt virus): chụp màn hình gửi người hướng dẫn. '
+                'Nếu có chữ "DLL load failed": cài bộ Visual C++ của Microsoft tại https://aka.ms/vs/17/release/vc_redist.x64.exe '
+                '(bấm Có khi Windows hỏi), rồi dán lại câu lệnh.' if WIN else 'Chụp màn hình gửi người hướng dẫn.'))
+    print('✔ thư viện nạp được (nghe giọng, xử lý hình, âm thanh)')
     if chay([sys.executable, '-m', 'playwright', 'install', 'chromium'], capture_output=True).returncode:
         cb('Chưa tải được trình duyệt chụp trang web (chỉ cần khi làm video có chụp web); lần dùng đầu sẽ tự tải.')
 
@@ -203,6 +214,39 @@ def va_faster_whisper():
         print('✔ vá faster-whisper cho khớp thư viện âm thanh av 19')
 
 
+# Không chép vcruntime140: Python gốc đã mang bản 14.42 và đang dùng nó (chép đè lỗi WinError 32, thử 25/11/2026);
+# msvcp140 14.51 nạp được cùng vcruntime 14.42 (đã đo).
+VC_DLL = ('msvcp140', 'concrt140', 'vcomp140')
+
+
+def vc_runtime(uv):
+    """Bộ nghe giọng (ctranslate2) và bộ dò tiếng nói (onnxruntime) cần msvcp140.dll, msvcp140_1.dll của Microsoft; Python
+    của xưởng chỉ mang vcruntime140. Máy chưa cài Visual C++ Redistributable thì lỗi DLL (học viên gặp với bộ cài cũ,
+    25/11/2026; bộ cài cũ bắt cài vc_redist, hiện bảng hỏi quyền quản trị). Cách không cần quyền: gói msvc-runtime (DLL
+    Microsoft có chữ ký) rồi chép CẢ BỘ vào thư mục Python gốc (sys.base_prefix): python.exe của venv chỉ là lối gọi, tiến
+    trình thật chạy từ thư mục gốc nên Windows tìm DLL ở đó trước System32 (đã đo GetModuleFileName). Máy đã có
+    Visual C++ thì không đụng. XUONG_THU_VCRT=1: ép chạy để thử."""
+    if not WIN:
+        return
+    he = Path(os.environ.get('SystemRoot', r'C:\Windows')) / 'System32'
+    goc = Path(sys.base_prefix)
+    if (all((he / f'{x}.dll').exists() for x in ('msvcp140', 'msvcp140_1')) or (goc / 'msvcp140_1.dll').exists()) \
+            and not os.environ.get('XUONG_THU_VCRT'):
+        return
+    print('Máy chưa có bộ Visual C++ của Microsoft: chép bản đi kèm cho xưởng (không cần quyền quản trị)...', flush=True)
+    chay([uv, 'pip', 'install', '--python', sys.executable, '-q', 'msvc-runtime'])
+    nguon = Path(sys.prefix) / 'Scripts'
+    dll = [f for f in nguon.glob('*.dll') if f.name.lower().startswith(VC_DLL)]
+    if not any(f.name.lower() == 'msvcp140_1.dll' for f in dll):
+        return  # bước kiểm thư viện ngay sau sẽ DỪNG kèm cách cài tay
+    for f in dll:
+        try:
+            shutil.copy2(f, goc / f.name)
+        except OSError:
+            pass  # tệp đang được dùng: bản trong thư mục gốc vẫn chạy; bước kiểm thư viện ngay sau sẽ bắt nếu thiếu
+    print(f'✔ Visual C++ cho xưởng: {len(dll)} tệp vào {goc}')
+
+
 def engine(nguon: Path, may: Path):
     src = nguon / 'goi' / 'video-nguoi-noi' / 'skills' / 'video-ngan-nguoi-noi' / 'engine'
     dich = may / 'engine'
@@ -220,7 +264,8 @@ def engine(nguon: Path, may: Path):
 
 
 def whisper(ram, gpu):
-    ten = 'large-v3' if (ram >= 16 or gpu) else 'small'
+    # GPU mà RAM dưới 8 GB thì vẫn small: học viên máy 3,9 GB tải large-v3 3 GB rồi không mở được (25/11/2026, bộ cài cũ)
+    ten = 'large-v3' if (ram >= 16 or (gpu and ram >= 8)) else 'small'
     print(f'Tải mô hình nghe lời Whisper "{ten}" ({"khoảng 3 GB" if ten == "large-v3" else "khoảng 500 MB"}, chỉ lần đầu)...', flush=True)
     if chay([sys.executable, '-c', f"from faster_whisper.utils import download_model; download_model('{ten}')"]).returncode:
         cb(f'Chưa tải được mô hình Whisper "{ten}"; lần làm video đầu sẽ tự tải.')
@@ -417,6 +462,9 @@ def main():
           f'{"có" if gpu else "không có"} GPU NVIDIA → kho cảnh gói "{goi_canh}"')
     if trong < 2:
         dung(f'Ổ chứa bộ não chỉ còn {trong:.1f} GB. Cần ít nhất 2 GB trống.')
+    if ram < 8:
+        cb(f'Máy có {ram} GB RAM (nên từ 8 GB). Vẫn làm được video BNI, edit video ngắn nhưng chậm: khi dựng hãy đóng bớt '
+           f'Chrome và ứng dụng khác. Dùng mô hình nghe giọng nhỏ "small" cho vừa máy.')
 
     buoc('2/7 Phần mềm (FFmpeg, Node, thư viện Python)')
     bin_ = ffmpeg_node(may)

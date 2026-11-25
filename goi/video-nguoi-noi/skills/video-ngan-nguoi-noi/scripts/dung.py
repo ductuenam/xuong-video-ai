@@ -104,14 +104,15 @@ def so_luong_dung():
     nên máy ≤ 8 GB chỉ 2, dưới 16 GB 3, còn lại theo nhân CPU (tối đa 6). RAM lấy từ .claude/xuong-video.json (bộ cài ghi)."""
     ram = CFG.get("ram_gb") or 16
     n = max(2, min(6, (os.cpu_count() or 4) // 2))
-    return 2 if ram <= 8 else (min(n, 3) if ram < 16 else n)
+    # Máy dưới 6 GB (học viên có máy 3,9 GB, 25/11/2026): 1 tab cho khỏi hết bộ nhớ
+    return 1 if ram < 6 else 2 if ram <= 8 else (min(n, 3) if ram < 16 else n)
 
 
 def bo_dem_video():
     """Trần bộ đệm khung video của Remotion. Mặc định Remotion lấy nửa RAM còn trống lúc bắt đầu dựng, cộng với các tab Chrome
     thì máy 8 GB có thể hết bộ nhớ (thử 25/11/2026: video BNI có 5 ảnh thật, máy giả lập 8 GB vượt trần 5 GB, dừng ở bước render)."""
     ram = CFG.get("ram_gb") or 16
-    return [] if ram >= 16 else [f"--offthreadvideo-cache-size-in-bytes={(512 if ram <= 8 else 1536) * 2 ** 20}"]
+    return [] if ram >= 16 else [f"--offthreadvideo-cache-size-in-bytes={(256 if ram < 6 else 512 if ram <= 8 else 1536) * 2 ** 20}"]
 
 
 def b_render(da):
