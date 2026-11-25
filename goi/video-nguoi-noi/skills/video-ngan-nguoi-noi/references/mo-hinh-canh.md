@@ -72,7 +72,7 @@ Mọi mô hình nền sáng nhận thêm trường `kieuNen`: `dao` (mặc đị
 
 ## Âm thanh theo video và theo cảnh
 
-- Đổi nhạc: ghi vào `nhac.txt` của dự án một tên trong `boNhac` của hồ sơ, hoặc đường dẫn file. Mức nhạc đặt bằng `nhacDuoiGiong` (mặc định 10 LU); nhạc tự nén khi có giọng và nhô lên ở chỗ nghỉ. Chọn theo tâm trạng của bài, không dùng một bài cho mọi video.
-- Trên một cảnh: `am` thay tiếng lúc vào cảnh, `amMoc` phát ở mỗi mốc (hợp với `danh-sach-buoc`, `khung-chat`). Giá trị là tên trong `boTieng`. Không đặt thì dùng `tiengChuyenCanh`.
-- Mỗi tiếng chỉ phát 1,2 giây đầu. Tiếng dài hơn thì khai trong `boTieng` dạng `{"file": "...", "dai": 3.3}` để phát đủ số giây đó.
+- Đổi nhạc: ghi vào `nhac.txt` của dự án mã một bài trong `tai-nguyen/nhac/chi-muc.csv` (hoặc tên trong `boNhac` của hồ sơ). Mức nhạc đặt bằng `nhacDuoiGiong` (mặc định 10 LU); nhạc tự nén khi có giọng và nhô lên ở chỗ nghỉ. Máy tự bắt đầu ở cột `bat_dau_goi_y`, cắt đúng độ dài video, mờ vào 0,3 giây và mờ ra 1,2 giây; bài ngắn hơn video thì tự nối vòng có mờ chồng 2 giây. Chọn theo tâm trạng của bài, không dùng một bài cho mọi video.
+- Trên một cảnh: `am` thay tiếng lúc vào cảnh, `amMoc` phát ở mỗi mốc (hợp với `danh-sach-buoc`, `khung-chat`). Giá trị là tên trong `boTieng`, hoặc mã / mô tả tên tệp trong `tai-nguyen/am/chi-muc.csv` (ví dụ `AM0031`, `dong-xu-roi-nay`, tiếng học viên `UAM0001`). Không đặt thì dùng `tiengChuyenCanh`.
+- Tiếng có cột `diem_nhan_s`: máy đặt giây mạnh nhất trùng đúng lúc hình đổi (tiếng vào muộn như đặt tách, đồng xu vẫn khớp) và phát tới sau điểm nhấn nửa giây (ít nhất 1,2 giây). Muốn phát dài hơn thì khai trong `boTieng` dạng `{"file": "...", "dai": 3.3}`. Tiếng nền không khí (mưa, quán) dài 30 giây chưa trải được suốt video.
 - Chỉ dùng tiếng khác ở vài chỗ cần nhấn, không đặt cho mọi cảnh.

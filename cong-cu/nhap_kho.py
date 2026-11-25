@@ -28,6 +28,41 @@ BAT_BUOC = {'canh': ['mo_ta', 'tu_khoa', 'mau', 'chuyen_dong', 'cho_chu', 'doi_n
             'am': ['mo_ta', 'tu_khoa', 'giay', 'diem_nhan_s', 'do_lon', 'dung_khi']}
 
 
+TU_DIEN_P = Path(__file__).resolve().parents[1] / 'goi' / 'video-nguoi-noi' / 'skills' / 'video-ngan-nguoi-noi' / 'references' / 'tu-dien-am.json'
+
+
+def kiem_tu_dien(L, n):
+    """Nhạc, tiếng phải dùng từ trong từ điển chung (tu-dien-am.json), giống luật của công cụ học viên them_am.py.
+    tam_trang: từ đồng nghĩa tự đổi về từ chuẩn (ghi ngược vào n), từ lạ thì báo lỗi."""
+    if L == 'canh':
+        return []
+    import json
+    td = json.loads(TU_DIEN_P.read_text(encoding='utf-8'))
+    loi, ten = [], n['tep_goc']
+    gp = n.get('giay_phep', '').strip()
+    if gp not in td['giay_phep_dung_duoc'] + list(td['giay_phep_khac']):
+        loi.append('%s: giấy phép %r ngoài từ điển' % (ten, gp))
+    if L == 'am':
+        return loi
+    chuan, la = [], []
+    for x in re.split(r'[;,]', n.get('tam_trang', '')):
+        x = x.strip()
+        k = x if x in td['tam_trang'] else td['gop'].get(x)
+        if x and not k:
+            la.append(x)
+        elif k and k not in chuan:
+            chuan.append(k)
+    if la:
+        loi.append('%s: tâm trạng ngoài từ điển: %s' % (ten, la))
+    n['tam_trang'] = ';'.join(chuan[:3])
+    if n.get('nang_luong', '').strip() not in td['nang_luong']:
+        loi.append('%s: nang_luong %r ngoài từ điển' % (ten, n.get('nang_luong')))
+    la = [x for x in n.get('hop_video', '').split(';') if x.strip() and x.strip() not in td['hop_video']]
+    if la:
+        loi.append('%s: hop_video ngoài từ điển: %s' % (ten, la))
+    return loi
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--loai', required=True, choices=list(LOAI))
@@ -59,6 +94,7 @@ def main():
         thieu = [c for c in BAT_BUOC[L] if not n.get(c, '').strip()]
         if thieu:
             loi.append('%s: thiếu nhãn %s' % (n['tep_goc'], thieu))
+        loi += kiem_tu_dien(L, n)
         so += 1
         ma = '%s%04d' % (LOAI[L], so)
         tep = '%s/%s_%s%s' % (n['nhom'], ma, n['slug'], src.suffix.lower())

@@ -194,12 +194,21 @@ def kiem_ve(chu):
 
 
 def kiem_nhac(ten):
-    """Trả về lỗi (chuỗi) nếu bài nhạc không nằm trong nhacDuocDung, rỗng là đạt. Tên rỗng (dùng nhạc mặc định) cũng là lỗi:
-    phải chọn rõ một bài được phép (20-Atrifie suýt dùng cong-nghe từ YouTube Audio Library)."""
+    """Trả về lỗi (chuỗi) nếu bài nhạc chưa rõ quyền dùng, rỗng là đạt. Tên rỗng (dùng nhạc mặc định) cũng là lỗi:
+    phải chọn rõ một bài (20-Atrifie suýt dùng cong-nghe từ YouTube Audio Library).
+    Từ 25/11/2026 (bản 0.2.8): bài được dùng khi có dòng trong tai-nguyen/nhac/chi-muc.csv (kho chung hoặc học viên tự thêm)
+    với giấy phép nằm trong references/tu-dien-am.json › giay_phep_dung_duoc. Máy chưa có chỉ mục thì chỉ nhận nhacDuocDung."""
+    if not (ten or "").strip():
+        return "chưa chọn nhạc: ghi mã một bài trong tai-nguyen/nhac/CHI_MUC.md vào nhac.txt"
+    import kho_am
+    r = kho_am.tim("nhac", ten)
+    if r:
+        ly_do = kho_am.quyen(r)
+        return f"nhạc '{ten}' ({r['ma']}): {ly_do}; chọn bài khác hoặc ghi rõ nguồn, giấy phép cho bài này" if ly_do else ""
     duoc = CHOT["nhacDuocDung"]["ten"]
-    if ten not in duoc:
-        return f"nhạc '{ten or '(mặc định)'}' chưa kiểm quyền dùng ngoài YouTube; chỉ dùng: {', '.join(duoc)} (ghi vào nhac.txt)"
-    return ""
+    if ten in duoc and not kho_am.doc_chi_muc("nhac"):
+        return ""
+    return f"nhạc '{ten}' không có trong tai-nguyen/nhac/chi-muc.csv nên chưa kiểm được quyền dùng; chọn mã trong CHI_MUC.md hoặc thêm bài vào kho bằng them_am.py (ghi vào nhac.txt)"
 
 
 TRANG_THAI = {"co-san": "có sẵn trong công cụ, gõ lệnh là dùng", "plugin-chinh-thuc": "plugin trong chợ chính thức", "cai-them": "cài thêm từ nguồn khác"}

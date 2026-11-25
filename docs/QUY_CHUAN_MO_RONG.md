@@ -117,7 +117,7 @@ Mỗi tệp được đo bằng máy (độ dài, độ lớn LUFS, nhịp/phút
 |---|---|---|
 | `nhip_bpm` | Nhịp/phút ước bằng máy, ghi `~` | `~92` |
 | `nang_luong` | `nhe`, `vua`, `manh`, `tang-dan` | `manh` |
-| `tam_trang` | 2–3 từ không dấu | `vui;tre-trung` |
+| `tam_trang` | 1–3 từ **trong từ điển** `goi/video-nguoi-noi/skills/video-ngan-nguoi-noi/references/tu-dien-am.json`: `vui`, `am-ap`, `soi-dong`, `tin-cay`, `sang-trong`, `thu-gian`, `cam-xuc`, `truyen-cam-hung`, `a-dong`, `thanh-tinh`. Từ đồng nghĩa (tre-trung, nang-luong, binh-yen…) tự đổi về từ chuẩn; từ lạ bị `nhap_kho.py` và `them_am.py` chặn. Máy chọn nhạc khớp theo các từ này | `vui;am-ap` |
 | `hop_video` | Như cột của cảnh | `bni;gioi-thieu-dn` |
 | `doan` | Các đoạn theo giây: dạo, beat, lắng, cao trào, hết | `0-4 mở nhẹ; 4-47 beat đều` |
 | `bat_dau_goi_y` | Giây nên bắt đầu cắt nhạc | `9.5` |
@@ -183,7 +183,7 @@ Skill `xuong-mo-rong` (giai đoạn 2) nhận các câu nói tự nhiên và lu�
 
 | Học viên nói | Ghi vào |
 |---|---|
-| "Thêm cảnh / ảnh / nhạc / tiếng này vào kho" | `tai-nguyen/<loai>/cua-toi/<nhom>/U…` + dòng `chu=hoc-vien`. Video được chuẩn hóa về 9:16 kèm ảnh xem trước. Nhạc phải hỏi nguồn, ghi `giay_phep` |
+| "Thêm cảnh / ảnh / nhạc / tiếng này vào kho" | `tai-nguyen/<loai>/cua-toi/<nhom>/U…` + dòng `chu=hoc-vien`. Video được chuẩn hóa về 9:16 kèm ảnh xem trước. **Nhạc, tiếng (đã có từ 0.2.8):** `scripts/them_am.py` của skill `video-ngan-nguoi-noi` đo bằng máy, kiểm nhãn theo cùng từ điển và luật tên tệp với kho chung, hỏi nguồn và giấy phép, xem trước rồi mới ghi; không thêm trùng (so dấu vân tay tệp nguồn) |
 | "Lưu kiểu video này của tôi" | `mau-cua-toi/<ten-kieu>/MAU.md` (+ video mẫu) + một dòng ở mục "Kiểu video của tôi" trong `xuong.json` |
 | "Lần sau làm khác đi chỗ này" | Mục "Rút kinh nghiệm" trong `MAU.md` của kiểu đang dùng, hoặc `mau-cua-toi/_chung/RUT_KINH_NGHIEM.md` |
 | "Tạo nhóm cảnh mới tên X" | Thêm nhóm vào `chi-muc.csv` (`chu=hoc-vien`) |

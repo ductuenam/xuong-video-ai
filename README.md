@@ -1,6 +1,6 @@
 # Xưởng Video AI
 
-Kho chuẩn của bộ làm video cài vào **Bộ Não AI** của học viên bằng **một câu lệnh**. Trạng thái: mã **0.2.6** (bộ cài Windows đã thử thật từ GitHub trên bộ não mới tinh 25/11; skill BNI bản 2.2: khung 5 nhịp không cứng, bài 30 hoặc 60 giây, ảnh riêng từng bài, giọng tự quay, chặn lời hứa ngành có quy định; cập nhật nhanh `/cap-nhat-xuong` chỉ tải phần bổ sung; Mac chưa thử trên máy thật); tài nguyên **v1** (226 cảnh, 3 nhạc, 7 tiếng) trên Cloudflare R2.
+Kho chuẩn của bộ làm video cài vào **Bộ Não AI** của học viên bằng **một câu lệnh**. Trạng thái: mã **0.2.8** (0.2.7: cập nhật xem trước + sao lưu tệp học viên sửa + dọn bộ cài cũ 24/11; 0.2.8: nhạc tự khớp video, tiếng khớp điểm nhấn, học viên tự thêm nhạc/tiếng đúng chuẩn; bộ cài Windows đã thử thật từ GitHub trên bộ não mới tinh 25/11; skill BNI bản 2.2: khung 5 nhịp không cứng, bài 30 hoặc 60 giây, ảnh riêng từng bài, giọng tự quay, chặn lời hứa ngành có quy định; cập nhật nhanh `/cap-nhat-xuong` chỉ tải phần bổ sung; Mac chưa thử trên máy thật); tài nguyên **v1** (226 cảnh, 3 nhạc, 7 tiếng) trên Cloudflare R2.
 
 ## Cài (học viên)
 

@@ -50,13 +50,14 @@ DAU = {
     'canh': ['# CHỈ MỤC CẢNH TRÁM (video dọc 9:16, 8–10 giây, không có mặt người thật)', '',
              '> AI đọc tệp này để chọn cảnh, không mở lần lượt video. Muốn nhìn thì mở `xem-truoc/<mã>.jpg`.'],
     'nhac': ['# CHỈ MỤC NHẠC NỀN', '',
-             '> Giấy phép Pixabay: dùng trong video được, **không phát lại nguyên tệp**. Chi tiết: `NGUON.md`.'],
+             '> Giấy phép từng bài ở cột `giay_phep` của `chi-muc.csv` (`cc0`, `pixabay`): dùng trong video được, **không phát lại nguyên tệp**. Chi tiết: `NGUON.md`.',
+             '> Chọn bài theo **Tâm trạng** (từ điển cố định: vui, am-ap, soi-dong, tin-cay, sang-trong, thu-gian, cam-xuc, truyen-cam-hung, a-dong, thanh-tinh) và **Hợp video**; ghi mã bài vào `nhac.txt`. Máy tự cắt đúng độ dài video, tự bắt đầu ở cột Bắt đầu, bài ngắn thì tự nối vòng.'],
     'am': ['# CHỈ MỤC TIẾNG HIỆU ỨNG', '',
            '> ⚠ Chưa rõ nguồn và giấy phép: xác minh hoặc thay bằng tiếng CC0 trước khi phát hành.'],
 }
 CHU_GIAI = {
     'canh': 'Cột: **Máy** = chuyển động máy quay · **Chữ** = chỗ trống đặt phụ đề · **Dấu** = chữ/dấu in sẵn trong hình (`khong` = sạch; cảnh có `dau-sao` cần che hoặc cắt góc phải dưới nếu video cần sạch). Đầy đủ cột (màu, đổi nội dung, loại video hợp) ở `chi-muc.csv`.',
-    'nhac': 'Cột: **Nhịp** = số nhịp/phút ước bằng máy · **Sức** = `vua`/`manh`/`tang-dan` · **Bắt đầu** = giây nên bắt đầu cắt nhạc. Các đoạn của bài và độ lớn ở `chi-muc.csv` (cột `doan`, `do_lon_lufs`). Nhạc luôn hạ khoảng −21 dB dưới giọng nói.',
+    'nhac': 'Cột: **Nhịp** = số nhịp/phút ước bằng máy · **Sức** = `vua`/`manh`/`tang-dan` · **Bắt đầu** = giây nên bắt đầu cắt nhạc. Các đoạn của bài và độ lớn ở `chi-muc.csv` (cột `doan`, `do_lon_lufs`). Nhạc tự đặt thấp hơn giọng nói (mặc định 10 LU) và tự nén khi có giọng, nên không cần chỉnh to nhỏ bằng tay.',
     'am': 'Cột: **Giây** = độ dài · **Điểm nhấn** = giây mạnh nhất, đặt trùng lúc hình đổi · **Dùng khi** = tình huống hợp. Độ lớn và lời khuyên tăng/giảm ở `chi-muc.csv` (cột `do_lon`).',
 }
 BANG = {  # (tiêu đề cột, hàm lấy giá trị)
@@ -64,7 +65,8 @@ BANG = {  # (tiêu đề cột, hàm lấy giá trị)
              ('Từ khóa', lambda r: r['tu_khoa'].replace(';', ', ')),
              ('Máy', lambda r: r.get('chuyen_dong', '')), ('Chữ', lambda r: r.get('cho_chu', '')),
              ('Dấu', lambda r: r.get('co_dau_chu', ''))],
-    'nhac': [('Mô tả', lambda r: r['mo_ta']), ('Từ khóa', lambda r: r['tu_khoa'].replace(';', ', ')),
+    'nhac': [('Mô tả', lambda r: r['mo_ta']), ('Tâm trạng', lambda r: r.get('tam_trang', '').replace(';', ', ')),
+             ('Từ khóa', lambda r: r['tu_khoa'].replace(';', ', ')),
              ('Nhịp', lambda r: r.get('nhip_bpm', '')), ('Sức', lambda r: r.get('nang_luong', '')),
              ('Hợp video', lambda r: r.get('hop_video', '').replace(';', ', ')), ('Bắt đầu', lambda r: r.get('bat_dau_goi_y', ''))],
     'am': [('Mô tả', lambda r: r['mo_ta']), ('Từ khóa', lambda r: r['tu_khoa'].replace(';', ', ')),
@@ -74,7 +76,9 @@ BANG = {  # (tiêu đề cột, hàm lấy giá trị)
 
 
 def sinh_md(loai):
-    rows = [r for r in doc_csv(CHI_MUC / loai / 'chi-muc.csv') if r.get('chu') != 'hoc-vien' and r.get('trang_thai', 'dung') == 'dung']
+    tat_ca = [r for r in doc_csv(CHI_MUC / loai / 'chi-muc.csv') if r.get('trang_thai', 'dung') == 'dung']
+    rows = [r for r in tat_ca if r.get('chu') != 'hoc-vien']
+    cua_hv = [r for r in tat_ca if r.get('chu') == 'hoc-vien']
     nhom = {}
     for r in rows:
         nhom.setdefault((r['nhom'], r['ten_nhom']), []).append(r)
@@ -93,6 +97,12 @@ def sinh_md(loai):
         out.append('')
     out += ['## Của riêng học viên',
             'Nằm ở `cua-toi/<nhom>/`, mã có thêm chữ `U` phía trước (ví dụ `U%s0001`), dòng có `chu=hoc-vien`. Bản cập nhật không ghi đè.' % LOAI[loai], '']
+    if cua_hv:  # máy học viên: bộ cài sinh lại tệp này mỗi lần cập nhật, nên phải liệt kê lại cả đồ học viên đã thêm
+        cot = BANG[loai]
+        out += ['| Mã | Nhóm | ' + ' | '.join(c for c, _ in cot) + ' |', '|---|---|' + '---|' * len(cot)]
+        out += ['| %s | %s | ' % (r['ma'], r.get('nhom', '')) + ' | '.join(str(f(r) or '').replace('|', '/') for _, f in cot) + ' |'
+                for r in cua_hv]
+        out.append('')
     (CHI_MUC / loai / 'CHI_MUC.md').write_text('\n'.join(out), encoding='utf-8', newline='\n')
     return len(rows)
 

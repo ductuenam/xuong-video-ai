@@ -61,7 +61,7 @@
     "model": "speech-2.8-hd"
   },
   "nhacDuocDung": {
-    "_ghi": "Chỉ bài đã kiểm quyền dùng ngoài YouTube (Pixabay, ghi công trong tai-nguyen/nhac/NGUON.md). Bài từ YouTube Audio Library chưa kiểm thì không dùng. Đổi bài giữa các video.",
+    "_ghi": "Từ 25/11/2026 chỉ dùng khi máy CHƯA có tai-nguyen/nhac/chi-muc.csv. Có chỉ mục thì kiem_nhac() xét cột giay_phep theo references/tu-dien-am.json. Bài từ YouTube Audio Library chưa kiểm thì không dùng. Đổi bài giữa các video.",
     "ten": [
       "NH0001",
       "NH0002",

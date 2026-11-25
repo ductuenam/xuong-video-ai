@@ -1,6 +1,6 @@
 {
   "ten": "xuong-video-ai",
-  "phien_ban": "0.2.7",
+  "phien_ban": "0.2.8",
   "co_gi_moi": {
     "_ghi_chu": "Mỗi bản mới thêm một dòng, tiếng Việt dễ hiểu cho học viên; bộ cài in các dòng mới hơn bản học viên đang có.",
     "0.2.3": "Video giới thiệu bản thân BNI bản mới: lời viết riêng cho từng người, làm được bài 30 hoặc 60 giây, dùng ảnh riêng từng bài, tự thu giọng mình được.",
@@ -10,6 +10,11 @@
       "Máy 8 GB nhận đủ 226 cảnh (trước chỉ 64): tải thêm một lần khoảng 880 MB nếu ổ còn chỗ.",
       "Cập nhật luôn cho xem trước và hỏi anh/chị OK; tệp gốc anh/chị từng sửa được cất sao lưu trước khi thay.",
       "Dọn bộ cài cũ ngày 24/11 nếu anh/chị đồng ý: video, ảnh, cấu hình KOL được chuyển sang xưởng mới, phần còn lại vào Thùng rác."
+    ],
+    "0.2.8": [
+      "Nhạc nền tự khớp video: tự bỏ đoạn dạo nhỏ, bài ngắn tự nối vòng liền mạch, máy chọn bài đúng tâm trạng và đủ dài.",
+      "Tiếng hiệu ứng khớp đúng lúc hình đổi; gọi được mọi tiếng trong kho.",
+      "Tự thêm nhạc, tiếng của anh/chị vào kho: nói \"Thêm bài nhạc này vào kho\", Claude đo, đặt tên, gắn nhãn đúng chuẩn rồi hỏi OK mới thêm."
     ]
   },
   "phien_ban_tai_nguyen": "v1",

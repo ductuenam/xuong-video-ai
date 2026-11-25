@@ -60,7 +60,8 @@ Bộ cài Xưởng Video AI đã cài sẵn phần mềm (Python, FFmpeg, Node, 
 1. `ho-so-kenh.json` nằm ở Xưởng (bộ cài tạo từ `references/ho-so-kenh.mau.json`). Không thấy thì báo chưa cài Xưởng Video AI.
 2. Mỗi video một thư mục: `<Xưởng>/du-an/<số>-<tên>/`.
 3. **Chọn cảnh:** mở `tai-nguyen/canh/CHI_MUC.md` (bảng nhóm và mô tả) và `tai-nguyen/canh/chi-muc.csv`; cần nhìn thì xem ảnh `tai-nguyen/canh/xem-truoc/<mã>.jpg`. Không mở lần lượt video. Mã cảnh dạng `CA0116`. Cảnh riêng của học viên ở `tai-nguyen/canh/cua-toi/` (tên `<mã>.mp4`).
-4. **Chọn nhạc, tiếng:** `tai-nguyen/nhac/CHI_MUC.md`, `tai-nguyen/am/CHI_MUC.md`. Nhạc nền video ngắn: `NH0001` hip hop vlog trẻ trung, `NH0002` phonk mạnh dồn dập, `NH0003` future bass cảm xúc (vào nhịp ở giây 9,5).
+4. **Chọn nhạc, tiếng:** `tai-nguyen/nhac/CHI_MUC.md`, `tai-nguyen/am/CHI_MUC.md` (cả phần "Của riêng học viên" cuối tệp). Chọn nhạc theo cột **Tâm trạng** (từ điển cố định trong `references/tu-dien-am.json`: vui, am-ap, soi-dong, tin-cay, sang-trong, thu-gian, cam-xuc, truyen-cam-hung, a-dong, thanh-tinh) và **Hợp video**; đổi bài giữa các video. Chọn tiếng theo cột **Dùng khi**. Gọi bằng mã (`NH0012`, `AM0031`, `UNH0001`). Máy tự lo phần còn lại: cắt nhạc đúng độ dài video, bắt đầu ở cột Bắt đầu, bài ngắn thì nối vòng, chỉnh to nhỏ theo giọng, đặt giây mạnh nhất của tiếng trùng lúc hình đổi. Không chỉnh dB bằng tay.
+5. **Học viên thêm nhạc, tiếng của mình** ("Thêm bài nhạc / tiếng này vào kho"): làm đúng mục "Thêm nhạc, tiếng vào kho" bên dưới, không tự chép tệp vào `tai-nguyen/`.
 
 ## 8 bước
 
@@ -77,6 +78,18 @@ Bộ cài Xưởng Video AI đã cài sẵn phần mềm (Python, FFmpeg, Node, 
 
 Không tự đăng lên mạng xã hội. Không tự trừ credit Flow khi người dùng chưa đồng ý số credit.
 
+## Thêm nhạc, tiếng vào kho
+
+Khi học viên đưa tệp nhạc, tiếng (mp3, wav, m4a, kể cả video lấy phần tiếng) và muốn dùng lại về sau. Mục đích: đồ của học viên được đặt tên, gắn nhãn, đo đạc **đúng chuẩn của kho chung**, nên máy chọn và trộn được như bài của kho, và bản cập nhật không bao giờ đè. Chạy trong thư mục `scripts/`:
+
+1. `python them_am.py do <tệp> [<tệp> ...]`: máy đo độ dài, độ to, nhịp, điểm nhấn, đoạn dạo, chỗ im, chỗ méo; vẽ ảnh dạng sóng + phổ; in bản nháp nhãn kèm từ điển. Tệp ≥ 30 giây coi là nhạc, ngắn hơn là tiếng.
+2. Mở ảnh (Read) và đọc số đo để điền mọi ô `<điền>`. Tả theo cái nghe được trên ảnh và số đo, **không theo tên tệp**: `mo_ta` (một câu), `slug` (không dấu, nối `-`, ≤ 32 ký tự, tả đúng âm thanh), `tu_khoa` (3–8 từ cả cách người dùng hay nói); nhạc: `tam_trang` 1–3 từ **trong từ điển**, `nang_luong`, `hop_video`, `doan`; tiếng: `nhom` (một nhóm trong từ điển nếu hợp), `dung_khi`. Có `canh_bao` (méo, đuôi im, chất lượng thấp) thì nói với học viên.
+3. **Hỏi học viên một lượt:** nguồn ở đâu và có quyền dùng không (`giay_phep`: `cc0`, `pixabay`, `hoc-vien-tu-co` = tự làm hoặc đã mua quyền, `chua-ro`), bài có lời hát không (nhạc nền nên không lời). Không đoán giấy phép. `chua-ro` vẫn thêm được nhưng máy sẽ không cho dùng trong video đăng công khai.
+4. Ghi các bản nháp đã điền vào một tệp JSON (danh sách), chạy `python them_am.py ghi <tệp.json>`: máy kiểm và in "sẽ thêm…". Có lỗi thì sửa theo dòng báo, không lách. Đưa học viên xem một dòng mỗi tệp và hỏi OK.
+5. Học viên OK: `python them_am.py ghi <tệp.json> --that`. Tệp được **chép** (không di chuyển tệp gốc) vào `tai-nguyen/<nhac|am>/cua-toi/<nhom>/U…_<slug>`, ghi dòng `chu=hoc-vien`, thêm vào `CHI_MUC.md`, chỉ mục cũ cất ở `.sao-luu/`. Tệp đã có (cùng nội dung) thì báo mã cũ, không thêm lần hai. Báo học viên mã mới để gọi.
+
+Muốn sửa nhãn một tệp đã thêm: sửa đúng dòng đó trong `chi-muc.csv` (chỉ dòng `chu=hoc-vien`), giữ từ trong từ điển. Muốn bỏ: đặt `trang_thai=an`, không xóa dòng.
+
 ## Dựng
 
 Trong thư mục dự án cần có:
@@ -87,7 +100,7 @@ Trong thư mục dự án cần có:
 | `loi.txt` | Mỗi dòng một cụm phụ đề, đúng lời đã nói, đúng chính tả tên riêng |
 | `canh.json` | Danh sách cảnh, xem `references/mo-hinh-canh.md` |
 | `goi-y.txt` | Tên riêng để Whisper nghe đúng, cách nhau bằng dấu phẩy |
-| `nhac.txt` | Tên bài trong `nhacDuocDung` của `references/da-chot.json` (hiện có NH0001, NH0002, NH0003), đổi bài giữa các video. Bài khác chưa kiểm quyền ngoài YouTube, `tron_am.py` sẽ chặn |
+| `nhac.txt` | Mã một bài trong `tai-nguyen/nhac/chi-muc.csv` (kho chung hoặc của học viên), đổi bài giữa các video. Bài có `giay_phep` ngoài danh sách dùng được (ví dụ `chua-ro`) hoặc không có trong chỉ mục thì `tron_am.py` chặn (luật 11) |
 | `public/` | Ảnh riêng của video. Ảnh và video trang web tạo bằng `chup_web.py`, lưu ở `public/web/` |
 
 Trình tự:
@@ -223,7 +236,7 @@ Lời đã chốt vẫn là phụ đề; bảng "Có file người dẫn tự qu
   - `ghiNho`: tối đa 18 ký tự. Chữ thẻ nên tối đa 14 ký tự mỗi dòng.
   - `lienHe`: từ 2 chữ trở lên.
   - `nganh`: từ khóa đúng như trong `tai-nguyen/canh/CHI_MUC.md` (mục 9 công thức).
-  - `tamTrang`: `vui`, `am-ap`, `cam-xuc`, `chuyen-nghiep`, `manh-me` hoặc `moc-mac`, để chọn nhạc.
+  - `tamTrang`: `vui`, `am-ap`, `cam-xuc`, `chuyen-nghiep`, `manh-me`, `moc-mac`, hoặc một từ của từ điển `references/tu-dien-am.json` (ví dụ `sang-trong`, `thu-gian`, `a-dong`), để chọn nhạc. Máy ưu tiên bài đủ dài cho video và đổi bài so với lần trước.
   - `doDai`: 30 hoặc 60.
   - `kieu`: `lan-dau` (mặc định) hoặc `tuan` (bài tuần BNI).
   - `docDung`: cách đọc tên riêng, viết tắt (mục 6).

@@ -16,7 +16,7 @@ AI không nghe được trực tiếp. Gắn nhãn dựa trên **số đo của 
 | `tu_khoa` | `hip-hop;vlog;tre-trung;vui;gioi-thieu;nhac-nen` |
 | `nhip_bpm` | `~92` |
 | `nang_luong` | `nhe`, `vua`, `manh`, `tang-dan` |
-| `tam_trang` | `vui;tre-trung` |
+| `tam_trang` | `vui;am-ap`: 1–3 từ trong từ điển `goi/video-nguoi-noi/skills/video-ngan-nguoi-noi/references/tu-dien-am.json` (vui, am-ap, soi-dong, tin-cay, sang-trong, thu-gian, cam-xuc, truyen-cam-hung, a-dong, thanh-tinh); `nhap_kho.py` tự đổi từ đồng nghĩa, chặn từ lạ |
 | `hop_video` | `bni;gioi-thieu-dn;day-hoc` |
 | `doan` | `0-4 mở nhẹ; 4-47 beat đều; 47-64 lắng; 64-110 beat lại; 110-114 tắt dần` |
 | `bat_dau_goi_y` | Giây nên bắt đầu cắt (bỏ đoạn dạo quá nhỏ): `9.5` |

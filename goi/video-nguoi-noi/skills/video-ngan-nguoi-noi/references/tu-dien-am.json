@@ -1,0 +1,39 @@
+{
+  "_ghi": "Từ điển nhãn nhạc và tiếng hiệu ứng: nguồn duy nhất cho kho chung (cong-cu/nhap_kho.py), cho công cụ học viên tự thêm (scripts/them_am.py) và cho máy chọn nhạc (bni.py, kho_am.py). Thêm từ mới thì thêm ở đây, chạy lại cong-cu/thu_am.py. Chốt 25/11/2026.",
+  "tam_trang": {
+    "vui": "vui tươi, trẻ trung, tích cực",
+    "am-ap": "ấm áp, gần gũi, mộc mạc",
+    "soi-dong": "sôi động, mạnh, dồn dập",
+    "tin-cay": "chuyên nghiệp, đáng tin, doanh nghiệp",
+    "sang-trong": "sang trọng, tinh tế, chill",
+    "thu-gian": "thư giãn, nhẹ nhàng, bình yên",
+    "cam-xuc": "cảm xúc, sâu lắng, kể chuyện",
+    "truyen-cam-hung": "truyền cảm hứng, hy vọng, cao trào",
+    "a-dong": "màu sắc Á Đông, phương Đông",
+    "thanh-tinh": "thanh tịnh, thiền, spa"
+  },
+  "gop": {
+    "vui-nhon": "vui", "tre-trung": "vui", "tuoi-sang": "vui", "tich-cuc": "vui", "hai-huoc": "vui",
+    "thoai-mai": "am-ap", "gan-gui": "am-ap", "moc-mac": "am-ap", "ngot-ngao": "am-ap",
+    "nang-luong": "soi-dong", "manh-me": "soi-dong", "kich-thich": "soi-dong", "don-dap": "soi-dong", "manh": "soi-dong",
+    "chuyen-nghiep": "tin-cay", "tu-tin": "tin-cay", "on-dinh": "tin-cay", "doanh-nghiep": "tin-cay",
+    "tinh-te": "sang-trong", "chill": "sang-trong",
+    "nhe-nhang": "thu-gian", "binh-yen": "thu-gian", "em-diu": "thu-gian", "thu-thai": "thu-gian",
+    "sau-lang": "cam-xuc", "huyen-bi": "cam-xuc", "ke-chuyen": "cam-xuc", "buon": "cam-xuc",
+    "hy-vong": "truyen-cam-hung", "cao-trao": "truyen-cam-hung", "hung-trang": "truyen-cam-hung",
+    "phuong-dong": "a-dong",
+    "thien": "thanh-tinh", "spa": "thanh-tinh"
+  },
+  "nang_luong": ["nhe", "vua", "manh", "tang-dan"],
+  "hop_video": ["bni", "gioi-thieu-dn", "quang-cao", "ban-hang", "day-hoc", "tin-tuc", "chuyen-canh"],
+  "nhom_am": {
+    "giao-dien": "Tiếng giao diện: bật thẻ, thông báo, click, chụp, gõ phím",
+    "chuyen-canh": "Chuyển cảnh: vút, lướt, đập, nổ trầm",
+    "cam-xuc": "Cảm xúc: vỗ tay, ăn mừng, ồ à",
+    "doi-song": "Đời sống: cửa, giấy, nước, bếp, chuông gió",
+    "tien-ban-hang": "Tiền, bán hàng: chuông quầy, đồng xu, quét mã, in hóa đơn",
+    "nen-khong-khi": "Nền không khí: mưa, chim, phố, quán, suối (trải dài, rất nhỏ dưới giọng)"
+  },
+  "giay_phep_dung_duoc": ["cc0", "pixabay", "kho-chung", "hoc-vien-tu-co"],
+  "giay_phep_khac": {"chua-ro": "chưa rõ quyền: không dùng cho video đăng công khai, máy sẽ chặn ở bước trộn"}
+}

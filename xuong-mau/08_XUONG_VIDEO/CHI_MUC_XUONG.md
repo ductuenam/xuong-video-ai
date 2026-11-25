@@ -36,4 +36,4 @@
 |---|---|---|
 | Kiểu video của tôi | `mau-cua-toi/<ten-kieu>/MAU.md` | (chưa có) — nói "Lưu kiểu video này của tôi" |
 | Rút kinh nghiệm chung | `mau-cua-toi/_chung/RUT_KINH_NGHIEM.md` | |
-| Tài nguyên của tôi | `tai-nguyen/<loai>/cua-toi/` | (chưa có) — nói "Thêm cảnh/nhạc này vào kho" |
+| Tài nguyên của tôi | `tai-nguyen/<loai>/cua-toi/` | (chưa có) — nói "Thêm bài nhạc / tiếng này vào kho": Claude đo, đặt tên, gắn nhãn đúng chuẩn kho, hỏi nguồn rồi mới thêm |

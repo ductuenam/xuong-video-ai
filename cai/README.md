@@ -49,4 +49,4 @@ cd "$env:TEMP\zaios_cai_xuong\Bo-Nao-AI"; Get-Content -Raw -Encoding utf8 "$env:
 
 `XUONG_NGUON` bỏ qua bước tải mã từ GitHub; `XUONG_MAY` đặt phần mềm vào thư mục thử; `XUONG_GOI` ép gói cảnh.
 
-**Cổng bắt buộc trước mỗi lần phát hành:** `python -X utf8 cong-cu/thu_cap_nhat.py` phải in `ĐẠT HẾT` (cài, cập nhật, xem trước, sao lưu, ổ đầy, đứt giữa chừng, đổi tên ngăn, dọn bộ cài cũ; thư mục nhà và Thùng rác đều giả).
+**Cổng bắt buộc trước mỗi lần phát hành:** `python -X utf8 cong-cu/thu_cap_nhat.py` và `python -X utf8 cong-cu/thu_am.py` (nhạc, tiếng: quyền, chọn bài, nối vòng, khớp điểm nhấn, học viên tự thêm) phải in `ĐẠT HẾT` (cài, cập nhật, xem trước, sao lưu, ổ đầy, đứt giữa chừng, đổi tên ngăn, dọn bộ cài cũ; thư mục nhà và Thùng rác đều giả).

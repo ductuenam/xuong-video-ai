@@ -69,14 +69,15 @@ DIA_DANH = ("ha-noi", "sai-gon", "hoi-an", "landmark", "ho-guom", "long-bien", "
 HOAT_HINH = ("tí hon", "đất sét", "hoạt hình", "cartoon", "đồ chơi")
 # Nền màu dịu tự tạo khi kho cảnh trống: kem cam, xanh ngọc nhạt, tím hồng nhạt
 NEN_MEM = [("0xF6D9C4", "0xE9B7A0", "0xF3E6D8"), ("0xCFE8E4", "0xA9D3CF", "0xE6F2EF"), ("0xE8DDF0", "0xD6C3E6", "0xF4EDF7")]
-# Giọng bài -> từ khóa tâm trạng trong cột tam_trang của tai-nguyen/nhac/chi-muc.csv
+# Giọng bài -> từ tâm trạng (theo thứ tự ưu tiên) trong từ điển references/tu-dien-am.json, khớp cột tam_trang của
+# tai-nguyen/nhac/chi-muc.csv sau khi đã đưa về từ điển (kho_am.chuan_tam). Giọng bài ghi đúng một từ của từ điển cũng được.
 TAM_TRANG = {
-    "vui": ["vui", "tre-trung", "thoai-mai"],
-    "am-ap": ["thoai-mai", "hy-vong", "cam-xuc"],
-    "cam-xuc": ["cam-xuc", "truyen-cam-hung", "hy-vong"],
-    "chuyen-nghiep": ["tu-tin", "truyen-cam-hung", "hy-vong"],
-    "manh-me": ["manh-me", "tu-tin", "kich-thich"],
-    "moc-mac": ["thoai-mai", "tu-tin", "hy-vong"],  # thẳng, mộc, gần gũi (thử vai chủ xưởng mộc 25/11/2026)
+    "vui": ["vui", "am-ap", "soi-dong"],
+    "am-ap": ["am-ap", "thu-gian", "vui"],
+    "cam-xuc": ["cam-xuc", "truyen-cam-hung", "am-ap"],
+    "chuyen-nghiep": ["tin-cay", "truyen-cam-hung", "sang-trong"],
+    "manh-me": ["soi-dong", "truyen-cam-hung", "tin-cay"],
+    "moc-mac": ["am-ap", "thu-gian", "tin-cay"],  # thẳng, mộc, gần gũi (thử vai chủ xưởng mộc 25/11/2026)
 }
 DONG_TOI_DA, GHI_NHO_TOI_DA, THE_TOI_DA = 28, 18, 14
 # Theo độ dài bài ("doDai" trong bni.json, mặc định 30). Luật thật là độ dài GIỌNG đo sau khi tạo; số chữ chỉ để nhắc sớm
@@ -322,21 +323,23 @@ def kiem_truoc(da, b, dong, loi_doc, so):
 def chon_nhac(b, so):
     if b.get("nhac"):
         return b["nhac"]
+    import kho_am
     from kiem_chot import kiem_nhac
-    f = XUONG / "tai-nguyen" / "nhac" / "chi-muc.csv"
-    if not f.exists():
-        return "NH0001"
-    ds = [r for r in csv.DictReader(f.open(encoding="utf-8-sig")) if (r.get("trang_thai") or "dung") == "dung" and not kiem_nhac(r["ma"])]
+    ds = [r for r in kho_am.doc_chi_muc("nhac") if r["_file"].is_file() and not kiem_nhac(r["ma"])]
     if not ds:
         return "NH0001"
-    tt = khong_dau(b.get("tamTrang", ""))
-    muon = TAM_TRANG.get(tt, [tt] if tt else [])
+    tt = kho_am.khong_dau(b.get("tamTrang", ""))
+    muon = TAM_TRANG.get(tt) or kho_am.chuan_tam(tt)[0]
     truoc = (so.get("tuan") or [{}])[-1].get("nhac")
+    can = b.get("doDai", 30) + 6  # giây nhạc cần (tính cả đoạn mở, kết); bài ngắn hơn vẫn dùng được nhờ nối vòng nhưng xếp sau
 
     def diem(r):
-        tam = (r.get("tam_trang") or "").split(";")
+        tam = kho_am.chuan_tam(r.get("tam_trang"))[0]
         hop = r.get("hop_video") or ""
-        return (sum(x in tam for x in muon) * 3 + ("bni" in hop or "gioi-thieu" in hop) * 2 - (r["ma"] == truoc) * 4, r["ma"])
+        khop = sum((3 - i) * 2 for i, x in enumerate(muon) if x in tam)  # từ đầu tiên nặng nhất
+        con = (kho_am.giay_cua(r) or 999) - (kho_am.so(r.get("bat_dau_goi_y")) or 0)
+        return (khop + ("bni" in hop) * 2 + ("gioi-thieu" in hop) - (r["ma"] == truoc) * 4 - (con < can) * 3
+                + (r.get("chu") == "hoc-vien") * 1, r["ma"])  # bài học viên tự thêm được ưu tiên nhẹ khi ngang điểm
     return max(ds, key=diem)["ma"]
 
 
