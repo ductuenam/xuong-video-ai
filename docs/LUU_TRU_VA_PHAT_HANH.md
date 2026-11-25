@@ -40,7 +40,7 @@ updated: 2026-11-25
 - Tạo bucket R2, gắn tên miền, bật đọc công khai cho bucket đó.
 - Tạo khóa R2 (API token) và tự gõ vào `cong-cu/tai_len_r2.py`. Claude không nhập khóa thay.
 - Quyết định có giữ 3 bài nhạc Pixabay hay thay bằng nhạc CC0.
-- Kho GitHub `ductuenam/xuong-video-ai` đã tạo ngày 25/11/2026, để **riêng tư**. Chỉ chuyển sang công khai khi đã có bộ cài và đã bỏ tên thương hiệu cũ trong skill.
+- Kho GitHub `ductuenam/xuong-video-ai` tạo ngày 25/11/2026, nay đã **công khai** (bộ cài tải mã từ đây, không cần tài khoản). Không đưa khóa, nhạc, video vào kho mã.
 
 ## 5. Tải gói lên R2 (giữ miễn phí)
 
