@@ -1,6 +1,6 @@
 {
   "ten": "xuong-video-ai",
-  "phien_ban": "0.2.8",
+  "phien_ban": "0.2.9",
   "co_gi_moi": {
     "_ghi_chu": "Mỗi bản mới thêm một dòng, tiếng Việt dễ hiểu cho học viên; bộ cài in các dòng mới hơn bản học viên đang có.",
     "0.2.3": "Video giới thiệu bản thân BNI bản mới: lời viết riêng cho từng người, làm được bài 30 hoặc 60 giây, dùng ảnh riêng từng bài, tự thu giọng mình được.",
@@ -15,32 +15,44 @@
       "Nhạc nền tự khớp video: tự bỏ đoạn dạo nhỏ, bài ngắn tự nối vòng liền mạch, máy chọn bài đúng tâm trạng và đủ dài.",
       "Tiếng hiệu ứng khớp đúng lúc hình đổi; gọi được mọi tiếng trong kho.",
       "Tự thêm nhạc, tiếng của anh/chị vào kho: nói \"Thêm bài nhạc này vào kho\", Claude đo, đặt tên, gắn nhãn đúng chuẩn rồi hỏi OK mới thêm."
+    ],
+    "0.2.9": [
+      "Kho âm thanh lớn hơn nhiều: 31 bài nhạc nền (trước 3) đủ tâm trạng vui, ấm áp, sôi động, sang trọng, Á Đông, thư giãn; 47 tiếng hiệu ứng (trước 7). Tải thêm khoảng 180 MB.",
+      "Video BNI nói tự nhiên hơn: bỏ kiểu câu dịch máy móc \"Khách tốt cho tôi là…\".",
+      "Máy đang mở nhiều ứng dụng vẫn dựng được video: tự dựng nhẹ hơn khi bộ nhớ còn ít, và báo rõ cần đóng bớt gì."
     ]
   },
-  "phien_ban_tai_nguyen": "v1",
-  "ghi_chu": "Bản nháp. sha256 và mb đã khớp gói đóng ngày 25/11 (cảnh, nhạc, tiếng đã gắn nhãn và đặt tên lại). Gói v1 đã lên R2 (bucket xuong-video-ai, tên miền taivido.zenotera.com) ngày 25/11; tải về qua tên miền khớp sha256.",
+  "phien_ban_tai_nguyen": "v2",
+  "ghi_chu": "Gói v2 đóng 25/11 tối (thêm 28 nhạc, 40 tiếng); sha256 và mb khớp gói. Gói v1 đã lên R2 (bucket xuong-video-ai, tên miền taivido.zenotera.com) ngày 25/11; tải về qua tên miền khớp sha256.",
   "goi_tai_nguyen": {
     "kho-canh-du": {
-      "url": "https://taivido.zenotera.com/xuong-video/v1/kho-canh-du-v1.zip",
+      "url": "https://taivido.zenotera.com/xuong-video/v2/kho-canh-du-v2.zip",
       "sha256": "b65de7d1833ab69b26edab7fbe899ae872f601bb801cb350652d77709db46261",
-      "mb": 882,
+      "mb": 881,
       "giai_nen_vao": "08_XUONG_VIDEO/"
     },
     "kho-canh-nhe": {
-      "url": "https://taivido.zenotera.com/xuong-video/v1/kho-canh-nhe-v1.zip",
+      "url": "https://taivido.zenotera.com/xuong-video/v2/kho-canh-nhe-v2.zip",
       "sha256": "9cfde7239839e0a2bb276bd01e1c2245cbcf650929144980188621b4b484c611",
       "mb": 217,
       "giai_nen_vao": "08_XUONG_VIDEO/"
     },
     "nhac-am": {
-      "url": "https://taivido.zenotera.com/xuong-video/v1/nhac-am-v1.zip",
-      "sha256": "4d06add2fe2f8dd5814771566ecb742c69aef03481a6f0b78672eb6a005a2496",
-      "mb": 18,
+      "url": "https://taivido.zenotera.com/xuong-video/v2/nhac-am-v2.zip",
+      "sha256": "ba60ebe5eac0fd419b02a64f76f564e6d6edc2c1f1b326725d9841d5293ac3ca",
+      "mb": 199,
       "giai_nen_vao": "08_XUONG_VIDEO/"
     }
   },
   "goi_bo_sung": {
-    "_ghi_chu": "dong_goi.py --ghi-phien-ban tự ghi: \"v1-v2\": {tu, den, url, sha256, mb}. Học viên đang ở bản tu chỉ tải gói này thay vì gói đủ."
+    "_ghi_chu": "dong_goi.py --ghi-phien-ban tự ghi: \"v1-v2\": {tu, den, url, sha256, mb}. Học viên đang ở bản tu chỉ tải gói này thay vì gói đủ.",
+    "v1-v2": {
+      "tu": "v1",
+      "den": "v2",
+      "url": "https://taivido.zenotera.com/xuong-video/v2/bo-sung-v1-v2.zip",
+      "sha256": "5c5d9a906ff2e419707122ac4a80a2319c9fdbe7ab28d3e51b0fbdd8dc1268d7",
+      "mb": 181
+    }
   },
   "goi_nang_luc": {
     "_ghi_chu": "Cài tất cả một lần (Founder chốt 25/11/2026, không chia cấp). Điều kiện từng skill: goi/<ma>/goi.json › dieu_kien_theo_skill.",

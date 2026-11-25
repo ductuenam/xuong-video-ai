@@ -66,6 +66,7 @@ Vì sao tách ổ: ổ E còn hơn 300 GB, thêm hoạt cảnh nhiều năm khô
 ## 3. Hiện trạng (25/11/2026)
 
 - **Tài nguyên bản v1** xong: 226 cảnh (23 nhóm, 64 cảnh gói nhẹ), 3 nhạc, 7 tiếng — đã nén, đặt tên, gắn nhãn hai vòng, Founder duyệt tờ mẫu. Gói: `kho-canh-du-v1.zip` 882 MB, `kho-canh-nhe-v1.zip` 217 MB, `nhac-am-v1.zip` 18 MB; sha256 đã ghi trong `PHIEN_BAN.json`.
+- **Tài nguyên bản v2** (25/11 tối): thêm 28 nhạc (NH0004–NH0031, CC0 từ Free Music Archive) và 40 tiếng (AM0008–AM0047), tổng 31 nhạc, 47 tiếng. Bỏ 2 bài méo `cam-hung_lofi_03`, `nang-luong_edm_04`. Gói `nhac-am-v2.zip` 199 MB, bổ sung `bo-sung-v1-v2.zip` 181 MB; nhãn lưu ở `_kho-nang\bao-cao\v2\`. Founder cho tải lên R2 ngày 25/11.
 - **Đã có (25/11)**: bộ cài `cai/` (Windows đã thử thật trên bộ não giả: cài mới + cập nhật giữ đồ học viên; Mac chưa thử máy thật), skill đã sửa theo kiến trúc mới (KIEN_TRUC mục 7), bỏ tên đơn vị cũ. **Chưa có**: skill `xuong-mo-rong`. Kho GitHub `ductuenam/xuong-video-ai`. Gói v1 đã lên R2 bucket `xuong-video-ai`, tên miền `taivido.zenotera.com`, kiểm tải về khớp sha256 (25/11).
 - 7 tiếng hiệu ứng **chưa rõ giấy phép** (`giay_phep=chua-ro`); Founder quyết giữ ngày 25/11.
 - Kỹ năng làm video cũ trên máy Founder (`~/.claude/skills/video-ngan-nguoi-noi`) trỏ kho cũ `E:\Video-AI` đã xóa ngày 25/11 → chưa có cảnh chèn cho tới khi bộ cài mới xong.

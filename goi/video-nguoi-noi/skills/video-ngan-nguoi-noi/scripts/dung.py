@@ -99,10 +99,38 @@ def ghi_gio(da, b, giay):
         g.write(f"{datetime.datetime.now():%Y-%m-%d %H:%M:%S},{b},{giay:.0f}\n")
 
 
+def bo_nho_trong_gb():
+    """Bộ nhớ còn cấp được lúc này (Windows: RAM + tệp hoán đổi còn trống), None nếu không đo được.
+    Thêm 25/11/2026: máy 39 GB nhưng đang mở nhiều ứng dụng chỉ còn 6 GB, dựng theo RAM cài đặt thì hết bộ nhớ ở bước render."""
+    if os.name != "nt":
+        return None
+    try:
+        import ctypes
+
+        class M(ctypes.Structure):
+            _fields_ = [("dwLength", ctypes.c_ulong), ("dwMemoryLoad", ctypes.c_ulong), ("ullTotalPhys", ctypes.c_ulonglong),
+                        ("ullAvailPhys", ctypes.c_ulonglong), ("ullTotalPageFile", ctypes.c_ulonglong), ("ullAvailPageFile", ctypes.c_ulonglong),
+                        ("ullTotalVirtual", ctypes.c_ulonglong), ("ullAvailVirtual", ctypes.c_ulonglong), ("ullAvailExtendedVirtual", ctypes.c_ulonglong)]
+        m = M()
+        m.dwLength = ctypes.sizeof(M)
+        if not ctypes.windll.kernel32.GlobalMemoryStatusEx(ctypes.byref(m)):
+            return None
+        return min(m.ullAvailPhys, m.ullAvailPageFile) / 2 ** 30
+    except Exception:
+        return None
+
+
+def ram_dung():
+    """RAM dùng để tính: số nhỏ hơn giữa RAM cài đặt (.claude/xuong-video.json, bộ cài ghi) và bộ nhớ còn trống lúc dựng × 1,5."""
+    ram = CFG.get("ram_gb") or 16
+    trong = bo_nho_trong_gb()
+    return ram if trong is None else min(ram, trong * 1.5)
+
+
 def so_luong_dung():
     """Số tab Chrome Remotion dựng song song. Mỗi tab tốn khoảng 0,5–0,8 GB (đo 25/11/2026: 6 tab, đỉnh 4,6 GB),
-    nên máy ≤ 8 GB chỉ 2, dưới 16 GB 3, còn lại theo nhân CPU (tối đa 6). RAM lấy từ .claude/xuong-video.json (bộ cài ghi)."""
-    ram = CFG.get("ram_gb") or 16
+    nên máy ≤ 8 GB chỉ 2, dưới 16 GB 3, còn lại theo nhân CPU (tối đa 6)."""
+    ram = ram_dung()
     n = max(2, min(6, (os.cpu_count() or 4) // 2))
     # Máy dưới 6 GB (học viên có máy 3,9 GB, 25/11/2026): 1 tab cho khỏi hết bộ nhớ
     return 1 if ram < 6 else 2 if ram <= 8 else (min(n, 3) if ram < 16 else n)
@@ -111,11 +139,15 @@ def so_luong_dung():
 def bo_dem_video():
     """Trần bộ đệm khung video của Remotion. Mặc định Remotion lấy nửa RAM còn trống lúc bắt đầu dựng, cộng với các tab Chrome
     thì máy 8 GB có thể hết bộ nhớ (thử 25/11/2026: video BNI có 5 ảnh thật, máy giả lập 8 GB vượt trần 5 GB, dừng ở bước render)."""
-    ram = CFG.get("ram_gb") or 16
+    ram = ram_dung()
     return [] if ram >= 16 else [f"--offthreadvideo-cache-size-in-bytes={(256 if ram < 6 else 512 if ram <= 8 else 1536) * 2 ** 20}"]
 
 
 def b_render(da):
+    trong = bo_nho_trong_gb()
+    if trong is not None and trong < 4:
+        print(f"⚠ Máy chỉ còn {trong:.1f} GB bộ nhớ trống: nếu bước này dừng vì hết bộ nhớ, đóng bớt tab Chrome và ứng dụng đang mở rồi chạy lại "
+              f"(python dung.py \"{da}\" --tu render). Dựng chậm hơn bình thường.", flush=True)
     chay([NPX, "remotion", "render", da / "render" / "bundle", "MoHinh", da / "render" / "hinh-cam.mp4", f"--props={da / 'props.json'}", "--muted", "--crf=14", f"--concurrency={so_luong_dung()}",
           *bo_dem_video(), "--image-format=jpeg", "--jpeg-quality=100", "--color-space=bt709", "--pixel-format=yuv420p", "--log=error"], cwd=ENGINE)
 

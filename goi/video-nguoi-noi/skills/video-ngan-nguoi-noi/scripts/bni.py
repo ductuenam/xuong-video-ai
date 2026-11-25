@@ -192,6 +192,9 @@ def kiem_truoc(da, b, dong, loi_doc, so):
     # Không tính mo (tên người, tên thương hiệu không rút được; thẻ mở tự xuống 2 dòng, bước cảnh đo phông thật)
     the_dai = [x for x in [*(b.get("bangChung") or []),
                            *[(b.get(k) or {}).get(t, "") for k in ("chuDe", "xin") for t in ("tren", "duoi")]] if len(str(x)) > THE_TOI_DA]
+    the_xin = " ".join(str((b.get("xin") or {}).get(t, "")) for t in ("tren", "duoi"))
+    if re.search(r"[Kk]hách (hàng )?tốt (cho|của) tôi", the_xin):
+        loi.append(f"thẻ nhờ giới thiệu '{the_xin}' là câu dịch sát, nghe máy móc: viết tự nhiên, vd 'Rất mong được' / 'giới thiệu đến'")
     if the_dai:
         nhac.append(f"chữ trên thẻ dài hơn {THE_TOI_DA} ký tự, dễ tràn (bước cảnh đo bằng phông thật và chặn nếu tràn): " + " | ".join(the_dai))
     if b.get("doDai", 30) not in DO_DAI:
@@ -356,7 +359,8 @@ def main():
     if "chuDe" not in b and "giup" in b:
         b["chuDe"] = b["giup"]
     if "xin" not in b and "khachTot" in b:
-        b["xin"] = {"tren": "Khách tốt", "duoi": "cho tôi là", "dong": b["khachTot"]}
+        # Bản 1 ghi cứng "Khách tốt / cho tôi là": dịch sát từ tiếng Anh, nghe máy móc (Founder 25/11/2026). Hồ sơ cũ đổi sang câu tự nhiên.
+        b["xin"] = {"tren": "Rất mong được", "duoi": "giới thiệu đến", "dong": b["khachTot"]}
     dong = [x for x in (da / "loi.txt").read_text(encoding="utf-8").splitlines() if x.strip()]
     loi_doc = (da / "doc-tts.txt").read_text(encoding="utf-8").strip()
     f_so = kenh / "mau-cua-toi" / "bni" / "so-bni.json"

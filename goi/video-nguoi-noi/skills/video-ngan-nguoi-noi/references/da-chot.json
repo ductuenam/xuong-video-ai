@@ -30,6 +30,10 @@
   },
   "camViet": [
     {
+      "mau": "[Kk]hách (hàng )?tốt (cho|của) tôi",
+      "ly_do": "câu dịch sát kiểu BNI tiếng Anh, nghe máy móc (Founder 25/11/2026): nói tự nhiên, ví dụ 'Tôi rất mong được giới thiệu đến…', 'Nếu anh chị quen ai đang…'"
+    },
+    {
       "mau": "\\d+[.,]\\d+",
       "ly_do": "số thập phân bị đọc sai (2.5 thành hai năm): viết bằng chữ, ví dụ hai chấm năm"
     },
