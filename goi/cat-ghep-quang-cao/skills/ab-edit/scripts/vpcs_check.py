@@ -1,6 +1,6 @@
 """Soát chữ trên hình theo chính sách quảng cáo (VPCS) + quy tắc gọi tên của thương hiệu — chạy TRƯỚC khi quay khối chữ.
-  python vpcs_check.py titles.json --brand an-binh-ai
-  python vpcs_check.py --text "Khoá học AI 100% hiệu quả" --brand an-binh-ai
+  python vpcs_check.py titles.json --brand vi-du
+  python vpcs_check.py --text "Khoá học AI 100% hiệu quả" --brand vi-du
 Báo: từ cấm (vpcs.tu_cam), từ phải che (vpcs.che_chu), cách gọi sai tên (vpcs.goi_ten: "sai" → "đúng"). Không tự sửa.
 Chỉ soát CHỮ; hình cấm (vpcs.hinh_cam) phải soát bằng mắt trên bảng khung hình."""
 import argparse

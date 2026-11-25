@@ -21,7 +21,7 @@ import argparse, difflib, json, re, subprocess, sys, tempfile
 from pathlib import Path
 import numpy as np
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
-from chung import doc_json, ghi_json, chay, do_dai, font, TAM
+from chung import doc_json, ghi_json, chay, do_dai, font, TAM, XUONG
 
 W, H, FPS = 1080, 1920, 24
 VANG, DO, XANH = (255, 225, 74), (224, 33, 63), (22, 150, 127)
@@ -118,8 +118,9 @@ def lam_phu_de(d, nen):
     tu_khoa = {chuan(k) for c in lj["canh"] for k in c.get("tu_khoa", [])}
     hien = [t for c in lj["canh"] for t in c["loi"].split()]
     goc = [chuan(t) for t in hien]
-    try: m = WhisperModel("large-v3", device="cuda", compute_type="float16")
-    except Exception: m = WhisperModel("medium", device="cpu", compute_type="int8")
+    ten = XUONG.get("whisper_model")  # không đặt: có GPU CUDA thì large-v3, không thì small
+    try: m = WhisperModel(ten or "large-v3", device="cuda", compute_type="float16")
+    except Exception: m = WhisperModel(ten or "small", device="cpu", compute_type="int8")
     seg, _ = m.transcribe(str(nen), language="vi", word_timestamps=True, beam_size=5)
     w = [(chuan(x.word), x.start, x.end) for s in seg for x in s.words if chuan(x.word)]
     sm = difflib.SequenceMatcher(a=goc, b=[t for t, _, _ in w], autojunk=False)

@@ -53,7 +53,7 @@ Phần 1–5 đã ghi trong `KIEN_TRUC.md`. Phần 6–10 là **con số em đ�
 4. **Cài đủ một lần, thiếu gì nhắc nấy.** Mọi skill cài sẵn, không chia cấp. Việc nào cần tài khoản, khóa hay máy mạnh hơn thì Claude kiểm đúng lúc làm và hướng dẫn chuẩn bị; đủ rồi thì làm theo ý người dùng, không hỏi thừa. Thông tin nội dung chưa rõ thì tìm trong bộ não, không có thì hỏi hoặc đề xuất.
 5. **Của học viên là bất khả xâm phạm.** `cua-toi`, `chu=hoc-vien`, `mau-cua-toi` không bao giờ bị ghi đè. Tùy biến nằm ngoài skill gốc.
 6. **Cải tiến liên tục theo phiên bản.** Mã ở GitHub, tài nguyên ở R2, gói đã phát hành thì khóa, mỗi lần bổ sung là `v<N+1>`. Quy trình và công cụ ở `BAN_DO_KHO.md`, `cong-cu/`.
-7. **Sạch tên và sạch quyền.** Không mang tên đơn vị cũ ("An Bình"), không phát lại nguyên tệp nhạc; tài nguyên chưa rõ quyền phải ghi rõ và có kế hoạch thay.
+7. **Sạch tên và sạch quyền.** Không mang tên đơn vị cũ của mã kế thừa, không phát lại nguyên tệp nhạc; tài nguyên chưa rõ quyền phải ghi rõ và có kế hoạch thay.
 8. **Tự kiểm trước khi giao.** Skill tự soát và có người chấm độc lập; bộ cài dựng thử trước khi báo sẵn sàng; kho chạy `kiem_kho.py` trước mỗi lần phát hành.
 
 ## 6. Hiện trạng so với mục tiêu (25/11/2026)

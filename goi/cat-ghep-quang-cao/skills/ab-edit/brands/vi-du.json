@@ -1,8 +1,8 @@
 {
-  "_huong_dan": "Thương hiệu AN BÌNH AI ('AI cho người Việt') — hồ sơ thương hiệu mẫu để học viên tham khảo cách điền. Màu: bộ B 'Năng lượng bán hàng' (chốt 24/10/2026); 2 bộ còn lại giữ ở _lua_chon_mau để đổi khi cần.",
-  "ten": "AN BÌNH AI",
-  "linh_vuc": "Đào tạo & triển khai AI Agent cho chủ shop, hộ kinh doanh, SME (sản phẩm chủ lực: Đội Quân AI)",
-  "nguoi_noi": "Chuyên gia AN BÌNH AI (giọng thật, có mặt trong video)",
+  "_huong_dan": "Thương hiệu ví dụ trung tính — hồ sơ thương hiệu mẫu để học viên tham khảo cách điền. Màu: bộ B 'Năng lượng bán hàng'; 2 bộ còn lại giữ ở _lua_chon_mau để đổi khi cần. Chép tệp này thành brands/<tên-thương-hiệu-của-bạn>.json rồi sửa.",
+  "ten": "THƯƠNG HIỆU VÍ DỤ",
+  "linh_vuc": "Đào tạo & triển khai giải pháp AI cho chủ shop, hộ kinh doanh, SME (sản phẩm chủ lực: gói giải pháp mẫu)",
+  "nguoi_noi": "Chuyên gia của bạn (giọng thật, có mặt trong video)",
   "giong_ai": { "cong_cu": "ElevenLabs — giao diện web (không dùng API key)", "giong": "Người dùng chọn theo từng video và báo Claude", "_ghi_chu": "Claude dán kịch bản vào elevenlabs.io/app/speech-synthesis trong trình duyệt bên cạnh; người dùng chọn giọng, nghe, tạo lại nếu lỗi; tải mp3 về 04-giong-doc khi người dùng đồng ý" },
   "khung": { "ti_le": "9:16", "w": 1080, "h": 1920, "fps": 30, "_ghi_chu": "fps đặt theo source (điện thoại 30, Sony 50). Ads Facebook dùng thêm 4:5 1080×1350." },
   "chu": {
@@ -20,7 +20,7 @@
   "_lua_chon_mau": {
     "A_cong_nghe_tin_cay": { "accent": "#22D3EE", "box": "#2563EB", "nen": "#0F1E46", "nen_dam": "#081230", "vien": "#22D3EE" },
     "B_nang_luong_ban_hang": { "accent": "#FFD400", "box": "#FF5A1F", "nen": "#111318", "nen_dam": "#07080B", "vien": "#FFD400" },
-    "C_xanh_an_binh": { "accent": "#FDE047", "box": "#0F9F7A", "nen": "#0B3B33", "nen_dam": "#05211C", "vien": "#34D399" }
+    "C_xanh_la_diu": { "accent": "#FDE047", "box": "#0F9F7A", "nen": "#0B3B33", "nen_dam": "#05211C", "vien": "#34D399" }
   },
   "phu_de": { "short": "karaoke", "ads": "khoi-chu", "_ghi_chu": "Short (TikTok/Reels/Shorts) dùng phụ đề karaoke; Ads chỉ khối chữ từ khoá" },
   "logo": { "intro": null, "outro": null, "outro_giay": 2, "gan_logo_don_vi_dung": false, "_ghi_chu": "Chưa có file logo — anh thả vào 05-tai-nguyen/logo/" },
@@ -33,19 +33,19 @@
     "tu_cam": ["100%", "chắc chắn", "cam kết", "giàu nhanh", "đổi đời", "làm giàu", "thu nhập thụ động", "kiếm tiền online", "không cần làm gì", "tự động kiếm tiền", "x10 doanh thu"],
     "goi_ten": {
       "_ghi_chu": "sai → đúng (quy tắc gọi tên của thương hiệu)",
-      "khoá học": "buổi làm cùng / Đội Quân AI",
-      "khóa học": "buổi làm cùng / Đội Quân AI",
+      "khoá học": "buổi làm cùng / gói giải pháp mẫu",
+      "khóa học": "buổi làm cùng / gói giải pháp mẫu",
       "lớp học": "buổi làm cùng",
-      "workshop": "buổi Tuyển Tân Binh AI",
-      "giảng viên": "Chuyên gia AN BÌNH AI",
+      "workshop": "buổi làm thử cùng chuyên gia",
+      "giảng viên": "Chuyên gia của bạn",
       "học viên": "Anh/Chị",
-      "An Binh AI": "AN BÌNH AI",
-      "bộ não thứ hai": "Bộ Não Thứ 2",
+      "Thuong Hieu Vi Du": "THƯƠNG HIỆU VÍ DỤ",
+      "bộ não thứ hai": "Bộ Não AI",
       "bot content": "agent Content",
       "AI sale": "agent Sale CSKH"
     },
     "hinh_cam": ["tiền mặt, ảnh chuyển khoản, số dư tài khoản", "logo hãng AI kiểu đối tác chính thức", "ảnh chụp tin nhắn có SĐT/tên khách chưa xin phép"]
   },
-  "cta": { "dong_nho": "Anh/Chị muốn có Đội Quân AI riêng?", "dong_lon": "COMMENT \"AGENT\" NHẬN TÀI LIỆU", "kenh": "" },
+  "cta": { "dong_nho": "Anh/Chị muốn có giải pháp AI riêng?", "dong_lon": "COMMENT \"AGENT\" NHẬN TÀI LIỆU", "kenh": "" },
   "kho_tu_lieu": { "order": "video-studio/03-kich-ban", "media": "video-studio/05-tai-nguyen" }
 }

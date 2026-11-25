@@ -12,6 +12,9 @@ bỏ phần giữa. Sau khi dựng, chạy so_loi.py trên thành phẩm để c
 """
 import argparse
 import subprocess
+from chung import cau_hinh_xuong
+
+cau_hinh_xuong()  # thêm ffmpeg/node của xưởng vào PATH
 import sys
 
 import numpy as np

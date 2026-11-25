@@ -7,7 +7,10 @@ Ra ke-hoach.json (sửa tay được) rồi chạy dung_video.py.
 """
 import argparse, json, re
 from pathlib import Path
-from chung import doc_json, ghi_json, do_dai
+from chung import doc_json, ghi_json, do_dai, XUONG
+
+# Nhạc mặc định nằm trong xưởng: <xưởng>/tai-nguyen/nhac/nen-video-ngan/ (đường dẫn tuyệt đối lấy từ xuong-video.json do bộ cài ghi)
+NHAC_MAC_DINH = str(Path(XUONG.get("xuong") or "08_XUONG_VIDEO") / "tai-nguyen" / "nhac" / "nen-video-ngan" / "NH0001_hiphop-vlog-tre-trung.mp3")
 
 ZOOM = [1.0, 1.12, 1.2]   # trong một khối cú sau luôn gần hơn (đẩy vào như mẫu), không bao giờ lùi ra
 
@@ -16,8 +19,9 @@ def moc_chu(p):
     global _m
     try: _m
     except NameError:
-        try: _m = WhisperModel("large-v3", device="cuda", compute_type="float16")
-        except Exception: _m = WhisperModel("medium", device="cpu", compute_type="int8")
+        ten = XUONG.get("whisper_model")  # không đặt: có GPU CUDA thì large-v3, không thì small
+        try: _m = WhisperModel(ten or "large-v3", device="cuda", compute_type="float16")
+        except Exception: _m = WhisperModel(ten or "small", device="cpu", compute_type="int8")
     seg, _ = _m.transcribe(str(p), language="vi", word_timestamps=True, beam_size=5)
     return [(w.word.strip(), w.start, w.end) for s in seg for w in s.words]
 
@@ -81,7 +85,7 @@ def bo_lang(cus, lang):
 
 if __name__ == "__main__":
     a = argparse.ArgumentParser(); a.add_argument("thu_muc"); a.add_argument("--nhan-o-anh", default="Ảnh chủ khu gửi")
-    a.add_argument("--nhac", default="tai-nguyen/nhac/beat-vlog.mp3"); a.add_argument("--ra", default="thanh-pham.mp4")
+    a.add_argument("--nhac", default=NHAC_MAC_DINH); a.add_argument("--ra", default="thanh-pham.mp4")
     x = a.parse_args(); d = Path(x.thu_muc); vj = doc_json(d / "video.json"); lj = doc_json(d / "loi.json")
     doan = []
     for c in vj["canh"]:

@@ -9,7 +9,7 @@ Bạn là biên tập viên lời bán hàng livestream miền Bắc kiêm ngư�
 ## Đầu vào người giao phải đưa
 - Lời đã viết (`loi1.txt`, `loi2.txt`), `nguon.md` (mục Được nói / Không nói).
 - Sau khi có clip: bản Whisper từng cảnh và thành phẩm (`so_loi.py` in mốc chữ, THIẾU, THỪA).
-- `%USERPROFILE%\.claude\skills\kol-mac-thu-mot-khung\references\phan-tich-mau.md` (lời mẫu, cấu trúc, tốc độ 5,6 chữ/giây) và thang chấm `...\references\thang-cham.md` mục "Lời và giọng".
+- `.claude\skills\kol-mac-thu-mot-khung\references\phan-tich-mau.md` (lời mẫu, cấu trúc, tốc độ 5,6 chữ/giây) và thang chấm `...\references\thang-cham.md` mục "Lời và giọng".
 
 ## Cách làm
 1. Sự thật: mỗi ý phải chỉ ra được dòng nguồn. Ý không nguồn, số sai (đã bán, cân nặng, số màu), khan hiếm/giảm giá bịa, kể trải nghiệm mặc thử của người ảo = CHẶN.

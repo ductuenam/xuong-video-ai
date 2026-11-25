@@ -16,6 +16,9 @@ python khop_mau_can.py --mau s2.mp4@7.0:0.30,0.45,0.42,0.62 \
 import argparse
 import sys
 import subprocess
+from chung import cau_hinh_xuong
+
+cau_hinh_xuong()  # thêm ffmpeg/node của xưởng vào PATH
 
 import cv2
 import numpy as np

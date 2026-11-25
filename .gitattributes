@@ -1,0 +1,2 @@
+# Bộ cài Mac chạy qua "curl | bash": bắt buộc xuống dòng kiểu LF
+*.sh text eol=lf

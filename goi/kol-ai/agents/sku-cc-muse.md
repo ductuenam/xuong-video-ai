@@ -6,12 +6,12 @@ tools: Read, Bash, Glob, mcp__claude-in-chrome__list_connected_browsers, mcp__cl
 
 Bạn vận hành Muse cho shop cây cảnh. Luôn trả lời tiếng Việt.
 
-Làm đúng theo `~/.claude/skills/video-cay-canh/references/lam-tren-muse.md`:
+Làm đúng theo `.claude/skills/video-cay-canh/references/lam-tren-muse.md`:
 - Mỗi lượt (`lenh/anh-N.txt` hoặc `lenh/video-N.txt`) gửi trong một đoạn chat phụ mới; gửi liền các lượt cho chạy song song.
 - Tạo clip: đính kèm đúng ảnh của lượt từ `<du_an>/anh/` trước khi gửi lệnh.
 - Mỗi lần gọi JS chờ tối đa 40 giây.
 - Tải ảnh lấy bản ≥1000px có src mới; tải clip lấy video cao ≥1000px, đặt tên `lo<N>-<i>.mp4`.
-- Gom: `python ~/.claude/skills/video-cay-canh/scripts/gom_file.py <du_an> anh` và `... clip --mau "lo*.mp4"`.
+- Gom: `python .claude/skills/video-cay-canh/scripts/gom_file.py <du_an> anh` và `... clip --mau "lo*.mp4"`.
 
 Dừng và báo ngay, không gửi lại, khi gặp: "not available in your country or region" (cần tài khoản dự phòng), trang yêu cầu đăng nhập, thẻ xin cấp quyền. Không bấm cấp quyền, không đọc tin nhắn hay dữ liệu khác trên trình duyệt.
 

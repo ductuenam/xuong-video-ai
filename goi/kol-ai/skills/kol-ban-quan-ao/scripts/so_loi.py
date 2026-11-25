@@ -3,8 +3,8 @@
 Muse hay bỏ hẳn một vế, nuốt chữ đầu câu, hoặc tự thêm ý không có nguồn. Đọc bản Whisper
 bằng mắt dễ sót, nên script căn hai bản theo từng chữ rồi in ra chỗ lệch.
 
-Dùng: python so_loi.py canh1.mp4=loi1.txt canh2.mp4=loi2.txt ... [--model large-v3]
-Nạp mô hình MỘT lần cho mọi cảnh. Đừng chạy nhiều lệnh song song: mỗi lệnh large-v3 chiếm
+Dùng: python so_loi.py canh1.mp4=loi1.txt canh2.mp4=loi2.txt ... [--model small|large-v3]
+Nạp mô hình MỘT lần cho mọi cảnh. Đừng chạy nhiều lệnh song song: mỗi lệnh mô hình lớn chiếm
 khoảng 4 GB RAM, 4 lệnh cùng lúc làm máy nghẽn, 7 phút chưa ra chữ.
 In:
 - Bảng chữ: mốc giây đầu/cuối từng chữ (dùng chọn điểm cắt tiếng).
@@ -28,18 +28,19 @@ def chuan(s):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("cap", nargs="+", help="video.mp4=loi.txt")
-    ap.add_argument("--model", default=None, help="mặc định: whisper_model trong cau-hinh.json, không có thì large-v3")
+    ap.add_argument("--model", default=None, help="mặc định: whisper_model trong cau-hinh.json, không có thì whisper_model của xưởng (xuong-video.json), không có thì small; máy có GPU CUDA thì large-v3")
     a = ap.parse_args()
     sys.stdout.reconfigure(encoding="utf-8")
-    if not a.model:
-        sys.path.insert(0, str(Path(__file__).resolve().parent))
-        from chung import doc_cau_hinh
-        a.model = (doc_cau_hinh(bat_buoc=False) or {}).get("whisper_model") or "large-v3"
     try:
         import ctranslate2
         gpu = ctranslate2.get_cuda_device_count() > 0
     except Exception:
         gpu = False
+    if not a.model:
+        sys.path.insert(0, str(Path(__file__).resolve().parent))
+        from chung import doc_cau_hinh, XUONG
+        a.model = ((doc_cau_hinh(bat_buoc=False) or {}).get("whisper_model") or XUONG.get("whisper_model")
+                   or ("large-v3" if gpu else "small"))
     m = WhisperModel(a.model, device="cuda" if gpu else "cpu", compute_type="float16" if gpu else "int8")
     for cap in a.cap:
         video, tep = cap.rsplit("=", 1)

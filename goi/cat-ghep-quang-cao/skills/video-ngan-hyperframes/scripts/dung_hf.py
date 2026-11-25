@@ -20,12 +20,32 @@ import sys
 import time
 from pathlib import Path
 
+
+
+def cau_hinh_xuong():
+    """Đọc <bộ não>/.claude/xuong-video.json do bộ cài ghi: từ thư mục skill đi lên, rồi từ thư mục đang mở đi lên.
+    Thêm thư mục ffmpeg, node của xưởng vào đầu PATH của tiến trình này."""
+    for goc in (Path(__file__).resolve(), Path.cwd().resolve()):
+        for p in (goc, *goc.parents):
+            f = p / ".claude" / "xuong-video.json"
+            if f.is_file():
+                c = json.loads(f.read_text(encoding="utf-8"))
+                for d in reversed(c.get("bin", [])):
+                    if d and d not in os.environ.get("PATH", "").split(os.pathsep):
+                        os.environ["PATH"] = d + os.pathsep + os.environ.get("PATH", "")
+                return c
+    return {}
+
+
+XUONG_CFG = cau_hinh_xuong()
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
-SKILL_CHINH = Path.home() / ".claude" / "skills" / "video-ngan-nguoi-noi"
+# Cùng nằm trong <bộ não>/.claude/skills/ nên lấy ngang hàng với skill này
+SKILL_CHINH = Path(__file__).resolve().parents[2] / "video-ngan-nguoi-noi"
 sys.path.insert(0, str(SKILL_CHINH / "scripts"))
 from chung import GOC_SKILL, doc, ghi, ho_so  # noqa: E402
 
-ENGINE_HF = Path.home() / ".video-ngan" / "engine-hf"
+# engine-hf nằm trong thư mục máy của bộ cài (xuong-video.json › may); không có thì chỗ cũ ~/.video-ngan/engine-hf
+ENGINE_HF = (Path(XUONG_CFG["may"]) if XUONG_CFG.get("may") else Path.home() / ".video-ngan") / "engine-hf"
 HF = [str(ENGINE_HF / "node_modules" / "hyperframes" / "bin" / "hyperframes.mjs")]
 BUOC = ["chuan-bi", "bundle", "anh-tinh", "render", "tiep"]
 TRUONG_KENH = ["ten", "chuLinhVat", "nhanCanhAI", "nhanAnhAI", "mauChinh", "mauPhu", "mauBia"]

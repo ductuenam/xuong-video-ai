@@ -20,7 +20,7 @@ description: Làm video dọc 9:16 khoảng 20 giây, KOL của bạn mặc th�
 - **Cảnh khoe lưng làm riêng** (s3-lung, không lời) trong cùng tin với 2 cảnh nói; khi dựng, đè hình nó lên đoạn cảnh nói có mắt nhắm (`"chen": [["s3-lung.mp4", từ, đến, giây_vào]]` trong ke-hoach.json), tiếng vẫn chạy như video mẫu quay lưng giữa câu. Chỉ lấy đoạn trước khi xoay và lúc quay lưng (xoay lại hay đổi tóc). `"hinh_cuoi_den"` giữ khung đẹp ở cuối để né cái nháy mắt cuối clip.
 - Giới hạn lượt: mỗi cảnh tạo tối đa 3 lần; vẫn dưới ngưỡng thì dựng BẢN THỬ (`dung_mot_khung.py ... --ban-thu`, tên tệp có "ban-thu") gửi người dùng xem quyết, không tự tạo thêm.
 
-## Đội giám sát (nằm ở `%USERPROFILE%\.claude\agents\`, cài bằng `cai_dat.py` của kho)
+## Đội giám sát (nằm ở `.claude\agents\` của bộ não, cài bằng câu lệnh cài Xưởng Video AI)
 | Agent | Khi nào | Chấm |
 |---|---|---|
 | `soi-mat-trang-diem-kol` | Ảnh gốc, clip, thành phẩm | Mặt /3 + phiếu mặt |
@@ -28,7 +28,7 @@ description: Làm video dọc 9:16 khoảng 20 giây, KOL của bạn mặc th�
 | `soi-loi-giong-kol` | Lời trước Muse, tiếng sau Muse | Lời, giọng /2,5 |
 | `cham-so-mau-kol` | Thành phẩm cạnh mẫu | Dựng /1,5, thua/ngang/hơn |
 | `giam-sat-kol-mot-khung` | Cuối cùng | ĐẠT / SỬA LẠI |
-Thang: `references/thang-cham.md`. Agent vừa tạo trong phiên chưa gọi được bằng tên: gọi agent `general-purpose` và dặn "đọc `%USERPROFILE%\.claude\agents\<tên>.md` rồi đóng đúng vai". Mỗi lúc chỉ chạy 1 agent cho nhẹ máy. Không tự chấm ảnh mình làm.
+Thang: `references/thang-cham.md`. Agent vừa tạo trong phiên chưa gọi được bằng tên: gọi agent `general-purpose` và dặn "đọc `.claude\agents\<tên>.md` rồi đóng đúng vai". Mỗi lúc chỉ chạy 1 agent cho nhẹ máy. Không tự chấm ảnh mình làm.
 
 ## Trước khi bắt đầu
 - Lần đầu: chép `cau-hinh.mau.json` thành `cau-hinh.json` rồi điền; tạo KOL riêng theo `assets/README.md` (đặt `kol.json` + `kol-chuan.png` vào `thu_muc_kol`). Rồi `python -X utf8 scripts/kiem_may.py`.

@@ -15,9 +15,9 @@ Bối cảnh: video mẫu "nghỉ dưỡng" (`kol-review-nghi-duong/video-mau/`)
 - `khoa-mat/to-kol.jpg` (tờ KOL trước khi tạo clip: mặt chuẩn, mặt sau trang điểm, các bộ đồ, ảnh KOL trong từng bối cảnh)
 - `khoa-mat/to-mat.jpg` (mặt chuẩn đầu mỗi hàng, mỗi hàng một cảnh, mỗi giây một ô)
 - `khoa-mat/to-do.jpg` (toàn thân mỗi cảnh, để so bộ đồ)
-Ảnh mặt chuẩn KOL của bạn: `%USERPROFILE%\.claude\skills\kol-review-nghi-duong\assets\mat-chuan.png` và `anh-goc-kol.png`.
+Ảnh mặt chuẩn KOL của bạn: `.claude\skills\kol-review-nghi-duong\assets\mat-chuan.png` và `anh-goc-kol.png`.
 
-Chưa có tờ thì tự tạo: `python -X utf8 $HOME/.claude/skills/kol-review-nghi-duong/scripts/khoa_mat.py clip <thư mục video>` (tờ ghi vào thư mục video, khung tạm vào `_tam-video`, KHÔNG ghi khung vào ổ C).
+Chưa có tờ thì tự tạo: `python -X utf8 .claude/skills/kol-review-nghi-duong/scripts/khoa_mat.py clip <thư mục video>` (tờ ghi vào thư mục video, khung tạm vào `_tam-video`, KHÔNG ghi khung vào ổ C).
 
 Cách soi:
 1. Mở ảnh bằng Read, GIỮ ĐÚNG TỈ LỆ (không bóp ngang tờ ghép; đã có lần chấm sai "mặt dài gầy" vì ảnh bị bóp). Cần thì cắt phóng to bằng Python PIL vào `_tam-video\nd-soi-mat\`.

@@ -9,7 +9,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-from chung import CFG, tim_ffmpeg
+from chung import CFG, XUONG, tim_ffmpeg
 
 
 def _nap_dll_cuda():
@@ -46,9 +46,12 @@ def model(ten=None):
         os.environ.setdefault("HF_HUB_DISABLE_SYMLINKS_WARNING", "1")
         from faster_whisper import WhisperModel
 
-        ten = ten or CFG.get("whisper_model", "large-v3")
+        # Ưu tiên: đối số > whisper_model riêng của skill (config.json) > cấu hình xưởng > "small"
+        da_dat = ten or CFG.get("whisper_model") or XUONG.get("whisper_model")
+        ten = da_dat or "small"
         try:
-            _MODEL = WhisperModel(ten, device="cuda", compute_type="float16")
+            # Có GPU CUDA thì dùng large-v3 như cũ nếu không ai đặt riêng
+            _MODEL = WhisperModel(da_dat or "large-v3", device="cuda", compute_type="float16")
         except Exception as e:
             print(f"  (không dùng được GPU: {e}; chạy CPU)", file=sys.stderr)
             _MODEL = WhisperModel(ten, device="cpu", compute_type="int8")

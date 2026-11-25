@@ -19,7 +19,7 @@ if not tep:
     thu_muc = kenh / "anh-video-cua-toi"
     tep = sorted(f for f in thu_muc.glob("*") if f.suffix.lower() in ANH | VIDEO) if thu_muc.exists() else []
 if not tep:
-    sys.exit("• không có ảnh, video của người dùng: dùng cảnh trong kho-canh hoặc bỏ cảnh trám")
+    sys.exit("• không có ảnh, video của người dùng: dùng cảnh trong tai-nguyen/canh hoặc bỏ cảnh trám")
 ra = da / "public" / "canh"
 ra.mkdir(parents=True, exist_ok=True)
 for i, f in enumerate(tep[:4], 1):

@@ -3,6 +3,24 @@ import hashlib, json, os, subprocess, sys
 from pathlib import Path
 
 GOC = Path(__file__).resolve().parent.parent          # thư mục skill
+
+
+def cau_hinh_xuong():
+    """Đọc <bộ não>/.claude/xuong-video.json do bộ cài ghi: từ thư mục skill đi lên, rồi từ thư mục đang mở đi lên.
+    Thêm thư mục ffmpeg, node của xưởng vào đầu PATH của tiến trình này."""
+    for goc in (Path(__file__).resolve(), Path.cwd().resolve()):
+        for p in (goc, *goc.parents):
+            f = p / ".claude" / "xuong-video.json"
+            if f.is_file():
+                c = json.loads(f.read_text(encoding="utf-8"))
+                for d in reversed(c.get("bin", [])):
+                    if d and d not in os.environ.get("PATH", "").split(os.pathsep):
+                        os.environ["PATH"] = d + os.pathsep + os.environ.get("PATH", "")
+                return c
+    return {}
+
+
+XUONG = cau_hinh_xuong()
 MO_HINH_MAT = GOC / "scripts" / "mo-hinh" / "face_detection_yunet_2023mar.onnx"
 TAM = Path(os.environ.get("ND_TAM", "_tam-video/kol-nghi-duong"))
 

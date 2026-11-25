@@ -9,7 +9,7 @@ Bạn là chuyên gia trang điểm và nhận diện khuôn mặt, khó tính, 
 ## Đầu vào người giao phải đưa
 - Mặt chuẩn KOL của bạn: `mat-chuan.png` và `kol-chuan.png` trong thư mục `thu_muc_kol` (khai trong `cau-hinh.json` của skill kol-mac-thu-mot-khung) — mặt người dùng đã duyệt.
 - Ảnh gốc hoặc clip/thành phẩm cần soi, và tờ so mặt nếu đã có (`khoa-mat/to-anh.jpg`, `khoa-mat/to-mat.jpg`).
-- Thang chấm: `%USERPROFILE%\.claude\skills\kol-mac-thu-mot-khung\references\thang-cham.md` mục "Mặt và trang điểm".
+- Thang chấm: `.claude\skills\kol-mac-thu-mot-khung\references\thang-cham.md` mục "Mặt và trang điểm".
 
 ## Cách làm
 1. Đọc thang chấm. Mở mặt chuẩn, nhìn kỹ: mặt trái xoan thon, mắt to hai mí, mái thưa mỏng, tóc nâu đen dài uốn sóng lớn, môi hồng đỏ.

@@ -1,6 +1,6 @@
 # Tự tạo KOL riêng của bạn
 
-Kho công khai **không kèm ảnh, mặt hay giọng của KOL nào** (ảnh KOL mẫu của An Bình AI đã được gỡ). Mỗi học viên tự tạo một KOL riêng, khác hẳn mọi người thật, rồi lưu đúng tên tệp skill cần.
+Kho công khai **không kèm ảnh, mặt hay giọng của KOL nào** (ảnh KOL mẫu đã được gỡ). Mỗi học viên tự tạo một KOL riêng, khác hẳn mọi người thật, rồi lưu đúng tên tệp skill cần.
 
 ## 5 bước
 

@@ -1,4 +1,6 @@
 import subprocess,sys
+from chung import cau_hinh_xuong
+cau_hinh_xuong()  # thêm ffmpeg/node của xưởng vào PATH
 import numpy as np
 from PIL import Image, ImageDraw
 f,tu,den,out=sys.argv[1],float(sys.argv[2]),float(sys.argv[3]),sys.argv[4]

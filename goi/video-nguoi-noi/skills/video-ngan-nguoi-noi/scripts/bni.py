@@ -25,7 +25,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-from chung import doc, duong_dan, ghi, ho_so
+from chung import XUONG, doc, duong_dan, ghi, ho_so, kho_canh
 
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 ND = Path(__file__).resolve().parent
@@ -33,12 +33,12 @@ ANH = {".jpg", ".jpeg", ".png", ".webp"}
 VIDEO = {".mp4", ".mov", ".m4v", ".mkv", ".webm"}
 AM = {".m4a", ".mp3", ".wav", ".aac"}
 # Cảnh thật, không người, hợp người làm nghề. Thứ tự ưu tiên; mã nào không có trên máy thì bỏ qua.
-# Mặc định là nền màu dịu (K055 sóng pastel, K049 sóng trắng) và cảnh đời thường đẹp (K082 sân thượng hoàng hôn), hợp mọi nghề; cảnh công nghệ viễn tưởng (N031 bảng số liệu, N100 thành phố neon)
+# Mặc định là nền màu dịu (CA0116 gradient chuyển màu, CA0110 nền trắng sóng mềm) và cảnh đời thường đẹp (CA0182 sân thượng nhìn thành phố), hợp mọi nghề; cảnh công nghệ viễn tưởng (CA0080 dashboard bán hàng, CA0152 bình minh thành phố số)
 # chỉ hợp người làm công nghệ, khi đó ghi "canh" trong bni.json. bni.json "canh": {"mo", "bang", "ket"} ghi đè từng vai.
 UU_TIEN = {
-    "mo": ["K055", "K082", "K049", "K075"],
-    "bang": ["K049", "K055", "K080", "K082"],
-    "ket": ["K082", "K055", "K079", "K075"],
+    "mo": ["CA0116", "CA0182", "CA0110", "CA0175"],
+    "bang": ["CA0110", "CA0116", "CA0180", "CA0182"],
+    "ket": ["CA0182", "CA0116", "CA0179", "CA0175"],
 }
 HOAT_HINH = ("tí hon", "đất sét", "hoạt hình", "cartoon", "đồ chơi")
 # Nền màu dịu tự tạo khi kho cảnh trống: kem cam, xanh ngọc nhạt, tím hồng nhạt (3 vai mở, bằng chứng, kết)
@@ -71,10 +71,9 @@ def clip_toi(f, ra):
 def main():
     da = Path(sys.argv[1]).resolve()
     h = ho_so(da)
-    kenh = Path(h["_goc"])
-    from nhap_kho import nhap
-    if nhap(kenh):  # có gói KHO-HOC-VIEN trong Downloads thì tự nhận cảnh, nhạc rồi đọc lại hồ sơ
-        h = ho_so(da)
+    kenh = XUONG or Path(h["_goc"])  # thư mục kênh = Xưởng Video AI
+    if not XUONG:
+        sys.exit("✘ Chưa cài Xưởng Video AI: hãy chạy lại câu lệnh cài Xưởng Video AI.")
     b = doc(da / "bni.json")
     dong = [x for x in (da / "loi.txt").read_text(encoding="utf-8").splitlines() if x.strip()]
     phan = b["phan"]
@@ -109,25 +108,24 @@ def main():
           + (f": {', '.join(f.name for f in toi[:4])}" if co_mat else " → chế độ không mặt, dùng cảnh thật không người"))
     (da / "loai.txt").write_text("gioi-thieu" + ("" if co_mat else " khong-mat"), encoding="utf-8")
     if not (da / "nhac.txt").exists():
-        (da / "nhac.txt").write_text("beat-vlog", encoding="utf-8")
+        (da / "nhac.txt").write_text("NH0001", encoding="utf-8")
 
     # 2. Clip kho cho chế độ không mặt (hoặc bổ sung khi người dẫn có ít hơn 3 ảnh)
-    kho = duong_dan(h, h["khoCanh"]["thuMuc"])
-    dm = kho / h["khoCanh"]["danhMuc"]
-    chi_muc = {f.name: f for f in kho.rglob("*.mp4")}
+    kho, kho_ds = kho_canh(h)  # <xưởng>/tai-nguyen/canh, đọc chi-muc.csv (bỏ dòng ẩn)
     co = {}
-    if dm.exists():
-        for r in csv.DictReader(dm.open(encoding="utf-8-sig")):
-            f = chi_muc.get(r["file"])
-            if r.get("dung") == "co" and f is not None and not any("CO MAT" in x.upper() for x in f.relative_to(kho).parts[:-1]) \
-                    and not any(t in (r.get("ghi_chu") or "").lower() for t in HOAT_HINH):
-                co[r["ma"]] = r
+    for ma, r in kho_ds.items():
+        if not any("CO MAT" in x.upper() for x in r["file"].relative_to(kho).parts[:-1]) \
+                and not any(t in (r["mo_ta"] or "").lower() for t in HOAT_HINH):
+            co[ma] = r
     da_dung = set()
 
     def chon(vai, so_toi):
         if co_mat:
             return ma_toi[so_toi % len(ma_toi)]
-        for ma in [*([b["canh"][vai]] if b.get("canh", {}).get(vai) else []), *UU_TIEN[vai], *sorted(co)]:
+        # Gói cảnh nhẹ không có đủ mã UU_TIEN (thử 25/11/2026: rơi về CA0001 màn HUD công nghệ, lạc nghề):
+        # chỉ lấy tiếp từ nhóm hợp mọi nghề; hết thì tự tạo nền màu dịu, không lấy cảnh công nghệ khi bni.json không ghi.
+        hop_moi_nghe = [m for m in sorted(co) if co[m]["file"].parent.name in ("viet-nam", "nganh-nghe", "nen-chu")]
+        for ma in [*([b["canh"][vai]] if b.get("canh", {}).get(vai) else []), *UU_TIEN[vai], *hop_moi_nghe]:
             if ma in co and ma not in da_dung:
                 da_dung.add(ma)
                 return ma

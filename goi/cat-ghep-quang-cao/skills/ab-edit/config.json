@@ -1,10 +1,10 @@
 {
   "_huong_dan": "Cấu hình máy cho skill ab-edit. Đường dẫn tương đối tính từ thư mục làm việc của học viên (nơi mở Claude Code). Máy mới: chạy scripts/kiem_tra_may.py.",
-  "studio": "video-studio",
+  "_studio": "Không khai 'studio' = tự nối vào xưởng (<xưởng>/du-an/ab-edit, thành phẩm ở <xưởng>/thanh-pham); không có xuong-video.json thì dùng video-studio. Muốn ép thư mục riêng: thêm khóa studio (bố cục cũ 02/05/06/07) hoặc đặt biến AVS_STUDIO.",
   "python": "python",
   "chrome": "C:/Program Files/Google/Chrome/Application/chrome.exe",
   "brand_mac_dinh": "_mau",
-  "whisper_model": "large-v3",
+  "_whisper_model": "Bỏ trống/không khai = theo máy (xuong-video.json, không có thì small; có GPU CUDA thì large-v3). Muốn ép: thêm khóa whisper_model.",
   "kho_tai_nguyen": "kho-tai-nguyen",
   "obsidian_vault": "",
   "obsidian_thu_muc": "00-Inbox/AI/Claude/Kho tai nguyen video"

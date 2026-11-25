@@ -7,6 +7,9 @@ de nguoi soat thay ro tay, vai, chi tiet nho ma bang 1 khung/giay bo sot.
 import argparse
 import json
 import subprocess
+from chung import cau_hinh_xuong
+
+cau_hinh_xuong()  # thêm ffmpeg/node của xưởng vào PATH
 from pathlib import Path
 
 from PIL import Image, ImageDraw

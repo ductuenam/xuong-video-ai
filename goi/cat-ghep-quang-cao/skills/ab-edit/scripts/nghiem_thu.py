@@ -1,6 +1,6 @@
 """Nghiệm thu trước khi bàn giao: còn ✘ thì KHÔNG giao, sửa rồi chạy lại (mã thoát 1 = còn lỗi).
   python nghiem_thu.py <video> --src <file gốc> --edl <edl.json> --master <master.mp4> --cum <phu-de.json>
-                       [--brand an-binh-ai] [--moc 1,2,3] [--moc-net 12,50] [--logo x,y,w,h --moc-logo 3,8,62]
+                       [--brand vi-du] [--moc 1,2,3] [--moc-net 12,50] [--logo x,y,w,h --moc-logo 3,8,62]
 Kiểm: lặp từ ở từng đoạn cắt · đủ lời · khoảng lặng · màu chuẩn · độ nét so với master · logo che góc · âm lượng/khung đen (tu_kiem).
 Bài học video 01 (04/11/2026): nghe cả bài thì Whisper gộp mất từ lặp, nên phải nghe RIÊNG từng đoạn cắt.
 """
@@ -8,6 +8,9 @@ import argparse
 import difflib
 import json
 import re
+from chung import cau_hinh_xuong
+
+cau_hinh_xuong()  # thêm ffmpeg/node của xưởng vào PATH
 import subprocess
 import sys
 from pathlib import Path
@@ -168,7 +171,7 @@ def main():
     ap.add_argument("--edl", required=True)
     ap.add_argument("--master", required=True)
     ap.add_argument("--cum", required=True)
-    ap.add_argument("--brand", default="an-binh-ai")
+    ap.add_argument("--brand", default="vi-du")
     ap.add_argument("--moc", default=None)
     ap.add_argument("--moc-net", default=None)
     ap.add_argument("--logo", default=None)

@@ -7,14 +7,44 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
+def cau_hinh_xuong():
+    """Đọc <bộ não>/.claude/xuong-video.json do bộ cài ghi: từ thư mục skill đi lên, rồi từ thư mục đang mở đi lên.
+    Thêm thư mục ffmpeg, node của xưởng vào đầu PATH của tiến trình này."""
+    for goc in (Path(__file__).resolve(), Path.cwd().resolve()):
+        for p in (goc, *goc.parents):
+            f = p / ".claude" / "xuong-video.json"
+            if f.is_file():
+                c = json.loads(f.read_text(encoding="utf-8"))
+                for d in reversed(c.get("bin", [])):
+                    if d and d not in os.environ.get("PATH", "").split(os.pathsep):
+                        os.environ["PATH"] = d + os.pathsep + os.environ.get("PATH", "")
+                return c
+    return {}
+
+
+XUONG = cau_hinh_xuong()
 SKILL = Path(__file__).resolve().parent.parent
-CFG = json.loads((SKILL / "config.json").read_text(encoding="utf-8"))
-STUDIO = Path(os.environ.get("AVS_STUDIO", CFG["studio"]))
-SOURCE_THO = STUDIO / "02-source-tho"
-TAI_NGUYEN = STUDIO / "05-tai-nguyen"
-THANH_PHAM = STUDIO / "06-thanh-pham"
-DU_AN = STUDIO / "07-du-an"
-BACKUP = STUDIO / "_backup"
+CFG =json.loads((SKILL / "config.json").read_text(encoding="utf-8"))
+# Thư mục làm việc. Ưu tiên: AVS_STUDIO > config.json "studio" (đặt rõ thì dùng bố cục cũ 02/05/06/07) >
+# xưởng (xuong-video.json, bố cục mới) > "video-studio" (cách cũ khi không có xưởng).
+_RIENG = os.environ.get("AVS_STUDIO") or CFG.get("studio")
+XUONG_GOC = Path(XUONG["xuong"]) if XUONG.get("xuong") else None
+if _RIENG or not XUONG_GOC:
+    STUDIO = Path(_RIENG or "video-studio")
+    SOURCE_THO = STUDIO / "02-source-tho"
+    TAI_NGUYEN = STUDIO / "05-tai-nguyen"
+    THANH_PHAM = STUDIO / "06-thanh-pham"
+    DU_AN = STUDIO / "07-du-an"
+    BACKUP = STUDIO / "_backup"
+else:
+    STUDIO = XUONG_GOC / "du-an" / "ab-edit"                # dự án + file làm việc của ab-edit
+    SOURCE_THO = STUDIO / "_nguon-tho"                       # file gốc, chỉ đọc
+    TAI_NGUYEN = STUDIO / "_tai-nguyen"                      # tài nguyên riêng của ab-edit
+    THANH_PHAM = XUONG_GOC / "thanh-pham"                    # video xuất
+    DU_AN = STUDIO
+    BACKUP = STUDIO / "_backup"
+# Nhạc/tiếng dùng chung của xưởng: <xưởng>/tai-nguyen/nhac|am/ (tra tệp trong chi-muc.csv, cột `tep`)
+KHO_CHUNG = (XUONG_GOC / "tai-nguyen") if XUONG_GOC else None
 BRANDS = SKILL / "brands"
 
 # Đuôi file KHÔNG BAO GIỜ được xoá bằng script (bài học sự cố 14/10/2026)
@@ -74,10 +104,10 @@ def thoi_luong(file: Path) -> float:
 
 
 def chan_ghi_source(file: Path) -> None:
-    """Không bao giờ ghi/xoá trong 02-source-tho."""
+    """Không bao giờ ghi/xoá trong thư mục nguồn thô (02-source-tho hoặc _nguon-tho)."""
     f = Path(file).resolve()
     if f == SOURCE_THO.resolve() or SOURCE_THO.resolve() in f.parents:
-        raise SystemExit(f"Từ chối: không được ghi vào 02-source-tho ({f.name}).")
+        raise SystemExit(f"Từ chối: không được ghi vào thư mục nguồn thô {SOURCE_THO.name} ({f.name}).")
 
 
 def sao_luu(file: Path) -> None:

@@ -16,6 +16,9 @@ Thư mục ke-hoach.json là thư mục video (tệp đoạn tính từ đó). C
 """
 import json
 import subprocess
+from chung import cau_hinh_xuong
+
+cau_hinh_xuong()  # thêm ffmpeg/node của xưởng vào PATH
 import sys
 from pathlib import Path
 

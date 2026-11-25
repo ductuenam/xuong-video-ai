@@ -1,4 +1,6 @@
 import subprocess,sys,io
+from chung import cau_hinh_xuong
+cau_hinh_xuong()  # thêm ffmpeg/node của xưởng vào PATH
 from PIL import Image, ImageDraw
 # args: out.jpg clip:tu:den ...
 out=sys.argv[1]; rows=[]

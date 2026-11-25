@@ -1,15 +1,34 @@
-"""Cài engine dự phòng HyperFrames vào ~/.video-ngan/engine-hf (cạnh engine Remotion), tải Chrome riêng, kiểm môi trường.
+"""Cài engine dự phòng HyperFrames vào <thư mục máy>/engine-hf (khóa `may` trong .claude/xuong-video.json; không có thì ~/.video-ngan/engine-hf) (cạnh engine Remotion), tải Chrome riêng, kiểm môi trường.
   python cai_dat_hf.py
 Cần Node ≥ 22 và FFmpeg đã có trên máy (skill video-ngan-nguoi-noi đã cài). Chạy lại bao nhiêu lần cũng được."""
+import json
 import os
 import shutil
 import subprocess
 import sys
 from pathlib import Path
 
+
+def cau_hinh_xuong():
+    """Đọc <bộ não>/.claude/xuong-video.json do bộ cài ghi: từ thư mục skill đi lên, rồi từ thư mục đang mở đi lên.
+    Thêm thư mục ffmpeg, node của xưởng vào đầu PATH của tiến trình này."""
+    for goc in (Path(__file__).resolve(), Path.cwd().resolve()):
+        for p in (goc, *goc.parents):
+            f = p / ".claude" / "xuong-video.json"
+            if f.is_file():
+                c = json.loads(f.read_text(encoding="utf-8"))
+                for d in reversed(c.get("bin", [])):
+                    if d and d not in os.environ.get("PATH", "").split(os.pathsep):
+                        os.environ["PATH"] = d + os.pathsep + os.environ.get("PATH", "")
+                return c
+    return {}
+
+
+XUONG_CFG = cau_hinh_xuong()
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 GOC = Path(__file__).resolve().parent.parent
-ENGINE_HF = Path.home() / ".video-ngan" / "engine-hf"
+# engine-hf nằm trong thư mục máy của bộ cài (xuong-video.json › may); không có thì chỗ cũ ~/.video-ngan/engine-hf
+ENGINE_HF = (Path(XUONG_CFG["may"]) if XUONG_CFG.get("may") else Path.home() / ".video-ngan") / "engine-hf"
 NPM = "npm.cmd" if sys.platform == "win32" else "npm"
 NODE_HF = [str(ENGINE_HF / "node_modules" / "hyperframes" / "bin" / "hyperframes.mjs")]
 MOI_TRUONG = {**os.environ, "HYPERFRAMES_NO_TELEMETRY": "1", "DO_NOT_TRACK": "1", "HYPERFRAMES_NO_UPDATE_CHECK": "1"}

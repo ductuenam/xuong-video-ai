@@ -34,6 +34,8 @@ import sys
 import unicodedata
 from pathlib import Path
 
+from chung import XUONG
+
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 ND = Path(__file__).resolve().parent
 KHE = 0.35
@@ -67,17 +69,14 @@ def ghi_json(p, d):
 
 # ---------------------------------------------------------------- bước 1
 def lam_du_an(a):
-    kenh, f = Path(a.kenh).resolve(), Path(a.file).resolve()
-    if (kenh / "INDEX.md").is_file() and (kenh / "01_CA_NHAN_VA_THUONG_HIEU").is_dir():
-        # Thử máy học viên 24/11/2026: không bao giờ làm video bên trong Bộ Não AI; dùng Video-AI cạnh nó
-        kenh = kenh.parent / "Video-AI"
-        print(f"• thư mục đưa vào là bộ não: làm video ở {kenh} (ngoài bộ não)")
+    f = Path(a.file).resolve()
+    if not XUONG:
+        sys.exit("✘ Chưa cài Xưởng Video AI: hãy chạy lại câu lệnh cài Xưởng Video AI.")
+    kenh = XUONG  # thư mục kênh = Xưởng (<bộ não>/08_XUONG_VIDEO); tham số "thư mục kênh" đưa vào chỉ để tương thích
+    if Path(a.kenh).resolve() != kenh:
+        print(f"• làm video ở Xưởng {kenh}")
     if not (kenh / "ho-so-kenh.json").exists():
-        r = subprocess.run([sys.executable, ND / "cai_dat.py", kenh])
-        if r.returncode or not (kenh / "ho-so-kenh.json").exists():
-            sys.exit(f"✘ {kenh} chưa có ho-so-kenh.json, chạy cai_dat.py \"{kenh}\" trước.")
-    from nhap_kho import nhap
-    nhap(kenh)  # có gói KHO-HOC-VIEN trong Downloads thì tự nhận nhạc, cảnh
+        sys.exit(f"✘ {kenh} chưa có ho-so-kenh.json: hãy chạy lại câu lệnh cài Xưởng Video AI.")
     du_an = kenh / "du-an"
     du_an.mkdir(exist_ok=True)
     so = 1 + max([int(m.group(1)) for x in du_an.iterdir() if (m := re.match(r"(\d+)-", x.name))] or [0])
@@ -92,7 +91,7 @@ def lam_du_an(a):
     da.mkdir(exist_ok=True)
     (da / "loai.txt").write_text("edit", encoding="utf-8")
     if not (da / "nhac.txt").exists():
-        (da / "nhac.txt").write_text("beat-vlog", encoding="utf-8")
+        (da / "nhac.txt").write_text("NH0001", encoding="utf-8")
     print("dự án:", da)
     return kenh, f, da
 

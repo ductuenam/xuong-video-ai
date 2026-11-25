@@ -21,7 +21,7 @@ Thời gian đo được, máy có GPU NVIDIA: video quay thật 2 phút khoản
 | Thứ | Ghi chú |
 |---|---|
 | Claude Code hoặc ứng dụng Claude trên máy tính | Claude in Chrome nếu muốn Claude thao tác Flow giúp |
-| Python 3.10 trở lên, Node.js LTS, FFmpeg | `cai_dat.py` sẽ kiểm, tự cài trình duyệt để chụp và quay trang web |
+| Python, Node.js, FFmpeg, engine dựng, mô hình nghe lời | Bộ cài Xưởng Video AI đã cài sẵn, không cần tự cài |
 | Windows 10/11 | Đã chạy thật trên Windows 11. Hệ khác chưa thử |
 | GPU NVIDIA | Không bắt buộc nhưng nhanh hơn nhiều |
 | Tài khoản Google Flow | Có gói trả phí để đủ credit tạo clip |
@@ -37,16 +37,9 @@ Dung lượng đo được: Whisper 2,9 GB, Remotion 825 MB, trình duyệt 720 
 
 ## Cài đặt
 
-1. Cài 2 skill `video-ngan-nguoi-noi` và `anh-bia-video` từ các file `.skill`.
-2. Chạy:
-
-```bash
-python cai_dat.py "D:/KENH CUA TOI"
-```
-
-   Lệnh này kiểm máy, cài engine, tạo thư mục kênh và `ho-so-kenh.json`. Cuối cùng in ra đường dẫn Python cần dùng.
-
-3. **Điền `ho-so-kenh.json`:**
+1. Chạy câu lệnh cài Xưởng Video AI một lần. Bộ cài chép skill vào `.claude/skills/` và agent vào `.claude/agents/` của Bộ Não AI, tạo Xưởng (`08_XUONG_VIDEO/`, tên thật ghi trong `.claude/xuong-video.json`), giải nén cảnh, nhạc, tiếng vào `tai-nguyen/` và tạo `ho-so-kenh.json` mẫu.
+2. Mở Claude đúng ở Bộ Não AI. Mở lại Claude một lần sau khi cài để nhận agent mới.
+3. **Điền `ho-so-kenh.json` (trong Xưởng):**
 
 | Trường | Ý nghĩa |
 |---|---|
@@ -54,8 +47,8 @@ python cai_dat.py "D:/KENH CUA TOI"
 | `chuLinhVat` | 2 chữ trên áo linh vật |
 | `mauChinh`, `mauPhu`, `mauBia` | Màu thẻ đồ họa, màu nhấn, màu bìa |
 | `xungHo`, `doiTuong` | Cách xưng hô, người xem của kênh |
-| `khoCanh` | Thư mục kho và tên file danh mục |
-| `nhac`, `tiengChuyenCanh` | Nhạc nền, tiếng chuyển cảnh. Đường dẫn tuyệt đối hoặc tính từ thư mục kênh |
+| `khoCanh` | Mặc định `tai-nguyen/canh` và `chi-muc.csv` (script luôn lấy kho cảnh ở `<Xưởng>/tai-nguyen/canh`) |
+| `nhac`, `tiengChuyenCanh`, `boNhac`, `boTieng` | Nhạc nền, tiếng chuyển cảnh, bộ nhạc, bộ tiếng. Đường dẫn tính từ thư mục chứa hồ sơ (Xưởng), ví dụ `tai-nguyen/nhac/nen-video-ngan/NH0001_hiphop-vlog-tre-trung.mp3` |
 | `thanhPham` | Nơi giao video |
 | `anhAI` | Tài khoản tạo ảnh qua API: đường dẫn file khóa và mã project. Đổi tài khoản chỉ cần sửa ở đây. Không dán nội dung khóa vào hồ sơ |
 | `anhThamChieu` | 2 đến 3 ảnh thật rõ mặt, dùng để giữ mặt |
@@ -70,20 +63,13 @@ python cai_dat.py "D:/KENH CUA TOI"
 
 5. **Tạo avatar trên Flow** cho clip có mặt bạn: làm theo hướng dẫn trên Flow, đặt tên `Me`. Google có thể yêu cầu xác minh chính chủ. Chỉ dùng mặt của chính bạn hoặc người đã đồng ý.
 
-6. **Tạo kho cảnh:** nhờ Claude soạn 20 cảnh không người và 20 đến 40 cảnh có mặt bạn theo `references/canh-tram-flow.md`. Tải về thư mục `kho-canh`, ghi vào `danh-muc-canh.csv`:
+6. **Kho cảnh:** bộ cài đã giải nén sẵn vào `tai-nguyen/canh/` (chỉ mục `chi-muc.csv`, bảng đọc được `CHI_MUC.md`, ảnh xem trước `xem-truoc/`). Muốn thêm cảnh riêng (làm theo `references/canh-tram-flow.md`), bỏ file `<mã>.mp4` vào `tai-nguyen/canh/cua-toi/`; thư mục `cua-toi` không bao giờ bị cập nhật ghi đè.
 
-```csv
-ma,dung,bo_cuc,nhom,file,ghi_chu
-T01,co,T,ha-tang,Ten_file_tai_ve.mp4,Hành lang máy chủ
-```
-
-   Cột `dung` ghi `co` hoặc `khong`, `bo_cuc` ghi `T` (toàn màn) hoặc `D` (nửa trên trống). Mã trùng với mã dùng trong kịch bản.
-
-7. **Nhạc:** chọn bài có quyền dùng ở mọi nền tảng sẽ đăng. Bài trong YouTube Audio Library có thể chỉ dùng được trên YouTube, kiểm trước khi đăng Facebook, TikTok. Ghi tên bài, tác giả, link vào `NGUON.md` của thư mục nhạc rồi khai trong `boNhac`. Bộ này không kèm nhạc và clip.
+7. **Nhạc:** chọn bài có quyền dùng ở mọi nền tảng sẽ đăng. Bài trong YouTube Audio Library có thể chỉ dùng được trên YouTube, kiểm trước khi đăng Facebook, TikTok. Ba bài kèm sẵn (`NH0001`, `NH0002`, `NH0003`) đã kiểm quyền, nguồn ghi ở `tai-nguyen/nhac/NGUON.md`. Bài của bạn để ở `tai-nguyen/nhac/cua-toi/`, ghi tên bài, tác giả, link vào `NGUON.md` rồi khai trong `boNhac`.
 
 ## Làm một video
 
-Mở Claude ở thư mục kênh và nói một trong các câu:
+Mở Claude ở Bộ Não AI và nói một trong các câu:
 
 - "Làm video review công cụ X, theo khuôn B."
 - "Đây là video mẫu ..., làm kịch bản theo phong cách kênh mình."
@@ -118,14 +104,14 @@ Tự kiểm tra trước khi dùng, nhất là khi dùng cho công ty. Đây kh�
 
 | Dấu hiệu | Cách xử lý |
 |---|---|
-| "Chưa cài engine" | Chạy lại `cai_dat.py` |
-| Bước `canh` báo THIẾU CẢNH | Tạo cảnh trên Flow hoặc đổi sang mã có sẵn |
+| "Chưa cài engine" hoặc "Chưa cài Xưởng Video AI" | Chạy lại câu lệnh cài Xưởng Video AI |
+| Bước `canh` báo THIẾU CẢNH | Đổi sang mã `CA…` có sẵn trong `tai-nguyen/canh/CHI_MUC.md`, hoặc thêm cảnh vào `tai-nguyen/canh/cua-toi/` |
 | Bước `phu-de` báo lệch lời | Sửa `loi.txt` theo đúng lời đã nói |
 | Tạo ảnh báo 429 | Hết hạn mức tạm thời của Google, script tự chờ và thử lại. Bìa làm sau video, đừng để bìa chặn video |
 | Tải file từ web không về máy | Trình duyệt đang hỏi nơi lưu; dùng API sẽ không vướng việc này |
 | Nghiệm thu báo khoảng lặng hoặc lặp từ | Chỉnh `doan.json`, chạy `--tu master` |
 | Whisper chạy rất chậm | Máy không có GPU hoặc thiếu thư viện CUDA, vẫn chạy được |
-| Lần đầu chạy tải lâu | Whisper tải mô hình khoảng 3 GB |
+| Nghe lời báo thiếu bộ nhớ | Script tự lùi về mô hình `small` (kém chính xác hơn); mô hình mặc định đặt ở `whisper_model` trong `.claude/xuong-video.json` |
 | Video mờ | File gốc bị nén, xin lại file gốc |
 | Ảnh tĩnh báo "giọng rời rạc" hoặc "giọng liền quá" | Viết lại bản đọc theo `kich-ban.md`, chạy `nghi_dau_phay.py` |
 | `xuat_pdf.py` từ chối xuất | Tờ hướng dẫn thiếu khối liên hệ hoặc còn chữ mẫu, điền theo `lienHe` |

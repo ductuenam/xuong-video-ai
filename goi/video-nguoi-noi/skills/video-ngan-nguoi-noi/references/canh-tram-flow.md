@@ -2,14 +2,14 @@
 
 ## Đối chiếu kho rồi nhắc người dùng
 
-Sau khi kịch bản được duyệt, đọc `danh-muc-canh.csv` (cột `ma, dung, bo_cuc, nhom, file, ghi_chu`), chỉ lấy cảnh có `dung` = `co`. Mỗi cảnh trong bảng kịch bản hình gán một mã. Thiếu thì nhắc đúng mẫu:
+Sau khi kịch bản được duyệt, đọc `tai-nguyen/canh/CHI_MUC.md` (nguồn: `chi-muc.csv`, cột `ma, nhom, mo_ta, tu_khoa, tep`; bỏ dòng `trang_thai` = `an`; xem ảnh `xem-truoc/<mã>.jpg` khi cần, không mở lần lượt video). Mỗi cảnh trong bảng kịch bản hình gán một mã. Thiếu thì nhắc đúng mẫu:
 
 ```
 Kịch bản cần N cảnh, kho có sẵn X, cần tạo thêm Y (Y × 12 = Z credit):
 | Mã mới | Dùng ở câu | Mô tả | Có mặt người dẫn |
 Prompt từng cảnh:
 <mã>: <prompt đủ để dán>
-Sau khi tạo: tải về <thư mục kho>, thêm dòng vào danh-muc-canh.csv.
+Sau khi tạo: tải về, đặt tên `<mã>.mp4` và bỏ vào `tai-nguyen/canh/cua-toi/` (thư mục này không bị cập nhật ghi đè).
 ```
 
 Kho đủ thì nói rõ "kho hiện có là đủ, không cần tạo thêm". Clip không được gán trước thì `lap_canh.py` sẽ dừng và liệt kê mã thiếu.

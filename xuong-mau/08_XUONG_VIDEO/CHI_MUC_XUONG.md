@@ -25,7 +25,11 @@
 ## 4. Để kết quả ở đâu
 - Mỗi video một thư mục `du-an/<YYYY-MM-DD>_<ten-video>/`.
 - Thành phẩm chép ra `thanh-pham/<YYYY-MM-DD>_<ten-video>.mp4`.
-- Không đọc lướt `.may-video/`, `.sao-luu/`.
+- Không đọc lướt thư mục phần mềm của xưởng (ghi ở `.claude/xuong-video.json`, mục `may`).
+
+**Cập nhật xưởng** (giữ nguyên mọi thứ của Anh/Chị): nhắn Claude "Cập nhật Xưởng Video AI", Claude chạy lại câu lệnh cài:
+- Windows: `powershell -NoProfile -ExecutionPolicy Bypass -Command "irm https://raw.githubusercontent.com/ductuenam/xuong-video-ai/main/cai/cai.ps1 | iex"`
+- Mac: `curl -fsSL https://raw.githubusercontent.com/ductuenam/xuong-video-ai/main/cai/cai.sh | bash`
 
 ## 5. Của tôi
 | Thứ | Ở đâu | Có gì |

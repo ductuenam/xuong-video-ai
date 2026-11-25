@@ -1,10 +1,10 @@
 {
  "_ghi_chu": "Chép file này thành cau-hinh.json (cùng thư mục) rồi điền. Đường dẫn dùng dấu /. Đường dẫn tương đối tính từ thư mục làm việc (nơi mở Claude Code). Thư mục thu_muc_kol chứa kol.json + kol-chuan.png của KOL riêng (xem assets/README.md).",
  "shop": {"ten": "Tên shop của bạn", "lien_he": "", "nganh_hang": "quần áo"},
- "thu_muc_lam_viec": "kol-mac-thu/video",
- "thu_muc_kol": "kol-mac-thu/kol",
- "thu_muc_kho": "kol-mac-thu/kho",
+ "_ghi_chu_thu_muc": "Để trống 3 mục thu_muc_* = tự dùng <xưởng>/du-an/kol-mac-thu-mot-khung/video|kol|kho (xưởng lấy từ .claude/xuong-video.json; không có xưởng thì kol-mac-thu/ tính từ thư mục làm việc). Điền đường dẫn thì dùng đúng đường dẫn đó.",
+ "thu_muc_lam_viec": "",
+ "thu_muc_kol": "",
+ "thu_muc_kho": "",
  "thu_muc_tai_ve": "~/Downloads",
- "whisper_model": "large-v3",
- "_ghi_chu_whisper": "Máy không có card NVIDIA thì đổi thành medium cho nhanh."
+ "_ghi_chu_whisper": "Không khai whisper_model = theo máy (xuong-video.json, không có thì small; có GPU NVIDIA thì large-v3). Muốn ép một cỡ: thêm khóa whisper_model, ví dụ small."
 }

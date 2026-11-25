@@ -15,7 +15,10 @@ try:
     gpu = ctranslate2.get_cuda_device_count() > 0
 except Exception:
     gpu = False
-m=WhisperModel("large-v3" if gpu else "medium",device="cuda" if gpu else "cpu",compute_type="float16" if gpu else "int8")
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from chung import XUONG
+ten=XUONG.get("whisper_model") or ("large-v3" if gpu else "small")  # có GPU CUDA thì large-v3; không thì theo máy (small)
+m=WhisperModel(ten,device="cuda" if gpu else "cpu",compute_type="float16" if gpu else "int8")
 for spec in sys.argv[2:]:
     parts=[tuple(map(float,p.split("-"))) for p in spec.split(",")]
     y=np.concatenate([x[int(a*SR):int(b*SR)] for a,b in parts])

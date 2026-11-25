@@ -17,7 +17,7 @@ from pathlib import Path
 import cv2
 import numpy as np
 
-from chung import ENGINE, GOC_SKILL, chay, doc, ghi, ho_so, tam_rieng
+from chung import CFG, ENGINE, GOC_SKILL, chay, doc, ghi, ho_so, tam_rieng
 
 BUOC = ["master", "phu-de", "canh", "bundle", "anh-tinh", "render", "tron", "soat", "nghiem-thu", "nhan-dien"]
 NPX = "npx.cmd" if sys.platform == "win32" else "npx"
@@ -31,7 +31,7 @@ def b_script(ten, da):
 
 def dong_bo_engine(h, da=None):
     if not (ENGINE / "node_modules").exists():
-        sys.exit(f"✘ Chưa cài engine ở {ENGINE}. Chạy cai_dat.py trước.")
+        sys.exit(f"✘ Chưa cài engine ở {ENGINE}. Hãy chạy lại câu lệnh cài Xưởng Video AI.")
     shutil.copytree(GOC_SKILL / "engine" / "src", ENGINE / "src", dirs_exist_ok=True)
     kenh = {k: h.get(k, "") for k in TRUONG_KENH}
     if str(kenh.get("ten", "")).strip().upper() == "TÊN KÊNH":  # hồ sơ mẫu chưa điền: không in chữ mẫu lên video (thử 24/11/2026)
@@ -96,8 +96,16 @@ def ghi_gio(da, b, giay):
         g.write(f"{datetime.datetime.now():%Y-%m-%d %H:%M:%S},{b},{giay:.0f}\n")
 
 
+def so_luong_dung():
+    """Số tab Chrome Remotion dựng song song. Mỗi tab tốn khoảng 0,5–0,8 GB (đo 25/11/2026: 6 tab, đỉnh 4,6 GB),
+    nên máy ≤ 8 GB chỉ 2, dưới 16 GB 3, còn lại theo nhân CPU (tối đa 6). RAM lấy từ .claude/xuong-video.json (bộ cài ghi)."""
+    ram = CFG.get("ram_gb") or 16
+    n = max(2, min(6, (os.cpu_count() or 4) // 2))
+    return 2 if ram <= 8 else (min(n, 3) if ram < 16 else n)
+
+
 def b_render(da):
-    chay([NPX, "remotion", "render", da / "render" / "bundle", "MoHinh", da / "render" / "hinh-cam.mp4", f"--props={da / 'props.json'}", "--muted", "--crf=14", f"--concurrency={max(2, min(6, (os.cpu_count() or 4) // 2))}",
+    chay([NPX, "remotion", "render", da / "render" / "bundle", "MoHinh", da / "render" / "hinh-cam.mp4", f"--props={da / 'props.json'}", "--muted", "--crf=14", f"--concurrency={so_luong_dung()}",
           "--image-format=jpeg", "--jpeg-quality=100", "--color-space=bt709", "--pixel-format=yuv420p", "--log=error"], cwd=ENGINE)
 
 

@@ -10,7 +10,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-from chung import doc, duong_dan, ho_so
+from chung import XUONG, doc, duong_dan, ho_so
 from kiem_chot import kiem_nhac
 
 da = Path(sys.argv[1])
@@ -23,11 +23,15 @@ loi_nhac = kiem_nhac(chon)  # luật đã chốt số 11, máy kiểm (reference
 if loi_nhac:
     sys.exit("✘ " + loi_nhac)
 muc = bo_nhac.get(chon)
+if not muc and XUONG and chon:  # hồ sơ chưa khai boNhac: tìm theo mã trong <xưởng>/tai-nguyen/nhac (tệp <mã>_*.mp3, nhạc của tôi: <mã>.mp3)
+    tim_nhac = next(iter(sorted((XUONG / "tai-nguyen" / "nhac").rglob(f"{chon}_*.mp3")) + sorted((XUONG / "tai-nguyen" / "nhac").rglob(f"{chon}.mp3"))), None)
+    if tim_nhac:
+        muc = {"file": str(tim_nhac), "tu": 9.5 if chon == "NH0003" else 0}  # NH0003 vào nhịp muộn: bắt đầu từ giây 9,5
 nhac_tu = muc.get("tu", 0) if isinstance(muc, dict) else 0  # bài vào nhịp muộn thì bỏ đoạn đầu
 nhac = str(duong_dan(h, muc["file"] if isinstance(muc, dict) else muc)) if muc else str(duong_dan(h, h["nhac"])) if h.get("nhac") else chon
 if not nhac or not Path(nhac).is_file():
     # Máy học viên mới chưa có kho nhạc (thử máy sạch 24/11/2026 bị dừng ở đây): dựng chỉ có giọng, không dừng
-    print(f"⚠ chưa có file nhạc '{chon}' ({nhac}): video chỉ có giọng. Chép kho nhạc vào tai-nguyen/nhac/ rồi dựng lại để có nhạc nền.")
+    print(f"⚠ chưa có file nhạc '{chon}' ({nhac}): video chỉ có giọng. Nhạc nằm ở tai-nguyen/nhac/ trong Xưởng; thiếu thì chạy lại câu lệnh cài Xưởng Video AI rồi dựng lại.")
     nhac = None
 DUOI_GIONG = h.get("nhacDuoiGiong", 10)  # nhạc thấp hơn giọng bao nhiêu LU; 22 dB từng làm nhạc gần như không nghe thấy
 mac_dinh = str(duong_dan(h, h["tiengChuyenCanh"])) if h.get("tiengChuyenCanh") else ""

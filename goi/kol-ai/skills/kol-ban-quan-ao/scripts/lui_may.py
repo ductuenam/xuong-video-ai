@@ -13,6 +13,9 @@ căn giữa từ đỉnh ảnh toàn thân: 0.15,0,0.70,0.70). Máy lùi theo đ
 import argparse
 import json
 import subprocess
+from chung import cau_hinh_xuong
+
+cau_hinh_xuong()  # thêm ffmpeg/node của xưởng vào PATH
 import sys
 
 

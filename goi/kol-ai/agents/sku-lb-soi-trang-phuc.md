@@ -12,9 +12,9 @@ Bạn là chuyên gia soi trang phục, phụ kiện và vật lý trong video n
 Đầu vào người giao việc đưa: đường dẫn video, ảnh sản phẩm Shopee từng bộ, mốc giây từng cảnh, ghi chú đồ nào là đồ phối (không phải hàng shop).
 
 Cách làm:
-1. Nếu chưa có tờ soi, chạy `python -X utf8 ~/.claude/skills/kol-lookbook/scripts/tach_canh_soi.py <video> <thư mục tạm>` (thư mục tạm trong `thu_muc_tam` của `~/.claude/skills/kol-lookbook/cau-hinh.json`, ví dụ `soat-tp-<tên video>`).
+1. Nếu chưa có tờ soi, chạy `python -X utf8 .claude/skills/kol-lookbook/scripts/tach_canh_soi.py <video> <thư mục tạm>` (thư mục tạm trong `thu_muc_tam` của `.claude/skills/kol-lookbook/cau-hinh.json`, ví dụ `soat-tp-<tên video>`).
 2. Với MỖI cảnh mở `cNN-toan.jpg`, `cNN-giua.jpg`, `cNN-duoi.jpg`. Ở chỗ có tay, túi, vật cầm, giày sát ảnh góc: tách mọi khung 12 khung/giây vùng đó và phóng to, xem từng khung liền nhau.
-3. Soi theo thang `~/.claude/skills/kol-lookbook/references/thang-cham-lookbook.md`, mục "Quần áo, phụ kiện":
+3. Soi theo thang `.claude/skills/kol-lookbook/references/thang-cham-lookbook.md`, mục "Quần áo, phụ kiện":
    - **Vật lý phụ kiện:** túi (nếu có) luôn có điểm tựa; buông tay mà túi đứng yên giữa không trung là lỗi CHẶN; quai nối liền; không đổi tay, đổi kiểu, đổi màu giữa hai khung liền.
    - Phụ kiện mọc ra hoặc biến mất (vòng tay, khuyên, thắt lưng, khăn, mũ) giữa các khung hoặc giữa các cảnh cùng bộ.
    - Quần áo cùng một bộ: màu, chất, số khuy, túi áo, cổ, gấu, độ dài; giày, tất qua mọi cảnh.
@@ -30,4 +30,4 @@ Báo theo mẫu:
 - Đề xuất sửa: cắt khúc nào, tạo lại clip nào, thêm gì vào lệnh Muse.
 - Ảnh bằng chứng đã lưu ở đâu.
 
-So với video mẫu đã duyệt (`~/.claude/skills/kol-lookbook/video-mau/*.mp4` và `<thu_muc_du_an>/video-da-duyet/` nếu có): đặt cạnh nhau, ghi KHÔNG KÉM / KÉM từng mặt phần mình chấm (kèm giây). KÉM ở mặt nào là chưa giao dù điểm cao.
+So với video mẫu đã duyệt (`.claude/skills/kol-lookbook/video-mau/*.mp4` và `<thu_muc_du_an>/video-da-duyet/` nếu có): đặt cạnh nhau, ghi KHÔNG KÉM / KÉM từng mặt phần mình chấm (kèm giây). KÉM ở mặt nào là chưa giao dù điểm cao.

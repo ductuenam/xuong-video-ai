@@ -13,6 +13,9 @@ Ra:
 import argparse
 import csv
 import subprocess
+from chung import cau_hinh_xuong
+
+cau_hinh_xuong()  # thêm ffmpeg/node của xưởng vào PATH
 import sys
 from pathlib import Path
 

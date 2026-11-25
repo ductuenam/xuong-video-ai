@@ -88,7 +88,9 @@ Luật cập nhật: **mọi thứ có chữ `cua-toi` hoặc `chu=hoc-vien` là
 
 Giai đoạn 2 cần viết skill nhỏ `xuong-mo-rong` làm 4 việc trên.
 
-## 6. Bộ cài một câu lệnh (giai đoạn 2, chưa viết)
+## 6. Bộ cài một câu lệnh (đã viết 25/11/2026, xem `cai/README.md`)
+
+Khác bản thiết kế: phần mềm đặt ngoài bộ não (`%LOCALAPPDATA%\XuongVideoAI`, Mac `~/Library/Application Support/XuongVideoAI`) vì bộ não có thể đồng bộ đám mây; Windows dùng Python chính hãng python.org (Smart App Control chặn Python do uv tải về) và ghim `ctranslate2==4.8.2`; FFmpeg, Node có sẵn trên máy thì dùng luôn.
 
 1. Kiểm môi trường: đang chạy trên máy học viên và đang mở thư mục có `INDEX.md` + ngăn 01–07. Sai thì dừng và chỉ cách chuyển.
 2. Kiểm máy: hệ điều hành, RAM, ổ trống, card NVIDIA. Chọn `nhe` (≤ 8 GB RAM hoặc ổ < 6 GB) hay `du`.
@@ -99,17 +101,15 @@ Giai đoạn 2 cần viết skill nhỏ `xuong-mo-rong` làm 4 việc trên.
 6. Whisper theo RAM: ≤ 8 GB dùng `small` (hoặc `large-v3-turbo` int8), ≥ 16 GB dùng `large-v3`. Video BNI dùng mốc thời gian chữ của giọng edge-tts, không cần Whisper.
 7. Dựng thử video 10 giây; đạt thì in `XƯỞNG SẴN SÀNG` và tóm tắt đã đặt gì ở đâu.
 
-## 7. Việc phải sửa trong mã kế thừa (giai đoạn 2)
+## 7. Đã sửa trong mã kế thừa (25/11/2026)
 
-| Chỗ | Hiện tại | Sửa thành |
-|---|---|---|
-| `cai_dat.py` (bộ cài của mã kế thừa) | Cài toàn máy `~/.claude`, cần winget/Homebrew | Thay bằng bộ cài mục 6 |
-| `video-ngan-nguoi-noi/scripts/tim_bo_nao.py`, `nhap_kho.py` | Lục Downloads, Desktop, OneDrive tìm bộ não và gói zip | Bỏ: thư mục làm việc = `08_XUONG_VIDEO/` của bộ não đang mở |
-| `video-ngan-nguoi-noi/scripts/whisper_vi.py:37` | Luôn `large-v3` | Đọc tên mô hình từ `.may-video.json`, tự lùi về mô hình nhỏ hơn khi thiếu bộ nhớ |
-| `video-ngan-nguoi-noi/scripts/cai_dat.py:152` | Luôn tải large-v3 3 GB | Tải theo gói |
-| `lap_canh.py:136`, `bni.py:117` | Tìm cảnh bằng `rglob` theo tên tệp | Giữ được (tên mới vẫn duy nhất), nên đọc cột `tep` của `tai-nguyen/canh/chi-muc.csv`; đổi gốc `kho-canh/` thành `tai-nguyen/canh/` |
-| `video-ngan-nguoi-noi/scripts/bni.py:36`, `references/loi-da-gap.md`, `references/so-tay.md` | Viết cứng mã cảnh cũ (`K055`, `K049`, `K082`, `N031`, `N100`, `T01`…) | Đổi sang mã mới theo `tai-nguyen/_doi-chieu/bang-doi-ten.csv` (ví dụ `K055` → `CA0116`) |
-| Tên riêng trong skill `ab-edit` (8 dòng, 5 tệp: `SKILL.md`, `brands/an-binh-ai.json`, `nghiem_thu.py`, `tao_du_an.py`, `vpcs_check.py`) và lời chào trong các skill | Mang tên đơn vị cũ | Đổi thành tên chung: `brands/vi-du.json`, mặc định `--brand vi-du`; giữ ghi chú giấy phép MIT ở `third_party/` |
+- Bỏ `cai_dat.py`, `tim_bo_nao.py`, `nhap_kho.py`; thay bằng bộ cài `cai/` (mục 6, chi tiết `cai/README.md`).
+- Mọi skill đọc `<bộ não>/.claude/xuong-video.json` (bộ cài ghi): xưởng ở đâu, Python, FFmpeg, Node, engine Remotion, mô hình Whisper. Hàm chung `cau_hinh_xuong()` trong `chung.py` của từng skill, tự thêm FFmpeg/Node của xưởng vào PATH.
+- Đường dẫn `~/.claude/...` → `.claude/...` của bộ não (skill, agent cài cấp dự án).
+- Thư mục kênh = ngăn xưởng: cảnh ở `tai-nguyen/canh/` (tìm qua cột `tep` của `chi-muc.csv`, bỏ dòng `trang_thai=an`), nhạc `NH000x`, tiếng `AM000x`; mã cảnh cũ đổi theo `bang-doi-ten.csv` (K071, K006 không còn trong kho mới).
+- Whisper theo cấu hình (`small` máy thường, `large-v3` máy ≥ 16 GB hoặc có GPU), thiếu bộ nhớ tự lùi về `small`.
+- `ab-edit`, `kol-*`, `video-cay-canh`: thư mục làm việc mặc định nằm trong `08_XUONG_VIDEO/du-an/<skill>/`, thành phẩm `thanh-pham/`.
+- Bỏ tên đơn vị cũ: thương hiệu mẫu `brands/vi-du.json`, mặc định `--brand vi-du`. Thông báo bản quyền MIT giữ ở `third_party/` (bắt buộc).
 
 ## 8. Nguồn kế thừa
 

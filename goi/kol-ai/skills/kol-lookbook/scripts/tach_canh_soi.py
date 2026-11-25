@@ -13,6 +13,9 @@ Ra trong thu_muc_ra:
   mat-lon/cNN-tTT.png       : khung gốc độ phân giải đầy đủ ở giữa mỗi cảnh (soi da kỹ)
 """
 import argparse, json, subprocess, sys
+from chung import cau_hinh_xuong
+
+cau_hinh_xuong()  # thêm ffmpeg/node của xưởng vào PATH
 from pathlib import Path
 import numpy as np
 from PIL import Image, ImageDraw

@@ -10,7 +10,7 @@
 - Các cảnh phải nối liền: `den` cảnh trước bằng `tu` cảnh sau.
 - `moc`, `at`: số nguyên là cụm lời, số thực là giây tính từ đầu cảnh (`0.7`), `[8, 0.9]` là cụm 8 cộng 0,9 giây. Số `0` là giây 0.
 - `viTriPhuDe`: toạ độ y của phụ đề. Đặt để không đè thẻ và mặt, khoảng 1300 đến 1560.
-- Tên clip (`ten`, `canhNen`, `o[].ten`) là mã trong `danh-muc-canh.csv`.
+- Tên clip (`ten`, `canhNen`, `o[].ten`) là mã cảnh (dạng `CA0116`) trong `tai-nguyen/canh/chi-muc.csv`; xem `CHI_MUC.md` để chọn, ảnh xem trước ở `xem-truoc/<mã>.jpg`. Cảnh riêng của học viên ở `tai-nguyen/canh/cua-toi/<mã>.mp4`.
 - Mặt thật lấy từ master đúng giờ của cảnh, trừ khi đặt `nguon` riêng.
 
 ## Cảnh có mặt người

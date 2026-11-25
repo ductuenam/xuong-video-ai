@@ -33,4 +33,4 @@ Ba agent soát độc lập, mỗi agent chấm phần của mình, cộng lại
 Quy ước chấm thêm: video không có túi/phụ kiện thì mục vật lý phụ kiện cho đủ điểm. Mắt: 0,3 giây đầu mỗi cảnh phải mở mắt; một lần nhắm > 0,3 giây giữa cảnh là chớp dài (lỗi nhẹ, trừ 0,1).
 
 ## So với video mẫu đã duyệt (bắt buộc)
-Mỗi người chấm đặt video mới cạnh video mẫu đã duyệt: `~/.claude/skills/kol-lookbook/video-mau/*.mp4` của gói và video shop đã duyệt trong `<thu_muc_du_an>/video-da-duyet/` (nếu có). Ghi từng mặt phần mình chấm là KHÔNG KÉM hay KÉM (kèm giây). **KÉM ở bất kỳ mặt nào là chưa giao, dù tổng ≥ 9.** Chuẩn là video đã duyệt, không phải điểm số.
+Mỗi người chấm đặt video mới cạnh video mẫu đã duyệt: `.claude/skills/kol-lookbook/video-mau/*.mp4` của gói và video shop đã duyệt trong `<thu_muc_du_an>/video-da-duyet/` (nếu có). Ghi từng mặt phần mình chấm là KHÔNG KÉM hay KÉM (kèm giây). **KÉM ở bất kỳ mặt nào là chưa giao, dù tổng ≥ 9.** Chuẩn là video đã duyệt, không phải điểm số.

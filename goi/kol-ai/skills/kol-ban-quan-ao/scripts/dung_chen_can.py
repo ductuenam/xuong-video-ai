@@ -19,6 +19,9 @@ thoi gian tung doan hinh tren thanh pham de soat.
 import argparse
 import json
 import subprocess
+from chung import cau_hinh_xuong
+
+cau_hinh_xuong()  # thêm ffmpeg/node của xưởng vào PATH
 import sys
 from pathlib import Path
 

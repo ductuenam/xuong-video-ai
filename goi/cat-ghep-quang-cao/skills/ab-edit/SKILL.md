@@ -5,7 +5,7 @@ description: Skill AB Edit nâng cao (Windows), cho người muốn tự điều
 
 # Skill AB Edit (`ab-edit` · v3 · Windows)
 
-Skill dựng và edit video của An Bình AI. Ba chế độ nâng cao: A dựng video quảng cáo hoàn chỉnh từ file quay thô (có duyệt từng bước khi người dùng muốn), B cắt livestream thành nhiều video ngắn, C tạo biến thể từ 1 video Final.
+Skill dựng và edit video quảng cáo cho thương hiệu của bạn. Ba chế độ nâng cao: A dựng video quảng cáo hoàn chỉnh từ file quay thô (có duyệt từng bước khi người dùng muốn), B cắt livestream thành nhiều video ngắn, C tạo biến thể từ 1 video Final.
 
 ## Phân việc với skill `video-ngan-nguoi-noi`
 
@@ -15,7 +15,7 @@ Câu ngắn "Edit video <tên file> cho tôi" (một file quay, ra video dọc c
 
 KHÔNG hỏi duyệt từng bước. Làm trọn theo trình tự:
 
-1. **Tìm file**: tìm `<tên file>` trong thư mục đang mở, `video-studio/02-source-tho/` và các thư mục con (khớp gần đúng tên, bỏ dấu). Không thấy thì mới hỏi đúng một câu: file nằm ở đâu.
+1. **Tìm file**: tìm `<tên file>` trong thư mục đang mở, thư mục nguồn thô (`<xưởng>/du-an/ab-edit/_nguon-tho/`; không có xưởng thì `video-studio/02-source-tho/`) và các thư mục con (khớp gần đúng tên, bỏ dấu). Không thấy thì mới hỏi đúng một câu: file nằm ở đâu.
 2. **Đoán mặc định, không hỏi**: có người nói quay thật → chế độ A; file dài hơn 20 phút → chế độ B. Khổ hình theo file gốc (quay dọc → 9:16, ngang → 16:9). Thương hiệu = `config.json › brand_mac_dinh` (hoặc `brands/<tên>.json` duy nhất mà người dùng đã tạo). Phụ đề karaoke cho video ngắn. Nhạc nền không lời, thấp hơn giọng 22 dB.
 3. **Tự dựng** theo đúng skill này (chế độ A/B/C bên dưới) cho tới khi `scripts/nghiem_thu.py` báo ĐẠT. Việc dài (nhiều clip livestream) thì có thể giao một agent con làm theo skill này, kèm đường dẫn file, chế độ, khổ, thương hiệu, thư mục dự án.
 4. **Gọi agent `video-cham-diem`** giao CHỈ: đường dẫn video thành phẩm, file gốc, `loi.txt`/phụ đề nếu có. Không kể cho người soát là mình đã làm gì. Agent trả phiếu chấm ĐẠT hoặc SỬA LẠI kèm giây.
@@ -27,22 +27,25 @@ Không hỏi giữa chừng những việc tự quyết được (chọn lần n
 Người dùng nói rõ "cho tôi duyệt từng bước" thì mới dùng các cửa duyệt thủ công.
 
 ## Đọc trước khi làm
-1. `config.json` — thư mục studio (mặc định `video-studio` trong thư mục làm việc), Python, Chrome. Máy mới/lần đầu: `python scripts/kiem_tra_may.py`.
+1. `config.json` — thư mục studio (mặc định nối vào xưởng `<bộ não>/08_XUONG_VIDEO` theo `.claude/xuong-video.json`; không có xưởng thì `video-studio` trong thư mục làm việc; đặt `studio` trong `config.json` hoặc biến `AVS_STUDIO` thì ưu tiên cái đó), Python, Chrome. Máy mới/lần đầu: `python scripts/kiem_tra_may.py`.
 2. `references/chuan-dung-video-ads.md` (chuẩn hình/âm/kịch bản 6 phần, xào nấu) → `references/vpcs.md`.
-3. Thương hiệu = `brands/<tên>.json`. Chưa có → chép `brands/_mau.json` thành `brands/<tên>.json` và điền; ở chế độ tự động thì dùng `_mau.json` (không CTA, không logo). `an-binh-ai.json` là ví dụ một hồ sơ đã điền đủ.
+3. Thương hiệu = `brands/<tên>.json`. Chưa có → chép `brands/_mau.json` thành `brands/<tên>.json` và điền; ở chế độ tự động thì dùng `_mau.json` (không CTA, không logo). `vi-du.json` là ví dụ một hồ sơ đã điền đủ.
 
 Python: đặt `PYTHONUTF8=1`, chạy script trong `scripts/`.
 
-## Thư mục studio (`config.json › studio`)
+## Thư mục studio
+**Khi có xưởng** (`.claude/xuong-video.json`, không đặt `studio`): dự án và file làm việc → `<xưởng>/du-an/ab-edit/<tên>` · nguồn thô (**chỉ đọc**) → `<xưởng>/du-an/ab-edit/_nguon-tho/` · tài nguyên riêng của ab-edit → `<xưởng>/du-an/ab-edit/_tai-nguyen/` · thành phẩm → `<xưởng>/thanh-pham/` · sao lưu → `_backup`. Cần nhạc/tiếng dùng chung thì đọc `<xưởng>/tai-nguyen/nhac/` và `.../am/` (tra tệp trong `chi-muc.csv`, cột `tep`), không chép đè vào kho. Tạo dự án: `python scripts/tao_du_an.py <tên> --brand <b> --che-do dung|livestream|bien-the`.
+
+**Cách cũ** (đặt `studio` trong `config.json` hoặc `AVS_STUDIO`, hoặc không có xưởng) — các tên dưới đây:
 `01-video-mau` mẫu tham khảo · `02-source-tho` **file gốc — chỉ đọc** · `03-kich-ban` · `04-giong-doc` · `05-tai-nguyen` (fonts, nhac-nen, sfx, logo, broll) ·
 `06-thanh-pham` video xuất · `07-du-an/<tên>` file làm việc của từng dự án (`python scripts/tao_du_an.py <tên> --brand <b> --che-do dung|livestream|bien-the`) · `_backup`.
 
-**Kho tài nguyên chung** (`config.json › kho_tai_nguyen`, mặc định thư mục `kho-tai-nguyen` trong thư mục làm việc — học viên tải từ kho tài nguyên Drive của lớp): nhạc nền, SFX, video cảnh trám, font, icon. Chép file cần dùng vào `07-du-an/<tên>`, không sửa/xoá trong kho. Có Obsidian thì đặt `obsidian_vault` rồi chạy `python -I scripts/kho_tai_nguyen.py` để lập danh mục.
+**Kho tài nguyên chung** (`config.json › kho_tai_nguyen`, mặc định thư mục `kho-tai-nguyen` trong thư mục làm việc — học viên tải từ kho tài nguyên Drive của lớp): nhạc nền, SFX, video cảnh trám, font, icon. Chép file cần dùng vào thư mục dự án `<tên>`, không sửa/xoá trong kho. Có Obsidian thì đặt `obsidian_vault` rồi chạy `python -I scripts/kho_tai_nguyen.py` để lập danh mục.
 
 **Chọn nhạc theo THẺ NHẠC, không đoán theo tên bài** (tên bài "piano" có thể là country có lời). `scripts/phan_tich_nhac.py` chấm BPM, cảm xúc, có lời hay không. **Âm lượng nhạc/SFX tính theo dB đo được, không dùng tỉ lệ cố định**: chuẩn giọng −16 LUFS trước khi trộn, nhạc thấp hơn giọng 22 dB, đỉnh SFX ≈ −12 dBFS. Máy chấm vẫn có thể sai — báo người dùng nghe lại bài đã chọn.
 
 ## Luật làm việc (bắt buộc)
-- **Không ghi/xoá trong `02-source-tho`.** Sao lưu vào `_backup` trước khi ghi đè. **Không bao giờ xoá video/âm thanh/ảnh** — kể cả file tạm dạng media (dùng `chung.xoa_tam`, tự dồn vào `_backup`). Bài học: script dọn rác từng xoá mất video thành phẩm.
+- **Không ghi/xoá trong thư mục nguồn thô (`_nguon-tho`, cách cũ là `02-source-tho`).** Sao lưu vào `_backup` trước khi ghi đè. **Không bao giờ xoá video/âm thanh/ảnh** — kể cả file tạm dạng media (dùng `chung.xoa_tam`, tự dồn vào `_backup`). Bài học: script dọn rác từng xoá mất video thành phẩm.
 - **Không tự đăng, không upload, không chia sẻ.** Xuất xong báo đường dẫn để người dùng xem.
 - Video có người nói: dùng **giọng thật**. Cần giọng AI (lồng tiếng, đổi câu hook) thì dùng giọng miễn phí edge-tts (`vi-VN-HoaiMyNeural`, `vi-VN-NamMinhNeural`) hoặc ElevenLabs trên giao diện web do người dùng tự đăng nhập; không nhập mật khẩu thay.
 - **Nhạc nền luôn KHÔNG LỜI** (instrumental). Tên bài ghi ca sĩ hoặc có "(feat.)", "vocal", "lyric" → bỏ.
@@ -61,7 +64,7 @@ Có **người nói quay thật** → A · **buổi live dài** → B · có **1
 Video **không quay, toàn đồ họa + giọng đọc** → dùng skill `video-ngan-nguoi-noi` (mục "Không quay") hoặc `video-ngan-hyperframes`.
 
 ### A. Dựng video hoàn chỉnh (`--che-do dung`)
-1. Nhận file: source, video mẫu (nếu có), sản phẩm, từ cần né, khổ hình. Tạo dự án. **Kiểm file nhận**: `tu_kiem.py nhan <source/cảnh trám> --sua 07-du-an/<tên>`
+1. Nhận file: source, video mẫu (nếu có), sản phẩm, từ cần né, khổ hình. Tạo dự án. **Kiểm file nhận**: `tu_kiem.py nhan <source/cảnh trám> --sua <thư mục dự án>/<tên>` (`<xưởng>/du-an/ab-edit/<tên>`, cách cũ `07-du-an/<tên>`)
    (keyframe cách > 2s hoặc tốc độ khung không đều → tạo `<tên>-lamviec.mp4` 1 keyframe/giây, dựng bằng bản này; file gốc giữ nguyên).
 2. Phân tích mẫu (nếu có): bảng khung hình `ffmpeg fps=1/2,tile` + Whisper lời → công thức, nhịp, kiểu chữ.
 3. Cắt lời: `whisper_vi.py` → `edl_tool.py propose` (bỏ lặng, bỏ câu nói lại) → bảng GIỮ/BỎ (luật 2) → ráp → `edl_tool.py verify` nghe lại bằng Whisper. Chỉ bỏ, không đảo (luật 1).
@@ -96,7 +99,7 @@ Video **không quay, toàn đồ họa + giọng đọc** → dùng skill `video
 - Giao CapCut (khi người dùng muốn tự chỉnh tiếp): 3 lớp + nhạc — L1 người nói, L2 cảnh trám ProRes 4444 nền trong suốt, L3 khối chữ ProRes 4444; kéo hẳn sang trái để chặn đúng mốc 0.
 
 ## Tệp
-- `config.json` · `brands/` (`_mau` mẫu trống, `an-binh-ai` ví dụ đã điền, `thu-mau-xanh` thử đổi màu)
+- `config.json` · `brands/` (`_mau` mẫu trống, `vi-du` ví dụ đã điền, `thu-mau-xanh` thử đổi màu)
 - `scripts/` — `chung.py` (đường dẫn, FFmpeg, luật an toàn), `kiem_tra_may.py`, `tao_du_an.py`, `vpcs_check.py`, `whisper_vi.py`, `edl_tool.py`, `master_nguoi_noi.py`, `tim_mat.py` (MediaPipe + `models/`), `make_titles.py`, `tu_kiem.py` (kiểm file nhận + tự kiểm sau xuất), `nghiem_thu.py` (cổng cuối: lặp từ, đủ lời, khoảng lặng, màu, độ nét, logo góc), `phan_tich_nhac.py`, `kho_tai_nguyen.py`, `titles/template.html`, `do-hoa/` (thẻ feedback, thẻ tự kiểm tra, khung 3 sản phẩm), `vendor/quay-html.mjs` (quay trang HTML thành video, Chrome headless).
 - `references/` — chuẩn dựng video ads, VPCS.
 - Agent chấm đi kèm (trong `.claude/agents/`): `video-cham-diem` (chấm độc lập, phiếu ĐẠT/SỬA LẠI kèm giây).

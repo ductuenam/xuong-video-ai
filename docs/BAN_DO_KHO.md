@@ -66,7 +66,7 @@ Vì sao tách ổ: ổ E còn hơn 300 GB, thêm hoạt cảnh nhiều năm khô
 ## 3. Hiện trạng (25/11/2026)
 
 - **Tài nguyên bản v1** xong: 226 cảnh (23 nhóm, 64 cảnh gói nhẹ), 3 nhạc, 7 tiếng — đã nén, đặt tên, gắn nhãn hai vòng, Founder duyệt tờ mẫu. Gói: `kho-canh-du-v1.zip` 882 MB, `kho-canh-nhe-v1.zip` 217 MB, `nhac-am-v1.zip` 18 MB; sha256 đã ghi trong `PHIEN_BAN.json`.
-- **Chưa có**: bộ cài `cai/`, sửa skill kế thừa (KIEN_TRUC mục 7), skill `xuong-mo-rong`. Kho GitHub `ductuenam/xuong-video-ai` đã có (riêng tư, chờ bộ cài và bỏ tên thương hiệu cũ mới mở công khai). Gói v1 đã lên R2 bucket `xuong-video-ai`, tên miền `taivido.zenotera.com`, kiểm tải về khớp sha256 (25/11).
+- **Đã có (25/11)**: bộ cài `cai/` (Windows đã thử thật trên bộ não giả: cài mới + cập nhật giữ đồ học viên; Mac chưa thử máy thật), skill đã sửa theo kiến trúc mới (KIEN_TRUC mục 7), bỏ tên đơn vị cũ. **Chưa có**: skill `xuong-mo-rong`. Kho GitHub `ductuenam/xuong-video-ai`. Gói v1 đã lên R2 bucket `xuong-video-ai`, tên miền `taivido.zenotera.com`, kiểm tải về khớp sha256 (25/11).
 - 7 tiếng hiệu ứng **chưa rõ giấy phép** (`giay_phep=chua-ro`); Founder quyết giữ ngày 25/11.
 - Kỹ năng làm video cũ trên máy Founder (`~/.claude/skills/video-ngan-nguoi-noi`) trỏ kho cũ `E:\Video-AI` đã xóa ngày 25/11 → chưa có cảnh chèn cho tới khi bộ cài mới xong.
 - Tiến độ chính thức ghi ở ZAIOS Core (dự án ZENOTERA AI Academy), không ghi checklist trong kho này.
@@ -115,7 +115,7 @@ Tất cả lệnh chạy từ thư mục kho mã. Mọi công cụ đều có ch
 - Thử bộ cài và công cụ chỉ trên bản sao trong `%TEMP%\zaios_<việc>\` (công cụ nhận biến `XUONG_REPO`, `XUONG_KHO_NANG` để trỏ sang bản sao). Không đặt dữ liệu thử trong `D:\ductuenam`.
 - Việc nặng, lặp (nén hàng trăm cảnh): giao Antigravity bằng phiếu tự đủ, kiểm ngẫu nhiên kết quả. Việc cần mắt (gắn nhãn): tác tử con theo lô + một người soát chéo độc lập.
 - "Xong" phải kèm bằng chứng chạy thật (`kiem_kho.py` ra `KHO SẠCH`, số tệp, sha256).
-- Không dùng tên "An Bình" ở bất kỳ đâu (tên đơn vị cũ của mã kế thừa).
+- Không dùng tên đơn vị cũ của mã kế thừa ở bất kỳ đâu, trừ thông báo bản quyền MIT bắt buộc trong `third_party/`.
 
 ## 8. Quyết định đã chốt (bản 1)
 

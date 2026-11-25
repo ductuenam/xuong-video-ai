@@ -7,6 +7,8 @@ from pathlib import Path
 
 import numpy as np
 
+from chung import CFG
+
 _MODEL = None
 
 
@@ -34,18 +36,31 @@ def doc_am_thanh(file, ss=None, t=None):
     return np.frombuffer(raw, np.int16).astype(np.float32) / 32768.0
 
 
-def model(ten="large-v3"):
+def _nap(ten):
+    from faster_whisper import WhisperModel
+
+    try:
+        return WhisperModel(ten, device="cuda", compute_type="float16")
+    except Exception as e:
+        print(f"  (không dùng được GPU: {e}; chạy CPU)", file=sys.stderr)
+        return WhisperModel(ten, device="cpu", compute_type="int8")
+
+
+def model(ten=None):
+    """Tên mô hình lấy từ cấu hình xưởng (whisper_model), không có thì "small". Nạp lỗi thiếu bộ nhớ thì lùi về "small"."""
     global _MODEL
     if _MODEL is None:
         _nap_dll_cuda()
         os.environ.setdefault("HF_HUB_DISABLE_SYMLINKS_WARNING", "1")
-        from faster_whisper import WhisperModel
-
+        ten = ten or CFG.get("whisper_model") or "small"
         try:
-            _MODEL = WhisperModel(ten, device="cuda", compute_type="float16")
-        except Exception as e:
-            print(f"  (không dùng được GPU: {e}; chạy CPU)", file=sys.stderr)
-            _MODEL = WhisperModel(ten, device="cpu", compute_type="int8")
+            _MODEL = _nap(ten)
+        except (MemoryError, Exception) as e:
+            thieu_bo_nho = isinstance(e, MemoryError) or any(k in str(e).lower() for k in ("memory", "alloc", "bộ nhớ"))
+            if ten == "small" or not thieu_bo_nho:
+                raise
+            print(f"⚠ Không đủ bộ nhớ để nạp mô hình Whisper '{ten}' ({e}); lùi về 'small' (nhận giọng kém chính xác hơn).", file=sys.stderr)
+            _MODEL = _nap("small")
     return _MODEL
 
 

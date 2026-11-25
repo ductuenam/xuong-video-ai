@@ -7,7 +7,7 @@ import shutil
 import subprocess
 from pathlib import Path
 
-from chung import BRANDS, CFG, STUDIO, tim_ffmpeg
+from chung import BRANDS, CFG, STUDIO, XUONG, XUONG_GOC, tim_ffmpeg
 
 THIEU = []
 
@@ -40,11 +40,16 @@ print("Kiểm tra máy — skill ab-edit v3 (Windows)")
 # Thư mục làm việc
 if STUDIO.is_dir():
     ok("Thư mục studio", str(STUDIO))
-    for d in ("01-video-mau", "02-source-tho", "03-kich-ban", "04-giong-doc", "05-tai-nguyen", "06-thanh-pham", "07-du-an"):
-        if not (STUDIO / d).is_dir():
-            ng(f"Thư mục {d}", "chạy tao_du_an.py một lần sẽ tự tạo")
+    if not XUONG_GOC or STUDIO.parent != XUONG_GOC / "du-an":
+        for d in ("01-video-mau", "02-source-tho", "03-kich-ban", "04-giong-doc", "05-tai-nguyen", "06-thanh-pham", "07-du-an"):
+            if not (STUDIO / d).is_dir():
+                ng(f"Thư mục {d}", "chạy tao_du_an.py một lần sẽ tự tạo")
+    else:
+        for d in ("_nguon-tho", "_tai-nguyen"):
+            if not (STUDIO / d).is_dir():
+                ng(f"Thư mục {d}", "chạy tao_du_an.py một lần sẽ tự tạo")
 else:
-    ng("Thư mục studio", f"sửa 'studio' trong config.json (đang là {STUDIO})")
+    ng("Thư mục studio", f"chạy tao_du_an.py một lần sẽ tự tạo, hoặc sửa 'studio' trong config.json (đang là {STUDIO})")
 
 # FFmpeg + bộ lọc
 try:
@@ -68,8 +73,9 @@ except SystemExit as e:
 # Node + Remotion
 nd = chay([shutil.which("node") or "node", "--version"])
 ok("Node.js", nd.stdout.strip()) if nd and nd.returncode == 0 else ng("Node.js ≥ 20", "winget install OpenJS.NodeJS.LTS")
-rp = STUDIO / "_engine" / "remotion" / "node_modules" / "remotion" / "package.json"
-ok("Remotion", json.loads(rp.read_text(encoding="utf-8"))["version"]) if rp.exists() else ng("Remotion", "npm install trong _engine/remotion")
+_eng = Path(XUONG["engine"]) if XUONG.get("engine") else STUDIO / "_engine" / "remotion"
+rp = _eng / "node_modules" / "remotion" / "package.json"
+ok("Remotion", json.loads(rp.read_text(encoding="utf-8"))["version"]) if rp.exists() else ng("Remotion", f"npm install trong {_eng}")
 
 # Python + thư viện
 py = Path(CFG["python"]) if Path(CFG["python"]).exists() else Path(shutil.which(CFG["python"]) or CFG["python"])

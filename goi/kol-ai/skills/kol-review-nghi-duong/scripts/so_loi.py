@@ -1,10 +1,12 @@
 """Nghe lại clip/thành phẩm bằng Whisper và so với lời đã viết.
 
-  so_loi.py <tệp.mp4>=<tệp lời .txt hoặc chuỗi> [...] [--model large-v3] [--json ra.json]
+  so_loi.py <tệp.mp4>=<tệp lời .txt hoặc chuỗi> [...] [--model small|large-v3] [--json ra.json]
+Mô hình mặc định: whisper_model của xưởng (xuong-video.json), không có thì small; máy có GPU CUDA thì large-v3.
 In: chữ THIẾU / THỪA, chữ/giây, khoảng lặng > 0,7 giây, giây nói chữ cuối.
 """
 import argparse, difflib, json, re, sys
 from pathlib import Path
+from chung import XUONG
 
 def chuan(s):
     return re.findall(r"[\wÀ-ỹ]+", s.lower().replace("đ", "đ"))
@@ -14,8 +16,9 @@ def nghe(p, model):
     global _m
     from faster_whisper import WhisperModel
     if _m is None:
-        try: _m = WhisperModel(model, device="cuda", compute_type="float16")
-        except Exception: _m = WhisperModel("medium", device="cpu", compute_type="int8")
+        ten = model or XUONG.get("whisper_model")
+        try: _m = WhisperModel(ten or "large-v3", device="cuda", compute_type="float16")
+        except Exception: _m = WhisperModel(ten or "small", device="cpu", compute_type="int8")
     seg, _ = _m.transcribe(str(p), language="vi", word_timestamps=True, beam_size=5, vad_filter=False)
     w = []
     for s in seg:
@@ -25,7 +28,7 @@ def nghe(p, model):
     return w
 
 if __name__ == "__main__":
-    a = argparse.ArgumentParser(); a.add_argument("cap", nargs="+"); a.add_argument("--model", default="large-v3"); a.add_argument("--json")
+    a = argparse.ArgumentParser(); a.add_argument("cap", nargs="+"); a.add_argument("--model", default=None); a.add_argument("--json")
     x = a.parse_args(); kq = {}
     for cap in x.cap:
         tep, loi = cap.split("=", 1)

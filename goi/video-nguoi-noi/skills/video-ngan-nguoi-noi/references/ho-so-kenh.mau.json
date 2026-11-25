@@ -12,11 +12,11 @@
   },
   "doiTuong": "Mô tả người xem của kênh trong một câu",
   "khoCanh": {
-    "thuMuc": "kho-canh",
-    "danhMuc": "danh-muc-canh.csv"
+    "thuMuc": "tai-nguyen/canh",
+    "danhMuc": "chi-muc.csv"
   },
-  "nhac": "tai-nguyen/nhac-mac-dinh.mp3",
-  "tiengChuyenCanh": "tai-nguyen/tieng-chuyen-canh.wav",
+  "nhac": "tai-nguyen/nhac/nen-video-ngan/NH0001_hiphop-vlog-tre-trung.mp3",
+  "tiengChuyenCanh": "tai-nguyen/am/chuyen-canh/AM0003_vut-luot-nhanh.wav",
   "thanhPham": "thanh-pham",
   "chanDung": "Tên skill tạo ảnh chân dung của người dẫn",
   "anhAI": {
@@ -46,8 +46,20 @@
   ],
   "cta": "Câu kêu gọi mặc định cuối video",
   "lienHe": {"zalo": "Số Zalo in trên mọi tờ hướng dẫn", "web": "Trang web, để trống nếu không có"},
-  "boNhac": {},
-  "boTieng": {},
+  "boNhac": {
+    "NH0001": "tai-nguyen/nhac/nen-video-ngan/NH0001_hiphop-vlog-tre-trung.mp3",
+    "NH0002": "tai-nguyen/nhac/nen-video-ngan/NH0002_phonk-manh-don-dap.mp3",
+    "NH0003": {"file": "tai-nguyen/nhac/nen-video-ngan/NH0003_future-bass-cam-xuc.mp3", "tu": 9.5}
+  },
+  "boTieng": {
+    "chup": "tai-nguyen/am/giao-dien/AM0001_man-trap-may-anh.wav",
+    "hien-the": "tai-nguyen/am/giao-dien/AM0002_bup-hien-the.wav",
+    "luot": "tai-nguyen/am/chuyen-canh/AM0003_vut-luot-nhanh.wav",
+    "luot-manh": {"file": "tai-nguyen/am/chuyen-canh/AM0004_gio-vut-don-len.wav", "dai": 1.33},
+    "nhieu": "tai-nguyen/am/giao-dien/AM0005_nhieu-ky-thuat-so.wav",
+    "thanh-cong": {"file": "tai-nguyen/am/giao-dien/AM0006_chuong-ngan-thanh-cong.wav", "dai": 3},
+    "thong-bao": "tai-nguyen/am/giao-dien/AM0007_tit-ba-nhip-thong-bao.wav"
+  },
   "nhanDien": {
     "watermark": "nhan-dien/watermark-video.png",
     "intro": "nhan-dien/intro.mp4",

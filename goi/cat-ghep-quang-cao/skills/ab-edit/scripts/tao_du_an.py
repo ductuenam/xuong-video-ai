@@ -1,12 +1,13 @@
-"""Tạo thư mục dự án video mới trong video-studio/07-du-an, kèm cấu hình thương hiệu.
-  python tao_du_an.py <ten-du-an> [--brand an-binh-ai] [--che-do dung|livestream|bien-the]
+"""Tạo thư mục dự án video mới, kèm cấu hình thương hiệu.
+Có xưởng (xuong-video.json): <xưởng>/du-an/ab-edit/<tên>. Không có: video-studio/07-du-an/<tên>.
+  python tao_du_an.py <ten-du-an> [--brand vi-du] [--che-do dung|livestream|bien-the]
 """
 import argparse
 import json
 import shutil
 from datetime import datetime
 
-from chung import BRANDS, DU_AN, SKILL, STUDIO, doc_brand
+from chung import BACKUP, BRANDS, DU_AN, SKILL, SOURCE_THO, STUDIO, TAI_NGUYEN, THANH_PHAM, XUONG_GOC, doc_brand
 
 THU_MUC_STUDIO = ("01-video-mau", "02-source-tho", "03-kich-ban", "04-giong-doc", "05-tai-nguyen", "06-thanh-pham", "07-du-an", "_backup")
 # Dự án chỉ chứa file làm việc; source gốc luôn đọc thẳng từ 02-source-tho (không chép, không sửa)
@@ -20,8 +21,13 @@ def main():
     ap.add_argument("--che-do", default="dung", choices=["dung", "livestream", "bien-the"])
     a = ap.parse_args()
 
-    for d in THU_MUC_STUDIO:
-        (STUDIO / d).mkdir(parents=True, exist_ok=True)
+    if STUDIO.name == "ab-edit" and XUONG_GOC and STUDIO.parent == XUONG_GOC / "du-an":
+        # bố cục xưởng: nguồn thô, tài nguyên riêng, thành phẩm, sao lưu
+        for d in (SOURCE_THO, TAI_NGUYEN, THANH_PHAM, BACKUP, DU_AN):
+            d.mkdir(parents=True, exist_ok=True)
+    else:
+        for d in THU_MUC_STUDIO:
+            (STUDIO / d).mkdir(parents=True, exist_ok=True)
     brand = doc_brand(a.brand)
     p = DU_AN / a.ten
     if p.exists():

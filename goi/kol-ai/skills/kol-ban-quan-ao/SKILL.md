@@ -141,7 +141,7 @@ Cổng khóa mặt cũng chạy ở đây: `luu_kho.py` dừng nếu `khoa-mat/p
 - **Mặt KOL trôi qua các video:** luôn sửa ảnh từ `kol-chuan.png`, không sửa từ ảnh của video trước. Cổng khóa mặt chặn ngay ở ảnh gốc.
 - **Chân xấu (da sẫm, đầu gối thâm, chân to):** tạo lại ảnh gốc, nhắc lại câu chân; vẫn xấu thì đổi phối có quần tất, tất hoặc bốt nếu nhà bán có phối, hoặc chọn sản phẩm dài che chân.
 - **Script in tiếng Việt báo lỗi `charmap`:** chạy bằng `python -X utf8 …`.
-- **Máy không có card NVIDIA:** Whisper chạy chậm; đổi `whisper_model` thành `medium` trong `cau-hinh.json` và chạy `so_loi.py --model medium`.
+- **Máy không có card NVIDIA:** Whisper chạy chậm; mặc định theo máy (`whisper_model` trong `.claude/xuong-video.json`, thường là `small`). Muốn đặt riêng thì thêm `whisper_model` vào `cau-hinh.json` hoặc chạy `so_loi.py --model small`.
 - **Cảnh nói nào cũng nhắm mắt ở chỗ không che được:** tạo lại riêng cảnh đó, nêu đúng giây và lỗi trong lệnh. Không quá 3 lần một cảnh. Không vá mắt bằng ghép vùng mắt.
 
 ## Tệp trong skill
@@ -153,7 +153,7 @@ Cổng khóa mặt cũng chạy ở đây: `luu_kho.py` dừng nếu `khoa-mat/p
 | `references/lenh-mau.md` | Lệnh mẫu và lời mẫu đã đạt |
 | `references/soat-do-that.md` | Danh sách soát, cổng khóa mặt và sổ lỗi |
 | `references/mau-ghi-chu.md` | Mẫu `nguon.md` |
-| `agents/kol-livestream-soat.md` | Người soát độc lập (bộ cài chép vào `~/.claude/agents`) |
+| `agents/kol-livestream-soat.md` | Người soát độc lập (bộ cài chép vào `.claude/agents` của bộ não) |
 | `scripts/khoa_mat.py` | Cổng khóa mặt, chân, mẫu áo: tờ so, phiếu chấm, chặn khi lệch |
 | `video-mau/` | Chỗ đặt video mẫu của bạn để so khi chấm (kho công khai không kèm video mẫu, xem `video-mau/README.md`) |
 | `scripts/` | `kiem_may`, `viet_lenh`, `cat_anh`, `soat_lo`, `so_loi`, `soi_mat`, `tach_khung_soat`, `tim_khoang_ngat`, `nghe_thu`, `khop_mau_can`, `lui_may`, `dung_chen_can`, `luu_kho` |

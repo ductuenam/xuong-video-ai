@@ -10,6 +10,9 @@ Bài học: hạt dày làm video "không HD". Nguyên nhân cũ: hạt nhiễu 
 (clip Muse chỉ 720p, phóng lên 1080p). Đổi mặc định: hạt 5 (video mẫu 2; hạt 3 bị chấm da mịn kiểu lọc), cas 0,6 sau khi phóng lanczos, crf 17, trần 24 Mbps.
 """
 import argparse, subprocess, sys
+from chung import cau_hinh_xuong
+
+cau_hinh_xuong()  # thêm ffmpeg/node của xưởng vào PATH
 
 ap = argparse.ArgumentParser()
 ap.add_argument("vao"); ap.add_argument("ra")

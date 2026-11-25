@@ -1,9 +1,9 @@
 {
-  "thu_muc_du_an": "~/KOL-LOOKBOOK/du-an",
+  "thu_muc_du_an": "",
   "thu_muc_tai_ve": "~/Downloads",
-  "thu_muc_tam": "~/KOL-LOOKBOOK/tam",
-  "kho_thanh_pham": "~/KOL-LOOKBOOK/kho",
-  "thu_muc_nhac": "~/KOL-LOOKBOOK/nhac",
+  "thu_muc_tam": "",
+  "kho_thanh_pham": "",
+  "thu_muc_nhac": "",
   "ten_thuong_hieu": "",
-  "ghi_chu": "Sửa các đường dẫn cho hợp máy anh chị. ten_thuong_hieu: chữ in giữa trên video (để trống nếu chưa có)."
+  "ghi_chu": "Để trống thu_muc_du_an, thu_muc_tam, kho_thanh_pham, thu_muc_nhac = tự dùng <xưởng>/du-an/kol-lookbook/du-an|tam|kho|nhac (xưởng lấy từ .claude/xuong-video.json; không có xưởng thì ~/KOL-LOOKBOOK/<tên mục>). Điền đường dẫn thì dùng đúng đường dẫn đó. ten_thuong_hieu: chữ in giữa trên video (để trống nếu chưa có)."
 }

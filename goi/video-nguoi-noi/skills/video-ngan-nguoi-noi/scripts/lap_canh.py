@@ -11,7 +11,7 @@ import shutil
 import sys
 from pathlib import Path
 
-from chung import doc, duong_dan, ghi, ho_so, kiem_so_dong
+from chung import doc, duong_dan, ghi, ho_so, kho_canh, kiem_so_dong
 
 GIU_KHUNG_CUOI = 1.3
 LOAI_CO_CLIP = {"flow-chu": "ten", "ten-cong-cu": "canhNen", "ket-comment": "clip", "ket-phe": "clip"}
@@ -89,13 +89,8 @@ for x in c:
         if "ten" in o:
             can.append(o["ten"])
 can = sorted(set(can))
-kho = duong_dan(h, h["khoCanh"]["thuMuc"])
-ten_file = {}
-danh_muc = kho / h["khoCanh"]["danhMuc"]
-if danh_muc.exists():
-    for r in csv.DictReader(danh_muc.open(encoding="utf-8-sig")):
-        ten_file[r["ma"]] = r["file"]
-ra = da / "public" / "canh"
+kho, kho_ds = kho_canh(h)  # <xưởng>/tai-nguyen/canh: đọc chi-muc.csv (bỏ dòng ẩn), thêm cua-toi/
+ra =da / "public" / "canh"
 ra.mkdir(parents=True, exist_ok=True)
 thieu = []
 # Biểu tượng theo mã: tự chép từ kho vào public/
@@ -113,13 +108,10 @@ for x in c:
 from kiem_chot import loai_du_an
 khong_mat = "khong-mat" in loai_du_an(da).split()
 # Video giới thiệu bản thân (24/11/2026, người dẫn duyệt): không dùng cảnh hoạt hình, đồ chơi tí hon, đất sét, 3D cartoon
-# (vd K006 robot tí hon chạy băng chuyền như đoàn tàu, K071 cửa hàng tí hon). Lọc theo ghi_chu trong danh mục cảnh.
+# (cảnh robot tí hon chạy băng chuyền như đoàn tàu, cửa hàng tí hon). Lọc theo mo_ta trong chi-muc.csv.
 gioi_thieu = "gioi-thieu" in loai_du_an(da).split()
 HOAT_HINH = ("tí hon", "đất sét", "hoạt hình", "cartoon", "đồ chơi")
-ghi_chu = {}
-if danh_muc.exists():
-    for r in csv.DictReader(danh_muc.open(encoding="utf-8-sig")):
-        ghi_chu[r["ma"]] = (r.get("ghi_chu") or "").lower()
+ghi_chu = {ma: (x["mo_ta"] or "").lower() for ma, x in kho_ds.items()}
 
 
 def hoat_hinh(ma):
@@ -131,13 +123,9 @@ def co_mat(p):
 
 
 co_mat_ds = []
-# Quét kho MỘT lần (kho nằm trên ổ USB, rglob từng tên rất chậm): tên file -> đường dẫn
-chi_muc = {}
-for f in kho.rglob("*.mp4"):
-    chi_muc.setdefault(f.name, f)
 for ma in can:
     dich = ra / f"{ma}.mp4"
-    tim = chi_muc.get(ten_file[ma]) if ma in ten_file else None
+    tim = kho_ds[ma]["file"] if ma in kho_ds else None
     if hoat_hinh(ma):
         co_mat_ds.append(ma + " (hoạt hình/tí hon)")
         dich.unlink(missing_ok=True)
@@ -157,19 +145,13 @@ if thieu or co_mat_ds:
         print("✘ Clip không hợp loại video (mặt người dẫn khi khong-mat, hoặc hoạt hình/tí hon khi gioi-thieu):", ", ".join(co_mat_ds))
     if thieu:
         print("✘ THIẾU CẢNH TRONG KHO:", ", ".join(thieu))
-    goi_y = []
-    if danh_muc.exists():
-        for r in csv.DictReader(danh_muc.open(encoding="utf-8-sig")):
-            if r.get("dung") != "co" or not r.get("ma"):
-                continue
-            f = chi_muc.get(r["file"])
-            if f is not None and not co_mat(f) and not hoat_hinh(r["ma"]):
-                goi_y.append(f"{r['ma']} ({r.get('nhom', '')}: {r.get('ghi_chu', '')[:40]})")
+    goi_y = [f"{ma} ({x['nhom']}: {x['mo_ta'][:40]})" for ma, x in kho_ds.items()
+             if not co_mat(x["file"]) and not hoat_hinh(ma)]
     if goi_y:
         print(f"  Thay bằng clip không người đang có trên máy ({len(goi_y)} clip), ví dụ:")
         for g in goi_y[:25]:
             print("   ", g)
-        print("  Xem đủ trong danh mục cảnh. Muốn cảnh riêng thì tạo trên Flow rồi thêm vào danh mục.")
+        print("  Xem đủ trong tai-nguyen/canh/CHI_MUC.md (ảnh xem trước ở tai-nguyen/canh/xem-truoc/). Muốn cảnh riêng thì thêm vào tai-nguyen/canh/cua-toi/.")
     sys.exit(2)
 
 tong = c[-1]["den"]

@@ -1,5 +1,5 @@
 """Tự kiểm video — 2 lúc: khi NHẬN file (keyframe, tốc độ khung) và sau khi XUẤT (khung đen/đứng/cháy, âm lượng, lặng chết, tờ soát khung).
-  python tu_kiem.py nhan <file|thư mục> ... [--sua <07-du-an/tên>]   # thiếu keyframe / VFR → --sua tạo bản làm việc 1 keyframe/giây, CFR
+  python tu_kiem.py nhan <file|thư mục> ... [--sua <thư mục dự án/tên>]   # thiếu keyframe / VFR → --sua tạo bản làm việc 1 keyframe/giây, CFR
   python tu_kiem.py xuat <video> [--moc 0,4.5,12 | --moc-file moc.json] [--brand <b> | --lufs -16] [--so-sanh <bản xuất lần 2>] [--ra <thư mục>]
                                                                       # → <video>-soat/: tờ khung hình + bao-cao.json; mã thoát 1 nếu có lỗi ✘
 Bẫy keyframe: video điện thoại/xuất từ phần mềm dựng hay cách keyframe rất xa → máy dựng tua sai hoặc tự huỷ giữa chừng (video "Claude dựng video" 03/11/2026).
@@ -98,7 +98,7 @@ def nhan(a):
             _, k2 = khoang_keyframe(out)
             print(f"   → bản làm việc: {out} (keyframe ≤ {k2:.1f}s) — dựng bằng file này, giữ nguyên file gốc")
     if can_sua and not a.sua:
-        print(f"\n{can_sua} file cần bản làm việc → chạy lại kèm --sua <07-du-an/tên dự án>")
+        print(f"\n{can_sua} file cần bản làm việc → chạy lại kèm --sua <thư mục dự án/tên dự án>")
 
 
 def quet_hinh_tieng(file, co_tieng):

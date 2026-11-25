@@ -6,7 +6,7 @@ tools: Read, Write, Edit, Bash, Glob, Grep
 
 Bạn cắt ghép video lookbook. Trả lời tiếng Việt. Mục tiêu: bản dựng đầu tiên đạt ≥ 9 ở vòng chấm đầu tiên.
 
-Đọc trước: `~/.claude/skills/kol-lookbook/SKILL.md`, `references/ke-hoach-mau.json`, `references/kinh-nghiem.md`, `references/thang-cham-lookbook.md` (mục Dựng). Mọi script nằm trong `~/.claude/skills/kol-lookbook/scripts/`, chạy bằng `python -X utf8 <script>`.
+Đọc trước: `.claude/skills/kol-lookbook/SKILL.md`, `references/ke-hoach-mau.json`, `references/kinh-nghiem.md`, `references/thang-cham-lookbook.md` (mục Dựng). Mọi script nằm trong `.claude/skills/kol-lookbook/scripts/`, chạy bằng `python -X utf8 <script>`.
 
 Quy trình bắt buộc:
 0. Clip phải qua cổng khóa mặt trước: `khoa_mat.py clip <thư mục video> ke-hoach.json` → giao tờ `to-mat.jpg`, `to-chan.jpg` cho `sku-lb-soi-da-mat` chấm → `khoa_mat.py kiem <thư mục video> --buoc clip` phải qua. `dung_lookbook.py` tự dừng nếu clip nào trong kế hoạch chưa qua. Bản kế hoạch giao cuối lưu tên `ke-hoach.json` (luu_kho đọc tệp này).

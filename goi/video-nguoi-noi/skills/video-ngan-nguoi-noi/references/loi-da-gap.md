@@ -80,7 +80,7 @@ Mỗi dòng là một lỗi thật, ghi lại để không lặp.
 | Lỗi | Cách tránh |
 |---|---|
 | Video mẫu dùng số cũ (16-lemo: mẫu nói 1.426 sao, 43 phong cách; kho thật đã 13.427 sao, 66 phong cách) | Luôn đọc số mới qua API, README ngày làm; ghi vào content số cũ của mẫu và số đã cập nhật |
-| Clip kết P06 lộ logo trên nắp laptop ở khung cuối | Đọc ghi chú `danh-muc-canh.csv` trước khi chọn clip kết; soát khung cuối cảnh `ket-comment` trong `soat-tinh` |
+| Clip kết P06 lộ logo trên nắp laptop ở khung cuối | Đọc mô tả trong `tai-nguyen/canh/chi-muc.csv` (hoặc `CHI_MUC.md`) trước khi chọn clip kết; soát khung cuối cảnh `ket-comment` trong `soat-tinh` |
 | Đánh số `tu`, `den` trong `canh.json` từ 0 trong khi quy ước đếm từ 1: mọi cảnh chạy sớm một câu so với lời (15-omni-voice) | Dòng đầu `loi.txt` là cụm 1, `tu: 0` chỉ dùng cho đầu video. Trong `soat-tinh-*.jpg`, phụ đề ở khung cuối phải thuộc chính cảnh đó; thấy phụ đề của câu trước là lệch số |
 | File qua điện thoại bị nén 480×854 | Xin file gốc; kiểm độ phân giải khi nhận rồi báo ngay |
 | Lưu thành phẩm sai chỗ | Chép vào đúng thư mục chủ đề |
@@ -132,13 +132,13 @@ Người dẫn chê cảnh kết giơ hai tay (P02) không hấp dẫn: P02 nằ
 - Còn để ngỏ: gợi ý clip kết trong `kiem_canh_ket` (`GOI_Y_KET`) vẫn toàn clip có mặt người dẫn.
 
 ## Cảnh hoạt hình trong video giới thiệu bản thân (24/11/2026, người dẫn xem bản không mặt)
-- Triệu chứng: bản BNI không mặt dùng K071 (cửa hàng tí hon) và K006 (robot tí hon chạy băng chuyền như đoàn tàu). Người dẫn: cảnh hoạt hình 3D không hợp video giới thiệu bản thân.
-- Cách sửa: video `gioi-thieu` ưu tiên cảnh thật, sang, hợp người làm nghề; `lap_canh.py` chặn clip có ghi chú "tí hon", "đất sét", "hoạt hình", "cartoon", "đồ chơi" và bỏ chúng khỏi danh sách gợi ý. Đã thử trên dự án 35: chặn đúng K006, K071.
+- Triệu chứng: bản BNI không mặt dùng hai cảnh cũ: cửa hàng tí hon và robot tí hon chạy băng chuyền như đoàn tàu (hai cảnh này không có trong bảng đổi tên, kho mới không còn). Người dẫn: cảnh hoạt hình 3D không hợp video giới thiệu bản thân.
+- Cách sửa: video `gioi-thieu` ưu tiên cảnh thật, sang, hợp người làm nghề; `lap_canh.py` chặn clip có mô tả "tí hon", "đất sét", "hoạt hình", "cartoon", "đồ chơi" và bỏ chúng khỏi danh sách gợi ý. Đã thử trên dự án 35: chặn đúng hai cảnh trên.
 
 ## Quy trình BNI tự động cho học viên (24/11/2026, thử 3 trường hợp)
 Câu lệnh "Dựng một video giới thiệu bản thân cho tôi theo cấu trúc BNI" → mục BNI trong SKILL.md + `scripts/bni.py`. Lỗi gặp khi thử và cách đã sửa:
 - `bni.py` lần đầu đặt mốc cảnh lệch 1 dòng (hiểu sai `tu`). Đúng: `tu: N` là lúc dòng N bắt đầu; phần 1 có 2 dòng thì `tu 0, den 3`.
-- Cảnh mặc định công nghệ viễn tưởng (N031 bảng số liệu, N100 thành phố neon) lạc với nghề spa → mặc định đổi sang cảnh đời thường Việt Nam; `bni.json` có `canh` để chọn cảnh hợp nghề.
+- Cảnh mặc định công nghệ viễn tưởng (CA0080 dashboard bán hàng, CA0152 bình minh thành phố số) lạc với nghề spa → mặc định đổi sang cảnh đời thường Việt Nam; `bni.json` có `canh` để chọn cảnh hợp nghề.
 - Phụ đề rớt chữ khi dòng > 28 ký tự, thẻ kết rớt chữ khi `ghiNho` > 22 ký tự → `bni.py` cảnh báo trước khi dựng.
 - Các ý "việc làm" hiện trước lúc đọc tới → `bni.py` dò dòng có chữ đầu của từng việc.
 - Giọng miễn phí (edge-tts, Microsoft) lỗi `NoAudioReceived` theo đợt, có lúc 10 lần liền → thử lại tới 20 lần; lần hỏng để lại file `ca-bai.mp3` rỗng làm lần sau tưởng đã có giọng → ghi file tạm rồi mới đổi tên, `bni.py` chỉ dùng lại giọng > 20 KB và khi lời đọc không đổi.
@@ -154,7 +154,7 @@ Câu lệnh "Dựng một video giới thiệu bản thân cho tôi theo cấu t
 - Nói lại giữa câu trong cùng một đảo tiếng ("…nhận lương hàng | Các bạn sẽ được nhận lương hàng tháng…") → bỏ lần trước khi chuỗi ≥ 4 chữ lặp lại trong vòng 12 chữ.
 - `nghiem_thu.py` bắt nhầm "lặp giữa đoạn" với câu bình thường ("…các bạn ra trường. | Các bạn có đang…") vì 2 chữ trùng trong 8 chữ cuối là tính → 2–3 chữ chỉ tính khi sát chỗ cắt (`lap_noi`); hồi quy có cả ca lặp thật và ca câu bình thường.
 - Tiêu đề tự lấy 6 chữ đầu bị cắt ngang ý ("BẠN ĐANG LO / LẮNG VỀ TƯƠNG") → người giao việc đặt `--tieu-de` từ ý chính trong lời.
-- Agent mới chép vào ~/.claude/agents chỉ nhận ở phiên Claude mở sau đó → `cai_dat.py` nhắc mở lại Claude.
+- Agent mới chép vào `.claude/agents/` của bộ não chỉ nhận ở phiên Claude mở sau đó → bộ cài nhắc mở lại Claude.
 - File quay gần như không có tiếng (mẫu quay HeyGen, -52 dB): edit.py chỉ nghe được 1 đảo; người giao việc phải báo người dùng file không có lời.
 - Người chấm bắt lỗi CHẶN ở bản 1: bộ lọc "câu bịa theo tốc độ" bỏ nhầm nửa câu thật về lương. Gốc: nghe cả file, Whisper chép lặp đầu câu trước vào đoạn sau với giờ dồn giả và ghi "700 .000." thay cho "700 đến 1.200 euro". Sửa: câu nhanh bất thường thì đo tiếng thật (không có tiếng mới là bịa, bỏ); có tiếng thì NGHE LẠI riêng vùng đó (không nối ngữ cảnh) và thay lời. Tránh "dò nói lại" bỏ nhầm câu thật.
 - Phụ đề Whisper sai chính tả ("đất đỏ") và ngắt dòng cắt đôi từ ghép → máy ngắt theo dấu câu rồi chia đôi ở chữ nối; thêm bước người dựng soát `loi.txt` trước khi xuất (không thêm bớt chữ).

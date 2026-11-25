@@ -8,6 +8,9 @@ import argparse
 import datetime as dt
 import json
 import os
+from chung import cau_hinh_xuong
+
+cau_hinh_xuong()  # thêm ffmpeg/node của xưởng vào PATH
 import shutil
 import subprocess
 import sys
@@ -314,7 +317,7 @@ def ghi_chu_hub(nhac, sfx, vid, font, icon, zips, tong, moi):
         out.append("## Có thể dọn (anh tự quyết, em không xoá)\nFile zip đã giải nén cạnh thư mục cùng tên:\n"
                    + "".join(f"- `{r}` ({mb(s)})\n" for r, s, _ in trung) + "\n")
     out.append("## Cách cập nhật\n1. Chép tài nguyên mới vào thư mục kho tài nguyên (mỗi nguồn 1 thư mục, tên thư mục có tên nguồn: mixkit, pixabay, pexels…).\n"
-               "2. Nhắn Claude *\"cập nhật kho tài nguyên\"* — hoặc tự chạy `python \"%USERPROFILE%\\.claude\\skills\\ab-edit\\scripts\\kho_tai_nguyen.py\"`.\n"
+               "2. Nhắn Claude *\"cập nhật kho tài nguyên\"* — hoặc tự chạy `python \".claude\\skills\\ab-edit\\scripts\\kho_tai_nguyen.py\"` (chạy từ thư mục bộ não).\n"
                "3. Các ghi chú này tự ghi đè; phần *Ghi chú riêng* bên dưới được giữ lại.\n\n")
     out.append("## Ghi chú riêng\n" + rieng)
     return "".join(out)

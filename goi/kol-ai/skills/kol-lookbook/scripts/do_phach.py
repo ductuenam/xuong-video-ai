@@ -7,6 +7,9 @@ in cả các ứng viên gần nhịp đôi/nửa để người dựng chọn. 
 Nếu hai dòng đầu điểm sát nhau (< 0,1) thì bài nhịp không rõ (glamor-06: 92,7 và 114,7 nhịp/phút): ưu tiên bài khác có
 một ứng viên trội; bắt buộc dùng thì lấy chu kỳ agent chấm đo được (glamor-06 = 0,5265, nhac_tu 0,636)."""
 import argparse, subprocess, sys
+from chung import cau_hinh_xuong
+
+cau_hinh_xuong()  # thêm ffmpeg/node của xưởng vào PATH
 import numpy as np
 ap = argparse.ArgumentParser(); ap.add_argument("nhac"); ap.add_argument("--bpm-tu", type=float, default=90); ap.add_argument("--bpm-den", type=float, default=140)
 a = ap.parse_args()

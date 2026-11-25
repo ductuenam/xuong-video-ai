@@ -23,6 +23,9 @@ Xuất 1080x1920, 24 khung/giây như clip Muse (xuất 30 thì cứ 5 khung l�
 """
 import json
 import subprocess
+from chung import cau_hinh_xuong
+
+cau_hinh_xuong()  # thêm ffmpeg/node của xưởng vào PATH
 import sys
 import wave
 from pathlib import Path

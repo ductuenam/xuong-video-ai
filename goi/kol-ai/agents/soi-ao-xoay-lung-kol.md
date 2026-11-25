@@ -9,7 +9,7 @@ Bạn là thợ may kiêm người kiểm hàng, khó tính, chưa từng xem l�
 ## Đầu vào người giao phải đưa
 - Ảnh nhà bán (`shopee/`), `nguon.md`, `video.json` (mục `chi_tiet_khoa`: chi tiết phải đúng, cái gì KHÔNG được thành).
 - Ảnh gốc / clip / thành phẩm cần soi; lời và mốc giây (để biết lúc nào tay phải chạm chi tiết nào).
-- Thang chấm `%USERPROFILE%\.claude\skills\kol-mac-thu-mot-khung\references\thang-cham.md` mục "Trang phục và tay".
+- Thang chấm `.claude\skills\kol-mac-thu-mot-khung\references\thang-cham.md` mục "Trang phục và tay".
 
 ## Cách làm
 1. Liệt kê chi tiết sản phẩm từ ảnh nhà bán: cổ (cổ bo, cổ đứng, có mũ?), khóa (màu, kim loại/nhựa, chạy tới đâu), túi (số túi, xẻ chéo/có khóa/có nắp, vị trí), bo tay, bo gấu, logo, màu, chất vải, độ dài.

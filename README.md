@@ -1,6 +1,10 @@
 # Xưởng Video AI
 
-Kho chuẩn của bộ làm video cài vào **Bộ Não AI** của học viên bằng **một câu lệnh**. Trạng thái: mã **bản nháp 0.1.0** (chưa có bộ cài, chưa phát hành); tài nguyên **v1 đã xong** (226 cảnh, 3 nhạc, 7 tiếng, đã nén, gắn nhãn, đóng gói).
+Kho chuẩn của bộ làm video cài vào **Bộ Não AI** của học viên bằng **một câu lệnh**. Trạng thái: mã **0.2.0** (có bộ cài Windows đã thử thật; Mac chưa thử trên máy thật); tài nguyên **v1** (226 cảnh, 3 nhạc, 7 tiếng) trên Cloudflare R2.
+
+## Cài (học viên)
+
+Mở Claude **đúng thư mục Bộ Não AI**, dán câu trong [cai/README.md](cai/README.md). Dán lại = cập nhật, không mất đồ của mình.
 
 ## Đọc theo thứ tự
 
@@ -23,10 +27,10 @@ Kho chuẩn của bộ làm video cài vào **Bộ Não AI** của học viên b
 | `tai-nguyen/<loai>/` | Chỉ mục từng loại (cảnh, nhạc, tiếng) theo một khuôn chung. **Không chứa video, nhạc** (để ở R2) |
 | `cong-cu/` | Công cụ làm kho cho người làm kho (không phát cho học viên) |
 | `_kho-nang/` | Lối tắt sang `E:\xuong-video-ai-kho\` (video, zip, báo cáo). Không lên GitHub |
-| `cai/` | Bộ cài một câu lệnh (giai đoạn 2, đang trống) |
+| `cai/` | Bộ cài một câu lệnh: `cai.ps1` (Windows), `cai.sh` (Mac), `cai_xuong.py` (phần chính) |
 | `phieu/` | Phiếu giao việc nội bộ, không đưa lên GitHub công khai |
 | `third_party/` | Giấy phép MIT của mã kế thừa |
 
 Cả 3 gói trong `goi/` **cài đủ một lần**, không chia cấp. Việc nào cần chuẩn bị thêm thì Claude kiểm lúc làm theo `xuong-mau/08_XUONG_VIDEO/CHUAN_BI_THEM.md`.
 
-Các skill trong `goi/` đang là **bản chép nguyên trạng** của mã kế thừa (nguồn và giấy phép: `third_party/`), chưa sửa theo kiến trúc mới.
+Các skill trong `goi/` kế thừa một phần mã nguồn mở (nguồn và giấy phép MIT: `third_party/`), đã sửa theo kiến trúc mới (`docs/KIEN_TRUC.md` mục 7).

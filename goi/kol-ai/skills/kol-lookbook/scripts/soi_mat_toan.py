@@ -1,6 +1,8 @@
 """Phóng to vùng mặt trong khúc toàn thân/máy tiến để thấy mắt nhắm hay mở (mặt quá nhỏ ở tờ soi thường).
 Dùng: python soi_mat_toan.py clip.mp4 tu den ra.jpg"""
 import subprocess, sys
+from chung import cau_hinh_xuong
+cau_hinh_xuong()  # thêm ffmpeg/node của xưởng vào PATH
 from PIL import Image, ImageDraw
 c, tu, den, ra = sys.argv[1], float(sys.argv[2]), float(sys.argv[3]), sys.argv[4]
 o = []; t = tu

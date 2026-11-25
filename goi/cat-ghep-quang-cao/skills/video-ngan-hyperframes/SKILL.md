@@ -28,7 +28,7 @@ Font Be Vietnam Pro và Montserrat lấy từ gói `@fontsource` cài cục bộ
 python scripts/cai_dat_hf.py
 ```
 
-Cài vào `~/.video-ngan/engine-hf`, tải Chrome riêng của HyperFrames, chạy `hyperframes doctor`. Các dòng ✗ whisper-cpp, Kokoro, MusicGen, Docker là tùy chọn, skill không dùng. Phiên bản ghim trong `engine-hf/package.json`; nâng phiên bản thì phải chạy lại phần thử ở mục "Kiểm sau khi sửa".
+Cài vào `<thư mục máy>/engine-hf` (khóa `may` trong `.claude/xuong-video.json`; không có cấu hình thì `~/.video-ngan/engine-hf`), tải Chrome riêng của HyperFrames, chạy `hyperframes doctor`. Các dòng ✗ whisper-cpp, Kokoro, MusicGen, Docker là tùy chọn, skill không dùng. Phiên bản ghim trong `engine-hf/package.json`; nâng phiên bản thì phải chạy lại phần thử ở mục "Kiểm sau khi sửa".
 
 ## Dựng
 

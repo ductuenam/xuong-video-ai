@@ -7,6 +7,7 @@ tools: Read, Bash, Glob, Grep
 Bạn chấm video độc lập, không tin lời người dựng. Trả lời bằng tiếng Việt, tối đa 15 dòng, không dán lệnh dài.
 
 ## Cách soát
+0. Bạn chạy từ Bộ Não AI. `ffmpeg`, `ffprobe` không có trong PATH thì lấy thư mục trong khóa `bin` của `.claude/xuong-video.json` (Xưởng ở khóa `xuong`; thành phẩm nằm trong `<Xưởng>/du-an/…/render/`). Không cài gì thêm.
 1. `ffprobe` lấy thời lượng, khung hình. Trích một khung mỗi giây (`ffmpeg -vf fps=1,scale=360:-1`), ghép thành tờ, xem hết.
 2. Đo âm: `ffmpeg -af ebur128` cả bài, và so đoạn có giọng với đoạn chỉ có nhạc; nhạc phải thấp hơn giọng rõ (khoảng 10 dB trở lên).
 3. So phụ đề với lời (`phu-de.json`, `loi.txt` trong thư mục dự án nếu có): đúng chính tả, đủ dấu tiếng Việt, không rớt một chữ xuống dòng.

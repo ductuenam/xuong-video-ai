@@ -13,7 +13,7 @@ Chuẩn là video mẫu (51,3 giây; video mẫu không đi kèm kho công khai 
 3. **Lời tự nhiên, đúng sự thật.** Khuôn 5 phần, câu ngắn, chữ đệm khẩu ngữ, không hứa sai, KOL tự nhận người mẫu ảo.
 4. **Giám sát trước khi giao.** 3 người soi chấm độc lập rồi `nd-giam-sat-cuoi` quyết. Giữ bản nháp và phiếu từng vòng.
 
-## Agent giám sát (bộ cài chép vào `~/.claude/agents`)
+## Agent giám sát (bộ cài chép vào `.claude/agents` của bộ não)
 
 | Agent | Lúc dùng | Chấm |
 |---|---|---|
@@ -22,7 +22,7 @@ Chuẩn là video mẫu (51,3 giây; video mẫu không đi kèm kho công khai 
 | `nd-cham-so-mau` | Thành phẩm, đặt cạnh video mẫu | 10 mục dựng: nhịp, đẩy vào, hình khớp lời, chữ, ô ảnh, nhãn, nhạc, cảm giác |
 | `nd-giam-sat-cuoi` | Sau 3 người soi | ĐẠT / SỬA LẠI, kiểm chéo người soi |
 
-Giao agent chạy lần lượt, một agent một lúc (cho nhẹ máy). Đưa agent đường dẫn thư mục video, không dán ảnh vào lời giao. Agent mới cài chỉ nạp ở phiên sau: trong phiên đang chạy thì giao `general-purpose` với lời "đóng vai, làm đúng tệp `~/.claude/agents/<tên>.md`".
+Giao agent chạy lần lượt, một agent một lúc (cho nhẹ máy). Đưa agent đường dẫn thư mục video, không dán ảnh vào lời giao. Agent mới cài chỉ nạp ở phiên sau: trong phiên đang chạy thì giao `general-purpose` với lời "đóng vai, làm đúng tệp `.claude/agents/<tên>.md`".
 
 ## Trước khi bắt đầu
 
@@ -66,7 +66,7 @@ Giao agent chạy lần lượt, một agent một lúc (cho nhẹ máy). Đưa 
 `python scripts/lap_ke_hoach.py <thư mục video> --nhan-o-anh "Ảnh chủ khu gửi"` lập sẵn `ke-hoach.json` (Whisper lấy mốc chữ, cắt ở chỗ ngắt hơi, bỏ lặng dài, ngừng thêm sau câu hỏi, cảnh kết giữ 1,5 giây sau chữ cuối, đẩy vào 1,0 → 1,18 → 1,32, tự tính `toc_do` ≤ 1,08 để vừa ~53 giây). Ghi đè từng cảnh trong `video.json`: `"cat": [[tu, den, zoom, "ảnh phủ"], …]` (phần tử thứ 4 = phủ hình bằng ảnh, giữ tiếng: dùng khi lời nói về ảnh/view, hoặc che đoạn mặt lỗi), `"den_toi_da"` (cắt trước đoạn hỏng cuối clip). Kế hoạch gồm:
 - `mo_dau`: 0,9 giây ảnh bối cảnh c1 + ô vàng "Ảnh chủ khu gửi" (video thử: "Bối cảnh minh họa").
 - `doan`: mỗi cảnh 2–3 đoạn cắt **ở khoảng ngắt hơi giữa câu** (lấy mốc từ `so_loi.py`), đoạn sau `zoom` lớn hơn (1,0 → 1,2 → 1,35, `tam` vào mặt) hoặc `zoom_cuoi` để đẩy máy chậm; đoạn đầu mỗi cảnh có `o_anh` = ảnh bối cảnh đó. Cắt bỏ đoạn im lặng cuối clip (sau chữ cuối 0,15–0,3 giây). Nối lúc mắt mở.
-- `the` lấy từ `loi.json` (script đặt giờ theo `khi_noi`), `nhan_ai`, `nhan_kol`, `the_ket`, `nhac` (`tai-nguyen/nhac/beat-vlog.mp3`, Pixabay, −21 dB).
+- `the` lấy từ `loi.json` (script đặt giờ theo `khi_noi`), `nhan_ai`, `nhan_kol`, `the_ket`, `nhac` (mặc định `tai-nguyen/nhac/nen-video-ngan/NH0001_hiphop-vlog-tre-trung.mp3` trong xưởng `08_XUONG_VIDEO`, đường dẫn tuyệt đối lấy từ `.claude/xuong-video.json`; muốn đổi thì truyền `--nhac`; Pixabay, −21 dB).
 - `python scripts/dung_video.py <thư mục video> --nhap` (bản nháp) → xem `phu-de.json` (sửa tay chữ sai), rồi `python scripts/dung_video.py <thư mục video> --chi-chu` (bản chuẩn). Mỗi vòng lưu `thanh-pham-vN.mp4`, không ghi đè vòng trước.
 
 ## Bước 7: Giám sát (10 phút)

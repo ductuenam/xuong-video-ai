@@ -56,9 +56,9 @@ hong += not ok
 print(("✔ " if ok else "✘ ") + "lặp ở chỗ nối: nói hỏng sát chỗ cắt bị bắt, câu bình thường không bị bắt nhầm")
 # Nhạc: chỉ bài đã kiểm quyền dùng ngoài YouTube
 from kiem_chot import kiem_nhac
-ok = not kiem_nhac("future-bass") and bool(kiem_nhac("cong-nghe")) and bool(kiem_nhac(""))
+ok = not kiem_nhac("NH0003") and bool(kiem_nhac("cong-nghe")) and bool(kiem_nhac(""))
 hong += not ok
-print(("✔ " if ok else "✘ ") + "kiem_nhac: future-bass đạt, cong-nghe và nhạc mặc định bị chặn")
+print(("✔ " if ok else "✘ ") + "kiem_nhac: NH0003 đạt, cong-nghe và nhạc mặc định bị chặn")
 # Số dòng cảnh: bản đúng của video 19 đạt, bản có mốc lọt ra ngoài và cảnh chồng nhau phải bị bắt
 import json
 from chung import kiem_so_dong

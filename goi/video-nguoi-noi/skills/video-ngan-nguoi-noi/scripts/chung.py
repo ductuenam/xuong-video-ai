@@ -11,8 +11,26 @@ from pathlib import Path
 
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 GOC_SKILL = Path(__file__).resolve().parent.parent
-THU_MUC_MAY = Path.home() / ".video-ngan"
-ENGINE = THU_MUC_MAY / "engine"
+
+
+def cau_hinh_xuong():
+    """Đọc <bộ não>/.claude/xuong-video.json do bộ cài ghi: từ thư mục skill đi lên, rồi từ thư mục đang mở đi lên.
+    Thêm thư mục ffmpeg, node của xưởng vào đầu PATH của tiến trình này."""
+    for goc in (Path(__file__).resolve(), Path.cwd().resolve()):
+        for p in (goc, *goc.parents):
+            f = p / ".claude" / "xuong-video.json"
+            if f.is_file():
+                c = json.loads(f.read_text(encoding="utf-8"))
+                for d in reversed(c.get("bin", [])):
+                    if d and d not in os.environ.get("PATH", "").split(os.pathsep):
+                        os.environ["PATH"] = d + os.pathsep + os.environ.get("PATH", "")
+                return c
+    return {}
+
+
+CFG = cau_hinh_xuong()
+XUONG = Path(CFG["xuong"]) if CFG.get("xuong") else None
+ENGINE = Path(CFG.get("engine") or Path.home() / ".video-ngan" / "engine")
 
 
 def kiem_so_dong(canh, so_dong):
@@ -83,7 +101,46 @@ def ho_so(du_an):
             h = doc(f)
             h["_goc"] = str(x)
             return h
-    sys.exit(f"✘ Không thấy ho-so-kenh.json ở {d} hoặc thư mục cha. Chạy cai_dat.py để tạo.")
+    if XUONG and (XUONG / "ho-so-kenh.json").exists():
+        h = doc(XUONG / "ho-so-kenh.json")
+        h["_goc"] = str(XUONG)
+        return h
+    sys.exit(f"✘ Không thấy ho-so-kenh.json ở {d} hoặc thư mục cha. Chưa cài Xưởng Video AI: hãy chạy lại câu lệnh cài Xưởng Video AI.")
+
+
+def goc_kho_canh(h):
+    """Gốc kho cảnh: <xưởng>/tai-nguyen/canh (có cả cua-toi/). Chưa có cấu hình xưởng thì lấy theo hồ sơ."""
+    if XUONG:
+        return XUONG / "tai-nguyen" / "canh"
+    return duong_dan(h, (h.get("khoCanh") or {}).get("thuMuc") or "tai-nguyen/canh")
+
+
+def kho_canh(h):
+    """Đọc kho cảnh: trả về (gốc kho, {mã: {"ma", "nhom", "mo_ta", "file"}}).
+    Ưu tiên cột `tep` của chi-muc.csv (bỏ dòng trang_thai=an); cảnh không có trong chỉ mục (vd cua-toi/) tìm theo tên:
+    tệp bắt đầu bằng '<mã>_' hoặc đúng '<mã>.mp4'."""
+    import csv
+    kho = goc_kho_canh(h)
+    cac, an = {}, set()
+    cm = kho / "chi-muc.csv"
+    if cm.is_file():
+        with cm.open(encoding="utf-8-sig") as f:
+            for r in csv.DictReader(f):
+                ma = (r.get("ma") or "").strip()
+                if not ma:
+                    continue
+                if (r.get("trang_thai") or "").strip() == "an":
+                    an.add(ma)
+                    continue
+                p = kho / (r.get("tep") or "")
+                if r.get("tep") and p.is_file():
+                    cac[ma] = {"ma": ma, "nhom": r.get("nhom", ""), "mo_ta": r.get("mo_ta", ""), "file": p}
+    if kho.is_dir():
+        for p in kho.rglob("*.mp4"):
+            ma = p.stem.split("_")[0]
+            if ma not in cac and ma not in an:
+                cac[ma] = {"ma": ma, "nhom": p.parent.name, "mo_ta": "", "file": p}
+    return kho, cac
 
 
 def duong_dan(h, gia_tri):

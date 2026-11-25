@@ -1,6 +1,6 @@
 """Ghép chữ lên hình nền, xuất bìa 1080x1920.
   python lap_bia.py <thư mục dự án>
-Cần: bia.json, ảnh nền trong public/, bộ công cụ video-ngan-nguoi-noi đã cài (~/.video-ngan/engine). Ra render/bia.jpg."""
+Cần: bia.json, ảnh nền trong public/, bộ công cụ video-ngan-nguoi-noi đã cài (engine ở `engine` trong .claude/xuong-video.json; không có thì ~/.video-ngan/engine). Ra render/bia.jpg."""
 import json
 import os
 import shutil
@@ -10,14 +10,33 @@ import tempfile
 import time
 from pathlib import Path
 
+
+
+def cau_hinh_xuong():
+    """Đọc <bộ não>/.claude/xuong-video.json do bộ cài ghi: từ thư mục skill đi lên, rồi từ thư mục đang mở đi lên.
+    Thêm thư mục ffmpeg, node của xưởng vào đầu PATH của tiến trình này."""
+    for goc in (Path(__file__).resolve(), Path.cwd().resolve()):
+        for p in (goc, *goc.parents):
+            f = p / ".claude" / "xuong-video.json"
+            if f.is_file():
+                c = json.loads(f.read_text(encoding="utf-8"))
+                for d in reversed(c.get("bin", [])):
+                    if d and d not in os.environ.get("PATH", "").split(os.pathsep):
+                        os.environ["PATH"] = d + os.pathsep + os.environ.get("PATH", "")
+                return c
+    return {}
+
+
+XUONG_CFG = cau_hinh_xuong()
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
-ENGINE = Path.home() / ".video-ngan" / "engine"
+# Engine Remotion chính do bộ cài dựng sẵn (xuong-video.json › engine); không có thì chỗ cũ ~/.video-ngan/engine
+ENGINE = Path(XUONG_CFG["engine"]) if XUONG_CFG.get("engine") else Path.home() / ".video-ngan" / "engine"
 NPX = "npx.cmd" if sys.platform == "win32" else "npx"
 TRUONG_KENH = ["ten", "chuLinhVat", "nhanCanhAI", "nhanAnhAI", "mauChinh", "mauPhu", "mauBia"]
 
 da = Path(sys.argv[1]).resolve()
 if not (ENGINE / "node_modules").exists():
-    sys.exit(f"✘ Chưa cài engine ở {ENGINE}. Chạy cai_dat.py của video-ngan-nguoi-noi trước.")
+    sys.exit(f"✘ Chưa cài engine ở {ENGINE}. Chạy câu lệnh cài Xưởng Video AI trước.")
 bia = json.loads((da / "bia.json").read_text(encoding="utf-8"))
 if not (da / "public" / bia["anh"]).exists():
     sys.exit(f"✘ Không thấy ảnh nền {da / 'public' / bia['anh']}")

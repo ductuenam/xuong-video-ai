@@ -9,6 +9,24 @@ from pathlib import Path
 GOC_SKILL = Path(__file__).resolve().parent.parent
 
 
+def cau_hinh_xuong():
+    """Đọc <bộ não>/.claude/xuong-video.json do bộ cài ghi: từ thư mục skill đi lên, rồi từ thư mục đang mở đi lên.
+    Thêm thư mục ffmpeg, node của xưởng vào đầu PATH của tiến trình này."""
+    for goc in (Path(__file__).resolve(), Path.cwd().resolve()):
+        for p in (goc, *goc.parents):
+            f = p / ".claude" / "xuong-video.json"
+            if f.is_file():
+                c = json.loads(f.read_text(encoding="utf-8"))
+                for d in reversed(c.get("bin", [])):
+                    if d and d not in os.environ.get("PATH", "").split(os.pathsep):
+                        os.environ["PATH"] = d + os.pathsep + os.environ.get("PATH", "")
+                return c
+    return {}
+
+
+XUONG = cau_hinh_xuong()
+
+
 def in_utf8():
     for s in (sys.stdout, sys.stderr):
         try:
@@ -21,7 +39,12 @@ def doc_cau_hinh(duong_dan=None):
     """Tìm cau-hinh.json theo thứ tự: tham số, biến CAY_CANH_CAU_HINH, thư mục skill."""
     for p in (duong_dan, os.environ.get("CAY_CANH_CAU_HINH"), GOC_SKILL / "cau-hinh.json"):
         if p and Path(p).is_file():
-            return json.loads(Path(p).read_text(encoding="utf-8")), Path(p)
+            cfg = json.loads(Path(p).read_text(encoding="utf-8"))
+            # thu_muc_lam_viec để trống hoặc còn là chữ mẫu "<...>" → <xưởng>/du-an/video-cay-canh khi có xưởng
+            lv = str(cfg.get("thu_muc_lam_viec") or "").strip()
+            if XUONG.get("xuong") and (not lv or lv.startswith("<")):
+                cfg["thu_muc_lam_viec"] = str(Path(XUONG["xuong"]) / "du-an" / "video-cay-canh")
+            return cfg, Path(p)
     return None, None
 
 
