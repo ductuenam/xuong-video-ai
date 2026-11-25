@@ -93,17 +93,22 @@ def ghi(p, x, thut=None):
 
 
 def ho_so(du_an):
-    """Tìm ho-so-kenh.json ở thư mục dự án hoặc các thư mục cha."""
+    """Tìm ho-so-kenh.json ở thư mục dự án hoặc các thư mục cha.
+    <dự án>/kenh-rieng.json (nếu có) đè vài khóa cho riêng dự án đó (vd "ten", "giongAI" của video BNI), không sửa hồ sơ của học viên."""
     d = Path(du_an).resolve()
+    h = None
     for x in [d, *d.parents]:
         f = x / "ho-so-kenh.json"
         if f.exists():
             h = doc(f)
             h["_goc"] = str(x)
-            return h
-    if XUONG and (XUONG / "ho-so-kenh.json").exists():
+            break
+    if h is None and XUONG and (XUONG / "ho-so-kenh.json").exists():
         h = doc(XUONG / "ho-so-kenh.json")
         h["_goc"] = str(XUONG)
+    if h is not None:
+        if (d / "kenh-rieng.json").exists():
+            h.update({k: v for k, v in doc(d / "kenh-rieng.json").items() if not k.startswith("_")})
         return h
     sys.exit(f"✘ Không thấy ho-so-kenh.json ở {d} hoặc thư mục cha. Chưa cài Xưởng Video AI: hãy chạy lại câu lệnh cài Xưởng Video AI.")
 

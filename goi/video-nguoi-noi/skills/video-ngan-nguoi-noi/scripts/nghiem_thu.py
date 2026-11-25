@@ -39,6 +39,36 @@ def tu(t):
     return re.findall(r"[\wÀ-ỹ%]+", t.lower())
 
 
+SO = ["không", "một", "hai", "ba", "bốn", "năm", "sáu", "bảy", "tám", "chín"]
+# Whisper chuẩn hóa khi nghe: viết số bằng chữ số, đổi tiếng địa phương sang tiếng phổ thông (thử BNI miền Tây 25/11/2026:
+# "ba chục" nghe thành "30", "tui" thành "tôi", lời đúng mà khớp chỉ 82%). So sánh trên cùng một dạng.
+DONG_NGHIA = {"chục": "mươi", "lăm": "năm", "mốt": "một", "tui": "tôi", "hông": "không", "hổng": "không", "dzậy": "vậy"}
+
+
+def doc_so(n):
+    """Số nguyên 0–999999 thành chữ, cách đọc phổ thông (25 -> hai mươi năm sau khi chuẩn hóa lăm)."""
+    if n >= 1000:
+        return doc_so(n // 1000) + ["nghìn"] + (doc_so(n % 1000) if n % 1000 else [])
+    if n >= 100:
+        r = n % 100
+        return [SO[n // 100], "trăm"] + ([] if not r else (["linh", SO[r]] if r < 10 else doc_so(r)))
+    if n >= 20:
+        return [SO[n // 10], "mươi"] + ([SO[n % 10]] if n % 10 else [])
+    if n >= 10:
+        return ["mười"] + ([SO[n % 10]] if n % 10 else [])
+    return [SO[n]]
+
+
+def chuan_hoa(ds):
+    ra = []
+    for x in ds:
+        if x.isdigit() and len(x) <= 6:
+            ra += doc_so(int(x))
+        else:
+            ra.append(DONG_NGHIA.get(x, x))
+    return ra
+
+
 def giong(x, y):
     return difflib.SequenceMatcher(None, x, y).ratio() >= 0.7
 
@@ -85,7 +115,7 @@ def kiem_lap(src, edl, lien=()):
 
 def kiem_du_loi(video, cum):
     """Nghe cả bài rồi so với lời đã duyệt. Whisper nghe sai lẻ tẻ thì đoạn mất ngắn, cắt mất câu thì đoạn mất dài."""
-    can = [x for c in cum for x in tu(c["text"])]
+    can = chuan_hoa([x for c in cum for x in tu(c["text"])])
     am = doc_am_thanh(video)
 
     def mot_luot(vad, hai_nua=False):
@@ -96,7 +126,7 @@ def kiem_du_loi(video, cum):
         for m_ in manh:
             seg, _ = model().transcribe(m_, language="vi", vad_filter=vad, condition_on_previous_text=False, initial_prompt=GOI_Y, beam_size=5)
             chu_ += [x.text.strip() for x in seg]
-        sm_ = difflib.SequenceMatcher(None, can, tu(" ".join(chu_)), autojunk=False)
+        sm_ = difflib.SequenceMatcher(None, can, chuan_hoa(tu(" ".join(chu_))), autojunk=False)
         mat_ = []
         for op, i1, i2, _j1, _j2 in sm_.get_opcodes():
             if op in ("delete", "replace") and i2 - i1 > len(mat_):

@@ -25,7 +25,11 @@ def tim_ho_so(da):
     for x in [da, *da.parents]:
         f = x / "ho-so-kenh.json"
         if f.exists():
-            return json.loads(f.read_text(encoding="utf-8"))
+            h = json.loads(f.read_text(encoding="utf-8"))
+            rieng = da / "kenh-rieng.json"  # vd giongAI riêng của video BNI, không sửa hồ sơ học viên
+            if rieng.exists():
+                h.update({k: v for k, v in json.loads(rieng.read_text(encoding="utf-8")).items() if not k.startswith("_")})
+            return h
     sys.exit("✘ Không thấy ho-so-kenh.json ở dự án hoặc thư mục cha.")
 
 

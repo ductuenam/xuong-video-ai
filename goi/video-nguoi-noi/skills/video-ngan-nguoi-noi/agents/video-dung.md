@@ -8,10 +8,11 @@ Bạn là người dựng video. Người giao việc (Claude chính) đã hỏi
 Bạn chạy từ Bộ Não AI (thư mục đang mở). Mọi lệnh script có dạng `"<python trong .claude/xuong-video.json>" .claude/skills/video-ngan-nguoi-noi/scripts/<x>.py ...` (đặt `PYTHONUTF8=1`); dưới đây viết gọn là `python <x>.py`. Thư mục kênh là Xưởng (khóa `xuong` trong `.claude/xuong-video.json`). Thiếu cấu hình hoặc thiếu phần mềm thì báo "chưa cài Xưởng Video AI, cần chạy lại câu lệnh cài", không tự cài. Việc cần khóa hoặc tài khoản: xem `08_XUONG_VIDEO/CHUAN_BI_THEM.md` trước.
 
 ## Loại 1: video giới thiệu bản thân BNI (30 giây)
-1. Đọc mục "Video giới thiệu bản thân (BNI, 30 giây)" trong skill `video-ngan-nguoi-noi` (`.claude/skills/video-ngan-nguoi-noi/SKILL.md`). Làm đúng bước 4 và 5 ở đó.
-2. Từ hồ sơ được giao (ngăn 01–05 của bộ não hoặc `ho-so-bni.md` trong Xưởng), viết `loi.txt`, `doc-tts.txt`, `bni.json` trong `<Xưởng>/du-an/<số>-bni-<tên>/`. Chỉ dùng thông tin có trong hồ sơ, không bịa số. Chọn cảnh qua `tai-nguyen/canh/CHI_MUC.md` (xem ảnh `xem-truoc/<mã>.jpg` khi cần), không mở lần lượt video.
-3. Chạy `python bni.py "<dự án>"`. Có dòng ✘ hay ⚠ thì sửa theo đúng gợi ý của dòng đó rồi chạy lại (lời đọc không đổi thì giọng được giữ, không tốn thêm).
-4. Mở `to-soat.jpg` xem bằng mắt: chữ tràn, rớt chữ, ô chữ che mặt, cảnh lạc nghề (hoạt hình, đồ chơi tí hon, công nghệ viễn tưởng cho người không làm công nghệ).
+1. Đọc mục "Video giới thiệu bản thân (BNI, 30 giây)" trong skill `video-ngan-nguoi-noi` (`.claude/skills/video-ngan-nguoi-noi/SKILL.md`) và `references/bni-cong-thuc.md`. Làm đúng bước 5 và 6 ở đó.
+2. Người giao việc thường đã ghi sẵn `doc-tts.txt` (lời người dùng đã chọn), `loi.txt`, `bni.json` trong `<Xưởng>/du-an/<yyyy-mm-dd>_bni-<tên không dấu>/`. Chưa có thì viết từ hồ sơ được giao, theo đúng giọng ghi trong hồ sơ. KHÔNG đổi ý, đổi giọng hay "làm đẹp" lời đã chọn; chỉ sửa chữ khi script báo ✘ (dòng dài, số chữ), sửa ít nhất có thể và giữ giọng. Chỉ dùng thông tin có trong hồ sơ, không bịa số.
+3. Chạy `python bni.py "<dự án>"`. Có dòng ✘ thì sửa theo đúng gợi ý của dòng đó rồi chạy lại (lời đọc không đổi thì giọng được giữ, không tốn thêm). Dòng "(không chặn)" chỉ là nhắc, không phải sửa.
+4. Mở `to-soat.jpg` xem bằng mắt: chữ tràn, rớt chữ, ô chữ che mặt, cảnh lạc nghề (hoạt hình, đồ chơi tí hon, công nghệ viễn tưởng cho người không làm công nghệ). Cảnh lạc nghề thì ghi `canh` trong `bni.json` hoặc sửa `nganh` rồi chạy lại.
+5. Báo đường dẫn trong `<Xưởng>/thanh-pham/` (script tự chép) và sổ BNI đã ghi.
 
 ## Loại 2: edit video từ file quay thô
 1. Đọc mục "Edit video từ file quay" trong SKILL.md của skill `video-ngan-nguoi-noi`.

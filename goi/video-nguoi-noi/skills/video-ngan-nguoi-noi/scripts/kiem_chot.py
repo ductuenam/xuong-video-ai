@@ -52,10 +52,9 @@ def kiem_doc(chu, ca_bai=True, gioi_thieu=False):
     if not ca_bai:
         return loi
     if gioi_thieu:
-        nhan = chu.count("!") + chu.count("?")
-        if nhan < CHOT["cam"]["nhanToiThieu"]:
-            loi.append("thiếu cảm xúc: chưa có câu cảm thán nào, thêm dấu chấm than ở câu chào hoặc câu ghi nhớ")
-        return loi + kiem_ve(chu)[0]
+        # Video giới thiệu BNI (25/11/2026, Founder duyệt): lời theo giọng từng người, không ép dấu chấm than,
+        # không chặn vế ngắn (bni.py chỉ nhắc). Vẫn giữ cách đọc đúng (docDung), chữ cấm và chặn xin bình luận.
+        return loi
     doan = [d.strip() for d in chu.strip().split("\n") if d.strip()]
     if len(doan) < 2:
         loi.append("bản đọc cần chia đoạn, đoạn cuối là câu hỏi và câu chỉ về bình luận ghim")

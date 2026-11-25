@@ -139,7 +139,7 @@ Người dẫn chê cảnh kết giơ hai tay (P02) không hấp dẫn: P02 nằ
 Câu lệnh "Dựng một video giới thiệu bản thân cho tôi theo cấu trúc BNI" → mục BNI trong SKILL.md + `scripts/bni.py`. Lỗi gặp khi thử và cách đã sửa:
 - `bni.py` lần đầu đặt mốc cảnh lệch 1 dòng (hiểu sai `tu`). Đúng: `tu: N` là lúc dòng N bắt đầu; phần 1 có 2 dòng thì `tu 0, den 3`.
 - Cảnh mặc định công nghệ viễn tưởng (CA0080 dashboard bán hàng, CA0152 bình minh thành phố số) lạc với nghề spa → mặc định đổi sang cảnh đời thường Việt Nam; `bni.json` có `canh` để chọn cảnh hợp nghề.
-- Phụ đề rớt chữ khi dòng > 28 ký tự, thẻ kết rớt chữ khi `ghiNho` > 22 ký tự → `bni.py` cảnh báo trước khi dựng.
+- Phụ đề rớt chữ khi dòng > 28 ký tự, thẻ kết rớt chữ khi `ghiNho` > 18 ký tự → `bni.py` chặn trước khi dựng (25/11/2026, trước là cảnh báo).
 - Các ý "việc làm" hiện trước lúc đọc tới → `bni.py` dò dòng có chữ đầu của từng việc.
 - Giọng miễn phí (edge-tts, Microsoft) lỗi `NoAudioReceived` theo đợt, có lúc 10 lần liền → thử lại tới 20 lần; lần hỏng để lại file `ca-bai.mp3` rỗng làm lần sau tưởng đã có giọng → ghi file tạm rồi mới đổi tên, `bni.py` chỉ dùng lại giọng > 20 KB và khi lời đọc không đổi.
 - Luật 9 đọc nhầm mã cảnh `ket-comment` + clip `TOI3` thành "comment TOI" → `kiem_ket_du_an` chỉ đọc chữ hiện trên hình (bỏ `loai`, `clip`, `ten`...). Hồi quy: mục "luật 9: mã cảnh ket-comment + TOI3".
@@ -168,3 +168,30 @@ Câu lệnh "Dựng một video giới thiệu bản thân cho tôi theo cấu t
 - Bản 30 giây: edit.py --dai 30.
 - Lần 2 (bản 30 giây, 24/11 18:27): chia câu băm 3 chữ một câu khi Whisper ghi khe 0 (sửa: tách ở khe dài nhất, hòa thì gần giữa, mỗi phần ≥ 3 giây); hồ sơ kênh mẫu có `chuLinhVat: "AB"` làm linh vật máy học viên mang chữ AB (sửa: để trống); nghiệm thu báo lặp "kiểm tra email, | kiểm tra chứng từ" (người nói liệt kê, hai đoạn liền nhau trong file gốc, sửa: không tính lặp 2–3 chữ ở đó). Có bài hồi quy.
 - Lần 3–4 (18:37–18:56): Whisper có lần lạc tiếng (chữ Hàn, Nga, "GORDON") → edit.py tự nghe lại đoạn đó; nhạc nền làm "agent" thành "agile" lúc nghiệm thu → edit.py ghi goi-y.txt từ "sua"/tieuDe; cắt theo giờ chữ Whisper làm cụt đuôi chữ, lọt đầu chữ kế (chấm 7,5/10) → bám điểm cắt vào chỗ lặng thật, ưu tiên chỗ lặng SAU chữ cuối; tiếng chuyển cảnh đè chữ khi cảnh minh họa vào giữa câu → tron_am.py hạ đỉnh tiếng chuyển cảnh còn -24 dB cho loại edit. Gộp 3 khối của phiên chính: bo_lap_trong, cắt mép bằng VAD, tự chỉnh tốc độ (toc ≤ 1,2).
+
+## BNI bản 2: lời theo từng người, không dập khuôn (25/11/2026, Founder duyệt 8 điểm)
+- Triệu chứng: mọi video BNI na ná nhau. Câu viết cứng ("Xin chào, tôi là", "Tôi giúp", thẻ "Khách tốt cho tôi là"), ép dấu chấm than và vế ≥ 9 chữ làm giọng giống máy; không nhớ tuần trước đã nói gì; cảnh, nhạc gần như giống nhau mọi ngành.
+- Sửa:
+  - `references/bni-cong-thuc.md` (khung 5 nhịp có nguồn, phỏng vấn đào sâu, giọng, hướng nghĩ 8 ngành).
+  - SKILL viết 2–3 bản khác giọng cho chọn.
+  - Sổ BNI `mau-cua-toi/bni/so-bni.json`.
+  - `bni.py` chặn lời trùng tuần cũ ≥ 60% và chép nguyên 8 chữ từ tệp công thức; chọn cảnh theo `nganh`, nhạc theo `tamTrang`; thẻ nhịp 2 và 4 lấy chữ từ `bni.json` (`chuDe`, `xin`).
+  - `kiem_chot.kiem_doc(gioi_thieu=True)` bỏ luật dấu chấm than và vế ≥ 9 chữ.
+- Lỗi phụ cùng lần:
+  - Dòng phụ đề > 28 ký tự và `ghiNho` > 18 ký tự trước chỉ cảnh báo → nay chặn (thống nhất 18, bỏ số 22 cũ).
+  - Video 22,7 giây ngắn hơn khuôn → chặn khi giọng ngoài 22–30 giây, chặn lời ngoài 95–135 chữ.
+  - Ô tên thương hiệu ở thẻ kết vỡ 4 dòng → `MoHinh.tsx` ô rộng 260 px, chữ nhỏ dần.
+  - Thành phẩm không tự chép → `bni.py` chép sang `thanh-pham/<tên dự án>.mp4`.
+  - `bni.py` ghi đè `ten` trong `ho-so-kenh.json` của học viên → ghi `kenh-rieng.json` trong dự án (`chung.ho_so` và `tao_giong.tim_ho_so` đọc đè).
+  - Tên thư mục dự án thống nhất `<yyyy-mm-dd>_bni-<tên không dấu>`.
+- Thử 3 hồ sơ (spa Đà Nẵng, kế toán Hà Nội, tiệm bánh Cần Thơ), 25/11/2026:
+  - 123 chữ giọng miễn phí ra 37 giây → khuôn còn 95–110 chữ, giọng miễn phí tự nhanh 8% (`toc` 1.08). Kết quả 100–102 chữ ra 25,1–28,4 giây.
+  - "banh" khớp "banh-rang" khi so chuỗi con → `nganh` chỉ khớp nguyên từ khóa của cảnh.
+  - Spa Đà Nẵng suýt lấy cảnh Hồ Gươm → cảnh gắn thành phố chỉ dùng khi `nganh` có tên thành phố đó.
+  - `dung.py` in ✘ "giọng rời rạc" cho BNI dù luật vế đã bỏ → nay chỉ nhắc với `gioi-thieu`.
+  - Chặn đúng: lời gần y tuần trước (97%), chép nguyên văn tệp công thức, lời quá 118 chữ.
+- Chấm độc lập 3 bài (8,5 / 8,5 / 7,0): lời đã riêng từng người, nhưng còn dập khuôn ở mấy chỗ sau.
+  - Thẻ ý sáng sớm vì ý lấy từ nhịp khác → `bni.py` chặn ý thẻ không có chữ nói trong đúng nhịp.
+  - Khuôn "Tuần này", mở bằng câu hỏi, lời xin "nói giúp:" → ghi ở mục 8 `bni-cong-thuc.md`.
+  - Laptop ở cả 3 bài (cảnh dự phòng CA0176, CA0180, CA0182) → cảnh dự phòng chỉ còn nền dịu và cà phê vỉa hè.
+  - Còn lại do kho, chưa sửa trong mã: kho chưa có cảnh spa, bánh, tiệc; chỉ 3 bài nhạc; giọng miễn phí chỉ có 1 nam, 1 nữ, giọng Bắc. Học viên thả ảnh thật hoặc dùng giọng tự quay thì khác hẳn.

@@ -237,7 +237,8 @@ const Ket: React.FC<{tu: number; hetTieng: number; tuKhoa?: string; nhan: string
       <Len at={0.1} style={{position: 'absolute', left: 90, right: 90, top: 110}}>
         <div style={{background: 'linear-gradient(120deg,#FFF9EE,#FFF1D6)', borderRadius: 20, padding: '24px 34px', boxShadow: '0 24px 60px rgba(60,20,0,0.35)', display: 'flex', alignItems: 'center', gap: 24}}>
           <div style={{flex: 1}}><div style={{fontSize: 24, fontWeight: 700, color: CAM, letterSpacing: 2}}>{nhan}</div><div style={{fontFamily: fontTieuDe, fontWeight: 900, fontSize: 50, color: DAM, lineHeight: 1.25}}>{tieuDe}</div></div>
-          <div style={{background: DAM, color: '#fff', padding: '10px 18px', borderRadius: 12, fontFamily: fontTieuDe, fontWeight: 900, fontSize: 30, textAlign: 'center', lineHeight: 1.25, maxWidth: 170}}>{KENH.ten}</div>
+          {/* Tên thương hiệu dài từng vỡ 4 dòng trong ô 170 px (thử BNI 25/11/2026): ô rộng hơn, chữ nhỏ dần theo độ dài, tối đa 2 dòng */}
+          {KENH.ten ? <div style={{background: DAM, color: '#fff', padding: '10px 18px', borderRadius: 12, fontFamily: fontTieuDe, fontWeight: 900, fontSize: KENH.ten.length <= 10 ? 30 : KENH.ten.length <= 18 ? 25 : 21, textAlign: 'center', lineHeight: 1.2, maxWidth: 260, overflowWrap: 'anywhere'}}>{KENH.ten}</div> : null}
         </div>
       </Len>
       <Len at={0.4} style={{position: 'absolute', left: 0, right: 0, top: 340, textAlign: 'center'}}>

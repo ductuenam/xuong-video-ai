@@ -35,6 +35,19 @@ bni, _ = sua_doc((ND / "hoi_quy" / "gioi-thieu-bni-34.txt").read_text(encoding="
 ok = bool(kiem_doc(bni)) and not kiem_doc(bni, gioi_thieu=True) and bool(kiem_doc(bni + " Comment CÀI mình gửi nhé!", gioi_thieu=True))
 hong += not ok
 print(("✔ " if ok else "✘ ") + "giới thiệu BNI: không ép câu kết kênh, vẫn chặn xin comment")
+# BNI theo giọng từng người (25/11/2026): giọng mộc, không dấu chấm than, câu ngắn vẫn đạt
+moc = ("Chào cả nhà. Mình là Lan, làm bánh ở quận Ba. Tuần này mình nói về bánh sinh nhật cho bé. Tháng trước có chị khách đặt gấp lúc tám giờ tối. "
+       "Mình làm kịp. Bé thích lắm. Mình muốn gặp các mẹ có con sắp thôi nôi. Bánh ngon, nhà vui. Mình là Lan.")
+ok = not kiem_doc(sua_doc(moc)[0], gioi_thieu=True)
+hong += not ok
+print(("✔ " if ok else "✘ ") + "giới thiệu BNI: giọng mộc, không dấu chấm than, câu ngắn vẫn đạt")
+# Nghiệm thu "đủ lời": Whisper ghi số bằng chữ số và đổi "tui" thành "tôi" (BNI miền Tây 25/11/2026, khớp 82% dù lời đúng)
+from nghiem_thu import chuan_hoa as _ch, tu as _tu
+_a = _ch(_tu("tui làm kịp hai mươi lăm cái tên cho ba chục người, giao năm giờ"))
+_b = _ch(_tu("Tôi làm kịp 25 cái tên cho 30 người, giao 5 giờ"))
+ok = _a == _b and _ch(["150"]) == ["một", "trăm", "năm", "mươi"]
+hong += not ok
+print(("✔ " if ok else "✘ ") + "nghiem_thu: số viết bằng chữ số và 'tui' khớp với lời viết bằng chữ")
 # Luật 9 không được đọc nhầm mã cảnh: loai "ket-comment" + clip "TOI3" (ảnh của người dẫn) không phải "comment TOI"
 import tempfile, json as _j
 from kiem_chot import kiem_ket_du_an as _kk

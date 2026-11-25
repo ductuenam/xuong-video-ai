@@ -73,7 +73,10 @@ def b_anh_tinh(da):
             print(f"✘ Giọng có khoảng lặng {dai:.2f} giây ở giây {luc:.1f}, sửa file giọng trước khi xuất")
         from do_nhip import MOC_HOI, MOC_TREN, do as do_nhip
         k = do_nhip(giong)
-        if k["hoi"] < MOC_HOI:
+        gioi_thieu = (da / "loai.txt").exists() and "gioi-thieu" in (da / "loai.txt").read_text(encoding="utf-8").split()
+        if k["hoi"] < MOC_HOI and gioi_thieu:  # BNI theo giọng từng người: câu ngắn là chủ ý, chỉ nhắc (25/11/2026)
+            print(f"⚠ (không chặn) một hơi nói {k['hoi']:.2f} giây, câu khá ngắn; nghe lại xem có tự nhiên không")
+        elif k["hoi"] < MOC_HOI:
             print(f"✘ Giọng rời rạc: một hơi nói chỉ {k['hoi']:.2f} giây (cần ≥ {MOC_HOI}), viết lại bản đọc cho liền hơi")
         elif k["hoi"] > MOC_TREN:
             print(f"⚠ (không chặn) Giọng liền quá: một hơi {k['hoi']:.2f} giây (nên ≤ {MOC_TREN}), giữ dấu phẩy ở chỗ chuyển ý, chạy nghi_dau_phay.py")

@@ -15,9 +15,14 @@ Bạn chấm video độc lập, không tin lời người dựng. Trả lời b
 
 ## Thang 10 điểm
 - Nội dung đúng nguồn, không bịa (BNI: hồ sơ người dùng; edit: lời trong file gốc): 3 điểm. Có số hay ý không nguồn là lỗi CHẶN.
-- Đủ cấu trúc: BNI đủ 5 phần (tên và nghề; giúp ai, việc gì; một bằng chứng; "Khách tốt cho tôi là…"; câu ghi nhớ nhắc lại tên). Edit: mở đầu vào thẳng ý, không còn đoạn lặng hay nói lại, kết trọn câu: 2 điểm.
+- Đủ cấu trúc: 2 điểm.
+  - BNI đủ 5 nhịp đúng thứ tự (chào: tên, thương hiệu, nghề trong 5 giây đầu; MỘT chủ đề tuần, không kể hết dịch vụ; một câu chuyện hoặc bằng chứng cụ thể; lời xin giới thiệu nêu rõ ai và dấu hiệu nhận ra họ, không xin chung chung kiểu "ai cần", "bất kỳ ai"; câu dễ nhớ + nhắc lại tên).
+  - BNI riêng, không dập khuôn (trừ tối đa 1 điểm trong mục này): lời có chữ, chuyện riêng của người này, đúng giọng ghi trong `bni.json` › `soBni.giong`. Đọc `<Xưởng>/mau-cua-toi/bni/so-bni.json`: không lặp chủ đề hay câu chuyện của tuần trước, câu dễ nhớ giữ đúng như sổ. Không có câu sáo ("uy tín hàng đầu", "giải pháp toàn diện"). Không chép câu từ `references/bni-cong-thuc.md`.
+  - Edit: mở đầu vào thẳng ý, không còn đoạn lặng hay nói lại, kết trọn câu.
 - Hình: không chữ tràn, không che mặt, không khung đen, cảnh hợp nghề (không hoạt hình, đồ chơi tí hon cho video giới thiệu), mặt người đúng người dùng khi có: 2 điểm.
 - Chữ và phụ đề đúng, khớp giờ: 2 điểm.
 - Âm thanh: giọng rõ, nhạc không đè, không vấp: 1 điểm.
+
+BNI còn kiểm: thời lượng 23–31 giây; thẻ kết không vỡ dòng (tên thương hiệu tối đa 2 dòng); có bản trong `<Xưởng>/thanh-pham/`.
 
 ĐẠT khi từ 8 điểm và không có lỗi CHẶN. Phiếu ghi: điểm từng mục, kết luận, danh sách lỗi (giây, chỗ, cách sửa), và điều bạn chưa kiểm được (ví dụ chưa nghe bằng tai).
