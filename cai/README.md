@@ -8,7 +8,7 @@ Mở Claude (thẻ Code, **This computer**) **đúng thư mục Bộ Não AI** �
 Cài Xưởng Video AI vào bộ não này. Chạy đúng một lệnh theo máy của tôi, ngay trong thư mục đang mở, chờ chạy xong rồi báo kết quả bằng tiếng Việt dễ hiểu:
 - Windows: powershell -NoProfile -ExecutionPolicy Bypass -Command "irm https://raw.githubusercontent.com/ductuenam/xuong-video-ai/main/cai/cai.ps1 | iex"
 - Mac: curl -fsSL https://raw.githubusercontent.com/ductuenam/xuong-video-ai/main/cai/cai.sh | bash
-Lệnh chạy lâu (10–30 phút): chạy nền và chờ, đừng chạy lại giữa chừng. Nếu lệnh DỪNG thì đọc dòng DỪNG và làm đúng hướng dẫn trong đó.
+Lệnh chạy lâu (10–30 phút): chạy nền và chờ, đừng chạy lại giữa chừng. Nếu lệnh DỪNG thì đọc dòng DỪNG và làm đúng hướng dẫn trong đó. Có dòng ⚠ thì giải thích cho tôi và làm theo dòng đó (hỏi tôi trước khi xóa hay chuyển thứ gì).
 ```
 
 Dán lại đúng câu này = cập nhật bản mới, không mất video, mẫu, cảnh riêng.

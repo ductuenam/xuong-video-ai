@@ -1,6 +1,6 @@
 {
   "ten": "xuong-video-ai",
-  "phien_ban": "0.2.3",
+  "phien_ban": "0.2.4",
   "phien_ban_tai_nguyen": "v1",
   "ghi_chu": "Bản nháp. sha256 và mb đã khớp gói đóng ngày 25/11 (cảnh, nhạc, tiếng đã gắn nhãn và đặt tên lại). Gói v1 đã lên R2 (bucket xuong-video-ai, tên miền taivido.zenotera.com) ngày 25/11; tải về qua tên miền khớp sha256.",
   "goi_tai_nguyen": {

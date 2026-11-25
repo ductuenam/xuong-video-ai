@@ -27,7 +27,8 @@ WIN = sys.platform == 'win32'
 MAC = sys.platform == 'darwin'
 NODE_BAN = 'v22.12.0'
 # ctranslate2 ghim 4.8.2: bản 4.9.1 mới ra bị Smart App Control chặn DLL (thử 25/11/2026), 4.8.2 chạy được.
-THU_VIEN = ['faster-whisper', 'ctranslate2==4.8.2', 'opencv-python', 'numpy', 'edge-tts', 'requests', 'google-auth', 'playwright', 'pillow']
+# av ghim 19.0.2: av 18 bị Smart App Control chặn DLL; av 19 cần vá faster-whisper (va_faster_whisper). Thử 25/11/2026.
+THU_VIEN = ['faster-whisper', 'ctranslate2==4.8.2', 'av==19.0.2', 'opencv-python', 'numpy', 'edge-tts', 'requests', 'google-auth', 'playwright', 'pillow']
 DAU, CUOI = '<!-- XUONG-VIDEO:BEGIN -->', '<!-- XUONG-VIDEO:END -->'
 canh_bao = []
 
@@ -182,8 +183,24 @@ def thu_vien(uv, gpu):
     if r.returncode:
         dung('Không cài được thư viện Python. Kiểm mạng rồi dán lại câu lệnh.')
     print('✔ thư viện Python:', ', '.join(goi))
+    va_faster_whisper()
     if chay([sys.executable, '-m', 'playwright', 'install', 'chromium'], capture_output=True).returncode:
         cb('Chưa tải được trình duyệt chụp trang web (chỉ cần khi làm video có chụp web); lần dùng đầu sẽ tự tải.')
+
+
+def va_faster_whisper():
+    """faster-whisper 1.2.1 gọi av.open(..., metadata_errors=...), av 19 bỏ tham số này nên transcribe(<tên tệp>) đổ
+    TypeError (skill KOL, ab-edit). Không ghim av cũ được: av 18 bị Smart App Control chặn DLL (thử 25/11/2026).
+    Vá đúng chỗ đó trong venv của xưởng; chạy lại bộ cài thì vá lại."""
+    import importlib.util
+    spec = importlib.util.find_spec('faster_whisper')
+    if not spec or not spec.submodule_search_locations:
+        return
+    f = Path(list(spec.submodule_search_locations)[0]) / 'audio.py'
+    s = f.read_text(encoding='utf-8')
+    if 'metadata_errors="ignore"' in s:
+        f.write_text(s.replace(', metadata_errors="ignore"', ''), encoding='utf-8')
+        print('✔ vá faster-whisper cho khớp thư viện âm thanh av 19')
 
 
 def engine(nguon: Path, may: Path):
@@ -427,12 +444,13 @@ def main():
 
     buoc('6/7 Skill, agent, mô hình nghe lời')
     claude = bo_nao / '.claude'
-    goi_da = []
+    goi_da, da_chep = [], []
     dk_skill = {}
     for gj in sorted((nguon / 'goi').glob('*/goi.json')):
         g = json.loads(gj.read_text(encoding='utf-8'))
         for s in g.get('skills', []):
             chep_de(gj.parent / 'skills' / s, claude / 'skills' / s)
+            da_chep.append(s)
             dk = g.get('dieu_kien_theo_skill', {})
             if dk.get(s) or dk.get('*'):
                 dk_skill[s] = dk.get(s) or dk.get('*')
@@ -441,6 +459,13 @@ def main():
             shutil.copy2(f, claude / 'agents' / f.name)
         goi_da.append(g['ma'])
         print(f'✔ gói {g["ma"]}: {len(g.get("skills", []))} skill, {len(list((gj.parent / "agents").glob("*.md")))} agent')
+    # Skill trùng tên cài chung cho cả máy (~/.claude/skills) được Claude dùng TRƯỚC bản trong bộ não (thử 25/11/2026:
+    # bản cũ chung máy làm video BNI tạo thư mục ảnh ngoài bộ não). Không tự xóa thư mục ngoài bộ não, chỉ báo.
+    chung_may = Path.home() / '.claude' / 'skills'
+    trung = [s for s in da_chep if (chung_may / s / 'SKILL.md').exists()]
+    if trung:
+        cb(f'Máy có bản CŨ cài chung của skill {", ".join(trung)} ở {chung_may}. Claude sẽ dùng bản cũ đó thay vì bản mới '
+           f'trong bộ não. Claude: hỏi người dùng rồi chuyển các thư mục đó vào Thùng rác (không xóa hẳn), sau đó mở lại Claude.')
     wm = whisper(ram, gpu)
     cfg = {'_ghi_chu': 'Bộ cài Xưởng Video AI ghi tệp này; skill đọc để biết xưởng, phần mềm ở đâu. Chạy lại câu lệnh cài sẽ ghi lại.',
            'phien_ban': pb['phien_ban'], 'phien_ban_tai_nguyen': ptn, 'xuong': str(xuong), 'may': str(may),
