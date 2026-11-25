@@ -148,32 +148,90 @@ Tự nghe lại trước khi dựng bằng `python nghe_lai_giong.py <file giọ
 
 Giữ nguyên từ tiếng Anh để máy tự đọc, chỉ viết lại đúng từ người dẫn nghe thấy sai. Bản đọc đã chốt nằm trong `docDung` của `references/da-chot.json`, `tao_giong.py` tự thay; từ mới bị đọc sai thì thêm vào đó, đừng chỉ sửa tay trong một bản đọc. Số viết bằng chữ; các trường hợp khác xem `references/loi-da-gap.md`. `loi.txt` vẫn ghi đúng chính tả. Máy nghe lại không bắt được lỗi phát âm vì Whisper tự sửa theo gợi ý, nên người dẫn phải nghe bản thử trước khi tạo cả bài. Nhãn AI phải bật khi đăng.
 
-## Video giới thiệu bản thân (BNI, 30 giây)
+## Video giới thiệu bản thân (BNI, 30 giây hoặc 60 giây)
 
-Câu lệnh ngắn kiểu "Dựng một video giới thiệu bản thân cho tôi theo cấu trúc BNI" là đủ. Không phải video kênh: bỏ dò trùng, đọc thử, ảnh bìa, content, tờ hướng dẫn, ghi sổ video. **Đọc `references/bni-cong-thuc.md` trước tiên**: giữ đúng khung 5 nhịp (tôi là ai → làm gì, cho ai → vì sao tin → nhờ giới thiệu ai → câu dễ nhớ + tên), còn lời là của từng người (chuyện thật, giọng của họ). Thước đo: người lạ nghe MỘT lần nhắc lại được tên, làm gì, giúp ai; câu nói liền mạch, không vụn (mục 1b). Không có câu mẫu nào để chép; hai người khác nhau, hay cùng một người ở hai tuần khác nhau, không được ra lời giống nhau. Làm đúng 6 bước, mục tiêu dưới 12 phút kể cả lúc hỏi đáp:
+Câu lệnh ngắn kiểu "Dựng một video giới thiệu bản thân cho tôi theo cấu trúc BNI" là đủ. Đây không phải video kênh, nên bỏ các bước: dò trùng, đọc thử, ảnh bìa, content, tờ hướng dẫn, ghi sổ video.
 
-**1. Đọc hồ sơ từ Bộ Não AI (1 phút).** Thư mục đang mở chính là bộ não B. Đọc `INDEX.md`, rồi các ngăn `01_CA_NHAN_VA_THUONG_HIEU/`, `02_…`, `03_…`, `04_…`, `05_…` (hồ sơ cá nhân, sản phẩm và bảng giá, khách hàng mục tiêu, giọng văn…); tìm thêm bằng Grep tối đa 2 lần. Nội dung lời lấy từ các ngăn này, không bịa. Ảnh, video của chính họ ở ngăn media (xem "Sổ media" trong `INDEX.md`): CHÉP (không di chuyển) 3–5 file hợp nhất sang `<Xưởng>/anh-video-cua-toi/`, đặt tên có số đầu theo thứ tự cảnh: `1-` ảnh mặt rõ (mở), `2-` đang làm việc với khách, `3-` bằng chứng (đông người, kết quả, sản phẩm), `4-` cảnh gần gũi (nhờ giới thiệu), `5-` cảnh kết; bỏ ảnh chưa rõ bối cảnh. Có sẵn công cụ `sb_search`, `sb_read` thì dùng thay Grep. Không thấy hồ sơ thì tìm `ho-so-bni.md` trong Xưởng. **Thư mục kênh = Xưởng** (xem mục "Chuẩn bị"); `du-an/` chỉ nằm trong Xưởng, không tạo trong các ngăn 01–07. Đọc thêm **sổ BNI** `<Xưởng>/mau-cua-toi/bni/so-bni.json` nếu có (câu dễ nhớ đã chọn, giọng, các chủ đề đã nói). Cần đủ: tên, thương hiệu, vai trò; làm gì và cho ai (nhóm khách chính, họ nhận được gì); một bằng chứng thật (chuyện một khách, con số, nơi đã làm); người muốn được giới thiệu tới, dấu hiệu nhận ra họ, mời họ điều gì; giọng và cách xưng hô; câu dễ nhớ; liên hệ (Zalo, web). Bài tuần BNI thì thêm mảng nhỏ tuần này (chưa nói trong 4 tuần gần nhất). Đang mở trong Bộ Não AI Khởi Động thì vào thẳng việc video, không chạy lời chào nạp bộ não của CLAUDE.md trong đó.
+**Đọc `references/bni-cong-thuc.md` trước tiên.** Đó là nguồn duy nhất của khung, gồm:
+- 5 nhịp: tôi là ai → làm gì, cho ai → vì sao tin → nhờ giới thiệu ai → câu dễ nhớ + tên.
+- Độ dài, máy kiểm gì, thiếu dữ liệu thì làm gì, ngành có quy định, cách đọc tên riêng.
 
-**2. Phỏng vấn đào sâu MỘT lượt (chỉ hỏi cái còn thiếu).** Dùng bộ câu hỏi ở mục 3 của `references/bni-cong-thuc.md`, gom trong một tin, đánh số, mỗi câu có ví dụ trả lời. Không rõ là giới thiệu lần đầu hay bài tuần thì mặc định giới thiệu lần đầu. Bài tuần chưa có mảng thì gợi ý 3 mảng nhỏ lấy từ hồ sơ (bỏ mảng đã nói trong sổ BNI). Lần đầu thì hỏi thêm: tên thương hiệu, liên hệ ở cuối video, ảnh hoặc video của chính họ, cửa hàng, sản phẩm (thả 2–4 file vào `anh-video-cua-toi` trong Xưởng; muốn dùng giọng thật thì quay điện thoại đọc đúng lời đã chốt, thả vào cùng thư mục, tên có chữ `doc-loi`). Chờ trả lời rồi làm tiếp. Ý nào họ bỏ trống thì không bịa: thiếu chuyện thật thì kể kết quả chung họ đã nói, thiếu số thì bỏ số.
+Khung chỉ giữ mạch; lời do bạn viết cho hợp từng người. Thước đo: người lạ nghe MỘT lần nhắc lại được tên, làm gì, giúp ai. Hai người khác nhau, hay cùng một người ở hai tuần khác nhau, không được ra lời giống nhau.
+
+Làm 6 bước, mục tiêu dưới 12 phút kể cả hỏi đáp. Tự quay giọng thì lâu hơn, tùy lúc người dùng gửi tệp.
+
+**1. Đọc hồ sơ từ Bộ Não AI (1 phút).** Thư mục đang mở chính là bộ não. Đang mở trong Bộ Não AI Khởi Động thì vào thẳng việc video, không chạy lời chào nạp bộ não của CLAUDE.md.
+- **Đọc gì:** `INDEX.md`, rồi các ngăn 01–05 (hồ sơ cá nhân, sản phẩm và bảng giá, khách hàng, giọng văn). Tìm thêm bằng Grep tối đa 2 lần, hoặc `sb_search`, `sb_read` nếu có. Không thấy hồ sơ thì tìm `ho-so-bni.md` trong Xưởng.
+- **Sổ BNI:** `<Xưởng>/mau-cua-toi/bni/so-bni.json`, nếu có (câu dễ nhớ, giọng, mảng đã nói, lời xin để dành `deDanh`).
+  - Sổ có tuần cũ thì đây là bài tuần (`"kieu": "tuan"`), trừ khi người dùng nói làm lại video giới thiệu.
+  - Sổ có `cauDeNhoDuyet` hoặc `xinDuyet` là `false` thì ở bước 2 hỏi lại cho chốt.
+- **Cần có:** tên và tên hiện trên video; làm gì, cho ai; một điều thật làm người ta tin; người muốn được giới thiệu tới; giọng và xưng hô; câu dễ nhớ; liên hệ. Thiếu thì hỏi ở bước 2, hoặc xử lý theo mục 4 của công thức. Lời chỉ lấy từ hồ sơ và câu trả lời, không bịa.
+- **Ảnh, video của chính họ:** nằm ở ngăn media (xem "Sổ media" trong `INDEX.md`). CHÉP (không di chuyển) 1–5 tệp vào thư mục `anh/` của dự án (bước 5), đặt tên có số đầu theo vai:
+  - `1-` mặt rõ (mở bài)
+  - `2-` đang làm việc
+  - `3-` bằng chứng (đông người, kết quả, sản phẩm)
+  - `4-` cảnh gần gũi (lúc nhờ giới thiệu)
+  - `5-` cảnh kết
+  - Không dùng logo, ảnh chưa rõ bối cảnh hay ảnh của người khác.
+  - Nhiều hơn 5 tệp thì chọn tệp rõ nhất cho mỗi vai, ảnh và video cùng vai thì chọn một.
+  - Ảnh `3-` nên đúng việc trong câu chuyện; không chắc thì hỏi ở câu 3.
+  - Thiếu vai nào thì máy tự dùng lại ảnh khác, cảnh kết quay về ảnh mặt.
+  - Thẻ có danh sách (`viec`, `dong`) thì nhịp đó không hiện ảnh.
+  - Video chỉ lấy 8 giây đầu. Video và ảnh quay ngang được giữ trọn khung, đặt trên nền mờ.
+- **Thư mục kênh = Xưởng** (xem mục "Chuẩn bị"). `du-an/` chỉ nằm trong Xưởng, không tạo trong các ngăn 01–07.
+
+**2. Hỏi MỘT lượt, chỉ hỏi cái còn thiếu.** Dùng mục 7 của công thức: gom trong một tin, đánh số, chữ dễ hiểu, mỗi câu một ví dụ trả lời ngắn. Người bận hoặc hồ sơ mỏng thì chỉ hỏi 3 câu. Không hỏi lại thứ hồ sơ đã có. Chờ trả lời rồi làm tiếp.
+- Không rõ là giới thiệu lần đầu hay bài tuần thì mặc định giới thiệu lần đầu.
+- Người dùng xin độ dài khác thì làm theo mục 1 của công thức: 60 giây làm được, 15 giây thì nói chưa làm được.
+- Ý nào họ bỏ trống thì làm theo mục 4 của công thức, không bịa.
 
 **3. Ghi hồ sơ.** Ghi các câu trả lời thành MỘT ghi chú mới (không sửa ghi chú cũ): có công cụ `sb_create` thì tạo "Ho so ca nhan BNI - <tên>" (tự vào `00-Inbox/AI/...`); không có công cụ đó thì ghi `ho-so-bni.md` trong Xưởng. Báo họ tên ghi chú. Lần sau đọc lại ghi chú này, không hỏi lại. **Bộ Não AI có luật "chưa duyệt không ghi":** luôn ghi `ho-so-bni.md` trong Xưởng để dựng ngay, KHÔNG ghi vào các ngăn 01–07 khi chưa được duyệt. Cuối bước 6, trong lúc báo kết quả, đề xuất một bảng ngắn: ý nào thêm vào mục "Nhật ký bổ sung" ở cuối `01_CA_NHAN_VA_THUONG_HIEU/ho_so_founder_va_thuong_hieu.md` (chưa có mục đó thì đề xuất tạo ở cuối file; kèm ngày, không xóa dòng cũ), cất video vào `06_KHO_MEDIA_VA_TAI_LIEU_GOC/video/` tên `yyyy-mm-dd_thuong-hieu_gioi-thieu-bni.mp4`, thêm 1 dòng "Sổ media" trong `INDEX.md` và 1 dòng `NHAT_KY_PHAN_LOAI.md`; họ gõ OK thì mới ghi đúng các chỗ đó.
 
-**4. Viết 2–3 bản khác giọng, cho chọn (2 phút).** Theo mục 1, 1b, 4, 6 của `references/bni-cong-thuc.md`: đủ 5 nhịp (tôi là ai; làm gì, cho ai; vì sao tin; nhờ giới thiệu ai, có dấu hiệu nhận biết; câu dễ nhớ + tên), câu đủ ý 10–22 chữ nối nhau như lời nói, 95–110 chữ đọc, đọc to thử một lượt và tự kiểm ba câu (tên, làm gì, giúp ai), chỉ dùng thông tin có trong hồ sơ và câu trả lời. Mỗi bản một giọng, một cách mở khác nhau, đúng cách xưng hô của họ. Gửi cả 2–3 bản trong một tin, mỗi bản có một dòng "giọng gì" rồi lời đọc, để họ chọn hoặc sửa. Họ đã dặn "làm luôn" thì tự chọn bản hợp hồ sơ nhất và nói rõ đã chọn bản nào.
+**4. Viết 2–3 bản khác giọng, cho chọn (2 phút).** Theo mục 1, 3, 5, 6, 8 của công thức. Mỗi bản:
+- Đi đúng mạch 5 nhịp.
+- Một giọng, một cách mở khác nhau, đúng cách xưng hô của người đó.
+- Đã đọc to thử và tự kiểm ba câu (tên, làm gì, giúp ai).
 
-**5. Ghi tệp dự án.** Thư mục `<Xưởng>/du-an/<yyyy-mm-dd>_bni-<tên không dấu>/` (ví dụ `2026-11-25_bni-nguyen-van-a`). Ghi:
+Gửi cả 2–3 bản trong một tin. Mỗi bản có một dòng "giọng gì" rồi lời đọc. Cùng tin đó gửi thêm:
+- 2–3 câu dễ nhớ, nếu chưa có.
+- Ý nào do AI gợi ý (ví dụ người muốn được giới thiệu tới), để họ xác nhận.
+- Chữ nào máy có thể đọc sai.
+
+Họ đã dặn "làm luôn" thì tự chọn bản hợp hồ sơ nhất và nói rõ đã chọn bản nào; ghi cờ chưa duyệt như mục 4 công thức. Bài tuần thì các bản khác nhau ở chuyện và lời xin, câu mở có thể giống nhau.
+
+**4b. Chỉ khi tự quay giọng.** Gửi lời đã chốt và dặn:
+- Quay điện thoại, đọc đúng lời đó, giọng nói chuyện bình thường, khoảng 25 giây cho bài 30 giây.
+- Gửi tệp, tên có chữ `doc-loi`.
+
+- Nói số chữ của lời; bài 30 giây thường 70–150 chữ, đọc dài quá thì phải quay lại.
+- Cách đưa tệp vào máy: gửi Zalo cho chính mình rồi tải về trên máy tính, hoặc chép qua Google Drive. Sau đó kéo tệp vào thư mục `anh/` của dự án; nếu người dùng chỉ đưa đường dẫn tệp thì bạn chép giúp.
+
+Ở bước 5 ghi sẵn `giongTuQuay` (tên tệp dự kiến), rồi chạy `--kiem`: máy báo ✘ chưa có tệp là đúng. Có tệp thì sửa `giongTuQuay` đúng tên thật. CHỜ có tệp rồi mới sang bước 6.
+
+Lời đã chốt vẫn là phụ đề; bảng "Có file người dẫn tự quay" ở đầu skill (bóc lời bằng `boc_loi.py`) không áp dụng cho BNI. Người dùng đọc lệch nhiều thì bước nghiệm thu báo "đủ lời" thấp; khi đó nhờ họ đọc lại đúng lời, hoặc sửa `doc-tts.txt` và `loi.txt` theo đúng chữ họ đã nói.
+
+**5. Ghi tệp dự án.** Thư mục `<Xưởng>/du-an/<yyyy-mm-dd>_bni-<tên không dấu>/` (ví dụ `2026-11-25_bni-nguyen-van-a`; bản 60 giây thêm đuôi `-60`). Ghi:
+- `anh/`: ảnh, video đã chép ở bước 1 (và tệp giọng tự quay nếu có). Không có ảnh thì vẫn tạo `anh/` rỗng, để máy không lấy ảnh cũ trong `<Xưởng>/anh-video-cua-toi/`.
 - `doc-tts.txt`: lời đọc một đoạn, đúng bản đã chọn, số viết bằng chữ. Dấu câu theo cách người đó nói, không ép dấu chấm than.
-- `loi.txt`: cắt từ đúng chữ của `doc-tts.txt` (`bni.py` chặn khi lệch dưới 85%), mỗi dòng ≤ 28 ký tự (dài hơn là bị chặn), dấu phẩy ở chỗ chuyển ý để chèn nghỉ. Mỗi ý hiện thành thẻ thì nằm trên một dòng riêng (hai ý chung một dòng thì thẻ sau sáng trễ).
-- `bni.json` (khuôn trong đầu `scripts/bni.py`):
+- `loi.txt`: cắt từ đúng chữ của `doc-tts.txt`, mỗi dòng ≤ 28 ký tự, không ngắt giữa từ ghép, có dấu phẩy ở chỗ chuyển ý để chèn nghỉ. Mỗi ý hiện thành thẻ thì nằm trên một dòng riêng; hai ý chung một dòng thì thẻ sau sáng trễ.
+- `bni.json`: khuôn đầy đủ ở đầu `scripts/bni.py`. Các khóa:
   - `phan`: số dòng `loi.txt` của 5 nhịp.
-  - `mo`: tên, thương hiệu. `bangChung`: 2 dòng ngắn.
-  - `chuDe`: thẻ của nhịp 2 (làm gì, cho ai), chữ trên thẻ do mình đặt theo lời, không dùng chữ cố định.
-  - `xin`: thẻ của nhịp 4, ghi đúng người muốn được giới thiệu và dấu hiệu.
-  - Tiêu đề ≤ 14 ký tự mỗi dòng, `ghiNho` ≤ 18 ký tự (bị chặn nếu dài hơn).
-  - `lienHe` từ 2 chữ trở lên.
-  - `nganh`: 3–6 từ khóa không dấu nối gạch của nghề (ví dụ `ke-toan`, `hoa-don`, `so-sach`) để script tự chọn cảnh hợp nghề.
-  - `tamTrang`: giọng của bài (`vui`, `am-ap`, `cam-xuc`, `chuyen-nghiep`, `manh-me`) để chọn nhạc.
-  - `giongAI`: chọn theo người (nam `vi-VN-NamMinhNeural`, nữ `vi-VN-HoaiMyNeural`). Ghi trong `bni.json`, KHÔNG sửa `ho-so-kenh.json` của học viên.
-  - `soBni`: bản tóm tắt để ghi sổ: `chuDe`, `xin`, `cauDeNho`, `giong`, `mang`.
+  - `mo`: tên, tên hiện trên video. Thương hiệu là của chính người nói; đại lý thì xem mục 5 của công thức.
+  - `bangChung`: 1–2 dòng ngắn.
+  - `chuDe`: thẻ nhịp 2. Bài tuần thì ghi mảng tuần này. Chữ đặt theo lời của bài.
+  - `xin`: thẻ nhịp 4.
+  - `ghiNho`: tối đa 18 ký tự. Chữ thẻ nên tối đa 14 ký tự mỗi dòng.
+  - `lienHe`: từ 2 chữ trở lên.
+  - `nganh`: từ khóa đúng như trong `tai-nguyen/canh/CHI_MUC.md` (mục 9 công thức).
+  - `tamTrang`: `vui`, `am-ap`, `cam-xuc`, `chuyen-nghiep`, `manh-me` hoặc `moc-mac`, để chọn nhạc.
+  - `doDai`: 30 hoặc 60.
+  - `kieu`: `lan-dau` (mặc định) hoặc `tuan` (bài tuần BNI).
+  - `docDung`: cách đọc tên riêng, viết tắt (mục 6).
+  - `giongAI`: dạng `{"provider": "edge", "voice_id": "vi-VN-NamMinhNeural"}` cho nam, `vi-VN-HoaiMyNeural` cho nữ. Ghi trong `bni.json`, KHÔNG sửa `ho-so-kenh.json` của học viên.
+  - `giongTuQuay`: tên tệp giọng tự quay trong `anh/`.
+  - `soBni`: bản tóm tắt để ghi sổ, gồm `ten`, `chuDe`, `xin`, `cauDeNho`, `giong`, `mang`, `cauDeNhoDuyet`, `xinDuyet`, `deDanh` (mục 4 và 11 công thức).
+
+Rồi chạy `python bni.py "<dự án>" --kiem` (vài giây). Sửa tới khi hết dòng ✘; dòng ⚠ thì tự cân nhắc theo người.
 
 **6. Dựng và chấm bằng agent, không hỏi duyệt thêm (4–6 phút).** Giao agent `video-dung` (kèm đường dẫn dự án đã có 3 tệp ở bước 5, thư mục kênh, có ảnh hay không) dựng theo đoạn dưới; xong giao agent `video-cham-diem` chấm độc lập. Phiếu SỬA LẠI thì gửi lại `video-dung` sửa, tối đa 3 vòng. Báo người dùng: đường dẫn video, tên ghi chú hồ sơ, phiếu chấm, thời gian. Agent nằm ở `.claude/agents/` của bộ não (bộ cài chép sẵn; agent mới chép chỉ nhận ở phiên Claude mở sau đó). Chưa thấy agent thì tự làm đoạn dưới rồi chấm theo thang trong `.claude/skills/video-ngan-nguoi-noi/agents/video-cham-diem.md`.
 
@@ -182,16 +240,19 @@ Câu lệnh ngắn kiểu "Dựng một video giới thiệu bản thân cho tô
 python bni.py "<dự án>"
 ```
 Script tự:
-- Kiểm trước khi tốn thời gian (dòng ✘ là dừng): nhịp 1 chưa nói tên, dòng phụ đề > 28 ký tự, `ghiNho` > 18 ký tự, lời 85–118 chữ, (chỉ nhắc ⚠: câu vụn dưới 5 chữ, dấu hai chấm), lời trùng một tuần cũ trong sổ BNI từ 60% trở lên, lời chép nguyên chuỗi từ `references/bni-cong-thuc.md`.
-- Nhận ảnh, video trong `<Xưởng>/anh-video-cua-toi/` (ảnh tĩnh thành clip chuyển động nhẹ, video cắt 8 giây không tiếng) làm cảnh mở, bằng chứng, kết. Không có thì chế độ không mặt (`loai.txt` = `gioi-thieu khong-mat`): chọn cảnh kho theo `nganh` (từ khóa khớp mô tả cảnh), rồi cảnh hợp mọi nghề, cuối cùng là nền màu dịu. Không lấy cảnh có mặt người, hoạt hình, công nghệ lạc nghề.
+- Kiểm trước như `--kiem` (danh sách chặn và nhắc ở mục 2 của công thức).
+- Lấy ảnh, video trong `anh/` của dự án; không có thì lấy ở `<Xưởng>/anh-video-cua-toi/`. Ảnh tĩnh thành clip chuyển động nhẹ, video cắt 8 giây không tiếng. Mỗi tệp đặt đúng vai theo số đầu tên. Không có ảnh thì chế độ không mặt (`loai.txt` = `gioi-thieu khong-mat`): chọn cảnh kho theo `nganh` (từ khóa khớp mô tả cảnh), rồi cảnh hợp mọi nghề, cuối cùng là nền màu dịu. Không lấy cảnh có mặt người, hoạt hình, công nghệ lạc nghề.
 - Chọn nhạc theo `tamTrang`, đổi bài so với tuần trước.
-- Tạo giọng: `giongTuQuay` thì lấy tiếng video tự quay, không thì `giongAI` trong `bni.json` hoặc của hồ sơ (giọng miễn phí `edge`). Giọng phải dài 22–30 giây, ngoài khoảng đó thì dừng và báo thêm hay bớt bao nhiêu chữ.
+- Tạo giọng:
+  - Có `giongTuQuay`: lấy tiếng tự quay, giữ nhịp người nói, chỉ rút khoảng lặng dài.
+  - Không có: dùng `giongAI` trong `bni.json` hoặc trong hồ sơ (giọng miễn phí `edge`), đọc theo `docDung`.
+  - Giọng ngoài khoảng giây của `doDai` thì dừng và báo cách sửa: giọng máy thì thêm hay bớt bao nhiêu chữ, giọng tự quay thì đọc nhanh hoặc chậm hơn rồi quay lại.
 - Lập `canh.json`, chạy `dung.py --het`.
 - Chép thành phẩm sang `<Xưởng>/thanh-pham/<tên dự án>.mp4` và ghi một dòng vào sổ BNI.
 
 Xem `to-soat.jpg` rồi báo đường dẫn trong `thanh-pham/`. Kho cảnh (`tai-nguyen/canh/`) hoặc kho nhạc trống (gói nhẹ chưa đủ, hoặc bị xóa): script tự tạo nền màu dịu (NEN1–3) và dựng chỉ có giọng (in ⚠, không dừng); nhãn thương hiệu trên video luôn lấy từ `mo[1]` của `bni.json` (thương hiệu của chính người nói) cho riêng video này (ghi `kenh-rieng.json` trong dự án), không sửa `ho-so-kenh.json`. Cảnh, nhạc, tiếng do bộ cài giải nén sẵn vào `tai-nguyen/` của Xưởng; không tự tải hay giải nén thêm. Lần dựng đầu Remotion tải trình duyệt khoảng 120 MB, chậm thêm 1–2 phút là bình thường.
 
-Luật đi kèm (máy kiểm): `loai.txt` có `gioi-thieu` thì `tao_giong.py`, `nghiem_thu.py` bỏ luật câu kết của kênh, bỏ luật bắt buộc dấu chấm than và luật vế ≥ 9 chữ (chỉ nhắc, không chặn), vẫn giữ cách đọc đúng, luật 9 và chặn xin bình luận. Cảnh cho video giới thiệu phải thật, sang, hợp người làm nghề (văn phòng, góc làm việc, màn hình số liệu, thành phố Việt Nam); KHÔNG dùng hoạt hình, đồ chơi tí hon, đất sét, 3D cartoon, robot chạy băng chuyền như xe lửa (người dẫn chê 24/11/2026); `lap_canh.py` chặn clip có mô tả (cột `mo_ta` của `chi-muc.csv`) chứa "tí hon", "đất sét", "hoạt hình", "cartoon", "đồ chơi", nên thêm clip mới thì mô tả đúng kiểu đó. Tự đặt cảnh bằng tay thì nhớ cách đếm mốc trong `mo-hinh-canh.md`.
+Luật đi kèm (máy kiểm): `loai.txt` có `gioi-thieu` thì `tao_giong.py`, `nghiem_thu.py` bỏ luật câu kết của kênh, bỏ luật bắt buộc dấu chấm than và luật vế ≥ 9 chữ (chỉ nhắc, không chặn), vẫn giữ cách đọc đúng, luật 9 và chặn xin bình luận. Cảnh cho video giới thiệu phải thật, sang, hợp người làm nghề (cảnh đời thường đẹp, thành phố Việt Nam, nền màu dịu; cảnh dự phòng đã bỏ laptop, văn phòng vì lạc nghề với tiệm bánh, spa); KHÔNG dùng hoạt hình, đồ chơi tí hon, đất sét, 3D cartoon, robot chạy băng chuyền như xe lửa (người dẫn chê 24/11/2026); `lap_canh.py` chặn clip có mô tả (cột `mo_ta` của `chi-muc.csv`) chứa "tí hon", "đất sét", "hoạt hình", "cartoon", "đồ chơi", nên thêm clip mới thì mô tả đúng kiểu đó. Tự đặt cảnh bằng tay thì nhớ cách đếm mốc trong `mo-hinh-canh.md`.
 
 ## Edit video từ file quay (câu "Edit video <tên file> cho tôi", có thể kèm "dài 30 giây")
 

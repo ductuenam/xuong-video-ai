@@ -1,6 +1,6 @@
 # Xưởng Video AI
 
-Kho chuẩn của bộ làm video cài vào **Bộ Não AI** của học viên bằng **một câu lệnh**. Trạng thái: mã **0.2.2** (có bộ cài Windows đã thử thật; skill BNI bản 2.1: nói rõ tôi là ai, làm gì, cho ai, lời liền mạch, nhận ảnh thật; Mac chưa thử trên máy thật); tài nguyên **v1** (226 cảnh, 3 nhạc, 7 tiếng) trên Cloudflare R2.
+Kho chuẩn của bộ làm video cài vào **Bộ Não AI** của học viên bằng **một câu lệnh**. Trạng thái: mã **0.2.3** (có bộ cài Windows đã thử thật; skill BNI bản 2.2: khung 5 nhịp không cứng, bài 30 hoặc 60 giây, ảnh riêng từng bài, giọng tự quay, chặn lời hứa ngành có quy định; Mac chưa thử trên máy thật); tài nguyên **v1** (226 cảnh, 3 nhạc, 7 tiếng) trên Cloudflare R2.
 
 ## Cài (học viên)
 

@@ -12,10 +12,20 @@ from pathlib import Path
 CHOT = json.loads((Path(__file__).resolve().parent.parent / "references" / "da-chot.json").read_text(encoding="utf-8"))
 
 
-def sua_doc(chu):
-    """Thay các từ máy đọc sai theo docDung. Trả về (chữ đã sửa, danh sách thay)."""
+def doc_dung_rieng(da):
+    """Cách đọc riêng của một dự án (tên thương hiệu, chữ tiếng Anh, viết tắt của người dùng): <dự án>/doc-dung.json.
+    bni.py ghi từ khóa "docDung" của bni.json (thêm 25/11/2026: ZENOTERA, WOOD, AIA... đọc sai mà không có chỗ ghi riêng)."""
+    f = Path(da) / "doc-dung.json"
+    try:
+        return {k: v for k, v in json.loads(f.read_text(encoding="utf-8")).items() if not k.startswith("_")} if f.exists() else {}
+    except (OSError, ValueError):
+        return {}
+
+
+def sua_doc(chu, rieng=None):
+    """Thay các từ máy đọc sai: cách đọc riêng của dự án trước, rồi docDung chung. Trả về (chữ đã sửa, danh sách thay)."""
     thay = []
-    for goc, doc in CHOT["docDung"].items():
+    for goc, doc in [*(rieng or {}).items(), *CHOT["docDung"].items()]:
         if goc.startswith("_"):
             continue
         mau = re.compile(rf"(?<![\w‑-]){re.escape(goc)}(?![\w‑-])")

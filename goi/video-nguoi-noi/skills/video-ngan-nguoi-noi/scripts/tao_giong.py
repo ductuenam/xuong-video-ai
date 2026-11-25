@@ -111,7 +111,8 @@ if a.lay:
 
 chu = a.chu or (da / a.chu_file).read_text(encoding="utf-8").strip()
 # Cổng luật đã chốt (references/da-chot.json): tự thay cách đọc, kiểm cảm xúc. Lỗi thì dừng trước khi tốn credit.
-chu, thay = sua_doc(chu)
+from kiem_chot import doc_dung_rieng
+chu, thay = sua_doc(chu, doc_dung_rieng(da))
 for t in thay:
     print("  tự thay:", t)
 loi_chot = kiem_doc(chu, ca_bai=bool(a.chu_file), gioi_thieu="gioi-thieu" in loai_du_an(da).split())

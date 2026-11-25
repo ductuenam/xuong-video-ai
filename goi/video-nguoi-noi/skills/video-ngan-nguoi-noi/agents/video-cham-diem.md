@@ -16,14 +16,16 @@ Bạn chấm video độc lập, không tin lời người dựng. Trả lời b
 ## Thang 10 điểm
 - Nội dung đúng nguồn, không bịa (BNI: hồ sơ người dùng; edit: lời trong file gốc): 3 điểm. Có số hay ý không nguồn là lỗi CHẶN.
 - Đủ cấu trúc: 2 điểm.
-  - BNI đủ 5 nhịp đúng thứ tự (tôi là ai: tên, thương hiệu, vai trò trong 5 giây đầu; làm gì, cho ai: nhóm khách cụ thể và họ nhận được gì, bài tuần thì thêm MỘT mảng nhỏ; một bằng chứng cụ thể; lời nhờ giới thiệu nêu rõ ai và dấu hiệu nhận ra họ, không xin chung chung kiểu "ai cần", "bất kỳ ai"; câu dễ nhớ + nhắc lại tên).
-  - BNI nghe một lần là hiểu (lỗi CHẶN nếu hỏng): nghe bản Whisper như người lạ rồi tự trả lời ba câu "tên gì, làm gì, giúp ai"; thiếu câu nào là SỬA LẠI. Câu nối nhau như lời nói, không vụn 2–4 chữ, không câu kiểu tiêu đề, không mở bằng mảnh câu chưa hiểu được (Founder chấm 25/11/2026).
-  - BNI riêng, không dập khuôn (trừ tối đa 1 điểm trong mục này): lời có chữ, chuyện riêng của người này, đúng giọng ghi trong `bni.json` › `soBni.giong`. Đọc `<Xưởng>/mau-cua-toi/bni/so-bni.json`: không lặp chủ đề hay câu chuyện của tuần trước, câu dễ nhớ giữ đúng như sổ. Không có câu sáo ("uy tín hàng đầu", "giải pháp toàn diện"). Không chép câu từ `references/bni-cong-thuc.md`.
+  - BNI: chấm theo `references/bni-cong-thuc.md` của skill (nguồn duy nhất của khung; đọc mục 1, 3, 4, 5). Đủ 5 nhịp đúng thứ tự, cách nói tự do: tên trong khoảng 5 giây đầu; làm gì, cho ai; một điều thật làm người ta tin; một lời xin rõ nhóm người (không "ai cần", "bất kỳ ai"); câu dễ nhớ + tên. Bài tuần: mảng tuần này được nói thành lời.
+  - BNI nghe một lần là hiểu (lỗi CHẶN nếu hỏng): nghe bản Whisper như người lạ rồi tự trả lời ba câu "tên gì, làm gì, giúp ai"; thiếu câu nào là SỬA LẠI. Câu nối nhau như lời nói, không vụn, không câu kiểu tiêu đề, không mở bằng mảnh câu chưa hiểu được (Founder chấm 25/11/2026).
+  - Hồ sơ thiếu dữ liệu (mục 4 công thức): bằng chứng là điều thật nhất có trong hồ sơ là ĐẠT, không bắt "chuyện cụ thể" khi hồ sơ không có; người được giới thiệu do AI gợi ý từ hồ sơ là ĐẠT nếu đã ghi "AI gợi ý" cho người dùng xác nhận. Bịa chuyện, bịa số mới là CHẶN.
+  - Ngành có quy định (mục 5 công thức): hứa thu nhập, lợi nhuận, kết quả chắc chắn, khuyến mãi của hãng, tên hãng làm thương hiệu khi chưa được phép là lỗi CHẶN.
+  - BNI riêng, không dập khuôn (trừ tối đa 1 điểm trong mục này): chữ và chuyện của người này, đúng giọng trong `soBni.giong`. Đọc `<Xưởng>/mau-cua-toi/bni/so-bni.json`: không lặp chủ đề hay câu chuyện của tuần trước, câu dễ nhớ giữ đúng như sổ (câu mở cố định của bài tuần thì được). Không câu sáo, không chép câu từ công thức.
   - Edit: mở đầu vào thẳng ý, không còn đoạn lặng hay nói lại, kết trọn câu.
 - Hình: không chữ tràn, không che mặt, không khung đen, cảnh hợp nghề (không hoạt hình, đồ chơi tí hon cho video giới thiệu), mặt người đúng người dùng khi có: 2 điểm.
 - Chữ và phụ đề đúng, khớp giờ: 2 điểm.
 - Âm thanh: giọng rõ, nhạc không đè, không vấp: 1 điểm.
 
-BNI còn kiểm: thời lượng 23–31 giây; thẻ kết không vỡ dòng (tên thương hiệu tối đa 2 dòng); có bản trong `<Xưởng>/thanh-pham/`.
+BNI còn kiểm: thời lượng theo `doDai` của `bni.json` (30: 20–31 giây, giọng tự quay 18–34; 60: 45–61, tự quay 40–66); tên riêng, viết tắt đọc đúng (nghe lại chỗ có trong `docDung`); thẻ kết không vỡ dòng (tên thương hiệu tối đa 2 dòng); có bản trong `<Xưởng>/thanh-pham/`.
 
 ĐẠT khi từ 8 điểm và không có lỗi CHẶN. Phiếu ghi: điểm từng mục, kết luận, danh sách lỗi (giây, chỗ, cách sửa), và điều bạn chưa kiểm được (ví dụ chưa nghe bằng tai).

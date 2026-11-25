@@ -201,3 +201,15 @@ Câu lệnh "Dựng một video giới thiệu bản thân cho tôi theo cấu t
 - Gốc: khung bản 2 lấy "chủ đề tuần" (LCD) làm nhịp 2, hợp với người trong phòng họp đã quen mình, không hợp video giới thiệu cho người chưa quen. Không có luật nào về độ liền mạch của câu.
 - Sửa: khung đổi thành tôi là ai → làm gì, cho ai → vì sao tin → nhờ giới thiệu ai → câu dễ nhớ + tên; bài tuần BNI vẫn nói đủ "ai, làm gì, cho ai" rồi mới tới mảng tuần. Thêm mục 1b "Viết cho nghe mượt" trong `bni-cong-thuc.md`. `bni.py` chặn khi nhịp 1 chưa có tên, nhắc khi có từ 2 câu dưới 5 chữ hoặc có dấu hai chấm. Agent chấm thêm lỗi CHẶN "nghe một lần không trả lời được tên, làm gì, giúp ai".
 - Cùng lần: ảnh ngang (sân khấu, lớp học) bị thu nhỏ sát đáy, nằm dưới phụ đề. `clip_toi` nay đặt ảnh ngang cao 1000 ở giữa khung; nhận tối đa 5 ảnh, thứ tự theo tên tệp `1-…5-`.
+
+## Thử skill BNI bằng 4 vai người dùng, 2 vòng (25/11/2026, bản 2.2)
+- Cách thử: đóng vai 4 người dùng (chủ spa, kế toán dịch vụ, chủ xưởng mộc, đại lý bảo hiểm), mỗi vai tự trả lời phỏng vấn như người thật, rồi chạy `bni.py --kiem` và dựng thật. Vòng 1 ra 32 lỗi, vòng 2 ra thêm khoảng 25 lỗi.
+- Khuôn quá cứng: chặn 85–118 chữ làm người ít chuyện phải độn hoặc bịa → chỉ chặn khi ngoài khoảng rộng, còn lại nhắc; bài 30 giây cho phép từ 18 giây. Công thức thành khung 5 nhịp, AI viết tự do (`bni-cong-thuc.md` là nguồn duy nhất).
+- Ngành có quy định (bảo hiểm, tài chính, y tế, làm đẹp): lời hứa thu nhập, giảm phí, khỏi hẳn lọt qua → chặn khi lời hoặc `bni.json` có chữ ngành. Đại lý mặc định không nêu tên hãng.
+- Đọc sai tên riêng, chữ tắt (VCCI, SME) → `docDung` trong `bni.json`, máy ghi `doc-dung.json` và gợi ý cho Whisper.
+- Ảnh: thư mục chung trộn ảnh nhiều người, nhiều tuần → mỗi dự án có `anh/`; có `anh/` rỗng thì làm không mặt, không lấy ảnh cũ. Ảnh theo vai (1-…5-), không theo lượt gọi; video từng bị xếp lên đầu làm lệch thứ tự. Bỏ qua logo. Ảnh, video ngang giữ trọn trên nền mờ.
+- Giọng tự quay: chưa có bước chờ tệp, thiếu tệp thì ffmpeg đổ → bước 4b và `--kiem` chặn. Cắt lặng theo dB để lọt khe 0,9 giây (hơi thở) và bước dựng chặn → cắt theo VAD, cùng cách đo với máy kiểm.
+- Dựng lại bài giới thiệu lần đầu bị chặn "trùng tuần trước" → chỉ chặn trùng khi `kieu` là `tuan`; bản 30 và 60 giây không so với nhau.
+- Chỉ có 1 dòng `bangChung` thì `bni.py` đổ (IndexError) → dòng 2 để trống được.
+- Spa không ảnh: cảnh kết rơi vào thiên hà, khói cam → bỏ cảnh vũ trụ khỏi nhóm dự phòng, cảnh kết được lặp nền mềm của cảnh mở.
+- Còn lại chưa sửa: kho chưa có cảnh spa, bảo hiểm; video mặt người tự quay chưa dùng làm cảnh; chưa thử trên Mac.
